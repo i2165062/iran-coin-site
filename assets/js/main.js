@@ -421,16 +421,16 @@
   })();
   
   /* ===== Buy page tabs ===== */
-(function(){
-	function qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
-	const tabs = qsa('.buy-tab');
-	if (!tabs.length) return;
+  (function(){
+        function qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
+        const tabs = qsa('.buy-tab');
+        if (!tabs.length) return;
   
-	tabs.forEach(btn=>{
-	  btn.addEventListener('click', ()=>{
-		// active tab
-		tabs.forEach(b=>b.classList.remove('active'));
-		btn.classList.add('active');
+        tabs.forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+                // active tab
+                tabs.forEach(b=>b.classList.remove('active'));
+                btn.classList.add('active');
   
 		// panes
 		const paneSel = btn.getAttribute('data-pane');
@@ -444,11 +444,31 @@
 			p.hidden = true;
 			p.classList.remove('active');
 		  }
-		});
-	  });
-	});
+                });
+          });
+        });
   })();
-  
-  
+
+  /* ===== What is Iran Coin slider ===== */
+  (function(){
+        const mq = window.matchMedia('(max-width:736px)');
+        if (!mq.matches) return;
+        const slider = document.querySelector('#What-is-iran-coin .wii-slider');
+        if (!slider) return;
+        const cards = slider.querySelectorAll('.wii-card');
+        const setHeight = () => {
+                if (window.innerWidth <= 736) {
+                        const h = Math.round(window.innerHeight * 0.85);
+                        slider.style.height = h + 'px';
+                        cards.forEach(c => c.style.height = '100%');
+                } else {
+                        slider.style.height = '';
+                        cards.forEach(c => c.style.height = '');
+                }
+        };
+        window.addEventListener('load', setHeight);
+        window.addEventListener('resize', setHeight);
+  })();
+
   })(jQuery);
   
