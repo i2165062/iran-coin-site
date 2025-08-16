@@ -206,6 +206,37 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
+@media (max-width:736px){
+  .wii-slider{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:1rem;
+    padding:1rem;
+    height:85vh;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    border-radius:12px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.25);
+    scrollbar-width:none;
+  }
+  .wii-slider::-webkit-scrollbar{ display:none; }
+  .wii-card{
+    flex:0 0 85%;
+    scroll-snap-align:start;
+    border-radius:12px;
+    padding:1rem;
+    height:100%;
+    overflow-y:auto;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 4px 24px rgba(0,0,0,0.2);
+  }
+}
+
 /* بک‌گراند کلی صفحه درباره ایران */
 #about-iran {
   background: url('images/PC4.jpg') no-repeat center center fixed;
