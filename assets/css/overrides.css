@@ -1,0 +1,294 @@
+/* overrides.css — FINAL */
+
+/* عمومی */
+body.is-article-visible{ overflow:auto !important; }
+#about-iran .close{ display:none !important; }
+
+/* ================= NFT تمام‌صفحه (بدون تغییر) ================= */
+#main article.nft-fixed{
+  position:fixed !important; top:0; left:0;
+  width:100vw !important; height:100vh !important;
+  margin:0 !important; padding:0 !important; max-width:none !important;
+  background:transparent !important; border-radius:0 !important; box-shadow:none !important;
+  z-index:10000; transform:none !important; opacity:1 !important;
+}
+#NFT.nft-fixed .nft-wrapper{ position:relative; width:100%; height:100%; }
+#NFT.nft-fixed .nft-img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:60% center; display:block;
+}
+#NFT.nft-fixed .nft-overlay{
+  position:absolute; inset:0; background:#000; opacity:.85;
+  pointer-events:none; transition:opacity .9s ease;
+}
+body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
+#NFT.nft-fixed .close{ position:absolute; top:0; right:0; width:4rem; height:4rem; z-index:10001; }
+#NFT.nft-fixed .close:before{
+  background-color:rgba(0,0,0,.35); backdrop-filter:blur(2px);
+  border:1px solid rgba(255,255,255,.25); border-radius:999px;
+}
+
+/* ================= About Iran – پس‌زمینهٔ تمام‌صفحه =================
+   توجه: مسیر تصویر از داخل assets/css → ../../images/PC4.png
+===================================================================== */
+#about-iran{
+  /* خنثی‌سازی استایل جعبه‌ای قالب */
+  background:transparent !important; box-shadow:none !important; border:0 !important;
+  width:100% !important; max-width:none !important; transform:none !important; opacity:1 !important;
+
+  /* چینش محتوا وسط صفحه */
+  min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  gap:1.25rem; padding: clamp(16px, 3vw, 40px) !important; border-radius:0 !important; position:relative;
+}
+
+/* بک‌گراند تمام‌صفحه مستقل از عرض مقاله */
+#about-iran::before{
+  content:""; position:fixed; inset:0; z-index:-1;
+  background-image:url("../../images/PC4.png");
+  background-size:cover; background-position:center center; background-repeat:no-repeat;
+}
+
+/* تیتر و توضیح خواناتر */
+#about-iran .major{ margin:0 auto .5rem; width:min(1100px, 92vw); }
+#about-iran .intro-ir{
+  margin:0 auto 1rem; width:min(1100px, 92vw);
+  background:rgba(0,0,0,.35); backdrop-filter:blur(2px);
+  padding:.75rem 1rem; border-radius:10px;
+}
+
+/* ================= سه کارت وسط صفحه ================= */
+.about-hero{ width:100%; display:flex; flex-direction:column; align-items:center; }
+.about-cards{
+  width:min(1200px, 94vw);
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px; margin: .5rem auto 0;
+}
+.about-card{
+  position:relative; border:0; padding:0; cursor:pointer;
+  aspect-ratio: 16 / 10;  /* بزرگ‌تر از قبل */
+  border-radius:16px; overflow:hidden;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 12px 36px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.15);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.about-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 50px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.25);
+}
+.about-card img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(1.05);
+}
+.about-card::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 60%);
+}
+.card-caption{ position:absolute; left:0; right:0; bottom:0; padding:14px; text-align:center; }
+.card-caption h3{ margin:0 0 .25rem; letter-spacing:.2rem; }
+.card-caption p{ margin:0; opacity:.9; }
+
+/* ریسپانسیو */
+@media (max-width: 980px){ .about-cards{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px){
+  #about-iran{ padding: clamp(8px, 3vw, 16px) !important; }
+  .about-cards{ grid-template-columns:1fr; gap:14px; }
+  .about-card{ aspect-ratio: 16 / 11; }
+}
+
+/* ================= مودال دایره‌ای (بدون تغییر منطقی) ================= */
+.ir-modal{
+  position:fixed; inset:0; z-index:10050; display:none;
+  align-items:center; justify-content:center; padding:clamp(12px,2vw,24px);
+}
+.ir-modal[aria-hidden="false"]{ display:flex; }
+.ir-modal__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.6); backdrop-filter:blur(2px); }
+.ir-modal__dialog{
+  position:relative; width:min(1000px,92vw); height:min(680px,88vh);
+  background:rgba(27,31,34,.92); border:1px solid rgba(255,255,255,.08);
+  border-radius:16px; padding:16px; overflow:hidden;
+}
+
+/* دایره و نودها */
+.circle-wrap{ position:relative; width:100%; height:60%; }
+.circle{
+  --d:min(520px, 62vh);
+  position:absolute; top:50%; left:50%; width:var(--d); height:var(--d);
+  transform:translate(-50%,-50%); border:1px solid rgba(255,255,255,.25); border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.05), transparent 60%);
+}
+.circle-center{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:170px; height:170px; border-radius:50%; display:grid; place-items:center;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25); background:rgba(255,255,255,.03);
+}
+.center-label{ text-align:center; letter-spacing:.15rem; opacity:.95; }
+
+.circle .node{
+  position:absolute; transform:translate(-50%,-50%);
+  width:40px; height:18px; border-radius:10px;
+  background:#ffd64d; border:1px solid rgba(0,0,0,.25);
+  box-shadow:0 2px 8px rgba(0,0,0,.25), inset 0 0 0 2px rgba(255,255,255,.25);
+  cursor:pointer; z-index:3;
+}
+
+/* Tooltip */
+.circle-tooltip{
+  position:absolute; pointer-events:none; z-index:5; color:#fff;
+  background:rgba(0,0,0,.8); border:1px solid rgba(255,255,255,.25);
+  border-radius:.5rem; padding:.5rem .65rem; font-size:.95rem; max-width:320px; display:none;
+}
+.circle-tooltip.show{ display:block; }
+
+/* کارت جزئیات */
+.era-card{
+  position:absolute; left:16px; right:16px; bottom:16px;
+  display:grid; grid-template-columns: 220px 1fr; gap:12px;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.15);
+  border-radius:12px; padding:12px; max-height:38%; overflow:auto; backdrop-filter:blur(2px); z-index:4;
+}
+.era-card.hidden{ display:none; }
+.era-media img{ width:100%; height:170px; object-fit:cover; border-radius:8px; }
+.era-body h4{ margin:.2rem 0 .25rem; letter-spacing:.15rem; }
+.era-meta{ opacity:.85; font-size:.9rem; margin-bottom:.35rem; }
+
+@media (max-width:736px){
+  .circle-wrap{ height:52%; }
+  .circle{ --d:66vw; }
+  .circle-center{ width:125px; height:125px; }
+  .era-card{ grid-template-columns:1fr; max-height:44%; }
+}
+
+/* موبایل استریپ */
+.mobile-strip{ display:none; margin-top:.75rem; overflow-x:auto; white-space:nowrap; padding-bottom:.25rem; }
+.mobile-strip .pill{
+  display:inline-flex; align-items:center; gap:.4rem; cursor:pointer;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  border-radius:999px; padding:.35rem .7rem; margin-inline-end:.4rem;
+}
+@media (max-width:736px){ .mobile-strip{ display:block; } }
+/* کانتینر اصلی سه باکس */
+.about-iran-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* استایل هر باکس */
+.about-iran-card {
+  width: 280px;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.about-iran-card:hover {
+  transform: scale(1.05);
+}
+
+/* متن داخل باکس */
+.about-iran-card span {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* بک‌گراند کلی صفحه درباره ایران */
+#about-iran {
+  background: url('images/PC4.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+/* ---------- BUY PAGE ---------- */
+
+.buy-tabs{
+  display:flex; gap:.5rem; margin: .25rem 0 1rem;
+  flex-wrap:wrap;
+}
+.buy-tab{
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff; cursor:pointer;
+  padding:.5rem .9rem; border-radius:.5rem;
+  letter-spacing:.08rem;
+}
+.buy-tab.active{ background:rgba(255,255,255,.10); }
+
+.buy-pane{ margin-top:.5rem; }
+.buy-pane[hidden]{ display:none !important; }
+
+.jupiter-frame{
+  width: 100%; min-height: 560px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px; overflow: hidden; display:block;
+  background: rgba(0,0,0,.25);
+}
+
+.buy-quick-notes{
+  display:grid; gap:.5rem; margin-top:.75rem;
+}
+.buy-quick-notes .note{
+  display:flex; align-items:center; gap:.5rem;
+  padding:.5rem .65rem; border-radius:.5rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  font-size:.95rem;
+}
+.buy-quick-notes .note span{
+  display:inline-grid; place-items:center;
+  width:1.5rem; height:1.5rem; border-radius:999px;
+  background:#239F40; color:#fff; font-weight:700;
+}
+
+.ex-grid{
+  display:grid; gap:.75rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 980px){
+  .ex-grid{ grid-template-columns: 1fr; }
+}
+.ex-card{
+  display:block; text-decoration:none; color:#fff;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius:12px; padding:1rem;
+  background: rgba(255,255,255,.05);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.ex-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.08);
+}
+.ex-title{
+  font-weight:700; letter-spacing:.08rem;
+  margin-bottom:.25rem;
+}
+
+.buy-steps{ margin-top:1rem; }
+.buy-steps .steps{
+  margin: .35rem 0 0 1.2rem;
+  list-style: decimal;
+}
+.buy-steps .steps li{ margin: .25rem 0; }
+.buy-steps .warn{
+  margin-top:.75rem; font-size:.95rem;
+  border-left: 4px solid #DA0000; padding-left:.6rem; opacity:.9;
+}
+
+/* هماهنگی با قالب اصلی (کادر مقاله) برای فضای بیشتر ویجت */
+#buy.major { margin-bottom: .5rem; }
+#main article#buy{
+  max-width: 960px; /* فضا برای iFrame */
+}
