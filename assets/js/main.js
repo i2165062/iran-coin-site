@@ -421,17 +421,17 @@
   })();
   
   /* ===== Buy page tabs ===== */
-  (function(){
+   (function(){
         function qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
         const tabs = qsa('.buy-tab');
         if (!tabs.length) return;
   
-        tabs.forEach(btn=>{
+              tabs.forEach(btn=>{
           btn.addEventListener('click', ()=>{
                 // active tab
                 tabs.forEach(b=>b.classList.remove('active'));
                 btn.classList.add('active');
-  
+			  
 		// panes
 		const paneSel = btn.getAttribute('data-pane');
 		const pane = document.querySelector(paneSel);
@@ -455,9 +455,16 @@
         if (!mq.matches) return;
         const slider = document.querySelector('#What-is-iran-coin .wii-slider');
         if (!slider) return;
+        const cards = slider.querySelectorAll('.wii-card');
         const setHeight = () => {
-                const first = slider.querySelector('.wii-card');
-                if (first) slider.style.height = first.offsetHeight + 'px';
+                if (window.innerWidth <= 736) {
+                        const h = Math.round(window.innerHeight * 0.85);
+                        slider.style.height = h + 'px';
+                        cards.forEach(c => c.style.height = '100%');
+                } else {
+                        slider.style.height = '';
+                        cards.forEach(c => c.style.height = '');
+                }
         };
         window.addEventListener('load', setHeight);
         window.addEventListener('resize', setHeight);
