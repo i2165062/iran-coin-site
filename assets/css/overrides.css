@@ -206,6 +206,23 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
+@media (max-width:736px){
+  .wii-slider{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:1rem;
+    padding-inline:1rem;
+  }
+  .wii-card{
+    flex:0 0 85%;
+    scroll-snap-align:start;
+    border-radius:8px;
+    padding:1rem;
+    background:rgba(255,255,255,0.05);
+  }
+}
+
 /* بک‌گراند کلی صفحه درباره ایران */
 #about-iran {
   background: url('images/PC4.jpg') no-repeat center center fixed;
