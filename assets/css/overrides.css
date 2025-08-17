@@ -213,12 +213,12 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
     scroll-snap-type:x mandatory;
     gap:1rem;
     padding:1rem;
-    height:85vh;
-    background:rgba(255,255,255,0.03);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
+    height:65vh;
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
     border-radius:12px;
-    box-shadow:0 8px 32px rgba(0,0,0,0.25);
+    box-shadow:0 8px 32px rgba(0,0,0,0.35);
     scrollbar-width:none;
   }
   .wii-slider::-webkit-scrollbar{ display:none; }
@@ -229,11 +229,11 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
     padding:1rem;
     height:100%;
     overflow-y:auto;
-    background:rgba(255,255,255,0.1);
+    background:rgba(0,0,0,0.45);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.2);
-    box-shadow:0 4px 24px rgba(0,0,0,0.2);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 4px 24px rgba(0,0,0,0.3);
   }
 }
 
