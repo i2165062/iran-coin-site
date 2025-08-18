@@ -1,10 +1,10 @@
-/* overrides.css — FINAL */
 
-/* عمومی */
+
+
 body.is-article-visible{ overflow:auto !important; }
 #about-iran .close{ display:none !important; }
 
-/* ================= NFT تمام‌صفحه (بدون تغییر) ================= */
+
 #main article.nft-fixed{
   position:fixed !important; top:0; left:0;
   width:100vw !important; height:100vh !important;
@@ -28,35 +28,33 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   border:1px solid rgba(255,255,255,.25); border-radius:999px;
 }
 
-/* تصویر NFT در موبایل کامل نمایش داده شود */
+
 @media (max-width: 768px){
   #NFT.nft-fixed .nft-img{
-    object-fit:contain;
+    object-fit:cover;
     object-position:center;
   }
 }
 
-/* ================= About Iran – پس‌زمینهٔ تمام‌صفحه =================
-   توجه: مسیر تصویر از داخل assets/css → ../../images/PC4.png
-===================================================================== */
+
 #about-iran{
-  /* خنثی‌سازی استایل جعبه‌ای قالب */
+  
   background:transparent !important; box-shadow:none !important; border:0 !important;
   width:100% !important; max-width:none !important; transform:none !important; opacity:1 !important;
 
-  /* چینش محتوا وسط صفحه */
+  
   min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
   gap:1.25rem; padding: clamp(16px, 3vw, 40px) !important; border-radius:0 !important; position:relative;
 }
 
-/* بک‌گراند تمام‌صفحه مستقل از عرض مقاله */
+
 #about-iran::before{
   content:""; position:fixed; inset:0; z-index:-1;
   background-image:url("../../images/PC4.png");
   background-size:cover; background-position:center center; background-repeat:no-repeat;
 }
 
-/* تیتر و توضیح خواناتر */
+
 #about-iran .major{ margin:0 auto .5rem; width:min(1100px, 92vw); }
 #about-iran .intro-ir{
   margin:0 auto 1rem; width:min(1100px, 92vw);
@@ -64,7 +62,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   padding:.75rem 1rem; border-radius:10px;
 }
 
-/* ================= سه کارت وسط صفحه ================= */
+
 .about-hero{ width:100%; display:flex; flex-direction:column; align-items:center; }
 .about-cards{
   width:min(1200px, 94vw);
@@ -73,7 +71,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 }
 .about-card{
   position:relative; border:0; padding:0; cursor:pointer;
-  aspect-ratio: 16 / 10;  /* بزرگ‌تر از قبل */
+  aspect-ratio: 16 / 10;  
   border-radius:16px; overflow:hidden;
   background:rgba(255,255,255,.06);
   box-shadow:0 12px 36px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.15);
@@ -94,7 +92,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 .card-caption h3{ margin:0 0 .25rem; letter-spacing:.2rem; }
 .card-caption p{ margin:0; opacity:.9; }
 
-/* ریسپانسیو */
+
 @media (max-width: 980px){ .about-cards{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
 @media (max-width: 640px){
   #about-iran{ padding: clamp(8px, 3vw, 16px) !important; }
@@ -102,7 +100,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   .about-card{ aspect-ratio: 16 / 11; }
 }
 
-/* ================= مودال دایره‌ای (بدون تغییر منطقی) ================= */
+
 .ir-modal{
   position:fixed; inset:0; z-index:10050; display:none;
   align-items:center; justify-content:center; padding:clamp(12px,2vw,24px);
@@ -115,7 +113,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   border-radius:16px; padding:16px; overflow:hidden;
 }
 
-/* دایره و نودها */
+
 .circle-wrap{ position:relative; width:100%; height:60%; }
 .circle{
   --d:min(520px, 62vh);
@@ -138,7 +136,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   cursor:pointer; z-index:3;
 }
 
-/* Tooltip */
+
 .circle-tooltip{
   position:absolute; pointer-events:none; z-index:5; color:#fff;
   background:rgba(0,0,0,.8); border:1px solid rgba(255,255,255,.25);
@@ -146,7 +144,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 }
 .circle-tooltip.show{ display:block; }
 
-/* کارت جزئیات */
+
 .era-card{
   position:absolute; left:16px; right:16px; bottom:16px;
   display:grid; grid-template-columns: 220px 1fr; gap:12px;
@@ -165,7 +163,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   .era-card{ grid-template-columns:1fr; max-height:44%; }
 }
 
-/* موبایل استریپ */
+
 .mobile-strip{ display:none; margin-top:.75rem; overflow-x:auto; white-space:nowrap; padding-bottom:.25rem; }
 .mobile-strip .pill{
   display:inline-flex; align-items:center; gap:.4rem; cursor:pointer;
@@ -173,20 +171,26 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   border-radius:999px; padding:.35rem .7rem; margin-inline-end:.4rem;
 }
 @media (max-width:736px){ .mobile-strip{ display:block; } }
-/* کانتینر اصلی سه باکس */
+
 .about-iran-cards {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 40px;
   height: 100vh;
   position: relative;
   z-index: 2;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 10vw;
 }
+.about-iran-cards::-webkit-scrollbar { display: none; }
 
-/* استایل هر باکس */
+
 .about-iran-card {
-  width: 280px;
+  flex: 0 0 80vw;
+  max-width: 280px;
   height: 420px;
   border-radius: 20px;
   overflow: hidden;
@@ -196,13 +200,14 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   background-size: cover;
   background-position: center;
   transition: transform 0.3s ease;
+  scroll-snap-align: center;
 }
 
 .about-iran-card:hover {
   transform: scale(1.05);
 }
 
-/* متن داخل باکس */
+
 .about-iran-card span {
   position: absolute;
   bottom: 20px;
@@ -243,12 +248,12 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   box-shadow:0 4px 24px rgba(0,0,0,0.3);
 }
 
-/* بک‌گراند کلی صفحه درباره ایران */
+
 #about-iran {
   background: url('images/PC4.jpg') no-repeat center center fixed;
   background-size: cover;
 }
-/* ---------- BUY PAGE ---------- */
+
 
 .buy-tabs{
   display:flex; gap:.5rem; margin: .25rem 0 1rem;
@@ -266,7 +271,12 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 .buy-pane{ margin-top:.5rem; }
 .buy-pane[hidden]{ display:none !important; }
 
-.jupiter-frame{
+@media (max-width: 640px){
+  .buy-tabs{ justify-content:center; }
+  .pumpfun-frame{ min-height: 500px; }
+}
+
+.pumpfun-frame{
   width: 100%; min-height: 560px;
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 12px; overflow: hidden; display:block;
@@ -324,9 +334,9 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   border-left: 4px solid #DA0000; padding-left:.6rem; opacity:.9;
 }
 
-/* هماهنگی با قالب اصلی (کادر مقاله) برای فضای بیشتر ویجت */
+
 #buy.major { margin-bottom: .5rem; }
 #main article#buy{
-  max-width: 960px; /* فضا برای iFrame */
+  max-width: 960px; 
 }
 

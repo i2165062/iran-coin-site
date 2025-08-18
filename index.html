@@ -143,7 +143,7 @@
 <article id="about-iran" class="about-fixed">
 	<h2 class="major">About Iran</h2>
   
-	<!-- قهرمان بخش: سه کارت وسط صفحه -->
+	<!-- Hero cards -->
 	<section id="about-iran">
 		<div class="about-iran-cards">
 			<div class="about-iran-card" style="background-image: url('images/PC6.png');">
@@ -159,18 +159,18 @@
 	</section>
 	
   
-	<!-- مودال دایره‌ای (بدون تغییر ساختار) -->
+	<!-- Circular modal (structure unchanged) -->
 	<div class="ir-modal" id="irModal" aria-hidden="true">
-	  <div class="ir-modal__backdrop" id="closeCircle" tabindex="0" aria-label="بستن"></div>
+	  <div class="ir-modal__backdrop" id="closeCircle" tabindex="0" aria-label="Close"></div>
 	  <div class="ir-modal__dialog" role="dialog" aria-labelledby="circleTitle">
-		<button class="ir-modal__close" id="closeCircleBtn" aria-label="بستن"></button>
+		<button class="ir-modal__close" id="closeCircleBtn" aria-label="Close"></button>
   
 		<h3 id="circleTitle" class="circle-title">Timeline – Iran</h3>
   
 		<div class="circle-wrap">
 		  <div class="circle" id="circle"></div>
 		  <div class="circle-center">
-			<div class="center-label"><span id="centerEra">ایران</span></div>
+			<div class="center-label"><span id="centerEra">Iran</span></div>
 		  </div>
 		</div>
   
@@ -183,8 +183,8 @@
 			<div class="era-meta"><span id="eraRange"></span></div>
 			<p id="eraDesc"></p>
 			<div class="era-actions">
-			  <button class="button" id="prevEra">قبلی</button>
-			  <button class="button" id="nextEra">بعدی</button>
+			  <button class="button" id="prevEra">Prev</button>
+			  <button class="button" id="nextEra">Next</button>
 			</div>
 		  </div>
 		</div>
@@ -341,69 +341,30 @@
                             
 						<!-- BUY -->
 <article id="buy">
-	<h2 class="major">Buy IRAN COIN</h2>
-  
-	<!-- نوار گزینه‌ها -->
-	<div class="buy-tabs" role="tablist" aria-label="خرید IRAN COIN">
-	  <button class="buy-tab active" data-pane="#pane-direct" role="tab" aria-selected="true">خرید مستقیم (سریع)</button>
-	  <button class="buy-tab" data-pane="#pane-exchanges" role="tab" aria-selected="false">از طریق صرافی</button>
-	</div>
-  
-	<!-- پنل 1: خرید مستقیم -->
-	<section id="pane-direct" class="buy-pane active" role="tabpanel" aria-labelledby="direct-tab">
-	  <p class="muted">از طریق ویجت تعبیه‌شده جیوپیتر (Jupiter) می‌توانید با کیف‌پول‌هایی مثل Phantom/OKX/… مستقیماً روی سولانا، SOL را به IRAN COIN تبدیل کنید.</p>
-  
-	  <!-- توجه: آدرس مینت توکن رو اینجا جایگزین کن -->
-	  <!-- به‌جای YOUR_TOKEN_MINT، مینت واقعی IRAN COIN را بگذار -->
-	  <iframe
-		title="Jupiter Swap"
-		class="jupiter-frame"
-		src="https://jup.ag/swap/SOL-YOUR_TOKEN_MINT?usePayment=false&name=IRAN%20COIN&description=Swap%20to%20IRAN%20COIN&displayMode=integrated&theme=dark&embedded=true"
-		allow="clipboard-write; clipboard-read; web-share; accelerometer; autoplay; camera; gyroscope; payment;"
-		referrerpolicy="no-referrer-when-downgrade">
-	  </iframe>
-  
-	  <div class="buy-quick-notes">
-		<div class="note"><span>۱</span> کیف‌پول خود را داخل ویجت وصل کنید.</div>
-		<div class="note"><span>۲</span> مقدار IRAN COIN یا SOL را انتخاب و Swap را بزنید.</div>
-		<div class="note"><span>۳</span> تراکنش را در کیف‌پول تأیید کنید.</div>
-	  </div>
-	</section>
-  
-	<!-- پنل 2: از طریق صرافی‌ها -->
-	<section id="pane-exchanges" class="buy-pane" role="tabpanel" aria-labelledby="exchanges-tab" hidden>
-	  <div class="ex-grid">
-		<a class="ex-card" target="_blank" rel="noopener"
-		   href="https://jup.ag/swap/SOL-YOUR_TOKEN_MINT">
-		  <div class="ex-title">Jupiter</div>
-		  <p>سریع‌ترین مسیر سواپ در اکوسیستم سولانا.</p>
-		</a>
-  
-		<a class="ex-card" target="_blank" rel="noopener"
-		   href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=YOUR_TOKEN_MINT">
-		  <div class="ex-title">Raydium</div>
-		  <p>AMM محبوب روی سولانا؛ سواپ SOL ⇄ IRAN COIN.</p>
-		</a>
-  
-		<a class="ex-card" target="_blank" rel="noopener"
-		   href="https://phantom.app/">
-		  <div class="ex-title">Phantom Wallet</div>
-		  <p>نصب کیف‌پول و سواپ درون‌کیفی.</p>
-		</a>
-	  </div>
-  
-	  <div class="buy-steps">
-		<h3 class="major small">مراحل خرید روی سولانا</h3>
-		<ol class="steps">
-		  <li>نصب کیف‌پول (Phantom/OKX/…)</li>
-		  <li>ارسال کمی SOL برای کارمزد</li>
-		  <li>ورود به Jupiter یا Raydium و انتخاب IRAN COIN</li>
-		  <li>Swap و تأیید تراکنش</li>
-		</ol>
-		<p class="warn">هشدار امنیتی: فقط از لینک‌های رسمی استفاده کنید و همیشه آدرس مینت توکن را کنترل کنید.</p>
-	  </div>
-	</section>
-  </article>
+        <h2 class="major">Buy IRAN COIN</h2>
+
+        <div class="buy-tabs" role="tablist" aria-label="Buy IRAN COIN">
+          <button class="buy-tab active" data-pane="#pane-direct" role="tab" aria-selected="true">Buy via Pump.fun</button>
+        </div>
+
+        <section id="pane-direct" class="buy-pane active" role="tabpanel" aria-labelledby="direct-tab">
+          <p class="muted">Use the embedded Pump.fun widget to swap SOL to IRAN COIN with wallets like Phantom or OKX.</p>
+
+          <iframe
+                title="Pump.fun"
+                class="pumpfun-frame"
+                src="https://pump.fun/YOUR_TOKEN_MINT"
+                allow="clipboard-write; clipboard-read; web-share; accelerometer; autoplay; camera; gyroscope; payment;"
+                referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+
+          <div class="buy-quick-notes">
+                <div class="note"><span>1</span> Connect your wallet inside the widget.</div>
+                <div class="note"><span>2</span> Choose the amount of IRAN COIN or SOL and press Swap.</div>
+                <div class="note"><span>3</span> Approve the transaction in your wallet.</div>
+          </div>
+        </section>
+</article>
   
 						<!-- NFT -->
 						<article id="NFT" class="nft-fixed">
