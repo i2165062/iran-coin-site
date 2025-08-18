@@ -451,8 +451,6 @@
 
   /* ===== What is Iran Coin slider ===== */
   (function(){
-        const mq = window.matchMedia('(max-width:736px)');
-        if (!mq.matches) return;
         const slider = document.querySelector('#What-is-iran-coin .wii-slider');
         if (!slider) return;
         const cards = slider.querySelectorAll('.wii-card');
