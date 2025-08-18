@@ -28,6 +28,14 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   border:1px solid rgba(255,255,255,.25); border-radius:999px;
 }
 
+/* تصویر NFT در موبایل کامل نمایش داده شود */
+@media (max-width: 768px){
+  #NFT.nft-fixed .nft-img{
+    object-fit:contain;
+    object-position:center;
+  }
+}
+
 /* ================= About Iran – پس‌زمینهٔ تمام‌صفحه =================
    توجه: مسیر تصویر از داخل assets/css → ../../images/PC4.png
 ===================================================================== */
