@@ -275,31 +275,31 @@
 	  $window.on('load', function() { $main._show(location.hash.substr(1), true); });
   
 /* ==================================================================
-   About Iran – کارت‌های ورودی + مودال دایره‌ای
+   About Iran – entry cards and circular modal
    ================================================================== */
    (function(){
 	let inited = false;
   
 	const DATA = {
-	  history: [
-		{ id:"achaemenid",   title:"هخامنشیان",  range:"۵۵۰–۳۳۰ ق.م", short:"کوروش بزرگ و منشور حقوق بشر.", desc:"دولت هخامنشی با پایتخت‌هایی چون پاسارگاد و تخت‌جمشید، نخستین سامانه اداری گسترده را ایجاد کرد.", img:"images/history/achaemenid.jpg", angle:270 },
-		{ id:"sassanid",     title:"ساسانیان",    range:"۲۲۴–۶۵۱ م",   short:"اوج هنر سنگ‌نگاره و طاق‌ها.",  desc:"ساسانیان با تیسفون و هنر فلزکاری/سنگ‌نگاره‌ها، رقیب روم شرقی بودند.", img:"images/history/sassanid.jpg",   angle:330 },
-		{ id:"seljuk",       title:"سلجوقیان",    range:"قرن ۱۱–۱۲",   short:"گنبد، مقرنس، مدارس نظامیه.",    desc:"گسترش آموزش و معماری ایرانی–اسلامی.", img:"images/history/seljuk.jpg",     angle:30  },
-		{ id:"safavid",      title:"صفویان",      range:"۱۵۰۱–۱۷۳۶",  short:"شکوه اصفهان و صنایع دستی.",     desc:"تثبیت هویت ایرانی–شیعی و رونق هنر.", img:"images/history/safavid.jpg",     angle:90  },
-		{ id:"qajar",        title:"قاجار",        range:"۱۷۸۹–۱۹۲۵",  short:"مشروطه و ورود مدرنیته.",        desc:"انقلاب مشروطه و آغاز روزنامه‌نگاری.", img:"images/history/qajar.jpg",         angle:150 },
-		{ id:"contemporary", title:"ایران معاصر", range:"سده ۲۰ تا امروز", short:"رشد علمی و سینمای نوین.", desc:"دانشگاه‌ها، فناوری نانو، صنعت و سینما.", img:"images/history/contemporary.jpg", angle:210 }
-	  ],
-	  culture: [
-		{ id:"poetry",       title:"شعر فارسی",    range:"حافظ، سعدی، مولوی", short:"ادبیات و عرفان", img:"images/culture/poetry.jpg", angle:300, desc:"" },
-		{ id:"architecture", title:"معماری",       range:"گنبد، مقرنس، بادگیر", short:"زیبایی‌شناسی ایرانی", img:"images/culture/architecture.jpg", angle:60, desc:"" },
-		{ id:"nowruz",       title:"نوروز",        range:"۳۰۰۰ سال سنت", short:"جشن نوزایی", img:"images/culture/nowruz.jpg", angle:180, desc:"" }
-	  ],
-	  geography: [
-		{ id:"caspian",      title:"دریای خزر",    range:"شمال ایران", short:"بزرگ‌ترین دریاچه جهان", img:"images/geo/caspian.jpg", angle:0, desc:"" },
-		{ id:"persianGulf",  title:"خلیج فارس",    range:"جنوب ایران", short:"شاهراه انرژی", img:"images/geo/persiangulf.jpg", angle:120, desc:"" },
-		{ id:"zagros",       title:"زاگرس",        range:"غرب ایران",  short:"کوهستان سترگ", img:"images/geo/zagros.jpg", angle:240, desc:"" }
-	  ]
-	};
+          history: [
+                { id:"achaemenid",   title:"Achaemenid",   range:"550–330 BC", short:"Cyrus the Great and the Charter of Human Rights.", desc:"The Achaemenid Empire with capitals like Pasargadae and Persepolis created the first extensive administrative system.", img:"images/history/achaemenid.jpg", angle:270 },
+                { id:"sassanid",     title:"Sassanid",     range:"224–651 AD", short:"Peak of stone reliefs and arches.", desc:"The Sassanids with Ctesiphon and metalwork/reliefs rivaled the Eastern Roman Empire.", img:"images/history/sassanid.jpg", angle:330 },
+                { id:"seljuk",       title:"Seljuk",       range:"11th–12th century", short:"Domes, muqarnas, Nizamiyya schools.", desc:"Expansion of education and Persian–Islamic architecture.", img:"images/history/seljuk.jpg", angle:30 },
+                { id:"safavid",      title:"Safavid",      range:"1501–1736", short:"Splendor of Isfahan and handicrafts.", desc:"Establishing Iranian–Shiite identity and flourishing art.", img:"images/history/safavid.jpg", angle:90 },
+                { id:"qajar",        title:"Qajar",        range:"1789–1925", short:"Constitution and arrival of modernity.", desc:"The Constitutional Revolution and the start of journalism.", img:"images/history/qajar.jpg", angle:150 },
+                { id:"contemporary", title:"Contemporary Iran", range:"20th century to today", short:"Scientific growth and new cinema.", desc:"Universities, nanotechnology, industry and cinema.", img:"images/history/contemporary.jpg", angle:210 }
+          ],
+          culture: [
+                { id:"poetry",       title:"Persian Poetry", range:"Hafez, Saadi, Rumi", short:"Literature and mysticism", img:"images/culture/poetry.jpg", angle:300, desc:"" },
+                { id:"architecture", title:"Architecture",   range:"Dome, muqarnas, windcatcher", short:"Iranian aesthetics", img:"images/culture/architecture.jpg", angle:60, desc:"" },
+                { id:"nowruz",       title:"Nowruz",        range:"3000 years of tradition", short:"Festival of renewal", img:"images/culture/nowruz.jpg", angle:180, desc:"" }
+          ],
+          geography: [
+                { id:"caspian",      title:"Caspian Sea",    range:"Northern Iran", short:"World's largest lake", img:"images/geo/caspian.jpg", angle:0, desc:"" },
+                { id:"persianGulf",  title:"Persian Gulf",   range:"Southern Iran", short:"Energy corridor", img:"images/geo/persiangulf.jpg", angle:120, desc:"" },
+                { id:"zagros",       title:"Zagros",         range:"Western Iran", short:"Majestic mountain range", img:"images/geo/zagros.jpg", angle:240, desc:"" }
+          ]
+        };
   
 	function initAboutIran(){
 	  if (inited) return;
@@ -326,8 +326,8 @@
 	  let items = DATA[topic];
 	  let currentIndex = 0;
   
-	  /* کارت‌های صفحهٔ اول: کلیک → انتخاب موضوع + باز شدن مودال */
-	  document.querySelectorAll('#about-iran .about-card').forEach(cardBtn=>{
+          /* Landing cards: click to choose topic and open modal */
+	  document.querySelectorAll('#about-iran .about-iran-card').forEach(cardBtn=>{
 		cardBtn.addEventListener('click', ()=>{
 		  topic = cardBtn.dataset.topic;
 		  items = DATA[topic];
@@ -342,10 +342,10 @@
   
 	  function buildCircle(){
 		circle.innerHTML = '';
-		centerEra && (centerEra.textContent =
-		  topic==='history' ? 'تاریخ ایران' :
-		  topic==='culture' ? 'فرهنگ ایران' : 'جغرافیای ایران'
-		);
+                centerEra && (centerEra.textContent =
+                  topic==='history' ? 'Iran History' :
+                  topic==='culture' ? 'Iran Culture' : 'Iran Geography'
+                );
   
 		const rect = circle.getBoundingClientRect();
 		const r = (rect.width/2)||200;
@@ -415,7 +415,7 @@
 	  inited = true;
 	}
   
-	// وقتی مقاله باز شد، ماژول را مقداردهی کن
+  // Initialize module when article becomes visible
 	window.addEventListener('hashchange', ()=>{ if (location.hash==='#about-iran') setTimeout(initAboutIran,100); });
 	window.addEventListener('load', ()=>{ if (location.hash==='#about-iran') setTimeout(initAboutIran,100); });
   })();
