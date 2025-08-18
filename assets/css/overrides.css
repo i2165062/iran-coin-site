@@ -172,25 +172,20 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 }
 @media (max-width:736px){ .mobile-strip{ display:block; } }
 
+
 .about-iran-cards {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 40px;
-  height: 100vh;
-  position: relative;
-  z-index: 2;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 0 10vw;
+  padding: 2rem 0;
 }
 .about-iran-cards::-webkit-scrollbar { display: none; }
 
 
 .about-iran-card {
-  flex: 0 0 80vw;
-  max-width: 280px;
+  flex: 0 0 280px;
   height: 420px;
   border-radius: 20px;
   overflow: hidden;
@@ -200,7 +195,6 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   background-size: cover;
   background-position: center;
   transition: transform 0.3s ease;
-  scroll-snap-align: center;
 }
 
 .about-iran-card:hover {
@@ -217,6 +211,27 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   font-weight: bold;
   color: white;
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+.about-iran-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.about-iran-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  opacity: .5;
+  transition: opacity .3s ease;
+}
+
+.about-iran-dots .dot.active {
+  opacity: 1;
+  background: #fff;
 }
 
 .wii-slider{

@@ -449,6 +449,35 @@
         });
   })();
 
+  /* ===== About Iran cards slider ===== */
+  (function(){
+        const container = document.querySelector('#about-iran .about-iran-cards');
+        const dots = document.querySelectorAll('#about-iran .about-iran-dots .dot');
+        if (!container || dots.length === 0) return;
+
+        const getMetrics = () => {
+                const card = container.querySelector('.about-iran-card');
+                const gap = parseInt(getComputedStyle(container).gap) || 0;
+                const width = card ? card.offsetWidth : 0;
+                return { cardWidth: width, gap };
+        };
+
+        const updateDots = () => {
+                const { cardWidth, gap } = getMetrics();
+                const idx = Math.round(container.scrollLeft / (cardWidth + gap));
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        };
+
+        const scrollToIndex = (i) => {
+                const { cardWidth, gap } = getMetrics();
+                container.scrollTo({ left: i * (cardWidth + gap), behavior: 'smooth' });
+        };
+
+        container.addEventListener('scroll', updateDots);
+        dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToIndex(i)));
+        window.addEventListener('load', updateDots);
+  })();
+
   /* ===== What is Iran Coin slider ===== */
   (function(){
         const slider = document.querySelector('#What-is-iran-coin .wii-slider');
