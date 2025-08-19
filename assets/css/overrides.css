@@ -175,18 +175,19 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 
 .about-iran-cards {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 1rem;
   overflow-x: auto;
-  padding: 2rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 2rem 1rem;
 }
 .about-iran-cards::-webkit-scrollbar { display: none; }
 
 
 .about-iran-card {
-  flex: 0 0 280px;
-  height: 420px;
+  flex: 0 0 80%;
+  aspect-ratio: 3/4;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -195,6 +196,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   background-size: cover;
   background-position: center;
   transition: transform 0.3s ease;
+  scroll-snap-align: center;
 }
 
 .about-iran-card:hover {
@@ -232,6 +234,19 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 .about-iran-dots .dot.active {
   opacity: 1;
   background: #fff;
+}
+
+@media (min-width: 768px) {
+  .about-iran-cards {
+    justify-content: center;
+    gap: 40px;
+    padding: 2rem 0;
+  }
+  .about-iran-card {
+    flex: 0 0 280px;
+    height: 420px;
+    aspect-ratio: auto;
+  }
 }
 
 .wii-slider{

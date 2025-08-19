@@ -476,6 +476,7 @@
         container.addEventListener('scroll', updateDots);
         dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToIndex(i)));
         window.addEventListener('load', updateDots);
+        window.addEventListener('resize', updateDots);
   })();
 
   /* ===== What is Iran Coin slider ===== */
