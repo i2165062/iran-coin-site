@@ -181,13 +181,15 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 2rem 1rem;
+  width: 100%;
 }
 .about-iran-cards::-webkit-scrollbar { display: none; }
 
 
 .about-iran-card {
-  flex: 0 0 80%;
-  aspect-ratio: 3/4;
+  flex: 0 0 auto;
+  min-width: 90%;
+  height: 70vh;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -197,6 +199,13 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   background-position: center;
   transition: transform 0.3s ease;
   scroll-snap-align: center;
+}
+
+@media (max-width: 480px) {
+  .about-iran-card {
+    min-width: 100%;
+    height: 80vh;
+  }
 }
 
 .about-iran-card:hover {
