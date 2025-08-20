@@ -186,7 +186,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
 
 
 .about-iran-card {
-  flex: 0 0 80%;
+  flex: 0 0 90%;
   aspect-ratio: 3/4;
   border-radius: 20px;
   overflow: hidden;
@@ -197,6 +197,12 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay{ opacity:.25; }
   background-position: center;
   transition: transform 0.3s ease;
   scroll-snap-align: center;
+}
+
+@media (max-width: 480px) {
+  .about-iran-card {
+    flex: 0 0 100%;
+  }
 }
 
 .about-iran-card:hover {
