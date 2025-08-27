@@ -2,9 +2,9 @@ body.is-article-visible {
   overflow: auto !important;
 }
 
-#about-iran .close {
+/* #about-iran .close {
   display: none !important;
-}
+} */
 
 
 #main article.nft-fixed {
@@ -53,16 +53,24 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
   opacity: .25;
 }
 
-#NFT.nft-fixed .close {
+#NFT.nft-fixed .close,
+.about-fixed .close {
   position: absolute;
   top: 0;
   right: 0;
   width: 4rem;
   height: 4rem;
   z-index: 10001;
+  border-bottom: none;
 }
 
-#NFT.nft-fixed .close:before {
+#NFT.nft-fixed .close {
+  top: 40px;
+  right: 40px;
+}
+
+#NFT.nft-fixed .close:before,
+.about-fixed .close::before {
   background-color: rgba(0, 0, 0, .35);
   backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, .25);
@@ -78,7 +86,8 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 }
 
 
-#about-iran {
+#about-iran,
+#inner-about-iran {
 
   background: transparent !important;
   box-shadow: none !important;
@@ -101,7 +110,8 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 }
 
 
-#about-iran::before {
+#about-iran::before,
+#inner-about-iran::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -112,13 +122,19 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
   background-repeat: no-repeat;
 }
 
+#inner-about-iran #about-iran::before {
+  background-image: url("../../images/pic01.jpg") !important;
+}
 
-#about-iran .major {
+
+#about-iran .major,
+#inner-about-iran .major {
   margin: 0 auto .5rem;
   width: min(1100px, 92vw);
 }
 
-#about-iran .intro-ir {
+#about-iran .intro-ir,
+#inner-about-iran .intro-ir {
   margin: 0 auto 1rem;
   width: min(1100px, 92vw);
   background: rgba(0, 0, 0, .35);
@@ -127,6 +143,22 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
   border-radius: 10px;
 }
 
+#inner-about-iran .close {
+  display: none !important;
+}
+
+#inner-about-iran .back-about {
+  display: block !important;
+}
+
+#modal-about .close {
+  display: none !important;
+  border-bottom: none !important;
+}
+
+#modal-about .back-modal-about {
+  display: block !important;
+}
 
 .about-hero {
   width: 100%;
@@ -196,6 +228,24 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
   opacity: .9;
 }
 
+.ir-modal__close {
+  position: relative;
+}
+
+.ir-modal__close::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' zoomAndPan='disable'%3E%3Cstyle%3Eline %7B stroke: %23ffffff%3B stroke-width: 1%3B %7D%3C/style%3E%3Cline x1='2' y1='2' x2='18' y2='18' /%3E%3Cline x1='18' y1='2' x2='2' y2='18' /%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+
 
 @media (max-width: 980px) {
   .about-cards {
@@ -206,6 +256,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 @media (max-width: 640px) {
   #about-iran {
     padding: clamp(8px, 3vw, 16px) !important;
+    height: 100vh;
   }
 
   .about-cards {
@@ -226,9 +277,19 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
     width: 100%;
   }
 
-  .about-iran-cards .swiper-cards-iran {
+  .about-iran-cards .swiper {
     width: 100% !important;
     padding: 0 !important;
+  }
+
+  #NFT.nft-fixed .close {
+    right: 10px;
+    top: 10px;
+  }
+
+  #main article .close {
+    right: -10px;
+    top: -10px;
   }
 }
 
@@ -437,24 +498,26 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
   padding: 2rem 1rem;
 }
 
-.about-iran-cards .swiper-cards-iran {
+.about-iran-cards .swiper {
   width: 85%;
   padding: 20px;
 }
 
-.about-iran-cards .swiper-cards-iran .swiper-slide {
+.about-iran-cards .swiper .swiper-slide {
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.about-fixed .swiper-pagination-cards {
+.about-fixed .swiper-pagination-cards,
+.about-fixed .swiper-pagination-inner-cards {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.about-fixed .swiper-pagination-cards .swiper-pagination-bullet {
+.about-fixed .swiper-pagination-cards .swiper-pagination-bullet,
+.about-fixed .swiper-pagination-inner-cards .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -464,7 +527,8 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
   transition: opacity .3s ease;
 }
 
-.about-fixed .swiper-pagination-cards .swiper-pagination-bullet-active {
+.about-fixed .swiper-pagination-cards .swiper-pagination-bullet-active,
+.about-fixed .swiper-pagination-inner-cards .swiper-pagination-bullet-active {
   background: #fff;
   opacity: 1;
 }
@@ -475,6 +539,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 
 
 .about-iran-card {
+  display: flex;
   flex: 0 0 80%;
   /* aspect-ratio: 3/4; */
   border-radius: 20px;
@@ -719,98 +784,4 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 
 #main article#buy {
   max-width: 960px;
-}
-
-/* About Iran categories page */
-.category-group {
-  margin-bottom: 3rem;
-}
-
-.category-group h3 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.category-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.category-cards .about-iran-card {
-  flex: 1 1 calc(33.333% - 1rem);
-  max-width: calc(33.333% - 1rem);
-  height: 250px;
-}
-
-@media (max-width: 800px) {
-  .category-cards .about-iran-card {
-    flex: 1 1 calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
-  }
-}
-
-@media (max-width: 500px) {
-  .category-cards .about-iran-card {
-    flex: 1 1 100%;
-    max-width: 100%;
-    height: 200px;
-  }
-}
-
-/* Postcard carousel */
-.postcard-container {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-.postcard {
-  width: 100%;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-
-.postcard img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.postcard .card-body {
-  padding: 1rem;
-}
-
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.carousel-nav.prev {
-  left: -60px;
-}
-
-.carousel-nav.next {
-  right: -60px;
-}
-
-@media (max-width: 640px) {
-  .carousel-nav.prev {
-    left: 10px;
-  }
-
-  .carousel-nav.next {
-    right: 10px;
-  }
 }
