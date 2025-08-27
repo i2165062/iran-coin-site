@@ -1,3 +1,5 @@
+/* Main JS - Dimension (fixed) + About Iran + NFT scroll lock */
+/* Requires: jQuery, breakpoints.js, browser.js  */
 
 (function ($) {
 
@@ -265,14 +267,9 @@
 			});
 	}
 
-       // Initialize.
-       if ($body.hasClass('about-page')) {
-               $main.show();
-               $main_articles.show();
-       } else {
-               $main.hide();
-               $main_articles.hide();
-       }
+	// Initialize.
+	$main.hide();
+	$main_articles.hide();
 
 	if (location.hash != '' && location.hash != '#')
 		$window.on('load', function () { $main._show(location.hash.substr(1), true); });
@@ -330,14 +327,14 @@
 			let currentIndex = 0;
 
 			/* Landing cards: click to choose topic and open modal */
-			document.querySelectorAll('#about-iran .about-iran-card').forEach(cardBtn => {
-				cardBtn.addEventListener('click', () => {
-					topic = cardBtn.dataset.topic;
-					items = DATA[topic];
-					modal.setAttribute('aria-hidden', 'false');
-					requestAnimationFrame(() => { buildCircle(); buildMobileStrip(); });
-				});
-			});
+			// document.querySelectorAll('#about-iran .about-iran-card').forEach(cardBtn => {
+			// 	cardBtn.addEventListener('click', () => {
+			// 		topic = cardBtn.dataset.topic;
+			// 		items = DATA[topic];
+			// 		modal.setAttribute('aria-hidden', 'false');
+			// 		requestAnimationFrame(() => { buildCircle(); buildMobileStrip(); });
+			// 	});
+			// });
 
 			function closeModal() { modal.setAttribute('aria-hidden', 'true'); }
 			closeBackdrop?.addEventListener('click', closeModal);
@@ -419,8 +416,8 @@
 		}
 
 		// Initialize module when article becomes visible
-		window.addEventListener('hashchange', () => { if (location.hash === '#about-iran') setTimeout(initAboutIran, 100); });
-		window.addEventListener('load', () => { if (location.hash === '#about-iran') setTimeout(initAboutIran, 100); });
+		// window.addEventListener('hashchange', () => { if (location.hash === '#about-iran') setTimeout(initAboutIran, 100); });
+		// window.addEventListener('load', () => { if (location.hash === '#about-iran') setTimeout(initAboutIran, 100); });
 	})();
 
 	/* ===== Buy page tabs ===== */
@@ -453,34 +450,34 @@
 	})();
 
 	/* ===== About Iran cards slider ===== */
-	(function () {
-		const container = document.querySelector('#about-iran .about-iran-cards');
-		const dots = document.querySelectorAll('#about-iran .about-iran-dots .dot');
-		if (!container || dots.length === 0) return;
+	// (function () {
+	// 	const container = document.querySelector('#about-iran .about-iran-cards');
+	// 	const dots = document.querySelectorAll('#about-iran .about-iran-dots .dot');
+	// 	if (!container || dots.length === 0) return;
 
-		const getMetrics = () => {
-			const card = container.querySelector('.about-iran-card');
-			const gap = parseInt(getComputedStyle(container).gap) || 0;
-			const width = card ? card.offsetWidth : 0;
-			return { cardWidth: width, gap };
-		};
+	// 	const getMetrics = () => {
+	// 		const card = container.querySelector('.about-iran-card');
+	// 		const gap = parseInt(getComputedStyle(container).gap) || 0;
+	// 		const width = card ? card.offsetWidth : 0;
+	// 		return { cardWidth: width, gap };
+	// 	};
 
-		const updateDots = () => {
-			const { cardWidth, gap } = getMetrics();
-			const idx = Math.round(container.scrollLeft / (cardWidth + gap));
-			dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-		};
+	// 	const updateDots = () => {
+	// 		const { cardWidth, gap } = getMetrics();
+	// 		const idx = Math.round(container.scrollLeft / (cardWidth + gap));
+	// 		dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+	// 	};
 
-		const scrollToIndex = (i) => {
-			const { cardWidth, gap } = getMetrics();
-			container.scrollTo({ left: i * (cardWidth + gap), behavior: 'smooth' });
-		};
+	// 	const scrollToIndex = (i) => {
+	// 		const { cardWidth, gap } = getMetrics();
+	// 		container.scrollTo({ left: i * (cardWidth + gap), behavior: 'smooth' });
+	// 	};
 
-		container.addEventListener('scroll', updateDots);
-		dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToIndex(i)));
-		window.addEventListener('load', updateDots);
-		window.addEventListener('resize', updateDots);
-	})();
+	// 	container.addEventListener('scroll', updateDots);
+	// 	dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToIndex(i)));
+	// 	window.addEventListener('load', updateDots);
+	// 	window.addEventListener('resize', updateDots);
+	// })();
 
 	/* ===== What is Iran Coin slider ===== */
 	(function () {
@@ -517,6 +514,41 @@ if ($('.swiper-cards-iran').length) {
 		},
 		pagination: {
 			el: ".swiper-pagination-cards",
+			clickable: true,
+		},
+		breakpoints: {
+			300: {
+				slidesPerView: 1,
+			},
+			640: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 2,
+			},
+			1024: {
+				slidesPerView: 3,
+			},
+			1600: {
+				slidesPerView: 3,
+			},
+		},
+	});
+}
+
+if ($('.swiper-inner-cards-iran').length) {
+	var swiperinnercardsiran = new Swiper(".swiper-inner-cards-iran", {
+		direction: 'horizontal',
+		loop: true,
+		slidesPerView: 3,
+		spaceBetween: 40,
+		speed: 500,
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: ".swiper-pagination-inner-cards",
 			clickable: true,
 		},
 		breakpoints: {
