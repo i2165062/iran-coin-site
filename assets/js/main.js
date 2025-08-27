@@ -265,9 +265,14 @@
 			});
 	}
 
-	// Initialize.
-	$main.hide();
-	$main_articles.hide();
+       // Initialize.
+       if ($body.hasClass('about-page')) {
+               $main.show();
+               $main_articles.show();
+       } else {
+               $main.hide();
+               $main_articles.hide();
+       }
 
 	if (location.hash != '' && location.hash != '#')
 		$window.on('load', function () { $main._show(location.hash.substr(1), true); });
