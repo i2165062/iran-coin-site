@@ -785,3 +785,104 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 #main article#buy {
   max-width: 960px;
 }
+/* --- Fix NFT Buttons --- */
+.nft-btn {
+  border: none;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 1.6em;           /* slightly bigger arrow */
+  padding: 20px;              /* bigger circle */
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Ensure buttons are vertically centered relative to card */
+.card-wrapper button {
+  align-self: center;
+}
+
+/* Slight upward adjustment if needed */
+#prev, #next {
+  transform: translateY(-10%);
+}
+
+/* --- Fix NFT Intro Text Readability --- */
+#NFT .intro {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #eee;                          /* lighter text */
+  background: rgba(0, 0, 0, 0.35);      /* subtle background for contrast */
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+/* Mobile adjustments for NFT section */
+@media (max-width: 768px) {
+  #NFT .intro {
+    font-size: 0.95em;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .card-wrapper {
+    gap: 20px; /* reduce gap between buttons */
+  }
+
+  .card-container {
+    width: 90%;       /* take most of screen width */
+    max-width: 340px; /* but not too wide */
+    height: auto;     /* let height adapt to image/text */
+  }
+
+  .card-container img {
+    height: auto;     /* image keeps ratio */
+    max-height: 250px; /* avoid taking full viewport */
+  }
+
+  .card-text {
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .nft-btn {
+    padding: 14px; /* slightly smaller buttons */
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  #NFT h2.major {
+    font-size: 1.4em;
+  }
+
+  #NFT .intro {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  .card-container {
+    width: 95%;
+    max-width: 300px;
+  }
+
+  .card-container img {
+    max-height: 200px;
+  }
+}
+
+
