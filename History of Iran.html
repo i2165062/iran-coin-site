@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History of Iran</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      height: 100%;
+    }
+
+    /* Background hero */
+    .hero {
+      position: relative;
+      height: 100vh; /* full screen */
+      width: 100%;
+      background: url("images/bg.jpg") no-repeat center center/cover; /* ✅ Change this image */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Overlay for readability */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5); /* dark overlay */
+      z-index: 1;
+    }
+
+    /* Content inside */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .art-box {
+      background: rgba(112, 112, 114, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      padding: 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .art-box:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Explore Iranian History/h1>
+      <div class="art-grid">
+        <a href="Manners-and-customs.html"><div class="art-box">Government and rulers</div></a>
+        <a href="Celebrities-and-books.html"><div class="art-box">Critical historical events</div></a>
+        <a href="Ethnicities.html"><div class="art-box">Time line</div></a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
