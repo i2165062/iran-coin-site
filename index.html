@@ -578,13 +578,109 @@
 			</article>
 
 			<!-- NFT -->
-			<article id="NFT" class="nft-fixed">
-				<a class="close" href="#"></a>
-				<div class="nft-wrapper">
-					<img src="images/PC3.png" class="nft-img" alt="IRAN COIN – NFT Coming Soon">
-					<div class="nft-overlay"></div>
-				</div>
-			</article>
+			<article id="NFT">
+  <h2 class="major">A Collection of Iranian NFTs</h2>
+  <div class="intro">
+    The following is a compilation of the 999 NFTs related to some aspect of Iranian culture, history, and art.
+    This compilation is the second phase and will soon be introduced.
+  </div>
+
+  <div class="card-wrapper">
+    <button id="prev" class="nft-btn"></button>
+
+    <div class="card-container" id="card">
+      <img src="images/nft1.png" alt="NFT Image">
+      <div class="card-text">This NFT represents Persian calligraphy, a symbol of cultural heritage.</div>
+    </div>
+
+    <button id="next" class="nft-btn"></button>
+  </div>
+</article>
+
+<script>
+  // NFT card data
+  const nftCards = [
+    {
+      img: "images/nft1.png",
+      text: "This NFT represents Persian calligraphy, a symbol of cultural heritage."
+    },
+    {
+      img: "images/nft2.png",
+      text: "This NFT depicts traditional Iranian tilework found in mosques."
+    },
+    {
+      img: "images/nft3.png",
+      text: "Inspired by Iranian miniature paintings, reflecting ancient stories."
+    },
+    {
+      img: "images/nft4.png",
+      text: "A design based on Persian carpets, known for beauty and detail."
+    }
+  ];
+
+  let nftIndex = 0;
+  const nftCard = document.getElementById("card");
+  const prevNft = document.getElementById("prev");
+  const nextNft = document.getElementById("next");
+
+  function updateNftCard(index, direction) {
+    nftCard.style.transform = `translateX(${direction === "next" ? "-150%" : "150%"})`;
+    nftCard.style.opacity = 0;
+
+    setTimeout(() => {
+      const data = nftCards[index];
+      nftCard.innerHTML = `
+        <img src="${data.img}" alt="NFT Image">
+        <div class="card-text">${data.text}</div>
+      `;
+      nftCard.style.transition = "none";
+      nftCard.style.transform = `translateX(${direction === "next" ? "150%" : "-150%"})`;
+      nftCard.style.opacity = 0;
+
+      requestAnimationFrame(() => {
+        nftCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+        nftCard.style.transform = "translateX(0)";
+        nftCard.style.opacity = 1;
+      });
+    }, 300);
+  }
+
+  prevNft.addEventListener("click", () => {
+    nftIndex = (nftIndex - 1 + nftCards.length) % nftCards.length;
+    updateNftCard(nftIndex, "prev");
+  });
+
+  nextNft.addEventListener("click", () => {
+    nftIndex = (nftIndex + 1) % nftCards.length;
+    updateNftCard(nftIndex, "next");
+  });
+
+  // Swipe support
+  let startX = 0;
+  nftCard.addEventListener("mousedown", (e) => startX = e.clientX);
+  nftCard.addEventListener("mouseup", (e) => {
+    let diff = e.clientX - startX;
+    if (diff > 100) {
+      nftIndex = (nftIndex - 1 + nftCards.length) % nftCards.length;
+      updateNftCard(nftIndex, "prev");
+    } else if (diff < -100) {
+      nftIndex = (nftIndex + 1) % nftCards.length;
+      updateNftCard(nftIndex, "next");
+    }
+  });
+
+  nftCard.addEventListener("touchstart", (e) => startX = e.touches[0].clientX);
+  nftCard.addEventListener("touchend", (e) => {
+    let diff = e.changedTouches[0].clientX - startX;
+    if (diff > 100) {
+      nftIndex = (nftIndex - 1 + nftCards.length) % nftCards.length;
+      updateNftCard(nftIndex, "prev");
+    } else if (diff < -100) {
+      nftIndex = (nftIndex + 1) % nftCards.length;
+      updateNftCard(nftIndex, "next");
+    }
+  });
+</script>
 
 
 
