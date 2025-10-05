@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parthian Dynasty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+  <style>
+    .dynasty-intro {
+      max-width: 850px;
+      margin: 0 auto 2rem;
+      text-align: justify;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+    .slider-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+    .slide-card {
+      width: 320px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.6s ease;
+      position: absolute;
+    }
+    .slide-card.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+    }
+    .slide-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .slide-card h4 { margin: .7rem 0 .4rem; font-size: 1.2rem; }
+    .slide-card p { font-size: 0.95rem; opacity: 0.85; }
+    .nft-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nft-btn:hover { background: rgba(255,255,255,0.25); }
+    #ruler-description {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      text-align: center;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1.2rem;
+      border-radius: 10px;
+      min-height: 100px;
+      transition: all 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header id="header">
+      <h1 class="major">Parthian (Arsacid) Dynasty</h1>
+    </header>
+
+    <main id="main">
+      <section class="dynasty-intro">
+        <p>
+          The Parthian Empire (247 BCE – 224 CE), founded by <strong>Arsaces I</strong>, 
+          revived Iranian independence after Alexander’s successors. 
+          The Parthians were expert horse-archers and masters of decentralized rule. 
+          Their confederation balanced powerful noble families with the authority of the <em>King of Kings</em>. 
+          They resisted the Roman Empire for centuries, established trade along the Silk Road, 
+          and helped shape early Iranian-Hellenistic culture.  
+          Notable rulers include <strong>Mithridates I</strong> (expander and reformer) and 
+          <strong>Mithridates II</strong> (the Great, organizer of diplomacy and trade).
+        </p>
+      </section>
+
+      <!-- Slider -->
+      <div class="slider-section">
+        <button id="prev" class="nft-btn"></button>
+
+        <div id="slider">
+          <div class="slide-card active" data-desc="Founder of the Parthian state, he united eastern Iranian tribes and began the Arsacid line that lasted nearly 500 years.">
+            <img src="images/arsaces.jpg" alt="Arsaces I">
+            <h4>Arsaces I</h4>
+            <p>Founder of the Arsacid dynasty</p>
+          </div>
+
+          <div class="slide-card" data-desc="Expanded Parthian control over Mesopotamia, minted distinctive coinage, and strengthened central power while allowing local autonomy.">
+            <img src="images/mithridates1.jpg" alt="Mithridates I">
+            <h4>Mithridates I</h4>
+            <p>Builder of the Parthian Empire</p>
+          </div>
+
+          <div class="slide-card" data-desc="Known as ‘the Great’; stabilized the empire, improved trade routes, and dealt diplomatically with Rome and China.">
+            <img src="images/mithridates2.jpg" alt="Mithridates II">
+            <h4>Mithridates II (The Great)</h4>
+            <p>Reformer and diplomat</p>
+          </div>
+        </div>
+
+        <button id="next" class="nft-btn"></button>
+      </div>
+
+      <div id="ruler-description">
+        Founder of the Parthian state, he united eastern Iranian tribes and began the Arsacid line that lasted nearly 500 years.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide-card");
+    const descBox = document.getElementById("ruler-description");
+    let current = 0;
+    function showSlide(i){
+      slides.forEach(s=>s.classList.remove("active"));
+      slides[i].classList.add("active");
+      descBox.style.opacity=0;
+      setTimeout(()=>{
+        descBox.textContent=slides[i].dataset.desc;
+        descBox.style.opacity=1;
+      },300);
+    }
+    document.getElementById("prev").onclick=()=>{current=(current===0)?slides.length-1:current-1;showSlide(current);}
+    document.getElementById("next").onclick=()=>{current=(current===slides.length-1)?0:current+1;showSlide(current);}
+    showSlide(current);
+  </script>
+</body>
+</html>

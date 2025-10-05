@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Qajar Dynasty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+  <style>
+    .dynasty-intro {
+      max-width: 850px;
+      margin: 0 auto 2rem;
+      text-align: justify;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+    .slider-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+    .slide-card {
+      width: 320px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.6s ease;
+      position: absolute;
+    }
+    .slide-card.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+    }
+    .slide-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .slide-card h4 { margin: .7rem 0 .4rem; font-size: 1.2rem; }
+    .slide-card p { font-size: 0.95rem; opacity: 0.85; }
+    .nft-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nft-btn:hover { background: rgba(255,255,255,0.25); }
+    #ruler-description {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      text-align: center;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1.2rem;
+      border-radius: 10px;
+      min-height: 100px;
+      transition: all 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header id="header">
+      <h1 class="major">Qajar Dynasty</h1>
+    </header>
+
+    <main id="main">
+      <section class="dynasty-intro">
+        <p>
+          The <strong>Qajar dynasty (1794–1925 CE)</strong> was founded by <strong>Agha Mohammad Khan Qajar</strong> after the fall of the Zands, 
+          marking a new era in Iran’s history.  
+          The Qajars restored central authority, rebuilt Tehran as their capital, and oversaw a long period of transformation — 
+          from traditional monarchy to the dawn of constitutionalism.  
+          During the reign of <strong>Fath Ali Shah</strong> and <strong>Naser al-Din Shah</strong>, Iran faced European imperial expansion, 
+          losing territories in the Caucasus but modernizing internal administration, communication, and diplomacy.  
+          The later kings, especially <strong>Mozaffar ad-Din Shah</strong>, presided over the <strong>Constitutional Revolution (1905–1911)</strong>, 
+          which introduced Iran’s first parliament.  
+          The dynasty ended when <strong>Reza Khan</strong> seized power in 1925, establishing the Pahlavi era.
+        </p>
+      </section>
+
+      <!-- Slider -->
+      <div class="slider-section">
+        <button id="prev" class="nft-btn"></button>
+
+        <div id="slider">
+          <div class="slide-card active" data-desc="Founder of the Qajar dynasty; united Iran after the chaos of the 18th century and established Tehran as the capital.">
+            <img src="images/aghamohammad.jpg" alt="Agha Mohammad Khan Qajar">
+            <h4>Agha Mohammad Khan Qajar</h4>
+            <p>Founder and unifier</p>
+          </div>
+
+          <div class="slide-card" data-desc="Oversaw the empire’s expansion and conflict with Russia; his reign was marked by cultural revival and the loss of the Caucasus territories.">
+            <img src="images/fathali.jpg" alt="Fath Ali Shah">
+            <h4>Fath Ali Shah Qajar</h4>
+            <p>Known for grandeur and diplomacy</p>
+          </div>
+
+          <div class="slide-card" data-desc="One of Iran’s longest-reigning monarchs; traveled to Europe, initiated reforms, and modernized communication and education.">
+            <img src="images/naseredin.jpg" alt="Naser al-Din Shah">
+            <h4>Naser al-Din Shah Qajar</h4>
+            <p>Modernizer and reformer</p>
+          </div>
+
+          <div class="slide-card" data-desc="Granted Iran’s first constitution and established the Majles (Parliament), marking a major step toward modern governance.">
+            <img src="images/mozaffar.jpg" alt="Mozaffar ad-Din Shah">
+            <h4>Mozaffar ad-Din Shah Qajar</h4>
+            <p>Father of the Constitutional Revolution</p>
+          </div>
+
+          <div class="slide-card" data-desc="The last Qajar king; his weakness during political chaos led to the rise of Reza Khan and the end of the dynasty.">
+            <img src="images/ahmadshah.jpg" alt="Ahmad Shah Qajar">
+            <h4>Ahmad Shah Qajar</h4>
+            <p>Final Qajar ruler</p>
+          </div>
+        </div>
+
+        <button id="next" class="nft-btn"></button>
+      </div>
+
+      <div id="ruler-description">
+        Founder of the Qajar dynasty; united Iran after the chaos of the 18th century and established Tehran as the capital.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide-card");
+    const descBox = document.getElementById("ruler-description");
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((s) => s.classList.remove("active"));
+      slides[index].classList.add("active");
+      descBox.style.opacity = 0;
+      setTimeout(() => {
+        descBox.textContent = slides[index].dataset.desc;
+        descBox.style.opacity = 1;
+      }, 300);
+    }
+
+    document.getElementById("prev").addEventListener("click", () => {
+      current = (current === 0) ? slides.length - 1 : current - 1;
+      showSlide(current);
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+      current = (current === slides.length - 1) ? 0 : current + 1;
+      showSlide(current);
+    });
+
+    showSlide(current);
+  </script>
+</body>
+</html>

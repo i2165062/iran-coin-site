@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pahlavi Dynasty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+  <style>
+    .dynasty-intro {
+      max-width: 850px;
+      margin: 0 auto 2rem;
+      text-align: justify;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+    .slider-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+    .slide-card {
+      width: 320px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.6s ease;
+      position: absolute;
+    }
+    .slide-card.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+    }
+    .slide-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .slide-card h4 { margin: .7rem 0 .4rem; font-size: 1.2rem; }
+    .slide-card p { font-size: 0.95rem; opacity: 0.85; }
+    .nft-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nft-btn:hover { background: rgba(255,255,255,0.25); }
+    #ruler-description {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      text-align: center;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1.2rem;
+      border-radius: 10px;
+      min-height: 100px;
+      transition: all 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header id="header">
+      <h1 class="major">Pahlavi Dynasty</h1>
+    </header>
+
+    <main id="main">
+      <section class="dynasty-intro">
+        <p>
+          The <strong>Pahlavi dynasty (1925–1979 CE)</strong> marked Iran’s transition into the modern age.  
+          Founded by <strong>Reza Shah Pahlavi</strong> after the fall of the Qajar dynasty, 
+          this era was defined by modernization, centralization, and the creation of a national identity built on Persian heritage.  
+          Reza Shah transformed Iran’s infrastructure, reformed education, established the national railway, 
+          and replaced Persia’s name internationally with <strong>Iran</strong>.  
+          His son, <strong>Mohammad Reza Shah Pahlavi</strong>, continued modernization through the <strong>White Revolution</strong>, 
+          introducing land reforms, expanding education, and advancing women’s rights — while also aligning Iran with the West.  
+          Despite rapid progress, growing political unrest and social inequality culminated in the <strong>1979 Revolution</strong>, 
+          ending over 2,500 years of monarchy and beginning the Islamic Republic.
+        </p>
+      </section>
+
+      <!-- Slider -->
+      <div class="slider-section">
+        <button id="prev" class="nft-btn"></button>
+
+        <div id="slider">
+          <div class="slide-card active" data-desc="Founder of the Pahlavi dynasty; implemented large-scale modernization, built railways, established universities, and renamed Persia to Iran.">
+            <img src="images/rezashah.jpg" alt="Reza Shah Pahlavi">
+            <h4>Reza Shah Pahlavi</h4>
+            <p>Architect of Modern Iran</p>
+          </div>
+
+          <div class="slide-card" data-desc="Led Iran during a time of industrial and social transformation; initiated the White Revolution, advanced women's rights, and pursued modernization until the 1979 Revolution.">
+            <img src="images/mohammadrezashah.jpg" alt="Mohammad Reza Shah Pahlavi">
+            <h4>Mohammad Reza Shah Pahlavi</h4>
+            <p>Last Shah of Iran</p>
+          </div>
+
+          <div class="slide-card" data-desc="Prime Minister who nationalized Iran’s oil industry in 1951; his government was overthrown in the 1953 coup.">
+            <img src="images/mossadegh.jpg" alt="Mohammad Mossadegh">
+            <h4>Mohammad Mossadegh</h4>
+            <p>Prime Minister and nationalist leader</p>
+          </div>
+        </div>
+
+        <button id="next" class="nft-btn"></button>
+      </div>
+
+      <div id="ruler-description">
+        Founder of the Pahlavi dynasty; implemented large-scale modernization, built railways, established universities, and renamed Persia to Iran.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide-card");
+    const descBox = document.getElementById("ruler-description");
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((s) => s.classList.remove("active"));
+      slides[index].classList.add("active");
+      descBox.style.opacity = 0;
+      setTimeout(() => {
+        descBox.textContent = slides[index].dataset.desc;
+        descBox.style.opacity = 1;
+      }, 300);
+    }
+
+    document.getElementById("prev").addEventListener("click", () => {
+      current = (current === 0) ? slides.length - 1 : current - 1;
+      showSlide(current);
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+      current = (current === slides.length - 1) ? 0 : current + 1;
+      showSlide(current);
+    });
+
+    showSlide(current);
+  </script>
+</body>
+</html>

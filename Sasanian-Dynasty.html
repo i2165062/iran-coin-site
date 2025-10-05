@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sasanian Dynasty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+  <style>
+    .dynasty-intro{max-width:850px;margin:0 auto 2rem;text-align:justify;background:rgba(255,255,255,0.05);padding:2rem;border-radius:12px;line-height:1.7;}
+    .slider-section{display:flex;justify-content:center;align-items:center;gap:20px;position:relative;}
+    .slide-card{width:320px;background:rgba(255,255,255,0.08);border-radius:15px;padding:1rem;text-align:center;box-shadow:0 0 15px rgba(0,0,0,0.2);opacity:0;transform:translateX(60px);transition:all 0.6s ease;position:absolute;}
+    .slide-card.active{opacity:1;transform:translateX(0);position:relative;}
+    .slide-card img{width:100%;height:220px;object-fit:cover;border-radius:8px;}
+    .slide-card h4{margin:.7rem 0 .4rem;font-size:1.2rem;}
+    .slide-card p{font-size:.95rem;opacity:.85;}
+    .nft-btn{background:rgba(255,255,255,0.1);border:none;padding:10px 15px;border-radius:50%;cursor:pointer;transition:background .3s;}
+    .nft-btn:hover{background:rgba(255,255,255,0.25);}
+    #ruler-description{max-width:800px;margin:1.5rem auto;text-align:center;font-size:1.05rem;background:rgba(255,255,255,0.05);padding:1.2rem;border-radius:10px;min-height:100px;transition:all .4s ease;}
+  </style>
+</head>
+<body>
+<div id="wrapper">
+<header id="header">
+  <h1 class="major">Sasanian Dynasty</h1>
+</header>
+
+<main id="main">
+<section class="dynasty-intro">
+  <p>The Sasanian Empire (224–651 CE) succeeded the Parthians and represented the last pre-Islamic Persian kingdom. Founded by <strong>Ardashir I</strong>, it centralized power and revived Persian art, architecture, and Zoroastrian religion. The Sasanians built monumental cities such as Ctesiphon and advanced administration, trade, and learning. Rulers like <strong>Shapur I</strong> defeated the Romans, while <strong>Khosrow I Anushirvan</strong> led the empire’s golden age of justice, science, and philosophy. The dynasty fell after the Arab conquest, but its cultural legacy profoundly shaped the Islamic and Persian worlds.</p>
+</section>
+
+<div class="slider-section">
+  <button id="prev" class="nft-btn"></button>
+  <div id="slider">
+    <div class="slide-card active" data-desc="Founder of the Sasanian dynasty; defeated the Parthians and unified Iran under a renewed Persian state and Zoroastrian revival.">
+      <img src="images/ardashir.jpg" alt="Ardashir I">
+      <h4>Ardashir I</h4><p>Founder of the Sasanian Empire</p>
+    </div>
+    <div class="slide-card" data-desc="Expanded the empire and famously captured the Roman emperor Valerian; patron of architecture and science.">
+      <img src="images/shapur1.jpg" alt="Shapur I">
+      <h4>Shapur I</h4><p>Conqueror of Rome’s armies</p>
+    </div>
+    <div class="slide-card" data-desc="Remembered as a just and wise ruler; reformed the bureaucracy, supported philosophy, and expanded trade with Byzantium and India.">
+      <img src="images/khosrow1.jpg" alt="Khosrow I">
+      <h4>Khosrow I Anushirvan</h4><p>Philosopher king of Iran</p>
+    </div>
+    <div class="slide-card" data-desc="The last great Sasanian monarch; ruled during the empire’s zenith before the Byzantine wars and internal collapse.">
+      <img src="images/khosrow2.jpg" alt="Khosrow II">
+      <h4>Khosrow II</h4><p>Powerful but tragic ruler</p>
+    </div>
+  </div>
+  <button id="next" class="nft-btn"></button>
+</div>
+
+<div id="ruler-description">Founder of the Sasanian dynasty; defeated the Parthians and unified Iran under a renewed Persian state and Zoroastrian revival.</div>
+</main>
+</div>
+<script>
+const slides=document.querySelectorAll(".slide-card");const desc=document.getElementById("ruler-description");let c=0;
+function show(i){slides.forEach(s=>s.classList.remove("active"));slides[i].classList.add("active");desc.style.opacity=0;setTimeout(()=>{desc.textContent=slides[i].dataset.desc;desc.style.opacity=1;},300);}
+document.getElementById("prev").onclick=()=>{c=(c===0)?slides.length-1:c-1;show(c);}
+document.getElementById("next").onclick=()=>{c=(c===slides.length-1)?0:c+1;show(c);}
+show(c);
+</script>
+</body>
+</html>

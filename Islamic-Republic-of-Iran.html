@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Islamic Republic of Iran</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+  <style>
+    .dynasty-intro {
+      max-width: 850px;
+      margin: 0 auto 2rem;
+      text-align: justify;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+    .slider-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+    .slide-card {
+      width: 320px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.6s ease;
+      position: absolute;
+    }
+    .slide-card.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+    }
+    .slide-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .slide-card h4 { margin: .7rem 0 .4rem; font-size: 1.2rem; }
+    .slide-card p { font-size: 0.95rem; opacity: 0.85; }
+    .nft-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nft-btn:hover { background: rgba(255,255,255,0.25); }
+    #ruler-description {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      text-align: center;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1.2rem;
+      border-radius: 10px;
+      min-height: 100px;
+      transition: all 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header id="header">
+      <h1 class="major">Islamic Republic of Iran</h1>
+    </header>
+
+    <main id="main">
+      <section class="dynasty-intro">
+        <p>
+          The <strong>Islamic Republic of Iran (1979–present)</strong> was founded after the <strong>Iranian Revolution</strong>, 
+          which ended the Pahlavi monarchy and established a new political system based on the principles of Islam and republicanism.  
+          The system introduced a unique dual authority — combining democratic institutions with religious leadership.  
+          The revolution was led by <strong>Ayatollah Ruhollah Khomeini</strong>, who became the Republic’s first Supreme Leader.  
+          Since then, Iran has developed a strong independent identity, emphasizing cultural revival, scientific progress, 
+          and resistance to foreign dominance.  
+          The country has seen multiple presidents, each shaping its modern history through reform, reconstruction, and diplomacy.  
+          This period continues to define Iran’s contemporary role in the world — politically, scientifically, and culturally.
+        </p>
+      </section>
+
+      <!-- Slider -->
+      <div class="slider-section">
+        <button id="prev" class="nft-btn"></button>
+
+        <div id="slider">
+          <div class="slide-card active" data-desc="Leader of the 1979 Revolution and founder of the Islamic Republic; established the structure of the new state.">
+            <img src="images/khomeini.jpg" alt="Ayatollah Khomeini">
+            <h4>Ayatollah Ruhollah Khomeini</h4>
+            <p>Founder & 1st Supreme Leader</p>
+          </div>
+
+          <div class="slide-card" data-desc="Succeeded Khomeini in 1989; oversaw the end of the Iran-Iraq War and guided the Republic through modernization and reform.">
+            <img src="images/khamenei.jpg" alt="Ayatollah Ali Khamenei">
+            <h4>Ayatollah Ali Khamenei</h4>
+            <p>2nd Supreme Leader (1989–present)</p>
+          </div>
+
+          <div class="slide-card" data-desc="Iran’s first president after the revolution; known for his independence and advocacy for democratic reforms.">
+            <img src="images/banisadr.jpg" alt="Abolhassan Banisadr">
+            <h4>Abolhassan Banisadr</h4>
+            <p>1st President (1980–1981)</p>
+          </div>
+
+          <div class="slide-card" data-desc="Played a key role in rebuilding Iran after the war; founded Iran’s Expediency Council and served two terms as president.">
+            <img src="images/rafsanjani.jpg" alt="Akbar Hashemi Rafsanjani">
+            <h4>Akbar Hashemi Rafsanjani</h4>
+            <p>President (1989–1997)</p>
+          </div>
+
+          <div class="slide-card" data-desc="Known for cultural openness, reform, and dialogue with the West during his presidency.">
+            <img src="images/khatami.jpg" alt="Mohammad Khatami">
+            <h4>Mohammad Khatami</h4>
+            <p>President (1997–2005)</p>
+          </div>
+
+          <div class="slide-card" data-desc="Promoted nuclear development and populist economic policies; served during a period of international tension.">
+            <img src="images/ahmadinejad.jpg" alt="Mahmoud Ahmadinejad">
+            <h4>Mahmoud Ahmadinejad</h4>
+            <p>President (2005–2013)</p>
+          </div>
+
+          <div class="slide-card" data-desc="Focused on diplomacy, economic moderation, and signing the 2015 nuclear deal (JCPOA).">
+            <img src="images/rouhani.jpg" alt="Hassan Rouhani">
+            <h4>Hassan Rouhani</h4>
+            <p>President (2013–2021)</p>
+          </div>
+
+          <div class="slide-card" data-desc="Former judiciary chief and current president; emphasizing resistance economy, regional ties, and continuity of revolutionary principles.">
+            <img src="images/raisi.jpg" alt="Ebrahim Raisi">
+            <h4>Ebrahim Raisi</h4>
+            <p>President (2021–present)</p>
+          </div>
+        </div>
+
+        <button id="next" class="nft-btn"></button>
+      </div>
+
+      <div id="ruler-description">
+        Leader of the 1979 Revolution and founder of the Islamic Republic; established the structure of the new state.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide-card");
+    const descBox = document.getElementById("ruler-description");
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((s) => s.classList.remove("active"));
+      slides[index].classList.add("active");
+      descBox.style.opacity = 0;
+      setTimeout(() => {
+        descBox.textContent = slides[index].dataset.desc;
+        descBox.style.opacity = 1;
+      }, 300);
+    }
+
+    document.getElementById("prev").addEventListener("click", () => {
+      current = (current === 0) ? slides.length - 1 : current - 1;
+      showSlide(current);
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+      current = (current === slides.length - 1) ? 0 : current + 1;
+      showSlide(current);
+    });
+
+    showSlide(current);
+  </script>
+</body>
+</html>
