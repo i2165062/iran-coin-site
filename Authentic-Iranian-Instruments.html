@@ -236,7 +236,7 @@
         <h3 class="instrument-title">${inst.name}</h3>
         <p class="instrument-desc">${inst.desc}</p>
         <div class="slider-box">
-          ${inst.images.map((src,i)=>`<img src="images/instruments/${src}" class="${i===0?'active':''}">`).join('')}
+          ${inst.images.map((src,i)=>`<img src="images/${src}" class="${i===0?'active':''}">`).join('')}
           <div class="slider-nav">
             <button onclick="slide(-1)">&#10094;</button>
             <button onclick="slide(1)">&#10095;</button>
@@ -284,5 +284,6 @@
 
 </body>
 </html>
+
 
 
