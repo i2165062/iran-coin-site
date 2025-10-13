@@ -3,102 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iranian Art Collection</title>
+  <title>Explore Iranian Art| IRAN NFT</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <style>
-    body, html {
+    /* ===== GLOBAL RESET ===== */
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      height: 100%;
+      box-sizing: border-box;
     }
 
-    /* Background hero */
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    /* ===== HERO BACKGROUND ===== */
     .hero {
       position: relative;
-      height: 100vh; /* full screen */
+      height: 100vh;
       width: 100%;
-      background: url("images/bg.jpg") no-repeat center center/cover; /* ✅  */
+      background: url("images/bg.jpg") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Dark overlay for readability */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    /* ===== CONTENT ===== */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      width: 90%;
+      color: #fff;
+    }
+
+    .hero-content h1 {
+      font-size: 3em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 60px;
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* ===== GRID ===== */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* ===== BOXES ===== */
+    .art-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 14px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      padding: 30px 20px;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #fff;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Overlay for readability */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5); /* dark overlay */
-      z-index: 1;
-    }
-
-    /* Content inside */
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-    }
-
-    .hero-content h1 {
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .art-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .art-box {
-      background: rgba(112, 112, 114, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-      padding: 30px;
-      font-size: 1.2em;
-      font-weight: bold;
-      transition: transform 0.3s ease, background 0.3s ease;
-      cursor: pointer;
-    }
-
     .art-box:hover {
       transform: translateY(-8px);
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
+      background: rgba(255, 215, 0, 0.12);
+      border-color: rgba(255, 215, 0, 0.6);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+      color: #fff;
     }
 
-    a {
+    /* Make the entire box clickable */
+    .art-grid a {
       text-decoration: none;
       color: inherit;
+      display: block;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2em;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+      }
+
+      .art-box {
+        font-size: 1em;
+        padding: 20px;
+      }
+    }
+
+    /* ===== ANIMATION ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
+  <!-- ===== HERO SECTION ===== -->
   <div class="hero">
     <div class="overlay"></div>
+
     <div class="hero-content">
       <h1>Explore Iranian Art</h1>
+
       <div class="art-grid">
-        <a href="Iranian-Handicrafts.html"><div class="art-box">Handicrafts</div></a>
-        <a href="Iranian-architecture.html"><div class="art-box">Architecture</div></a>
-        <a href="Iranian-Music-and-instruments.html"><div class="art-box">Musical Instruments</div></a>
+        <a href="Iranian-Handicrafts.html">
+          <div class="art-box">Handicrafts</div>
+        </a>
+
+        <a href="Iranian-architecture.html">
+          <div class="art-box">Architecture</div>
+        </a>
+
+        <a href="Iranian-Music-and-instruments.html">
+          <div class="art-box">Musical Instruments</div>
+        </a>
       </div>
     </div>
   </div>
 
 </body>
 </html>
-
-
-
-
-
