@@ -967,128 +967,33 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 #next::before {
   content: "⟶";
 }
- FIX SECTION: What is Iran Coin
-   =============================== */
 
-.What-is-iran-coin {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 2rem;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  color: #fff;
-  flex-wrap: wrap;
-}
-
-.What-is-iran-coin .symbol {
-  flex: 1 1 200px;
-  min-height: 180px;
-  background: url("images/iran-symbol.png") center/contain no-repeat;
-  border-radius: 12px;
-  background-color: rgba(255,255,255,0.05);
-}
-
-.What-is-iran-coin .definition {
-  flex: 2 1 400px;
-  color: #ddd;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.What-is-iran-coin h3 {
-  color: #FFD700;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.mission-section,
-.goals-section,
-.transparency-section,
-.future-plans {
-  margin-top: 3rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.goal-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
-
-.goal-cards .card {
-  flex: 1 1 200px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-.goal-cards .card:hover {
-  transform: scale(1.05);
-}
-
-.timeline {
-  border-left: 2px solid #FFD700;
-  margin-top: 2rem;
-  padding-left: 1.5rem;
-}
-
-.timeline-item {
-  margin-bottom: 1.5rem;
-}
-
-.timeline-date {
-  color: #FFD700;
-  font-weight: bold;
-}
-
-.timeline-content h4 {
-  margin: 0.3rem 0;
-}
-
-/* Mobile view */
-@media (max-width: 768px) {
-  .What-is-iran-coin {
-    flex-direction: column;
-    align-items: center;
-  }
-  .What-is-iran-coin .symbol {
-    width: 100%;
-    height: 160px;
-  }
-  .What-is-iran-coin .definition {
-    text-align: center;
-  }
-}
-
-
-
-/* ===============================
-   Banner Image for "What is Iran Coin"
+ /* ===============================
+   FIX: What is Iran Coin layout
    =============================== */
 
 #What-is-iran-coin .symbol {
   width: 100%;
-  height: 180px; /* دقیقاً ارتفاع فضای آبی مشخص‌شده */
-  background: url("images/iran-coin-banner.png") center/cover no-repeat;
+  height: 180px;
+  background: url("../../images/iran-coin-banner.png") center/cover no-repeat;
   border-radius: 12px;
   margin-bottom: 1.5rem;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-/* در موبایل */
-@media (max-width: 768px) {
-  #What-is-iran-coin .symbol {
-    height: 130px;
-    border-radius: 8px;
-  }
+/* برطرف کردن مشکل اسکرول داخلی و ارتفاع ناقص */
+#main article#What-is-iran-coin {
+  max-height: none !important;
+  overflow-y: visible !important;
+  position: relative !important;
+  height: auto !important;
 }
+
+body.is-article-visible {
+  overflow-y: scroll !important;
+}
+
+
 
 /* ===============================
    INTRO SECTION FIX
@@ -1452,6 +1357,7 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
     max-height: 220px;
   }
 }
+
 
 
 
