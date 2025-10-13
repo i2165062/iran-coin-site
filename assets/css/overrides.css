@@ -967,5 +967,491 @@ body.is-article-visible #NFT.nft-fixed.active .nft-overlay {
 #next::before {
   content: "⟶";
 }
+ FIX SECTION: What is Iran Coin
+   =============================== */
+
+.What-is-iran-coin {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  color: #fff;
+  flex-wrap: wrap;
+}
+
+.What-is-iran-coin .symbol {
+  flex: 1 1 200px;
+  min-height: 180px;
+  background: url("images/iran-symbol.png") center/contain no-repeat;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.05);
+}
+
+.What-is-iran-coin .definition {
+  flex: 2 1 400px;
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.What-is-iran-coin h3 {
+  color: #FFD700;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.mission-section,
+.goals-section,
+.transparency-section,
+.future-plans {
+  margin-top: 3rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.goal-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.goal-cards .card {
+  flex: 1 1 200px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.goal-cards .card:hover {
+  transform: scale(1.05);
+}
+
+.timeline {
+  border-left: 2px solid #FFD700;
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+}
+
+.timeline-item {
+  margin-bottom: 1.5rem;
+}
+
+.timeline-date {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.timeline-content h4 {
+  margin: 0.3rem 0;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .What-is-iran-coin {
+    flex-direction: column;
+    align-items: center;
+  }
+  .What-is-iran-coin .symbol {
+    width: 100%;
+    height: 160px;
+  }
+  .What-is-iran-coin .definition {
+    text-align: center;
+  }
+}
+
+
+
+/* ===============================
+   Banner Image for "What is Iran Coin"
+   =============================== */
+
+#What-is-iran-coin .symbol {
+  width: 100%;
+  height: 180px; /* دقیقاً ارتفاع فضای آبی مشخص‌شده */
+  background: url("images/iran-coin-banner.png") center/cover no-repeat;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* در موبایل */
+@media (max-width: 768px) {
+  #What-is-iran-coin .symbol {
+    height: 130px;
+    border-radius: 8px;
+  }
+}
+
+/* ===============================
+   INTRO SECTION FIX
+   =============================== */
+
+#intro .intro-banner img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+#intro .intro-text {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+#intro .intro-text h3 {
+  color: #ffd84d;
+  margin-bottom: 0.5rem;
+}
+
+#intro .intro-list {
+  margin-left: 1.5rem;
+  line-height: 1.7;
+}
+
+#intro .highlight {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #ffd84d;
+}
+
+#intro .intro-pillars {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+#intro .pillar {
+  flex: 1 1 30%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+#intro .pillar:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+#intro .pillar h4 {
+  color: #ffd84d;
+  margin-bottom: 0.6rem;
+}
+
+#intro .intro-quote {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+  border-left: 3px solid #ffd84d;
+  padding-left: 1rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  #intro .intro-pillars {
+    flex-direction: column;
+  }
+  #intro .intro-banner img {
+    max-height: 200px;
+  }
+}
+
+/* ===============================
+   INTRO SECTION EXTENDED
+   =============================== */
+
+#intro {
+  color: #fff;
+  line-height: 1.7;
+}
+
+#intro .intro-banner img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+#intro .intro-text h3 {
+  color: #ffd84d;
+  margin-bottom: 0.6rem;
+}
+
+#intro .intro-list {
+  margin-left: 1.5rem;
+  list-style-type: none;
+}
+
+#intro .intro-list li {
+  margin-bottom: 0.5rem;
+}
+
+#intro .intro-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#intro .pillar {
+  flex: 1 1 30%;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+#intro .pillar:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+#intro .pillar h4 {
+  color: #ffd84d;
+  margin-bottom: 0.5rem;
+}
+
+#intro .intro-quote {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+  border-left: 3px solid #ffd84d;
+  padding-left: 1rem;
+}
+
+/* NFT Marketplace Section */
+#intro .intro-nft {
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+#intro .intro-nft h3 {
+  color: #ffd84d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#intro .intro-nft p {
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+#intro .nft-features {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+#intro .nft-features .feature {
+  flex: 1 1 30%;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#intro .nft-features .feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.12);
+}
+
+#intro .nft-features h4 {
+  color: #ffd84d;
+  margin-bottom: 0.5rem;
+}
+
+#intro .highlight {
+  color: #ffd84d;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  #intro .intro-pillars,
+  #intro .nft-features {
+    flex-direction: column;
+  }
+}
+
+/* ===============================
+   INTRO SECTION — FINAL EXPANDED
+   =============================== */
+
+#intro {
+  color: #fff;
+  line-height: 1.7;
+}
+
+/* بنر بالای اینترو */
+#intro .intro-banner img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* متن ابتدایی */
+#intro .intro-text h3 {
+  color: #ffd84d;
+  margin-bottom: 0.6rem;
+}
+
+#intro .intro-list {
+  margin-left: 1.5rem;
+  list-style-type: none;
+}
+
+#intro .intro-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* ستون‌های اصلی */
+#intro .intro-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#intro .pillar {
+  flex: 1 1 30%;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+#intro .pillar:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+#intro .pillar h4 {
+  color: #ffd84d;
+  margin-bottom: 0.5rem;
+}
+
+/* نقل‌قول */
+#intro .intro-quote {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+  border-left: 3px solid #ffd84d;
+  padding-left: 1rem;
+}
+
+/* بخش هدف فرهنگی */
+#intro .intro-heritage {
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#intro .intro-heritage h3 {
+  color: #ffd84d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#intro .intro-heritage p {
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+/* بخش NFT Marketplace */
+#intro .intro-nft {
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+#intro .intro-nft h3 {
+  color: #ffd84d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#intro .intro-nft p {
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+#intro .nft-features {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+#intro .nft-features .feature {
+  flex: 1 1 30%;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#intro .nft-features .feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.12);
+}
+
+#intro .nft-features h4 {
+  color: #ffd84d;
+  margin-bottom: 0.5rem;
+}
+
+#intro .highlight {
+  color: #ffd84d;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* واکنش‌گرایی موبایل */
+@media (max-width: 768px) {
+  #intro .intro-pillars,
+  #intro .nft-features {
+    flex-direction: column;
+  }
+
+  #intro .intro-banner img {
+    max-height: 220px;
+  }
+}
+
 
 
