@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IRAN NFT BAZAR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <!-- Dimension Main Styles -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+      /* Dashboard animation */
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-60px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Ticket animation */
+      @keyframes fadeScaleIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeScaleOut {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+      }
+
+      /* Dashboard */
+      .bazar-dashboard {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 260px;
+        background: rgba(255, 255, 255, 0.03);
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 10;
+        animation: slideInLeft 1s ease forwards;
+      }
+      .bazar-dashboard h3 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+      }
+      .bazar-dashboard nav a {
+        display: block;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0.4rem 0;
+        font-size: 0.9rem;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+      }
+      .bazar-dashboard nav a:hover,
+      .bazar-dashboard nav a.active {
+        color: #00e6c7;
+        transform: translateX(5px);
+      }
+      .bazar-dashboard .bottom-buttons {
+        margin-top: 2rem;
+      }
+
+      /* Main shift */
+      #header,
+      #main,
+      #footer {
+        margin-left: 260px;
+      }
+
+      /* Ticket overlay */
+      .bazar-ticket {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease;
+      }
+      .bazar-ticket.active {
+        opacity: 1;
+        pointer-events: auto;
+        animation: fadeScaleIn 0.8s ease forwards;
+      }
+      .bazar-ticket.hide {
+        animation: fadeScaleOut 0.6s ease forwards;
+      }
+      .bazar-ticket .ticket-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 2rem;
+        max-width: 480px;
+        text-align: center;
+      }
+      .bazar-ticket h2 {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+      .bazar-ticket p {
+        margin: 1rem 0;
+        line-height: 1.6;
+      }
+      .bazar-ticket .actions {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      @media screen and (max-width: 980px) {
+        .bazar-dashboard {
+          position: static;
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-around;
+          padding: 1rem;
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        #header,
+        #main,
+        #footer {
+          margin-left: 0;
+          margin-top: 60px;
+        }
+      }
+    </style>
+
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+
+  <body class="is-preload">
+    <div id="wrapper">
+      <!-- Dashboard -->
+      <aside class="bazar-dashboard">
+        <div>
+          <h3>Dashboard</h3>
+          <nav>
+            <a href="#" class="active">Overview</a>
+            <a href="#">Wallets</a>
+            <a href="#">Collections</a>
+            <a href="#">Create</a>
+            <a href="#">Orders</a>
+            <a href="#">Offers</a>
+            <a href="#">Favorites</a>
+          </nav>
+        </div>
+        <div class="bottom-buttons">
+          <a href="#" class="button small">Connect Wallet</a>
+          <a href="#" class="button small">Sign up</a>
+        </div>
+      </aside>
+
+      <!-- Header -->
+      <header id="header">
+        <div class="logo">
+          <span class="icon fa-rocket"></span>
+        </div>
+        <div class="content">
+          <div class="inner">
+            <h1>IRAN NFT BAZAR</h1>
+            <p>Discover, collect, and trade Iranian-inspired digital art.</p>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Main Site</a></li>
+            <li><a href="#connect">Connect</a></li>
+            <li><a href="#signup">Sign Up</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <article id="intro">
+          <h2 class="major">Phase Two Preview</h2>
+          <p>
+            This section is under development. Wallet linking and user signup will be available soon.
+          </p>
+
+          <div class="features">
+            <article>
+              <span class="icon fa-gem"></span>
+              <div class="content">
+                <h3>Safavid Blue</h3>
+                <p>Preview drop (coming soon)</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon fa-palette"></span>
+              <div class="content">
+                <h3>Qajar Portraits</h3>
+                <p>Auction preview</p>
+              </div>
+            </article>
+          </div>
+
+          <ul class="actions">
+            <li>
+              <a href="#" class="button primary" id="connectWalletBtn">Connect Wallet</a>
+            </li>
+            <li><a href="#" class="button" id="signupEmailBtn">Sign Up</a></li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <p class="copyright">
+          &copy; Iran NFT Bazar — i2165062 Project.
+        </p>
+      </footer>
+    </div>
+
+    <!-- Ticket Modal -->
+    <div class="bazar-ticket" id="phaseTicket">
+      <div class="ticket-box">
+        <h2>Phase Two Coming Soon</h2>
+        <p>This section is part of <strong>Phase Two</strong> and will be available soon.</p>
+        <div class="actions">
+          <a href="index.html" class="button primary" id="ticketBack">Got it / Back to Main</a>
+          <a href="#" class="button" id="ticketConnect">Connect Wallet</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      const ticket = document.getElementById("phaseTicket");
+      const backBtn = document.getElementById("ticketBack");
+      const connectBtn = document.getElementById("ticketConnect");
+
+      window.addEventListener("load", () => {
+        setTimeout(() => ticket.classList.add("active"), 900);
+      });
+
+      // Back to main with fade-out animation
+      backBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        ticket.classList.add("hide");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 600);
+      });
+
+      // Wallet connect (prototype)
+      connectBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("Wallet connection feature coming soon.");
+      });
+    </script>
+  </body>
+</html>
