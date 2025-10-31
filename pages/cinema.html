@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cinema & Filmmakers — Influential Iranian People</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="assets/css/style/04style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <header class="page-header">
+    <h1 class="fade-in">Cinema & Filmmakers</h1>
+    <p class="fade-in delay-1">
+      Iranian auteurs who reshaped world cinema — poetic realism, human stories, and bold visual language.
+    </p>
+  </header>
+
+  <main id="eraContainer" class="eras"></main>
+
+  <footer class="page-footer fade-in delay-3">
+    <p>&copy; IranNFT.art — Iranian Cinema Heritage</p>
+  </footer>
+
+  <!-- Cinematic Modal -->
+  <div id="personModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__dialog" id="modalDialog">
+      <button id="modalClose" class="modal__close" aria-label="Close">&times;</button>
+
+      <div class="modal__media">
+        <img id="modalImage" alt="" decoding="async" />
+      </div>
+
+      <div class="modal__body">
+        <h2 id="modalTitle"></h2>
+        <p id="modalMeta" class="modal__meta"></p>
+        <p id="modalDesc" class="modal__desc"></p>
+
+        <div class="modal__viz-grid">
+          <div class="viz-block">
+            <div class="viz-title">Life Timeline</div>
+            <canvas id="timelineCanvas"></canvas>
+          </div>
+          <div class="viz-block">
+            <div class="viz-title">Achievements by Field</div>
+            <canvas id="influenceCanvas"></canvas>
+          </div>
+          <div class="viz-block viz-map">
+            <div class="viz-title">Global Festivals & Reach</div>
+            <canvas id="mapCanvas"></canvas>
+            <div class="viz-legend"><span class="dot"></span> Major regions/festivals</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/data/cinemadata.js"></script>
+  <script src="assets/js/script/04script.js"></script>
+</body>
+</html>
