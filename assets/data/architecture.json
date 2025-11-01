@@ -9,23 +9,51 @@
     "summary": "The ceremonial capital of the Achaemenid Empire, known for its monumental staircases and bas-reliefs.",
     "facts": [
       "Founded by Darius I around 518 BCE.",
-      "UNESCO World Heritage Site since 1979.",
-      "Symbol of imperial unity across diverse nations."
-    ]
+      "UNESCO World Heritage Site since 1979."
+    ],
+    "category": "ancient"
+  },
+  {
+    "key": "pasargadae",
+    "title": "Pasargadae",
+    "era": "Achaemenid Empire (c. 546 BCE)",
+    "location": "Fars Province, Iran",
+    "style": "Achaemenid Architecture",
+    "materials": "Stone and limestone",
+    "summary": "The first dynastic capital of the Achaemenid Empire built by Cyrus the Great.",
+    "facts": [
+      "Home to the Tomb of Cyrus the Great.",
+      "Layout influenced later Persian gardens."
+    ],
+    "category": "ancient"
   },
   {
     "key": "sheikh-lotfollah",
     "title": "Sheikh Lotfollah Mosque",
     "era": "Safavid Dynasty (1602–1619)",
-    "location": "Naqsh-e Jahan Square, Isfahan",
+    "location": "Isfahan, Iran",
     "style": "Safavid Mosque",
-    "materials": "Glazed tiles, brick, marble",
-    "summary": "A masterpiece of Safavid art, noted for its turquoise dome and exquisite interior tilework.",
+    "materials": "Glazed tiles, marble, brick",
+    "summary": "A masterpiece of Safavid art noted for its turquoise dome and intricate tilework.",
     "facts": [
-      "Built by architect Mohammad Reza Isfahani.",
-      "Unique for lacking minarets; served royal family.",
-      "Famous for color shifts from sunrise to sunset."
-    ]
+      "Architect: Mohammad Reza Isfahani.",
+      "Color of dome changes with daylight."
+    ],
+    "category": "islamic"
+  },
+  {
+    "key": "goharshad",
+    "title": "Goharshad Mosque",
+    "era": "Timurid (1418)",
+    "location": "Mashhad, Iran",
+    "style": "Timurid Mosque",
+    "materials": "Brick, glazed tile",
+    "summary": "Commissioned by Queen Goharshad, known for its high iwan and turquoise decorations.",
+    "facts": [
+      "Part of the Imam Reza Shrine complex.",
+      "Features intricate calligraphic panels."
+    ],
+    "category": "islamic"
   },
   {
     "key": "golestan-palace",
@@ -33,25 +61,41 @@
     "era": "Qajar Dynasty (19th century)",
     "location": "Tehran, Iran",
     "style": "Qajar Palace",
-    "materials": "Brick, mirror mosaics, tiles",
-    "summary": "The royal Qajar complex blending Persian and European styles.",
+    "materials": "Brick, mirror mosaics, tilework",
+    "summary": "The royal Qajar complex blending Persian and European aesthetics.",
     "facts": [
-      "Registered as UNESCO World Heritage Site in 2013.",
-      "Used for royal coronations and diplomacy."
-    ]
+      "UNESCO World Heritage Site (2013).",
+      "Used for royal coronations."
+    ],
+    "category": "qajar"
+  },
+  {
+    "key": "azadi-tower",
+    "title": "Azadi Tower",
+    "era": "Modern (1971)",
+    "location": "Tehran, Iran",
+    "style": "Modern Persian Revival",
+    "materials": "Marble, concrete",
+    "summary": "Modern landmark combining Achaemenid and Islamic geometry.",
+    "facts": [
+      "Designed by Hossein Amanat.",
+      "Symbol of Tehran’s skyline."
+    ],
+    "category": "qajar"
   },
   {
     "key": "yazd-windcatcher",
     "title": "Windcatchers of Yazd",
     "era": "Islamic Era",
-    "location": "Yazd Province",
+    "location": "Yazd, Iran",
     "style": "Vernacular Desert Architecture",
     "materials": "Adobe, mud brick, plaster",
-    "summary": "Traditional Iranian air-conditioning structures that cool buildings using natural ventilation.",
+    "summary": "Traditional Iranian air-conditioning towers harnessing desert winds.",
     "facts": [
-      "World's tallest windcatcher is at Dowlatabad Garden (33m).",
-      "UNESCO-listed as part of Historic City of Yazd."
-    ]
+      "Dowlatabad Garden’s tower is 33m tall.",
+      "Historic City of Yazd is UNESCO-listed."
+    ],
+    "category": "regional"
   },
   {
     "key": "karim-khan-citadel",
@@ -60,22 +104,24 @@
     "location": "Shiraz, Iran",
     "style": "Zand Fortification",
     "materials": "Brick and lime mortar",
-    "summary": "A blend of residential palace and military fortress built by Karim Khan Zand.",
+    "summary": "A hybrid of palace and fortress built by Karim Khan Zand.",
     "facts": [
-      "Corner towers are slightly leaning for defensive visibility.",
-      "Served as royal court, prison, and museum."
-    ]
+      "Corner towers lean outward slightly.",
+      "Served as royal residence and later as a prison."
+    ],
+    "category": "regional"
   },
   {
     "key": "coming-soon",
     "title": "Coming Soon",
     "era": "—",
     "location": "—",
-    "style": "Future Addition",
+    "style": "Future Entry",
     "materials": "—",
-    "summary": "More architectural wonders are being added.",
+    "summary": "More masterpieces of Iranian architecture are being added soon.",
     "facts": [
-      "This placeholder will expand with 100+ Iranian masterpieces."
-    ]
+      "This placeholder will expand to 100+ items."
+    ],
+    "category": "coming"
   }
 ]
