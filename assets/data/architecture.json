@@ -1,0 +1,81 @@
+[
+  {
+    "key": "persepolis",
+    "title": "Persepolis",
+    "era": "Achaemenid Empire (c. 520 BCE)",
+    "location": "Marvdasht, Fars Province",
+    "style": "Achaemenid Architecture",
+    "materials": "Stone, marble, relief carvings",
+    "summary": "The ceremonial capital of the Achaemenid Empire, known for its monumental staircases and bas-reliefs.",
+    "facts": [
+      "Founded by Darius I around 518 BCE.",
+      "UNESCO World Heritage Site since 1979.",
+      "Symbol of imperial unity across diverse nations."
+    ]
+  },
+  {
+    "key": "sheikh-lotfollah",
+    "title": "Sheikh Lotfollah Mosque",
+    "era": "Safavid Dynasty (1602–1619)",
+    "location": "Naqsh-e Jahan Square, Isfahan",
+    "style": "Safavid Mosque",
+    "materials": "Glazed tiles, brick, marble",
+    "summary": "A masterpiece of Safavid art, noted for its turquoise dome and exquisite interior tilework.",
+    "facts": [
+      "Built by architect Mohammad Reza Isfahani.",
+      "Unique for lacking minarets; served royal family.",
+      "Famous for color shifts from sunrise to sunset."
+    ]
+  },
+  {
+    "key": "golestan-palace",
+    "title": "Golestan Palace",
+    "era": "Qajar Dynasty (19th century)",
+    "location": "Tehran, Iran",
+    "style": "Qajar Palace",
+    "materials": "Brick, mirror mosaics, tiles",
+    "summary": "The royal Qajar complex blending Persian and European styles.",
+    "facts": [
+      "Registered as UNESCO World Heritage Site in 2013.",
+      "Used for royal coronations and diplomacy."
+    ]
+  },
+  {
+    "key": "yazd-windcatcher",
+    "title": "Windcatchers of Yazd",
+    "era": "Islamic Era",
+    "location": "Yazd Province",
+    "style": "Vernacular Desert Architecture",
+    "materials": "Adobe, mud brick, plaster",
+    "summary": "Traditional Iranian air-conditioning structures that cool buildings using natural ventilation.",
+    "facts": [
+      "World's tallest windcatcher is at Dowlatabad Garden (33m).",
+      "UNESCO-listed as part of Historic City of Yazd."
+    ]
+  },
+  {
+    "key": "karim-khan-citadel",
+    "title": "Karim Khan Citadel",
+    "era": "Zand Dynasty (1766)",
+    "location": "Shiraz, Iran",
+    "style": "Zand Fortification",
+    "materials": "Brick and lime mortar",
+    "summary": "A blend of residential palace and military fortress built by Karim Khan Zand.",
+    "facts": [
+      "Corner towers are slightly leaning for defensive visibility.",
+      "Served as royal court, prison, and museum."
+    ]
+  },
+  {
+    "key": "coming-soon",
+    "title": "Coming Soon",
+    "era": "—",
+    "location": "—",
+    "style": "Future Addition",
+    "materials": "—",
+    "summary": "More architectural wonders are being added.",
+    "facts": [
+      "This placeholder will expand with 100+ Iranian masterpieces."
+    ]
+  }
+]
