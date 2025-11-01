@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iranian Architecture</title>
+  <link rel="stylesheet" href="../assets/css/architecture.css">
+</head>
+<body class="theme-dark">
+
+  <header class="page-hero">
+    <div class="hero-inner">
+      <h1>IRANIAN ARCHITECTURE</h1>
+      <p class="subtitle">A timeless journey through Persian design, structure, and spirit.</p>
+      <div class="divider"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="architectureGrid" class="grid"></section>
+  </main>
+
+  <!-- Modal -->
+  <div id="archModal" class="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog">
+      <button class="modal__close" data-close-modal>&times;</button>
+      <div class="modal__media">
+        <img id="modalImage" alt="" loading="lazy" />
+      </div>
+      <div class="modal__content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalSummary" class="lead"></p>
+        <div class="meta">
+          <div><strong>Era:</strong> <span id="metaEra"></span></div>
+          <div><strong>Location:</strong> <span id="metaLocation"></span></div>
+          <div><strong>Style:</strong> <span id="metaStyle"></span></div>
+          <div><strong>Materials:</strong> <span id="metaMaterials"></span></div>
+        </div>
+        <details class="more">
+          <summary>More facts</summary>
+          <ul id="modalFacts"></ul>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/architecture.js" defer></script>
+</body>
+</html>
