@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-category="ancient"> <!-- ← این مقدار را در ۴ صفحه تغییر بده -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ancient Architecture — Iran</title> <!-- ← عنوان متناسب دسته -->
+  <link rel="stylesheet" href="../assets/css/architecture.css" />
+</head>
+<body class="theme-dark">
+  <header class="page-hero">
+    <div class="hero-inner">
+      <h1>ANCIENT ARCHITECTURE</h1> <!-- ← متن تیتر را هم متناسب دسته تغییر بده -->
+      <p class="subtitle">Achaemenid foundations, ceremonial complexes, royal tombs.</p>
+      <div class="divider"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="architectureGrid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Modal (مشترک بین همه صفحات داخلی) -->
+  <div id="archModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <button class="modal__close" aria-label="Close" data-close-modal>&times;</button>
+      <div class="modal__media">
+        <img id="modalImage" alt="" loading="lazy" />
+      </div>
+      <div class="modal__content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalSummary" class="lead"></p>
+        <div class="meta">
+          <div><strong>Era:</strong> <span id="metaEra"></span></div>
+          <div><strong>Location:</strong> <span id="metaLocation"></span></div>
+          <div><strong>Style:</strong> <span id="metaStyle"></span></div>
+          <div><strong>Materials:</strong> <span id="metaMaterials"></span></div>
+        </div>
+        <details class="more">
+          <summary>More facts</summary>
+          <ul id="modalFacts"></ul>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/architecture-list.js" defer></script>
+</body>
+</html>
