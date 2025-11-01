@@ -70,3 +70,24 @@ body{font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color
   .modal__media img{height:220px;}
   .meta{grid-template-columns:1fr;}
 }
+/* Category Section Headers */
+.section {
+  margin-bottom: 60px;
+}
+.section-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.3rem;
+  color: var(--accent);
+  text-align: center;
+  margin: 60px 0 20px;
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
