@@ -7,42 +7,49 @@
   <link rel="stylesheet" href="../assets/css/architecture.css" />
 </head>
 <body class="theme-dark">
-
   <header class="page-hero">
     <div class="hero-inner">
       <h1>IRANIAN ARCHITECTURE</h1>
-      <p class="subtitle">A timeless journey through Persian design, structure, and spirit.</p>
+      <p class="subtitle">Explore Persian architecture across four timeless realms.</p>
       <div class="divider"></div>
     </div>
   </header>
 
-  <main class="container" id="architectureContainer"></main>
-
-  <!-- Modal -->
-  <div id="archModal" class="modal" aria-hidden="true">
-    <div class="modal__overlay" data-close-modal></div>
-    <div class="modal__dialog">
-      <button class="modal__close" data-close-modal>&times;</button>
-      <div class="modal__media">
-        <img id="modalImage" alt="" loading="lazy" />
-      </div>
-      <div class="modal__content">
-        <h2 id="modalTitle"></h2>
-        <p id="modalSummary" class="lead"></p>
-        <div class="meta">
-          <div><strong>Era:</strong> <span id="metaEra"></span></div>
-          <div><strong>Location:</strong> <span id="metaLocation"></span></div>
-          <div><strong>Style:</strong> <span id="metaStyle"></span></div>
-          <div><strong>Materials:</strong> <span id="metaMaterials"></span></div>
+  <main class="container">
+    <!-- دروازه ۴ بخشی: باکس‌ها شما را به صفحات داخلی می‌برند -->
+    <div class="category-grid">
+      <article class="category-card" onclick="location.href='architecture-ancient.html'">
+        <img src="../images/architecture/ancient-cover.jpg" alt="Ancient Architecture" />
+        <div class="overlay">
+          <h2>Ancient</h2>
+          <p>Persepolis, Pasargadae, imperial foundations.</p>
         </div>
-        <details class="more">
-          <summary>More facts</summary>
-          <ul id="modalFacts"></ul>
-        </details>
-      </div>
-    </div>
-  </div>
+      </article>
 
-  <script src="../assets/js/architecture.js" defer></script>
+      <article class="category-card" onclick="location.href='architecture-islamic.html'">
+        <img src="../images/architecture/islamic-cover.jpg" alt="Islamic Architecture" />
+        <div class="overlay">
+          <h2>Islamic</h2>
+          <p>Seljuk, Timurid, Safavid mosques & madrasas.</p>
+        </div>
+      </article>
+
+      <article class="category-card" onclick="location.href='architecture-qajar.html'">
+        <img src="../images/architecture/qajar-cover.jpg" alt="Qajar & Modern" />
+        <div class="overlay">
+          <h2>Qajar & Modern</h2>
+          <p>Palaces, pavilions, towers, revival forms.</p>
+        </div>
+      </article>
+
+      <article class="category-card" onclick="location.href='architecture-regional.html'">
+        <img src="../images/architecture/regional-cover.jpg" alt="Regional Styles" />
+        <div class="overlay">
+          <h2>Regional</h2>
+          <p>Vernacular genius: windcatchers, citadels, houses.</p>
+        </div>
+      </article>
+    </div>
+  </main>
 </body>
 </html>
