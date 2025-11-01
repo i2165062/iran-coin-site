@@ -5,8 +5,8 @@
     "era": "Achaemenid Empire (c. 520 BCE)",
     "location": "Marvdasht, Fars Province",
     "style": "Achaemenid Architecture",
-    "materials": "Stone, marble, relief carvings",
-    "summary": "The ceremonial capital of the Achaemenid Empire, known for its monumental staircases and bas-reliefs.",
+    "materials": "Stone, limestone, relief carvings",
+    "summary": "Ceremonial capital of the Achaemenids with grand staircases and iconic bas-reliefs.",
     "facts": [
       "Founded by Darius I around 518 BCE.",
       "UNESCO World Heritage Site since 1979."
@@ -17,27 +17,42 @@
     "key": "pasargadae",
     "title": "Pasargadae",
     "era": "Achaemenid Empire (c. 546 BCE)",
-    "location": "Fars Province, Iran",
+    "location": "Fars Province",
     "style": "Achaemenid Architecture",
-    "materials": "Stone and limestone",
-    "summary": "The first dynastic capital of the Achaemenid Empire built by Cyrus the Great.",
+    "materials": "Stone, limestone",
+    "summary": "Early imperial capital featuring the Tomb of Cyrus the Great and proto-Persian garden layout.",
     "facts": [
-      "Home to the Tomb of Cyrus the Great.",
-      "Layout influenced later Persian gardens."
+      "Influenced the Chahar Bagh garden typology.",
+      "Key milestone of early imperial urbanism."
     ],
     "category": "ancient"
   },
   {
+    "key": "naqshe-rostam",
+    "title": "Naqsh-e Rostam",
+    "era": "Achaemenid & Sasanian",
+    "location": "Near Persepolis, Fars",
+    "style": "Rock-cut tombs & reliefs",
+    "materials": "Rock relief carvings",
+    "summary": "Royal necropolis with cliff-cut tombs and Sasanian investiture reliefs.",
+    "facts": [
+      "Houses tombs of Darius I, Xerxes I, and others.",
+      "Sasanian panels depict imperial ceremonies."
+    ],
+    "category": "ancient"
+  },
+
+  {
     "key": "sheikh-lotfollah",
     "title": "Sheikh Lotfollah Mosque",
-    "era": "Safavid Dynasty (1602–1619)",
-    "location": "Isfahan, Iran",
+    "era": "Safavid (1602–1619)",
+    "location": "Naqsh-e Jahan Square, Isfahan",
     "style": "Safavid Mosque",
-    "materials": "Glazed tiles, marble, brick",
-    "summary": "A masterpiece of Safavid art noted for its turquoise dome and intricate tilework.",
+    "materials": "Glazed tiles, brick, marble",
+    "summary": "Masterpiece mosque known for its turquoise dome and exquisite interior tilework.",
     "facts": [
       "Architect: Mohammad Reza Isfahani.",
-      "Color of dome changes with daylight."
+      "Private royal mosque without minarets."
     ],
     "category": "islamic"
   },
@@ -48,24 +63,39 @@
     "location": "Mashhad, Iran",
     "style": "Timurid Mosque",
     "materials": "Brick, glazed tile",
-    "summary": "Commissioned by Queen Goharshad, known for its high iwan and turquoise decorations.",
+    "summary": "Commissioned by Queen Goharshad; renowned for its lofty iwan and calligraphy.",
     "facts": [
-      "Part of the Imam Reza Shrine complex.",
-      "Features intricate calligraphic panels."
+      "Part of Imam Reza Shrine complex.",
+      "Notable turquoise and lapis palette."
     ],
     "category": "islamic"
   },
   {
+    "key": "soltaniyeh-dome",
+    "title": "Dome of Soltaniyeh",
+    "era": "Ilkhanid (1302–1312)",
+    "location": "Zanjan Province",
+    "style": "Ilkhanid Mausoleum",
+    "materials": "Brick, turquoise tiles",
+    "summary": "One of the world’s largest brick domes; engineering marvel of its time.",
+    "facts": [
+      "UNESCO World Heritage Site.",
+      "Influenced later dome construction in the region."
+    ],
+    "category": "islamic"
+  },
+
+  {
     "key": "golestan-palace",
     "title": "Golestan Palace",
-    "era": "Qajar Dynasty (19th century)",
-    "location": "Tehran, Iran",
+    "era": "Qajar (19th century)",
+    "location": "Tehran",
     "style": "Qajar Palace",
-    "materials": "Brick, mirror mosaics, tilework",
-    "summary": "The royal Qajar complex blending Persian and European aesthetics.",
+    "materials": "Brick, mirror mosaic, tiles",
+    "summary": "Royal complex blending Persian craft with European influences.",
     "facts": [
       "UNESCO World Heritage Site (2013).",
-      "Used for royal coronations."
+      "Hosted royal coronations and receptions."
     ],
     "category": "qajar"
   },
@@ -73,26 +103,27 @@
     "key": "azadi-tower",
     "title": "Azadi Tower",
     "era": "Modern (1971)",
-    "location": "Tehran, Iran",
+    "location": "Tehran",
     "style": "Modern Persian Revival",
-    "materials": "Marble, concrete",
-    "summary": "Modern landmark combining Achaemenid and Islamic geometry.",
+    "materials": "Marble, reinforced concrete",
+    "summary": "Modern icon fusing Achaemenid and Islamic geometries.",
     "facts": [
-      "Designed by Hossein Amanat.",
-      "Symbol of Tehran’s skyline."
+      "Architect: Hossein Amanat.",
+      "Symbolic gateway of Tehran."
     ],
     "category": "qajar"
   },
+
   {
     "key": "yazd-windcatcher",
     "title": "Windcatchers of Yazd",
-    "era": "Islamic Era",
-    "location": "Yazd, Iran",
+    "era": "Islamic era (vernacular)",
+    "location": "Yazd",
     "style": "Vernacular Desert Architecture",
     "materials": "Adobe, mud brick, plaster",
-    "summary": "Traditional Iranian air-conditioning towers harnessing desert winds.",
+    "summary": "Passive cooling towers channeling desert breezes into interiors.",
     "facts": [
-      "Dowlatabad Garden’s tower is 33m tall.",
+      "Dowlatabad Garden windcatcher ~33m.",
       "Historic City of Yazd is UNESCO-listed."
     ],
     "category": "regional"
@@ -100,28 +131,31 @@
   {
     "key": "karim-khan-citadel",
     "title": "Karim Khan Citadel",
-    "era": "Zand Dynasty (1766)",
-    "location": "Shiraz, Iran",
+    "era": "Zand (1766)",
+    "location": "Shiraz",
     "style": "Zand Fortification",
-    "materials": "Brick and lime mortar",
-    "summary": "A hybrid of palace and fortress built by Karim Khan Zand.",
+    "materials": "Brick, lime mortar",
+    "summary": "Hybrid palace-fortress built by Karim Khan Zand.",
     "facts": [
-      "Corner towers lean outward slightly.",
-      "Served as royal residence and later as a prison."
+      "Leaning corner towers for defensive visibility.",
+      "Served as royal court, prison, and now museum."
     ],
     "category": "regional"
-  },
-  {
-    "key": "coming-soon",
-    "title": "Coming Soon",
-    "era": "—",
-    "location": "—",
-    "style": "Future Entry",
-    "materials": "—",
-    "summary": "More masterpieces of Iranian architecture are being added soon.",
-    "facts": [
-      "This placeholder will expand to 100+ items."
-    ],
-    "category": "coming"
   }
+
+  /* 
+   👇 به‌سادگی موارد بعدی را اضافه کن:
+   {
+     "key": "shushtar-hydraulic-system",
+     "title": "Shushtar Historical Hydraulic System",
+     "era": "Sassanian foundations / later",
+     "location": "Khuzestan",
+     "style": "Hydraulic industrial architecture",
+     "materials": "Stone, brick",
+     "summary": "Integrated dams, bridges, mills — a UNESCO marvel.",
+     "facts": ["Complex water management network."],
+     "category": "regional"
+   }
+  */
 ]
+ 
