@@ -6,7 +6,7 @@ Each architecture item uses its "key" field to automatically load images:
 So you only need to add images with correct filenames — no need to edit paths.
 */
 
-const grid = document.getElementById("architectureGrid");
+const container = document.getElementById("architectureContainer");
 const modal = document.getElementById("archModal");
 const mImg = document.getElementById("modalImage");
 const mTitle = document.getElementById("modalTitle");
@@ -17,23 +17,48 @@ const mStyle = document.getElementById("metaStyle");
 const mMat = document.getElementById("metaMaterials");
 const mFacts = document.getElementById("modalFacts");
 
-// Load JSON data
 fetch("../assets/data/architecture.json")
   .then(r => r.json())
   .then(data => renderArchitecture(data))
   .catch(err => console.error("Error loading architecture.json:", err));
 
 function renderArchitecture(data) {
-  data.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "card";
-    card.innerHTML = `
-      <img class="card__img" src="../images/architecture/${item.key}-2.png" alt="${item.title}">
-      <div class="card__title">${item.title}</div>
-      <div class="card__tag">${item.style.split(" ")[0]}</div>
-    `;
-    card.addEventListener("click", () => openModal(item));
-    grid.appendChild(card);
+  const categories = [
+    { key: "ancient", title: "Ancient Architecture" },
+    { key: "islamic", title: "Islamic Architecture" },
+    { key: "qajar", title: "Qajar & Modern" },
+    { key: "regional", title: "Regional Styles" },
+    { key: "coming", title: "Coming Soon" }
+  ];
+
+  categories.forEach(cat => {
+    const section = document.createElement("section");
+    section.className = "section";
+
+    const heading = document.createElement("h2");
+    heading.className = "section-title";
+    heading.textContent = cat.title;
+    section.appendChild(heading);
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+
+    data
+      .filter(item => item.category === cat.key)
+      .forEach(item => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <img class="card__img" src="../images/architecture/${item.key}-2.png" alt="${item.title}">
+          <div class="card__title">${item.title}</div>
+          <div class="card__tag">${item.style.split(" ")[0]}</div>
+        `;
+        card.addEventListener("click", () => openModal(item));
+        grid.appendChild(card);
+      });
+
+    section.appendChild(grid);
+    container.appendChild(section);
   });
 }
 
