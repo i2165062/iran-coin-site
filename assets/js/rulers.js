@@ -1,10 +1,10 @@
 /*
-Rulers & Governments Page Script
+Rulers & Governments Page Script (Fixed)
 ---------------------------------
 - Loads dynasty data from JSON
-- Creates cards dynamically
+- Creates cards dynamically with correct image paths
 - Shows cinematic modal with ruler slider
-- Allows link to full HTML page per dynasty
+- Links each dynasty to its full HTML page
 */
 
 const JSON_PATH = "/assets/data/rulers.json";
@@ -30,29 +30,30 @@ fetch(JSON_PATH)
   });
 
 function renderList(items) {
-  items.forEach(item => {
+  items.forEach((item, index) => {
     const el = document.createElement("article");
     el.className = "card";
     el.innerHTML = `
-      <img src="../images/rulers/${item.key}-2.png" alt="${item.title}" loading="lazy">
+      <img src="../../images/rulers/RUL${index + 1}.png" alt="${item.title}" loading="lazy">
       <div class="overlay">
         <h2>${item.title}</h2>
         <p>${item.era}</p>
       </div>
     `;
-    el.addEventListener("click", () => openModal(item));
+    el.addEventListener("click", () => openModal(item, index));
     grid.appendChild(el);
   });
 }
 
-function openModal(item) {
-  mImg.src = `../images/rulers/${item.key}-1.png`;
+function openModal(item, index) {
+  mImg.src = `../../images/rulers/RUL${index + 1}.png`;
   mImg.alt = item.title;
   mTitle.textContent = item.title;
   mSummary.textContent = item.summary || "";
   mEra.textContent = item.era || "—";
   mCapital.textContent = item.capital || "—";
 
+  // facts
   mFacts.innerHTML = "";
   (item.facts || []).forEach(f => {
     const li = document.createElement("li");
@@ -60,14 +61,14 @@ function openModal(item) {
     mFacts.appendChild(li);
   });
 
-  // Build slider
+  // slider
   slidesContainer.innerHTML = "";
   if (item.rulers && item.rulers.length) {
     item.rulers.forEach(r => {
       const s = document.createElement("div");
       s.className = "slide";
       s.innerHTML = `
-        <img src="../images/rulers/${r.image}" alt="${r.name}">
+        <img src="../../images/rulers/${r.image}" alt="${r.name}">
         <h4>${r.name}</h4>
         <p>${r.description}</p>
       `;
@@ -75,7 +76,7 @@ function openModal(item) {
     });
   }
 
-  // Full page link
+  // full page link
   if (item.page) {
     openPageBtn.href = item.page;
     openPageBtn.classList.remove("btn-hidden");
@@ -96,7 +97,6 @@ function closeModal() {
   mImg.src = "";
 }
 
-// SLIDER
 function updateSlider() {
   slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
@@ -116,6 +116,4 @@ modal.addEventListener("click", e => {
 });
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") closeModal();
-  if (e.key === "ArrowRight") document.querySelector(".next").click();
-  if (e.key === "ArrowLeft") document.querySelector(".prev").click();
 });
