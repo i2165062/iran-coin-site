@@ -1,0 +1,83 @@
+[
+  {
+    "key": "achaemenid",
+    "title": "Achaemenid Empire",
+    "era": "550–330 BCE",
+    "capital": "Persepolis • Susa • Pasargadae",
+    "summary": "The first Persian Empire, founded by Cyrus the Great.",
+    "page": "../pages/Achaemenid-Dynasty.html",
+    "dataPath": "../assets/data/rulers/achaemenid.json"
+  },
+  {
+    "key": "parthian",
+    "title": "Parthian Empire",
+    "era": "247 BCE–224 CE",
+    "capital": "Ctesiphon • Nisa",
+    "summary": "Arsacid dynasty; masters of cavalry warfare.",
+    "page": "../pages/Parthian-Dynasty.html",
+    "dataPath": "../assets/data/rulers/parthian.json"
+  },
+  {
+    "key": "sasanian",
+    "title": "Sasanian Empire",
+    "era": "224–651 CE",
+    "capital": "Ctesiphon",
+    "summary": "Last great pre-Islamic Persian empire.",
+    "page": "../pages/Sasanian-Dynasty.html",
+    "dataPath": "../assets/data/rulers/sasanian.json"
+  },
+  {
+    "key": "safavid",
+    "title": "Safavid Dynasty",
+    "era": "1501–1736",
+    "capital": "Tabriz • Qazvin • Isfahan",
+    "summary": "Established Twelver Shi'ism; cultural renaissance.",
+    "page": "../pages/Safavid-Dynasty.html",
+    "dataPath": "../assets/data/rulers/safavid.json"
+  },
+  {
+    "key": "afsharid",
+    "title": "Afsharid Dynasty",
+    "era": "1736–1796",
+    "capital": "Mashhad",
+    "summary": "Nader Shah’s military revival.",
+    "page": "../pages/Afsharid-Dynasty.html",
+    "dataPath": "../assets/data/rulers/afsharid.json"
+  },
+  {
+    "key": "zand",
+    "title": "Zand Dynasty",
+    "era": "1751–1794",
+    "capital": "Shiraz",
+    "summary": "Just rule of Karim Khan; arts and trade.",
+    "page": "../pages/Zand-Dynasty.html",
+    "dataPath": "../assets/data/rulers/zand.json"
+  },
+  {
+    "key": "qajar",
+    "title": "Qajar Dynasty",
+    "era": "1794–1925",
+    "capital": "Tehran",
+    "summary": "Modernization attempts and foreign pressures.",
+    "page": "../pages/Qajar-Dynasty.html",
+    "dataPath": "../assets/data/rulers/qajar.json"
+  },
+  {
+    "key": "pahlavi",
+    "title": "Pahlavi Dynasty",
+    "era": "1925–1979",
+    "capital": "Tehran",
+    "summary": "State-building and rapid modernization.",
+    "page": "../pages/Pahlavi-Dynasty.html",
+    "dataPath": "../assets/data/rulers/pahlavi.json"
+  },
+  {
+    "key": "islamic-republic",
+    "title": "Islamic Republic of Iran",
+    "era": "1979–Present",
+    "capital": "Tehran",
+    "summary": "Theocratic–republican system post-1979.",
+    "page": "../pages/Islamic-Republic-of-Iran.html",
+    "dataPath": "../assets/data/rulers/islamic-republic.json"
+  }
+]
