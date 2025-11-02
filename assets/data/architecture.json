@@ -41,7 +41,6 @@
     ],
     "category": "ancient"
   },
-
   {
     "key": "sheikh-lotfollah",
     "title": "Sheikh Lotfollah Mosque",
@@ -84,7 +83,6 @@
     ],
     "category": "islamic"
   },
-
   {
     "key": "golestan-palace",
     "title": "Golestan Palace",
@@ -113,7 +111,6 @@
     ],
     "category": "qajar"
   },
-
   {
     "key": "yazd-windcatcher",
     "title": "Windcatchers of Yazd",
@@ -142,19 +139,4 @@
     ],
     "category": "regional"
   }
-
-  /* 
-   👇 به‌سادگی موارد بعدی را اضافه کن:
-   {
-     "key": "shushtar-hydraulic-system",
-     "title": "Shushtar Historical Hydraulic System",
-     "era": "Sassanian foundations / later",
-     "location": "Khuzestan",
-     "style": "Hydraulic industrial architecture",
-     "materials": "Stone, brick",
-     "summary": "Integrated dams, bridges, mills — a UNESCO marvel.",
-     "facts": ["Complex water management network."],
-     "category": "regional"
-   }
-  */
 ]
