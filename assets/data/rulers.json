@@ -1,0 +1,102 @@
+[
+  {
+    "key": "achaemenid",
+    "title": "Achaemenid Empire",
+    "era": "550–330 BCE",
+    "capital": "Persepolis, Susa, Pasargadae",
+    "summary": "The first Persian Empire, founded by Cyrus the Great, spanning from the Indus Valley to the Aegean Sea.",
+    "facts": ["Introduced satrapy administration system.", "Built the Royal Road network.", "Encouraged cultural and religious tolerance."],
+    "page": "../pages/Achaemenid-Dynasty.html",
+    "rulers": [
+      {"name": "Cyrus the Great", "image": "achaemenid-cyrus.png", "description": "Founder and unifier of the Persian Empire."},
+      {"name": "Darius I", "image": "achaemenid-darius.png", "description": "Organizer and builder of Persepolis."},
+      {"name": "Xerxes I", "image": "achaemenid-xerxes.png", "description": "Led the empire during the Greco-Persian wars."}
+    ]
+  },
+  {
+    "key": "parthian",
+    "title": "Parthian Empire",
+    "era": "247 BCE–224 CE",
+    "capital": "Ctesiphon, Nisa",
+    "summary": "Powerful empire blending Greek and Persian traditions, famous for its cavalry warfare.",
+    "facts": ["Defeated Romans at the Battle of Carrhae.", "Adopted Greek cultural elements."],
+    "page": "../pages/Parthian-Dynasty.html",
+    "rulers": [
+      {"name": "Mithridates I", "image": "parthian-mithridates.png", "description": "Expanded Parthia into an empire."},
+      {"name": "Orodes II", "image": "parthian-orodes.png", "description": "Victor of the Battle of Carrhae."}
+    ]
+  },
+  {
+    "key": "sasanian",
+    "title": "Sasanian Empire",
+    "era": "224–651 CE",
+    "capital": "Ctesiphon",
+    "summary": "Last great pre-Islamic Persian empire, known for cultural and architectural achievements.",
+    "facts": ["Rivaled the Byzantine Empire.", "Created intricate rock reliefs."],
+    "page": "../pages/Sasanian-Dynasty.html",
+    "rulers": [
+      {"name": "Ardashir I", "image": "sasanian-ardashir.png", "description": "Founder of the Sasanian dynasty."},
+      {"name": "Khosrow I", "image": "sasanian-khosrow.png", "description": "Known for justice and prosperity."}
+    ]
+  },
+  {
+    "key": "safavid",
+    "title": "Safavid Dynasty",
+    "era": "1501–1736",
+    "capital": "Isfahan, Tabriz",
+    "summary": "Established Shi‘ism as state religion and led a cultural golden age.",
+    "facts": ["Built Naqsh-e Jahan Square.", "Centralized power across Iran."],
+    "page": "../pages/Safavid-Dynasty.html",
+    "rulers": [{"name": "Shah Abbas I", "image": "safavid-abbas.png", "description": "Patron of Isfahan’s artistic renaissance."}]
+  },
+  {
+    "key": "afsharid",
+    "title": "Afsharid Dynasty",
+    "era": "1736–1796",
+    "capital": "Mashhad",
+    "summary": "Military-driven empire under Nader Shah, known for expansion campaigns.",
+    "facts": ["Invaded India and captured Delhi.", "Restored military prestige."],
+    "page": "../pages/Afsharid-Dynasty.html",
+    "rulers": [{"name": "Nader Shah", "image": "afsharid-nader.png", "description": "One of history’s greatest military strategists."}]
+  },
+  {
+    "key": "zand",
+    "title": "Zand Dynasty",
+    "era": "1751–1794",
+    "capital": "Shiraz",
+    "summary": "Era of peace and artistic growth in Shiraz under Karim Khan Zand.",
+    "facts": ["Built Karim Khan Citadel.", "Encouraged trade and craftsmanship."],
+    "page": "../pages/Zand-Dynasty.html",
+    "rulers": [{"name": "Karim Khan Zand", "image": "zand-karim.png", "description": "Founder of the Zand dynasty, known for justice and prosperity."}]
+  },
+  {
+    "key": "qajar",
+    "title": "Qajar Dynasty",
+    "era": "1794–1925",
+    "capital": "Tehran",
+    "summary": "19th-century monarchy navigating modernization and foreign influence.",
+    "facts": ["Opened Iran to the West.", "Established first modern reforms."],
+    "page": "../pages/Qajar-Dynasty.html",
+    "rulers": [{"name": "Naser al-Din Shah", "image": "qajar-naser.png", "description": "Modernized Iran and initiated reforms."}]
+  },
+  {
+    "key": "pahlavi",
+    "title": "Pahlavi Dynasty",
+    "era": "1925–1979",
+    "capital": "Tehran",
+    "summary": "Modernization era emphasizing education and industry.",
+    "facts": ["Industrial reforms.", "Ended with the 1979 Revolution."],
+    "page": "../pages/Pahlavi-Dynasty.html",
+    "rulers": [{"name": "Reza Shah", "image": "pahlavi-reza.png", "description": "Founder of the modern Iranian state."}]
+  },
+  {
+    "key": "islamic-republic",
+    "title": "Islamic Republic of Iran",
+    "era": "1979–Present",
+    "capital": "Tehran",
+    "summary": "Theocratic-republic system formed after the 1979 Revolution.",
+    "facts": ["Combines religion and state governance.", "Post-revolutionary political identity."],
+    "page": "../pages/Islamic-Republic-of-Iran.html",
+    "rulers": [{"name": "Supreme Leaders", "image": "republic-leader.png", "description": "Heads of state since 1979 revolution."}]
+  }
+]
