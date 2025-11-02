@@ -1,59 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" data-section="rulers">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Governments & Dynasties of Iran</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rulers & Governments of Iran</title>
   <link rel="stylesheet" href="../assets/css/rulers.css" />
 </head>
-<body class="theme-dark">
-
-  <!-- ===== HERO SECTION ===== -->
-  <header class="page-hero">
-    <div class="hero-inner">
-      <h1>GOVERNMENTS & DYNASTIES OF IRAN</h1>
-      <p class="subtitle">Explore the rulers of Iran from the Achaemenids to the present day.</p>
-      <div class="divider"></div>
-    </div>
-  </header>
-
-  <!-- ===== DYNASTY GRID ===== -->
+<body>
   <main class="container">
-    <section id="rulersGrid" class="grid" aria-live="polite"></section>
+    <h1>GOVERNMENTS & DYNASTIES OF IRAN</h1>
+    <p class="subtitle">Explore the rulers of Iran from the Achaemenids to the present day.</p>
+    <section id="rulersGrid" class="rulers-grid" aria-live="polite"></section>
   </main>
 
-  <!-- ===== MODAL SECTION ===== -->
-  <div id="rulerModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <!-- Modal -->
+  <div class="modal" id="rulerModal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal__overlay" data-close-modal></div>
     <div class="modal__dialog">
-      <button class="modal__close" aria-label="Close" data-close-modal>&times;</button>
-
-      <div class="modal__media">
-        <img id="modalImage" alt="" loading="lazy" />
-      </div>
+      <button class="modal__close" data-close-modal aria-label="Close">×</button>
 
       <div class="modal__content">
+        <img id="modalImage" class="modal__image" alt="" loading="lazy" />
         <h2 id="modalTitle"></h2>
-        <p id="modalSummary" class="lead"></p>
+        <p id="modalSummary" class="modal__summary"></p>
 
         <div class="meta">
-          <div><strong>Era:</strong> <span id="metaEra"></span></div>
-          <div><strong>Capital:</strong> <span id="metaCapital"></span></div>
+          <span><strong>Era:</strong> <span id="metaEra"></span></span>
+          <span><strong>Capital:</strong> <span id="metaCapital"></span></span>
         </div>
 
-        <!-- SLIDER -->
-        <div class="ruler-slider" id="rulerSlider">
-          <button class="slide-btn prev" aria-label="Previous ruler">&#10094;</button>
-          <div class="slides" id="slides"></div>
-          <button class="slide-btn next" aria-label="Next ruler">&#10095;</button>
+        <div class="modal__map" id="modalMapContainer">
+          <img id="modalMap" alt="Dynasty map" loading="lazy" />
         </div>
 
-        <details class="more"><summary>Key Facts</summary><ul id="modalFacts"></ul></details>
-
-        <!-- FULL PAGE LINK -->
-        <div class="modal__actions">
-          <a id="openFullPage" class="btn-primary" href="#" target="_blank">Open full page</a>
+        <div id="slides" class="slides"></div>
+        <div class="slider-nav">
+          <button class="prev" aria-label="Previous ruler">‹</button>
+          <button class="next" aria-label="Next ruler">›</button>
         </div>
+
+        <h3>Key Facts</h3>
+        <ul id="modalFacts"></ul>
+
+        <a id="openFullPage" class="open-page-btn" target="_blank" rel="noopener">Open full page</a>
       </div>
     </div>
   </div>
