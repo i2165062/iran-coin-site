@@ -1,11 +1,18 @@
 /*
-📸 IMAGE STRUCTURE REMINDER
-Images auto-load from "key":
-  Card thumbnail:  ../images/architecture/<key>-2.png
-  Modal (detail):  ../images/architecture/<key>-1.png
-No paths in JSON needed—just add images with the correct filenames.
+📸 IMAGE STRUCTURE REMINDER:
+Each architecture item uses its "key" field to automatically load images:
+  - Card thumbnail:  ../images/architecture/<key>-2.png
+  - Modal (detail view):  ../images/architecture/<key>-1.png
+So you only need to add images with correct filenames — no need to edit paths.
 */
 
+// ─────────────────────────────────────────────
+// 🔧 CONFIGURATION
+// این مسیر برای GitHub Pages ایمن است (همیشه از root می‌خواند)
+const JSON_PATH = '/assets/data/architecture.json';
+
+// ─────────────────────────────────────────────
+// 📦 ELEMENT REFERENCES
 const ROOT = document.documentElement; // <html data-category="...">
 const CATEGORY = ROOT.getAttribute('data-category'); // ancient | islamic | qajar | regional
 const grid = document.getElementById('architectureGrid');
@@ -20,22 +27,34 @@ const mStyle = document.getElementById('metaStyle');
 const mMat = document.getElementById('metaMaterials');
 const mFacts = document.getElementById('modalFacts');
 
-// لود داده‌ها
-fetch('../assets/data/architecture.json')
-  .then(r => r.json())
-  .then(all => {
-    const data = all.filter(x => x.category === CATEGORY);
-    renderList(data);
+// ─────────────────────────────────────────────
+// 🚀 LOAD JSON DATA
+fetch(JSON_PATH)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (!Array.isArray(data)) throw new Error('Invalid JSON format');
+    const filtered = data.filter(item => item.category === CATEGORY);
+    renderList(filtered);
   })
   .catch(err => {
-    console.error('Error loading architecture.json:', err);
-    grid.innerHTML = `<p class="subtitle">Cannot load data. Please check <code>assets/data/architecture.json</code>.</p>`;
+    console.error('❌ Error loading architecture.json:', err);
+    grid.innerHTML = `
+      <p class="subtitle" style="text-align:center;color:#c55;">
+        Cannot load data. Please check <code>${JSON_PATH}</code><br>
+        <small>${err.message}</small>
+      </p>`;
   });
 
-// رندر کارت‌ها
-function renderList(items){
-  if(!items.length){
-    grid.innerHTML = `<p class="subtitle">No items yet for this category. Coming soon.</p>`;
+// ─────────────────────────────────────────────
+// 🧱 RENDER ARCHITECTURE GRID
+function renderList(items) {
+  if (!items.length) {
+    grid.innerHTML = `<p class="subtitle" style="text-align:center;">No items yet for this category. Coming soon.</p>`;
     return;
   }
 
@@ -45,21 +64,19 @@ function renderList(items){
     el.innerHTML = `
       <img class="card__img" src="../images/architecture/${item.key}-2.png" alt="${item.title}" loading="lazy">
       <div class="card__title">${item.title}</div>
-      <div class="card__tag">${(item.style||'').split(' ')[0]||'—'}</div>
+      <div class="card__tag">${(item.style || '').split(' ')[0] || '—'}</div>
     `;
     el.addEventListener('click', () => openModal(item));
-    el.addEventListener('keydown', e => {
-      if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openModal(item); }
-    });
     el.tabIndex = 0;
-    el.setAttribute('role','button');
+    el.setAttribute('role', 'button');
     el.setAttribute('aria-label', item.title);
     grid.appendChild(el);
   });
 }
 
-// مودال
-function openModal(item){
+// ─────────────────────────────────────────────
+// 🎬 MODAL OPEN / CLOSE
+function openModal(item) {
   mImg.src = `../images/architecture/${item.key}-1.png`;
   mImg.alt = item.title;
   mTitle.textContent = item.title;
@@ -69,27 +86,33 @@ function openModal(item){
   mStyle.textContent = item.style || '—';
   mMat.textContent = item.materials || '—';
 
+  // List of facts
   mFacts.innerHTML = '';
-  (item.facts||[]).forEach(f=>{
+  (item.facts || []).forEach(fact => {
     const li = document.createElement('li');
-    li.textContent = f;
+    li.textContent = fact;
     mFacts.appendChild(li);
   });
 
-  modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
 
-function closeModal(){
-  modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-  mImg.src='';
+function closeModal() {
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  mImg.src = '';
 }
 
+// Close modal on overlay or Escape
 modal.addEventListener('click', e => {
-  if(e.target.hasAttribute('data-close-modal')) closeModal();
+  if (e.target.hasAttribute('data-close-modal')) closeModal();
 });
 document.addEventListener('keydown', e => {
-  if(e.key==='Escape' && modal.getAttribute('aria-hidden')==='false') closeModal();
+  if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
 });
 document.querySelectorAll('[data-close-modal]').forEach(btn => btn.addEventListener('click', closeModal));
+
+// ─────────────────────────────────────────────
+// ✅ END OF FILE
+console.log(`📁 Architecture viewer initialized for category: ${CATEGORY}`);
