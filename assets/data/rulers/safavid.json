@@ -1,0 +1,19 @@
+{
+  "map": "../images/maps/safavid-map.png",
+  "facts": [
+    "Established Twelver Shi'ism as state religion.",
+    "Capital moved from Tabriz to Qazvin and then Isfahan.",
+    "Major arts: tilework, calligraphy, urban planning."
+  ],
+  "rulers": [
+    { "name": "Ismail I", "image": "safavid-ismail1.png", "description": "Founder of the Safavid state." },
+    { "name": "Tahmasp I", "image": "safavid-tahmasp1.png", "description": "Longest reign; consolidation and arts." },
+    { "name": "Ismail II", "image": "safavid-ismail2.png", "description": "Short and tumultuous reign." },
+    { "name": "Mohammad Khodabanda", "image": "safavid-khodabanda.png", "description": "Precursor to Abbas's reforms." },
+    { "name": "Abbas I (the Great)", "image": "safavid-abbas1.png", "description": "Military and urban reforms; Isfahan flourishing." },
+    { "name": "Safi I", "image": "safavid-safi1.png", "description": "Court intrigues; continuity after Abbas." },
+    { "name": "Abbas II", "image": "safavid-abbas2.png", "description": "Relative stability and culture." },
+    { "name": "Suleiman I", "image": "safavid-suleiman1.png", "description": "Later court luxury and decline." },
+    { "name": "Sultan Husayn", "image": "safavid-husayn.png", "description": "Fall of Isfahan to Afghans; end of dynasty." }
+  ]
+}
