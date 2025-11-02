@@ -1,0 +1,41 @@
+{
+  "map": "../images/maps/sasanian-map.png",
+  "facts": [
+    "Rival of the Roman/Byzantine Empire for over four centuries.",
+    "Major achievements in statecraft, architecture, and literature.",
+    "Zoroastrianism as state religion; complex court protocol."
+  ],
+  "rulers": [
+    { "name": "Ardashir I", "image": "sasanian-ardashir1.png", "description": "Founder; defeated the last Parthian king Artabanus IV." },
+    { "name": "Shapur I", "image": "sasanian-shapur1.png", "description": "Captured Roman Emperor Valerian; built Bishapur." },
+    { "name": "Hormizd I", "image": "sasanian-hormizd1.png", "description": "Short, stable reign." },
+    { "name": "Bahram I", "image": "sasanian-bahram1.png", "description": "Religious policies against Manichaeism." },
+    { "name": "Bahram II", "image": "sasanian-bahram2.png", "description": "Known for rich rock reliefs." },
+    { "name": "Bahram III", "image": "sasanian-bahram3.png", "description": "Briefly reigned; deposed by Narseh." },
+    { "name": "Narseh", "image": "sasanian-narseh.png", "description": "Restored dynastic claims; Paikuli inscription." },
+    { "name": "Hormizd II", "image": "sasanian-hormizd2.png", "description": "Dynastic turmoil posthumously." },
+    { "name": "Adur Narseh", "image": "sasanian-adur-narseh.png", "description": "Short reign amidst succession crisis." },
+    { "name": "Shapur II (The Great)", "image": "sasanian-shapur2.png", "description": "Longest-reigning Sasanian; wars with Rome; internal reforms." },
+    { "name": "Ardashir II", "image": "sasanian-ardashir2.png", "description": "Placed by nobles after Shapur II." },
+    { "name": "Shapur III", "image": "sasanian-shapur3.png", "description": "Relative peace with Rome." },
+    { "name": "Bahram IV", "image": "sasanian-bahram4.png", "description": "Known as Kermanshah founder in tradition." },
+    { "name": "Yazdegerd I", "image": "sasanian-yazdegerd1.png", "description": "Ambivalent sources; diplomacy with Rome." },
+    { "name": "Bahram V (Gur)", "image": "sasanian-bahram5.png", "description": "Famed in Persian literature; hunt and romance tales." },
+    { "name": "Yazdegerd II", "image": "sasanian-yazdegerd2.png", "description": "Campaigns against nomads and Byzantium." },
+    { "name": "Hormizd III", "image": "sasanian-hormizd3.png", "description": "Civil war with Peroz I." },
+    { "name": "Peroz I", "image": "sasanian-peroz1.png", "description": "Fell in war with Hephthalites." },
+    { "name": "Balash (Valash)", "image": "sasanian-balash.png", "description": "Brief reign after Peroz." },
+    { "name": "Kavad I (1st reign)", "image": "sasanian-kavad1a.png", "description": "Supported Mazdakite reforms; deposed." },
+    { "name": "Jamasp", "image": "sasanian-jamasp.png", "description": "Interim ruler." },
+    { "name": "Kavad I (2nd reign)", "image": "sasanian-kavad1b.png", "description": "Restored; administrative reforms." },
+    { "name": "Khosrow I (Anushiravan)", "image": "sasanian-khosrow1.png", "description": "Golden age of Sasanian administration and culture." },
+    { "name": "Hormizd IV", "image": "sasanian-hormizd4.png", "description": "Political tensions with nobility and clergy." },
+    { "name": "Khosrow II (Parviz)", "image": "sasanian-khosrow2.png", "description": "Zenith then collapse during Byzantine wars." },
+    { "name": "Kavadh II (Shiroe)", "image": "sasanian-kavadh2.png", "description": "Concluded peace; plague era." },
+    { "name": "Ardashir III", "image": "sasanian-ardashir3-late.png", "description": "Child king amid chaos." },
+    { "name": "Shahrbaraz", "image": "sasanian-shahrbaraz.png", "description": "General who seized the throne briefly." },
+    { "name": "Boran", "image": "sasanian-boran.png", "description": "Queen; attempted reforms and justice." },
+    { "name": "Azarmidokht", "image": "sasanian-azarmidokht.png", "description": "Queen amid noble conflicts." },
+    { "name": "Yazdegerd III", "image": "sasanian-yazdegerd3.png", "description": "Last Sasanian king; Arab conquests end the dynasty." }
+  ]
+}
