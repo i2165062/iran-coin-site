@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-section="rulers">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rulers & Governments of Iran</title>
+  <link rel="stylesheet" href="../assets/css/rulers.css" />
+</head>
+<body class="theme-dark">
+
+  <!-- ===== HERO SECTION ===== -->
+  <header class="page-hero">
+    <div class="hero-inner">
+      <h1>GOVERNMENTS & DYNASTIES OF IRAN</h1>
+      <p class="subtitle">Explore the rulers of Iran from the Achaemenids to the present day.</p>
+      <div class="divider"></div>
+    </div>
+  </header>
+
+  <!-- ===== DYNASTY GRID ===== -->
+  <main class="container">
+    <section id="rulersGrid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <!-- ===== MODAL SECTION ===== -->
+  <div id="rulerModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog">
+      <button class="modal__close" aria-label="Close" data-close-modal>&times;</button>
+
+      <div class="modal__media">
+        <img id="modalImage" alt="" loading="lazy" />
+      </div>
+
+      <div class="modal__content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalSummary" class="lead"></p>
+
+        <div class="meta">
+          <div><strong>Era:</strong> <span id="metaEra"></span></div>
+          <div><strong>Capital:</strong> <span id="metaCapital"></span></div>
+        </div>
+
+        <!-- SLIDER -->
+        <div class="ruler-slider" id="rulerSlider">
+          <button class="slide-btn prev" aria-label="Previous ruler">&#10094;</button>
+          <div class="slides" id="slides"></div>
+          <button class="slide-btn next" aria-label="Next ruler">&#10095;</button>
+        </div>
+
+        <details class="more"><summary>Key Facts</summary><ul id="modalFacts"></ul></details>
+
+        <!-- FULL PAGE LINK -->
+        <div class="modal__actions">
+          <a id="openFullPage" class="btn-primary" href="#" target="_blank">Open full page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/rulers.js" defer></script>
+</body>
+</html>
