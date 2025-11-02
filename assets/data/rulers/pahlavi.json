@@ -1,0 +1,11 @@
+{
+  "map": "../images/maps/pahlavi-map.png",
+  "facts": [
+    "Centralization, secularization, infrastructure expansion.",
+    "Oil politics and global alignment shaped the era."
+  ],
+  "rulers": [
+    { "name": "Reza Shah Pahlavi", "image": "pahlavi-reza.png", "description": "Founder of the dynasty; state-building and modernization." },
+    { "name": "Mohammad Reza Shah Pahlavi", "image": "pahlavi-mohammadreza.png", "description": "White Revolution; ended by the 1979 Revolution." }
+  ]
+}
