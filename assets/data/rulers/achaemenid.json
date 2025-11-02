@@ -1,0 +1,21 @@
+{
+  "map": "../images/maps/achaemenid-map.png",
+  "facts": [
+    "Satrapy (province) system with standardized taxation.",
+    "Royal Road enabled rapid communication across the empire.",
+    "Monumental complexes: Pasargadae, Persepolis, Susa."
+  ],
+  "rulers": [
+    { "name": "Cyrus II (The Great)", "image": "achaemenid-cyrus.png", "description": "Founder; united Iranian tribes; issued the Cyrus Cylinder." },
+    { "name": "Cambyses II", "image": "achaemenid-cambyses.png", "description": "Conquered Egypt and expanded imperial frontiers." },
+    { "name": "Bardiya (Smerdis)", "image": "achaemenid-bardiya.png", "description": "Contested ruler; authenticity debated in sources." },
+    { "name": "Darius I (The Great)", "image": "achaemenid-darius.png", "description": "Administrative reforms; built Persepolis; standardized coinage." },
+    { "name": "Xerxes I", "image": "achaemenid-xerxes.png", "description": "Greco-Persian Wars; monumental building in Persepolis." },
+    { "name": "Artaxerxes I", "image": "achaemenid-artaxerxes1.png", "description": "Maintained imperial stability after Xerxes." },
+    { "name": "Darius II (Nothus)", "image": "achaemenid-darius2.png", "description": "Period of internal court intrigues." },
+    { "name": "Artaxerxes II (Mnemon)", "image": "achaemenid-artaxerxes2.png", "description": "Longest reigning Achaemenid king; diplomacy with Greek world." },
+    { "name": "Artaxerxes III (Ochus)", "image": "achaemenid-artaxerxes3.png", "description": "Reasserted control over Egypt; strong centralization." },
+    { "name": "Arses", "image": "achaemenid-arses.png", "description": "Short reign preceding the fall." },
+    { "name": "Darius III", "image": "achaemenid-darius3.png", "description": "Defeated by Alexander the Great; end of the empire." }
+  ]
+}
