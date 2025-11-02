@@ -1,0 +1,41 @@
+{
+  "map": "../images/maps/parthian-map.png",
+  "facts": [
+    "Arsacid dynasty balanced Hellenistic and Iranian traditions.",
+    "Famed for horse-archers and the 'Parthian shot'.",
+    "Rivalry and diplomacy with Rome for centuries."
+  ],
+  "rulers": [
+    { "name": "Arsaces I", "image": "parthian-arsaces1.png", "description": "Founder of the Arsacid (Parthian) dynasty." },
+    { "name": "Arsaces II", "image": "parthian-arsaces2.png", "description": "Early consolidation of Parthian rule." },
+    { "name": "Arsaces III (Priapatius)", "image": "parthian-priapatius.png", "description": "Stabilized succession." },
+    { "name": "Phriapatius (Arsaces IV)", "image": "parthian-phriapatius.png", "description": "Strengthened central authority." },
+    { "name": "Mithridates I (Arsaces V)", "image": "parthian-mithridates1.png", "description": "Greatest expansion; captured Seleucid territories." },
+    { "name": "Phraates II", "image": "parthian-phraates2.png", "description": "Conflict with Scythians; Seleucid wars." },
+    { "name": "Artabanus I", "image": "parthian-artabanus1.png", "description": "Short reign amid external pressures." },
+    { "name": "Mithridates II (The Great)", "image": "parthian-mithridates2.png", "description": "Diplomacy with Rome and Han China; zenith of Parthian power." },
+    { "name": "Gotarzes I", "image": "parthian-gotarzes1.png", "description": "Intermittent control amid dynastic strife." },
+    { "name": "Orodes I", "image": "parthian-orodes1.png", "description": "Maintained the realm during transitions." },
+    { "name": "Mithridates III", "image": "parthian-mithridates3.png", "description": "Period of internal contestation." },
+    { "name": "Orodes II", "image": "parthian-orodes2.png", "description": "Defeated Crassus at Carrhae (53 BCE)." },
+    { "name": "Phraates IV", "image": "parthian-phraates4.png", "description": "Treaty with Augustus; Roman standards returned." },
+    { "name": "Tiridates II", "image": "parthian-tiridates2.png", "description": "Usurper backed by Rome; brief rule." },
+    { "name": "Phraataces (Phraates V)", "image": "parthian-phraataces.png", "description": "Co-ruled with Musa." },
+    { "name": "Orodes III", "image": "parthian-orodes3.png", "description": "Briefly held the throne." },
+    { "name": "Vonones I", "image": "parthian-vonones1.png", "description": "Roman-influenced claimant; later king of Armenia." },
+    { "name": "Artabanus II", "image": "parthian-artabanus2.png", "description": "Long turbulent reign; Roman–Parthian politics." },
+    { "name": "Vardanes I", "image": "parthian-vardanes1.png", "description": "Civil war against Gotarzes II." },
+    { "name": "Gotarzes II", "image": "parthian-gotarzes2.png", "description": "Continued internal conflict." },
+    { "name": "Vonones II", "image": "parthian-vonones2.png", "description": "Very short reign." },
+    { "name": "Vologases I", "image": "parthian-vologases1.png", "description": "Established Arsacid rule in Armenia." },
+    { "name": "Pacorus II", "image": "parthian-pacorus2.png", "description": "Prolonged rule with coinage reforms." },
+    { "name": "Vologases II", "image": "parthian-vologases2.png", "description": "Contested authority." },
+    { "name": "Vologases III", "image": "parthian-vologases3.png", "description": "Western and eastern challenges." },
+    { "name": "Osroes I", "image": "parthian-osroes1.png", "description": "War with Trajan; Roman occupation of Ctesiphon." },
+    { "name": "Parthamaspates", "image": "parthian-parthamaspates.png", "description": "Roman client king; later ruler in Osroene." },
+    { "name": "Vologases IV", "image": "parthian-vologases4.png", "description": "Conflicts with Rome; captured by Avidius Cassius." },
+    { "name": "Vologases V", "image": "parthian-vologases5.png", "description": "Great King and King of Kings in coins." },
+    { "name": "Vologases VI", "image": "parthian-vologases6.png", "description": "Struggle with Artabanus IV." },
+    { "name": "Artabanus IV", "image": "parthian-artabanus4.png", "description": "Last Parthian king; defeated by Ardashir I (Sasanian)." }
+  ]
+}
