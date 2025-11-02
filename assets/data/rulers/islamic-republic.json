@@ -1,0 +1,10 @@
+{
+  "map": "../images/maps/islamicrepublic-map.png",
+  "facts": [
+    "Post-1979 system combining clerical leadership with republican institutions."
+  ],
+  "rulers": [
+    { "name": "Ruhollah Khomeini (Supreme Leader)", "image": "republic-khomeini.png", "description": "1979–1989." },
+    { "name": "Ali Khamenei (Supreme Leader)", "image": "republic-khamenei.png", "description": "1989–present." }
+  ]
+}
