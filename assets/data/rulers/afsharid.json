@@ -1,0 +1,13 @@
+{
+  "map": "../images/maps/afsharid-map.png",
+  "facts": [
+    "Military empire under Nader Shah; brief but expansive.",
+    "Campaigns in India, Caucasus, and Central Asia."
+  ],
+  "rulers": [
+    { "name": "Nader Shah Afshar", "image": "afsharid-nader.png", "description": "Founder; renowned military commander." },
+    { "name": "Adil Shah", "image": "afsharid-adil.png", "description": "Nephew of Nader; short reign." },
+    { "name": "Ebrahim Afshar", "image": "afsharid-ebrahim.png", "description": "Brief rule amid chaos." },
+    { "name": "Shahrokh Shah", "image": "afsharid-shahrokh.png", "description": "Timurid-descended; ruled in Khorasan." }
+  ]
+}
