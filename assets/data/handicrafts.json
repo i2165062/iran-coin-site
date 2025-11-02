@@ -1,0 +1,173 @@
+[
+  {
+    "key": "khatam",
+    "title": "Khatam Kari (Inlay Work)",
+    "region": "Isfahan, Shiraz",
+    "materials": "Wood (ebony, walnut), brass, bone",
+    "lineage": "Safavid court craftsmanship",
+    "technique": "Micro-triangle marquetry assembled into star patterns",
+    "summary": "Delicate Persian marquetry where tiny wood, bone, and metal triangles form intricate geometric surfaces.",
+    "facts": [
+      "High-end boxes, frames, Qur'an stands, furniture.",
+      "Each cm² may include hundreds of pieces."
+    ],
+    "category": "wood-metal"
+  },
+  {
+    "key": "ghalamzani",
+    "title": "Ghalamzani (Metal Engraving)",
+    "region": "Isfahan",
+    "materials": "Copper, brass, silver",
+    "lineage": "Safavid to Qajar bazaar guilds",
+    "technique": "Chisel-and-hammer chasing, repoussé reliefs",
+    "summary": "Engraving and relief-work on metal vessels with floral, arabesque, and epic scenes.",
+    "facts": [
+      "Combined repoussé (from back) and chasing (front).",
+      "Often oxidized to dramatize relief."
+    ],
+    "category": "wood-metal"
+  },
+  {
+    "key": "monabbat",
+    "title": "Monabbat (Wood Carving)",
+    "region": "Hamedan, Isfahan",
+    "materials": "Walnut, pear, beech",
+    "lineage": "Traditional carpentry workshops",
+    "technique": "Relief carving with gouges; arabesque and calligraphy patterns",
+    "summary": "Expressive Persian wood carving that blends floral arabesques with calligraphic themes.",
+    "facts": [
+      "Used in doors, panels, furniture.",
+      "Oil finish to reveal grain depth."
+    ],
+    "category": "wood-metal"
+  },
+
+  {
+    "key": "persian-carpet",
+    "title": "Persian Carpet (Farsh)",
+    "region": "Kashan, Tabriz, Kerman, Qom",
+    "materials": "Wool, silk, natural dyes",
+    "lineage": "Urban court and tribal workshops",
+    "technique": "Asymmetric (Persian) knot; complex medallion & boteh motifs",
+    "summary": "World-renowned carpets with refined knotting, rich palettes, and symbolic motifs.",
+    "facts": [
+      "Knot density from 120 to 1000+ KPSI in silk pieces.",
+      "UNESCO-listed as intangible heritage."
+    ],
+    "category": "textile"
+  },
+  {
+    "key": "kilim",
+    "title": "Kilim (Gelim)",
+    "region": "Kurdistan, Qashqai, Baluch",
+    "materials": "Wool, goat hair",
+    "lineage": "Nomadic weaving traditions",
+    "technique": "Flatweave tapestry; slit and interlocking weaves",
+    "summary": "Flatwoven rugs with bold tribal geometry and portable utility.",
+    "facts": [
+      "Reversible designs with minimal pile.",
+      "Vegetal-dyed earthy palettes."
+    ],
+    "category": "textile"
+  },
+  {
+    "key": "termeh",
+    "title": "Termeh (Luxury Brocade)",
+    "region": "Yazd, Kerman",
+    "materials": "Silk, wool, gold thread",
+    "lineage": "Safavid royal ateliers",
+    "technique": "Hand-loom brocade with boteh (paisley) motifs",
+    "summary": "Opulent brocade textiles famed for lustrous boteh patterns and ceremonial use.",
+    "facts": [
+      "Traditionally woven on drawlooms.",
+      "Used in tablecloths and ceremonial garments."
+    ],
+    "category": "textile"
+  },
+
+  {
+    "key": "kashi-haft-rang",
+    "title": "Kashi Haft-Rang (Seven-Color Tiles)",
+    "region": "Isfahan, Yazd",
+    "materials": "Clay tiles, colored glaze",
+    "lineage": "Safavid architectural workshops",
+    "technique": "Firing pre-painted tiles with seven signature colors",
+    "summary": "Iconic multi-color tiles used on mosques and palaces; efficient for large murals.",
+    "facts": [
+      "Colors: cobalt, turquoise, white, black, yellow, red, green.",
+      "Allows complex figurative scenes."
+    ],
+    "category": "ceramic"
+  },
+  {
+    "key": "pottery-lajvard",
+    "title": "Lajvardina Pottery",
+    "region": "Kashan",
+    "materials": "Stonepaste, cobalt & gold luster",
+    "lineage": "Ilkhanid era ceramics",
+    "technique": "Cobalt ground with overglaze luster painting",
+    "summary": "Deep blue ground with shimmering golden motifs — rare and museum-grade.",
+    "facts": [
+      "Requires multiple firings for luster.",
+      "Highly collectible in world museums."
+    ],
+    "category": "ceramic"
+  },
+  {
+    "key": "safavid-minaei",
+    "title": "Minaei (Enamel-painted Tiles)",
+    "region": "Rayy, Kashan (historical)",
+    "materials": "Fritware, enamel",
+    "lineage": "Seljuk/Safavid techniques",
+    "technique": "Overglaze enamel painting then refiring",
+    "summary": "Narrative tiles with figures and calligraphy; a jewel of Persian walls.",
+    "facts": [
+      "Historic panels survive in museum collections.",
+      "Bridges pottery and monumental art."
+    ],
+    "category": "ceramic"
+  },
+
+  {
+    "key": "minakari",
+    "title": "Minakari (Enamel on Metal)",
+    "region": "Isfahan",
+    "materials": "Copper/silver base, enamel",
+    "lineage": "Bazaar enamelists around Naqsh-e Jahan",
+    "technique": "Multiple-fire enamel layers on metal vessels",
+    "summary": "Radiant enamel art with floral panels on bowls, plates, and jewelry.",
+    "facts": [
+      "Color depth achieved by sequential firings.",
+      "Paired with ghalamzani outlines."
+    ],
+    "category": "jewelry"
+  },
+  {
+    "key": "firouzeh-koobi",
+    "title": "Firouzeh Koobi (Turquoise Inlay)",
+    "region": "Mashhad, Isfahan",
+    "materials": "Copper/bronze base, Neyshabur turquoise",
+    "lineage": "20th-century innovation refined in Isfahan",
+    "technique": "Setting tiny turquoise chips into mastic on metal surfaces",
+    "summary": "Glittering turquoise mosaic on vases, plates, and jewelry with Persian blue aura.",
+    "facts": [
+      "Uses off-cut turquoise stones from Neyshabur mines.",
+      "Polished to achieve continuous gemstone sheen."
+    ],
+    "category": "jewelry"
+  },
+  {
+    "key": "silverwork-tabriz",
+    "title": "Silverwork (Tabriz School)",
+    "region": "Tabriz",
+    "materials": "Fine silver",
+    "lineage": "Master silversmith guilds",
+    "technique": "Casting, chasing, filigree",
+    "summary": "Intricate silver vessels and jewelry distinguished by clean chase lines.",
+    "facts": [
+      "Often paired with turquoise cabochons.",
+      "High purity silver for bright tone."
+    ],
+    "category": "jewelry"
+  }
+]
