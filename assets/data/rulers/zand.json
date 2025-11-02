@@ -1,0 +1,15 @@
+{
+  "map": "../images/maps/zand-map.png",
+  "facts": [
+    "Era of relative peace; Shiraz as vibrant capital."
+  ],
+  "rulers": [
+    { "name": "Karim Khan Zand", "image": "zand-karim.png", "description": "De facto ruler titled Vakil al-Ra'aya (Advocate of the People)." },
+    { "name": "Abul-Fath Khan", "image": "zand-abulfath.png", "description": "Brief co-rule." },
+    { "name": "Muhammad Ali Khan", "image": "zand-muhammadali.png", "description": "Short reign." },
+    { "name": "Sadiq Khan", "image": "zand-sadiq.png", "description": "Contested leadership in Shiraz." },
+    { "name": "Ali Murad Khan", "image": "zand-alimorad.png", "description": "Power struggle period." },
+    { "name": "Jafar Khan", "image": "zand-jafar.png", "description": "Father of Lotf Ali Khan." },
+    { "name": "Lotf Ali Khan", "image": "zand-lotfali.png", "description": "Last Zand ruler; defeated by Qajars." }
+  ]
+}
