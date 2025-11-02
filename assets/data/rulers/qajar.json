@@ -1,0 +1,16 @@
+{
+  "map": "../images/maps/qajar-map.png",
+  "facts": [
+    "Shift to Tehran; interactions with Russia and Britain.",
+    "Modernization attempts; constitutional revolution begins at the end."
+  ],
+  "rulers": [
+    { "name": "Agha Mohammad Khan Qajar", "image": "qajar-aghamohammad.png", "description": "Founder; unifier through campaigns." },
+    { "name": "Fath-Ali Shah", "image": "qajar-fathali.png", "description": "Wars with Russia; artistic patronage." },
+    { "name": "Mohammad Shah", "image": "qajar-mohammad.png", "description": "Reform attempts; internal challenges." },
+    { "name": "Naser al-Din Shah", "image": "qajar-naser.png", "description": "Long reign; early modernization, photography." },
+    { "name": "Mozaffar ad-Din Shah", "image": "qajar-mozaffar.png", "description": "Granted the Constitution (1906)." },
+    { "name": "Mohammad Ali Shah", "image": "qajar-mohammadali.png", "description": "Opposed the constitution; deposed." },
+    { "name": "Ahmad Shah", "image": "qajar-ahmad.png", "description": "Last Qajar monarch; young ruler during WWI." }
+  ]
+}
