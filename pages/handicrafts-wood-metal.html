@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-category="wood-metal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wood & Metal — Iranian Handicrafts</title>
+  <link rel="stylesheet" href="../assets/css/handicrafts.css" />
+</head>
+<body class="theme-dark">
+  <header class="page-hero">
+    <div class="hero-inner">
+      <h1>WOOD & METAL</h1>
+      <p class="subtitle">Khatam, Qalamzani, Monabbat, metal chasing, and more.</p>
+      <div class="divider"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="craftGrid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Modal -->
+  <div id="craftModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <button class="modal__close" aria-label="Close" data-close-modal>&times;</button>
+      <div class="modal__media"><img id="modalImage" alt="" loading="lazy" /></div>
+      <div class="modal__content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalSummary" class="lead"></p>
+        <div class="meta">
+          <div><strong>Region:</strong> <span id="metaRegion"></span></div>
+          <div><strong>Materials:</strong> <span id="metaMaterials"></span></div>
+          <div><strong>Lineage:</strong> <span id="metaLineage"></span></div>
+          <div><strong>Technique:</strong> <span id="metaTechnique"></span></div>
+        </div>
+        <details class="more"><summary>More notes</summary><ul id="modalFacts"></ul></details>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/handicrafts-list.js" defer></script>
+</body>
+</html>
