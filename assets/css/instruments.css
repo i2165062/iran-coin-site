@@ -15,7 +15,7 @@ html,body{margin:0}
 body.theme-dark{
   color:var(--ink);
   background:
-    radial-gradient(1200px 600px at 10% -10%, #0d1013 30%, transparent 60%) ,
+    radial-gradient(1200px 600px at 10% -10%, #0d1013 30%, transparent 60%),
     radial-gradient(900px 500px at 110% 10%, #0e1619 15%, transparent 60%),
     linear-gradient(#0b0e11,#14181c 40%,#0e1216);
   min-height:100dvh;
@@ -34,8 +34,10 @@ body.theme-dark{
 .subtitle{color:var(--muted);margin:0 auto 18px;max-width:780px}
 .divider{
   width:min(520px,80%);
-  height:2px;background:linear-gradient(90deg,transparent, var(--accent), transparent);
-  margin:14px auto 0;border-radius:999px;
+  height:2px;
+  background:linear-gradient(90deg,transparent, var(--accent), transparent);
+  margin:14px auto 0;
+  border-radius:999px;
 }
 
 /* Grid */
@@ -96,13 +98,21 @@ body.theme-dark{
 @keyframes fade{from{opacity:0} to{opacity:1}}
 
 .modal__dialog{
-  position:relative; z-index:1; margin:6dvh auto; width:min(980px,92%);
+  position:relative;
+  z-index:1;
+  margin:6dvh auto;
+  width:min(980px,92%);
   background:linear-gradient(180deg, rgba(22,26,30,.85), rgba(16,19,23,.9));
   border:1px solid rgba(255,255,255,.05);
   border-radius:calc(var(--radius) + 6px);
   box-shadow:0 50px 120px -40px rgba(0,0,0,.8);
   overflow:hidden;
   animation:pop .22s ease;
+
+  /* ✅ اصلاحات برای موبایل */
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 @keyframes pop{from{transform:translateY(10px);opacity:0} to{transform:none;opacity:1}}
 
@@ -125,10 +135,14 @@ body.theme-dark{
   display:grid; gap:10px; margin:10px 0 8px;
   grid-template-columns:repeat(2,1fr);
 }
-.meta__item{background:var(--glass); padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.04)}
+.meta__item{
+  background:var(--glass);
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.04)
+}
 @media (max-width:640px){ .meta{grid-template-columns:1fr} }
 
 .more{margin-top:10px}
 .more summary{cursor:pointer; color:var(--accent); font-weight:700}
 .more ul{margin:10px 0 0 18px}
-
