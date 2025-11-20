@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "sortIndex": 100,
+    "title": "Isfahan Turquoise Dome #01",
+    "collection": "Iranian Architecture – Solana Edition",
+    "category": "Architecture",
+    "image": "images/nft/arch/isfahan-dome-01.jpg",
+    "priceSol": 3.2,
+    "creator": "IRAN NFT Studio",
+    "openseaUrl": "https://opensea.io/",
+    "description": "A cinematic Solana-minted tribute to the turquoise domes of Isfahan, blending sacred geometry with modern light."
+  },
+  {
+    "id": 2,
+    "sortIndex": 90,
+    "title": "Persepolis Night Flames #01",
+    "collection": "Iran Heritage – Solana Edition",
+    "category": "History",
+    "image": "images/nft/history/persepolis-night-01.jpg",
+    "priceSol": 4.5,
+    "creator": "IRAN NFT Studio",
+    "openseaUrl": "https://opensea.io/",
+    "description": "Persepolis reimagined under a dark Solana sky, ancient columns glowing like forgotten beacons."
+  },
+  {
+    "id": 3,
+    "sortIndex": 80,
+    "title": "Persian Carpet of Light #01",
+    "collection": "Iranian Art – Solana Edition",
+    "category": "Art",
+    "image": "images/nft/art/carpet-light-01.jpg",
+    "priceSol": 2.1,
+    "creator": "IRAN NFT Studio",
+    "openseaUrl": "https://opensea.io/",
+    "description": "A digital carpet woven from photons and patterns, merging traditional Persian motifs with Solana-era glow."
+  },
+  {
+    "id": 4,
+    "sortIndex": 70,
+    "title": "Tehran at 3AM #01",
+    "collection": "Contemporary Iran – Solana Edition",
+    "category": "Culture",
+    "image": "images/nft/culture/tehran-3am-01.jpg",
+    "priceSol": 1.4,
+    "creator": "IRAN NFT Studio",
+    "openseaUrl": "https://opensea.io/",
+    "description": "Neon reflections on wet asphalt, a solitary taxi, and the silent poetry of Tehran at 3AM."
+  }
+]
