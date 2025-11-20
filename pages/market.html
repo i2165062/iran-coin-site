@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>IRAN NFT – Solana Market</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/market.css" />
+</head>
+
+<body class="theme-dark">
+  <header class="market-header">
+    <div class="brand">
+      <img src="images/pc2.png" alt="IRAN NFT Logo" class="brand-logo">
+      <div class="brand-text">
+        <h1>IRAN NFT Market</h1>
+        <p>Solana-based cultural NFT marketplace</p>
+      </div>
+    </div>
+
+    <nav class="market-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <button id="exploreTabBtn" class="nav-link nav-link--tab active">Explore</button>
+      <button id="myPanelTabBtn" class="nav-link nav-link--tab">My Panel</button>
+    </nav>
+
+    <div class="wallet-area">
+      <span id="networkBadge" class="badge badge-sol">Solana</span>
+      <button id="connectWalletBtn" class="btn btn-primary">Connect Wallet</button>
+      <div id="walletInfo" class="wallet-info hidden">
+        <span id="walletAddressShort"></span>
+        <button id="disconnectBtn" class="btn btn-ghost">Disconnect</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="market-main">
+    <!-- Explore Section -->
+    <section id="exploreSection" class="section active">
+      <div class="section-header">
+        <h2>Explore Collections</h2>
+        <p>Unique cultural NFTs from the heart of Iran, minted on Solana.</p>
+      </div>
+
+      <div class="filters">
+        <select id="categoryFilter" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="Architecture">Architecture</option>
+          <option value="Art">Art</option>
+          <option value="History">History</option>
+          <option value="Culture">Culture</option>
+        </select>
+
+        <select id="sortFilter" class="filter-select">
+          <option value="latest">Latest</option>
+          <option value="priceLowHigh">Price: Low → High</option>
+          <option value="priceHighLow">Price: High → Low</option>
+        </select>
+      </div>
+
+      <div id="nftGrid" class="nft-grid">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <div id="emptyStateExplore" class="empty-state hidden">
+        <h3>No NFTs found</h3>
+        <p>Try changing filters or check back soon for new drops.</p>
+      </div>
+    </section>
+
+    <!-- My Panel Section -->
+    <section id="myPanelSection" class="section">
+      <div class="section-header">
+        <h2>My Panel</h2>
+        <p>View your collected NFTs and manage your listings (Phase 2).</p>
+      </div>
+
+      <div id="panelNotConnected" class="panel-card">
+        <h3>Connect your wallet</h3>
+        <p>
+          To see your IRAN NFT holdings on Solana, please connect your Phantom wallet.
+        </p>
+        <button class="btn btn-primary" id="panelConnectBtn">Connect Wallet</button>
+      </div>
+
+      <div id="panelConnected" class="panel-card hidden">
+        <h3>Welcome, <span id="panelWalletShort"></span></h3>
+        <p class="muted">
+          In Phase 2, this panel will sync your Solana NFTs and OpenSea listings in real-time.
+          For now, you can view and trade your NFTs directly on OpenSea or other Solana marketplaces.
+        </p>
+
+        <div class="panel-grid">
+          <div class="panel-box">
+            <h4>My Collected NFTs</h4>
+            <p class="muted">
+              Coming soon – we'll show your Solana NFTs held by this wallet in IRAN NFT collections.
+            </p>
+          </div>
+          <div class="panel-box">
+            <h4>My Listings</h4>
+            <p class="muted">
+              In the next phase, you'll be able to see and manage your OpenSea listings from here.
+            </p>
+          </div>
+          <div class="panel-box">
+            <h4>Sell an NFT</h4>
+            <p class="muted">
+              For now, please list directly on OpenSea under the official IRAN NFT collection on Solana.
+            </p>
+            <a href="https://opensea.io" target="_blank" rel="noopener" class="btn btn-secondary">
+              Open OpenSea
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- NFT Modal -->
+  <div id="nftModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <button id="modalCloseBtn" class="modal-close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image-wrapper">
+          <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-content">
+          <h3 id="modalTitle"></h3>
+          <p id="modalCollection" class="muted"></p>
+
+          <div class="modal-tags">
+            <span id="modalCategory" class="badge"></span>
+            <span id="modalNetwork" class="badge badge-sol">Solana</span>
+          </div>
+
+          <p id="modalDescription" class="modal-description"></p>
+
+          <div class="modal-meta">
+            <div>
+              <span class="label">Price</span>
+              <div class="price-line">
+                <span id="modalPrice"></span>
+                <span class="currency-tag">SOL</span>
+              </div>
+            </div>
+            <div>
+              <span class="label">Creator</span>
+              <p id="modalCreator" class="muted"></p>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <a id="modalOpenSeaBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+              View / Trade on OpenSea
+            </a>
+            <button id="modalCloseBtn2" class="btn btn-ghost">Close</button>
+          </div>
+
+          <p class="modal-note">
+            Note: Transactions are executed on Solana. This interface simply sends you to the official marketplace listing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/market.js"></script>
+</body>
+</html>
