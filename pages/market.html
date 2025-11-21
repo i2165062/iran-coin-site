@@ -8,6 +8,7 @@
 </head>
 
 <body class="theme-dark">
+  <!-- Header -->
   <header class="market-header">
     <div class="brand">
       <img src="images/pc2.png" alt="IRAN NFT Logo" class="brand-logo">
@@ -33,8 +34,9 @@
     </div>
   </header>
 
+  <!-- Main -->
   <main class="market-main">
-    <!-- Explore Section -->
+    <!-- EXPLORE -->
     <section id="exploreSection" class="section active">
       <div class="section-header">
         <h2>Explore Collections</h2>
@@ -67,56 +69,113 @@
       </div>
     </section>
 
-    <!-- My Panel Section -->
+    <!-- MY PANEL -->
     <section id="myPanelSection" class="section">
       <div class="section-header">
         <h2>My Panel</h2>
-        <p>View your collected NFTs and manage your listings (Phase 2).</p>
+        <p>See your IRAN NFT holdings, listings and future tools.</p>
       </div>
 
+      <!-- Not connected -->
       <div id="panelNotConnected" class="panel-card">
         <h3>Connect your wallet</h3>
         <p>
-          To see your IRAN NFT holdings on Solana, please connect your Phantom wallet.
+          To see your IRAN NFT holdings on Solana and manage listings, please connect your Phantom wallet.
         </p>
         <button class="btn btn-primary" id="panelConnectBtn">Connect Wallet</button>
       </div>
 
+      <!-- Connected -->
       <div id="panelConnected" class="panel-card hidden">
-        <h3>Welcome, <span id="panelWalletShort"></span></h3>
-        <p class="muted">
-          In Phase 2, this panel will sync your Solana NFTs and OpenSea listings in real-time.
-          For now, you can view and trade your NFTs directly on OpenSea or other Solana marketplaces.
-        </p>
+        <div class="panel-header-row">
+          <div>
+            <h3>Wallet dashboard</h3>
+            <p class="muted">Solana address: <span id="panelWalletFull" class="mono"></span></p>
+          </div>
+          <span class="badge badge-sol">Solana</span>
+        </div>
 
-        <div class="panel-grid">
-          <div class="panel-box">
-            <h4>My Collected NFTs</h4>
-            <p class="muted">
-              Coming soon – we'll show your Solana NFTs held by this wallet in IRAN NFT collections.
+        <!-- Panel inner tabs -->
+        <div class="panel-tabs">
+          <button class="panel-tab-btn active" data-panel-tab="overview">Overview</button>
+          <button class="panel-tab-btn" data-panel-tab="collection">My Collection</button>
+          <button class="panel-tab-btn" data-panel-tab="listings">My Listings</button>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div id="panelOverview" class="panel-tab active">
+          <div class="panel-overview-grid">
+            <div class="stat-card">
+              <span class="stat-label">Owned in IRAN NFT collections (demo)</span>
+              <div class="stat-value"><span id="statOwnedCount">0</span> NFTs</div>
+              <p class="muted stat-caption">
+                In a future phase, this will sync live with your IRAN NFT Solana collections using a real API.
+              </p>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-label">Active listings (local demo)</span>
+              <div class="stat-value"><span id="statListingsCount">0</span> NFTs</div>
+              <p class="muted stat-caption">
+                Listings here are stored locally in your browser and meant as UI prototype for the real marketplace.
+              </p>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-label">Explore & buy more</span>
+              <div class="stat-value">IRAN NFT Market</div>
+              <p class="muted stat-caption">
+                Browse all drops and artworks in the main market page and complete trades on official platforms.
+              </p>
+              <button id="overviewGoExplore" class="btn btn-secondary">Go to Explore</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLLECTION TAB -->
+        <div id="panelCollection" class="panel-tab">
+          <h4>My Collection (demo)</h4>
+          <p class="muted">
+            This section shows NFTs that are marked as owned by your wallet in the current demo dataset.
+            Later, this will be replaced with a live Solana / OpenSea integration.
+          </p>
+
+          <div id="myCollectionGrid" class="nft-grid panel-grid-tight">
+            <!-- Owned cards injected by JS -->
+          </div>
+
+          <div id="emptyMyCollection" class="empty-state hidden">
+            <h3>No NFTs detected in demo</h3>
+            <p>
+              Once the real API is wired, your actual IRAN NFT holdings on Solana will appear here.
             </p>
           </div>
-          <div class="panel-box">
-            <h4>My Listings</h4>
-            <p class="muted">
-              In the next phase, you'll be able to see and manage your OpenSea listings from here.
-            </p>
+        </div>
+
+        <!-- LISTINGS TAB -->
+        <div id="panelListings" class="panel-tab">
+          <h4>My Listings (local demo)</h4>
+          <p class="muted">
+            Here you can mark NFTs from your collection as “listed for sale”.
+            This simulates a marketplace UI and persists per-wallet in your browser using <code>localStorage</code>.
+          </p>
+
+          <div id="myListingsGrid" class="nft-grid panel-grid-tight">
+            <!-- Listing cards injected by JS -->
           </div>
-          <div class="panel-box">
-            <h4>Sell an NFT</h4>
-            <p class="muted">
-              For now, please list directly on OpenSea under the official IRAN NFT collection on Solana.
+
+          <div id="emptyMyListings" class="empty-state hidden">
+            <h3>No active listings</h3>
+            <p>
+              Go to <strong>My Collection</strong>, choose an NFT and click <em>List for sale</em> to add it here.
             </p>
-            <a href="https://opensea.io" target="_blank" rel="noopener" class="btn btn-secondary">
-              Open OpenSea
-            </a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- NFT Modal -->
+  <!-- NFT MODAL -->
   <div id="nftModal" class="modal hidden">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
@@ -158,7 +217,8 @@
           </div>
 
           <p class="modal-note">
-            Note: Transactions are executed on Solana. This interface simply sends you to the official marketplace listing.
+            Note: Transactions are executed on Solana via the official marketplace.
+            This interface only sends you to the live listing.
           </p>
         </div>
       </div>
