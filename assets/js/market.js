@@ -27,7 +27,7 @@ function initSolanaConnection() {
   if (!solConnection) {
     const { Connection, clusterApiUrl } = window.solanaWeb3;
     // برای پروژه جدی بهتره RPC اختصاصی بزاری، این فقط مثال mainnet-beta است
-    solConnection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
+solConnection = new Connection("https://mainnet.helius-rpc.com/?api-key=XXXXXXXXXXX", "confirmed");
   }
 
   // سعی می‌کنیم mint توکن را از رشته بسازیم
