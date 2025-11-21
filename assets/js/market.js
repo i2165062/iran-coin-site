@@ -1,14 +1,41 @@
-// Simple state
+// --- Global state ---
 let currentWallet = null;
 let nftData = [];
+let ownedNfts = [];
+let listingsByWallet = {}; // { walletAddress: { [nftId]: { priceSol } } }
 
-// Shorten address like So111..abcd
+// Shorten address like So11..abcd
 function shortenAddress(addr) {
   if (!addr) return "";
   return addr.slice(0, 4) + "..." + addr.slice(-4);
 }
 
-// Wallet connection (Phantom)
+// Storage helpers for demo listings
+function getListingsKey(wallet) {
+  return `iranNftListings_${wallet}`;
+}
+
+function loadListingsForWallet(wallet) {
+  if (!wallet) return {};
+  try {
+    const raw = localStorage.getItem(getListingsKey(wallet));
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    console.warn("Failed to parse listings from storage", e);
+    return {};
+  }
+}
+
+function saveListingsForWallet(wallet, data) {
+  if (!wallet) return;
+  try {
+    localStorage.setItem(getListingsKey(wallet), JSON.stringify(data));
+  } catch (e) {
+    console.warn("Failed to save listings to storage", e);
+  }
+}
+
+// --- Wallet (Phantom) ---
 async function connectWallet() {
   const provider = window.solana;
   const connectBtn = document.getElementById("connectWalletBtn");
@@ -22,17 +49,20 @@ async function connectWallet() {
   try {
     const resp = await provider.connect();
     currentWallet = resp.publicKey.toString();
+    listingsByWallet = loadListingsForWallet(currentWallet);
     updateWalletUI();
+    refreshMyPanel();
   } catch (err) {
     console.error("Wallet connection rejected:", err);
-    connectBtn.disabled = false;
+    if (connectBtn) connectBtn.disabled = false;
   }
 }
 
 function disconnectWallet() {
   currentWallet = null;
-    // Phantom خود disconnect دارد اما در حالت read-only لازم نیست حتماً صدا بزنیم
+  listingsByWallet = {};
   updateWalletUI();
+  refreshMyPanel();
 }
 
 function updateWalletUI() {
@@ -41,39 +71,42 @@ function updateWalletUI() {
   const walletAddressShort = document.getElementById("walletAddressShort");
   const panelNotConnected = document.getElementById("panelNotConnected");
   const panelConnected = document.getElementById("panelConnected");
-  const panelWalletShort = document.getElementById("panelWalletShort");
+  const panelWalletFull = document.getElementById("panelWalletFull");
 
   if (currentWallet) {
-    connectBtn.classList.add("hidden");
-    walletInfo.classList.remove("hidden");
-    walletAddressShort.textContent = shortenAddress(currentWallet);
+    connectBtn?.classList.add("hidden");
+    walletInfo?.classList.remove("hidden");
+    if (walletAddressShort) walletAddressShort.textContent = shortenAddress(currentWallet);
 
-    panelNotConnected.classList.add("hidden");
-    panelConnected.classList.remove("hidden");
-    panelWalletShort.textContent = shortenAddress(currentWallet);
+    panelNotConnected?.classList.add("hidden");
+    panelConnected?.classList.remove("hidden");
+    if (panelWalletFull) panelWalletFull.textContent = currentWallet;
   } else {
-    connectBtn.classList.remove("hidden");
-    walletInfo.classList.add("hidden");
+    connectBtn?.classList.remove("hidden");
+    walletInfo?.classList.add("hidden");
 
-    panelNotConnected.classList.remove("hidden");
-    panelConnected.classList.add("hidden");
+    panelNotConnected?.classList.remove("hidden");
+    panelConnected?.classList.add("hidden");
   }
 }
 
-// Load NFT data from JSON
+// --- Load NFTs (demo dataset) ---
 async function loadNFTs() {
   try {
     const res = await fetch("assets/data/nfts.json");
     if (!res.ok) throw new Error("Failed to load nfts.json");
     nftData = await res.json();
-    renderGrid();
+    renderExploreGrid();
+    if (currentWallet) {
+      refreshMyPanel();
+    }
   } catch (err) {
     console.error(err);
   }
 }
 
-// Render NFT grid with filters
-function renderGrid() {
+// --- Explore grid ---
+function renderExploreGrid() {
   const grid = document.getElementById("nftGrid");
   const emptyState = document.getElementById("emptyStateExplore");
   const categoryFilter = document.getElementById("categoryFilter");
@@ -84,13 +117,13 @@ function renderGrid() {
   let filtered = [...nftData];
 
   // Category filter
-  const category = categoryFilter.value;
+  const category = categoryFilter?.value || "all";
   if (category !== "all") {
     filtered = filtered.filter((item) => item.category === category);
   }
 
   // Sort
-  const sort = sortFilter.value;
+  const sort = sortFilter?.value || "latest";
   if (sort === "priceLowHigh") {
     filtered.sort((a, b) => (a.priceSol || 0) - (b.priceSol || 0));
   } else if (sort === "priceHighLow") {
@@ -102,10 +135,10 @@ function renderGrid() {
   grid.innerHTML = "";
 
   if (!filtered.length) {
-    emptyState.classList.remove("hidden");
+    emptyState?.classList.remove("hidden");
     return;
   } else {
-    emptyState.classList.add("hidden");
+    emptyState?.classList.add("hidden");
   }
 
   filtered.forEach((item) => {
@@ -139,7 +172,7 @@ function renderGrid() {
   });
 }
 
-// Modal
+// --- Modal ---
 function openModal(item) {
   const modal = document.getElementById("nftModal");
   const img = document.getElementById("modalImage");
@@ -178,31 +211,259 @@ function closeModal() {
   if (modal) modal.classList.add("hidden");
 }
 
-// Tabs
-function setupTabs() {
+// --- My Panel logic (demo) ---
+
+// در نسخه واقعی، این تابع باید از API سولانا/مارکت داده واقعی بگیرد
+function computeOwnedNftsForCurrentWallet() {
+  if (!currentWallet) {
+    ownedNfts = [];
+    return;
+  }
+
+  // DEMO:
+  // در nfts.json می‌توانی برای بعضی NFTها فیلد "demoOwner" را برابر یک آدرس سولانا قرار دهی
+  // اگر demoOwner == currentWallet، آن NFT را "owned" حساب می‌کنیم.
+  ownedNfts = nftData.filter(
+    (item) => item.demoOwner && item.demoOwner.toLowerCase() === currentWallet.toLowerCase()
+  );
+
+  // در آینده:
+  // اینجا باید یک fetch به API موردنظر بزنی (Helius / OpenSea / …)
+  // و بر اساس آن، ownedNfts را بسازی.
+}
+
+function refreshMyPanel() {
+  const statOwnedCount = document.getElementById("statOwnedCount");
+  const statListingsCount = document.getElementById("statListingsCount");
+  const collectionGrid = document.getElementById("myCollectionGrid");
+  const listingsGrid = document.getElementById("myListingsGrid");
+  const emptyCollection = document.getElementById("emptyMyCollection");
+  const emptyListings = document.getElementById("emptyMyListings");
+
+  if (!currentWallet) {
+    // اگر والت وصل نیست، فقط استیت قبلی را پاک می‌کنیم
+    ownedNfts = [];
+    if (statOwnedCount) statOwnedCount.textContent = "0";
+    if (statListingsCount) statListingsCount.textContent = "0";
+    if (collectionGrid) collectionGrid.innerHTML = "";
+    if (listingsGrid) listingsGrid.innerHTML = "";
+    emptyCollection?.classList.remove("hidden");
+    emptyListings?.classList.remove("hidden");
+    return;
+  }
+
+  // محاسبه NFTهای متعلق به این والت در دمو
+  computeOwnedNftsForCurrentWallet();
+
+  // رندر Collection (NFTهایی که owner هستند)
+  if (collectionGrid) collectionGrid.innerHTML = "";
+  if (!ownedNfts.length) {
+    emptyCollection?.classList.remove("hidden");
+  } else {
+    emptyCollection?.classList.add("hidden");
+    ownedNfts.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "nft-card panel-compact";
+      card.dataset.id = item.id;
+
+      const isListed = listingsByWallet[item.id];
+
+      card.innerHTML = `
+        <div class="nft-thumb-wrapper">
+          <img src="${item.image}" alt="${item.title}" class="nft-thumb">
+          <span class="nft-chip">${item.category}</span>
+        </div>
+        <div class="nft-body">
+          <h3 class="nft-title">${item.title}</h3>
+          <p class="nft-collection">${item.collection}</p>
+          <div class="nft-footer">
+            <div>
+              <div class="price-pill">
+                <span>${item.priceSol}</span>
+                <span>SOL</span>
+              </div>
+              <div class="price-label">${isListed ? "Listed (demo)" : "Not listed"}</div>
+            </div>
+          </div>
+          <div class="nft-actions">
+            <button class="btn btn-secondary btn-list">${isListed ? "Update price" : "List for sale"}</button>
+            ${
+              isListed
+                ? '<button class="btn btn-ghost btn-unlist">Remove listing</button>'
+                : ""
+            }
+          </div>
+        </div>
+      `;
+
+      // باز کردن مودال کلیک روی عکس
+      card.querySelector(".nft-thumb-wrapper").addEventListener("click", () => openModal(item));
+
+      // دکمه لیست
+      const listBtn = card.querySelector(".btn-list");
+      listBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleListForSale(item);
+      });
+
+      // دکمه آن‌لیست
+      const unlistBtn = card.querySelector(".btn-unlist");
+      if (unlistBtn) {
+        unlistBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          handleUnlist(item);
+        });
+      }
+
+      collectionGrid.appendChild(card);
+    });
+  }
+
+  // رندر Listings (از state لوکال)
+  if (listingsGrid) listingsGrid.innerHTML = "";
+  const listingIds = Object.keys(listingsByWallet || {});
+  if (!listingIds.length) {
+    emptyListings?.classList.remove("hidden");
+  } else {
+    emptyListings?.classList.add("hidden");
+    listingIds.forEach((id) => {
+      const item = nftData.find((n) => String(n.id) === String(id));
+      if (!item) return;
+
+      const listing = listingsByWallet[id];
+      const card = document.createElement("article");
+      card.className = "nft-card panel-compact";
+      card.dataset.id = item.id;
+
+      card.innerHTML = `
+        <div class="nft-thumb-wrapper">
+          <img src="${item.image}" alt="${item.title}" class="nft-thumb">
+          <span class="nft-chip">Listed</span>
+        </div>
+        <div class="nft-body">
+          <h3 class="nft-title">${item.title}</h3>
+          <p class="nft-collection">${item.collection}</p>
+          <div class="nft-footer">
+            <div>
+              <div class="price-pill">
+                <span>${listing.priceSol}</span>
+                <span>SOL</span>
+              </div>
+              <div class="price-label">Demo listing (local)</div>
+            </div>
+          </div>
+          <div class="nft-actions">
+            <button class="btn btn-secondary btn-list-update">Update price</button>
+            <button class="btn btn-ghost btn-unlist">Remove listing</button>
+          </div>
+        </div>
+      `;
+
+      card.querySelector(".nft-thumb-wrapper").addEventListener("click", () => openModal(item));
+      card.querySelector(".btn-list-update").addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleListForSale(item);
+      });
+      card.querySelector(".btn-unlist").addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleUnlist(item);
+      });
+
+      listingsGrid.appendChild(card);
+    });
+  }
+
+  if (statOwnedCount) statOwnedCount.textContent = String(ownedNfts.length);
+  if (statListingsCount) statListingsCount.textContent = String(listingIds.length);
+}
+
+function handleListForSale(item) {
+  if (!currentWallet) {
+    alert("Please connect your wallet first.");
+    return;
+  }
+
+  const currentListing = listingsByWallet[item.id];
+  const defaultPrice = currentListing?.priceSol || item.priceSol || 1;
+  const value = prompt("Set listing price in SOL (demo only):", defaultPrice);
+
+  if (!value) return; // cancel
+  const priceNum = Number(value);
+  if (isNaN(priceNum) || priceNum <= 0) {
+    alert("Invalid price.");
+    return;
+  }
+
+  listingsByWallet[item.id] = { priceSol: priceNum };
+  saveListingsForWallet(currentWallet, listingsByWallet);
+  refreshMyPanel();
+
+  // در نسخه واقعی اینجا باید تراکنش لیستینگ روی مارکت‌پلیس/کانترکت اجرا شود.
+}
+
+function handleUnlist(item) {
+  if (!currentWallet) return;
+  if (!listingsByWallet[item.id]) return;
+
+  const sure = confirm("Remove this listing? (demo only)");
+  if (!sure) return;
+
+  delete listingsByWallet[item.id];
+  saveListingsForWallet(currentWallet, listingsByWallet);
+  refreshMyPanel();
+
+  // نسخه واقعی: call unlist/cancel on marketplace contract
+}
+
+// --- Tabs (main and inner) ---
+function setupMainTabs() {
   const exploreBtn = document.getElementById("exploreTabBtn");
   const myPanelBtn = document.getElementById("myPanelTabBtn");
   const exploreSection = document.getElementById("exploreSection");
   const myPanelSection = document.getElementById("myPanelSection");
 
-  if (!exploreBtn || !myPanelBtn) return;
-
-  exploreBtn.addEventListener("click", () => {
+  exploreBtn?.addEventListener("click", () => {
     exploreBtn.classList.add("active");
-    myPanelBtn.classList.remove("active");
-    exploreSection.classList.add("active");
-    myPanelSection.classList.remove("active");
+    myPanelBtn?.classList.remove("active");
+    exploreSection?.classList.add("active");
+    myPanelSection?.classList.remove("active");
   });
 
-  myPanelBtn.addEventListener("click", () => {
+  myPanelBtn?.addEventListener("click", () => {
     myPanelBtn.classList.add("active");
-    exploreBtn.classList.remove("active");
-    myPanelSection.classList.add("active");
-    exploreSection.classList.remove("active");
+    exploreBtn?.classList.remove("active");
+    myPanelSection?.classList.add("active");
+    exploreSection?.classList.remove("active");
   });
 }
 
-// Init
+function setupPanelTabs() {
+  const buttons = document.querySelectorAll(".panel-tab-btn");
+  const tabs = {
+    overview: document.getElementById("panelOverview"),
+    collection: document.getElementById("panelCollection"),
+    listings: document.getElementById("panelListings")
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-panel-tab");
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      Object.entries(tabs).forEach(([key, section]) => {
+        if (!section) return;
+        if (key === target) {
+          section.classList.add("active");
+        } else {
+          section.classList.remove("active");
+        }
+      });
+    });
+  });
+}
+
+// --- Init ---
 document.addEventListener("DOMContentLoaded", () => {
   // Load NFTs
   loadNFTs();
@@ -217,24 +478,33 @@ document.addEventListener("DOMContentLoaded", () => {
   disconnectBtn?.addEventListener("click", disconnectWallet);
 
   // Filters
-  document.getElementById("categoryFilter")?.addEventListener("change", renderGrid);
-  document.getElementById("sortFilter")?.addEventListener("change", renderGrid);
+  document.getElementById("categoryFilter")?.addEventListener("change", renderExploreGrid);
+  document.getElementById("sortFilter")?.addEventListener("change", renderExploreGrid);
 
   // Tabs
-  setupTabs();
+  setupMainTabs();
+  setupPanelTabs();
 
   // Modal
   document.getElementById("modalCloseBtn")?.addEventListener("click", closeModal);
   document.getElementById("modalCloseBtn2")?.addEventListener("click", closeModal);
   document.querySelector("#nftModal .modal-backdrop")?.addEventListener("click", closeModal);
 
-  // If Phantom is already connected (persisted)
+  // Overview button
+  document.getElementById("overviewGoExplore")?.addEventListener("click", () => {
+    document.getElementById("exploreTabBtn")?.click();
+  });
+
+  // If Phantom already trusted
   if (window.solana && window.solana.isPhantom) {
-    window.solana.connect({ onlyIfTrusted: true })
-      .then(res => {
+    window.solana
+      .connect({ onlyIfTrusted: true })
+      .then((res) => {
         if (res.publicKey) {
           currentWallet = res.publicKey.toString();
+          listingsByWallet = loadListingsForWallet(currentWallet);
           updateWalletUI();
+          refreshMyPanel();
         }
       })
       .catch(() => {});
