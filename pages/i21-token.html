@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>i21 Token Dashboard — IRAN NFT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../assets/css/i21-token.css" />
+</head>
+
+<body class="theme-dark">
+  <!-- Header -->
+  <header class="token-header">
+    <div class="brand">
+      <img src="../images/pc2.png" alt="IRAN NFT Logo" class="brand-logo">
+      <div class="brand-text">
+        <h1>i21 Token</h1>
+        <p>Native token of the IRAN NFT ecosystem on Solana.</p>
+      </div>
+    </div>
+
+    <nav class="token-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="market.html" class="nav-link">Market</a>
+      <span class="nav-link nav-link--active">i21 Token</span>
+    </nav>
+
+    <div class="network-pill">
+      <span class="badge badge-sol">Solana</span>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="token-main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="token-pill">
+          <div class="token-avatar">i21</div>
+          <div>
+            <h2>i21 — IranCoin</h2>
+            <p class="muted">
+              The cultural heartbeat of the IRAN NFT ecosystem, launched on Solana and tradable on pump.fun.
+            </p>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-main">
+            <span class="price-label">Price</span>
+            <div class="price-values">
+              <span id="priceUsd" class="price-big">$0.00000000</span>
+              <span id="priceSol" class="price-sub">0.00000000 SOL</span>
+            </div>
+          </div>
+
+          <div class="price-change">
+            <span class="price-label">24h Change</span>
+            <span id="priceChange" class="chip chip-neutral">0.0%</span>
+          </div>
+
+          <div class="price-links">
+            <a id="linkDexTools" href="https://www.dextools.io/app/en/token/i21" target="_blank" rel="noopener" class="btn btn-secondary">
+              View on DEXTools
+            </a>
+            <a id="linkPumpFun" href="https://pump.fun/coin/4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump" target="_blank" rel="noopener" class="btn btn-primary">
+              Trade on pump.fun
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <canvas id="priceChart" width="420" height="200" aria-label="i21 price chart"></canvas>
+        <p class="chart-caption muted">
+          Simple demo chart. In the next phase we can wire live data from DEXTools / pump.fun.
+        </p>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-label">Market Cap (est.)</span>
+        <div class="stat-value" id="marketCapUsd">$0</div>
+        <p class="muted">
+          Based on circulating supply × current price.
+        </p>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-label">Circulating Supply</span>
+        <div class="stat-value">
+          <span id="circulatingSupply">0</span> <span class="stat-suffix">i21</span>
+        </div>
+        <p class="muted">
+          For now configured manually. We can later fetch this directly from the Solana mint.
+        </p>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-label">Holders</span>
+        <div class="stat-value" id="holdersCount">0</div>
+        <p class="muted">
+          Estimated number of wallets holding i21. Later we can wire this from an indexer (Helius, Solscan API, …).
+        </p>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-label">Liquidity & Links</span>
+        <ul class="links-list">
+          <li><a href="https://pump.fun/coin/4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump" target="_blank" rel="noopener">pump.fun pool</a></li>
+          <li><a href="https://www.dextools.io/app/en/token/i21" target="_blank" rel="noopener">DEXTools page</a></li>
+          <li><a href="https://solscan.io/token/4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump" target="_blank" rel="noopener">View on Solscan</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Details -->
+    <section class="details">
+      <div class="detail-card">
+        <h3>Token details</h3>
+        <dl class="meta-list">
+          <div>
+            <dt>Token name</dt>
+            <dd>i21 — IranCoin</dd>
+          </div>
+          <div>
+            <dt>Symbol</dt>
+            <dd>i21</dd>
+          </div>
+          <div>
+            <dt>Network</dt>
+            <dd>Solana</dd>
+          </div>
+          <div>
+            <dt>Mint address</dt>
+            <dd class="mono small" id="mintAddress">
+              4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump
+            </dd>
+          </div>
+          <div>
+            <dt>Decimals</dt>
+            <dd id="tokenDecimals">9</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="detail-card">
+        <h3>About i21</h3>
+        <p>
+          i21 is designed as the native token of the IRAN NFT ecosystem — a cultural-first experiment on Solana.
+          It aims to connect collectors, artists, and builders around Iranian culture, history, and digital art.
+        </p>
+        <p>
+          In future phases, i21 will power on-chain governance, marketplace rewards, and curated drops tied to IRAN NFT’s
+          cultural collections.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../assets/js/i21-token.js"></script>
+</body>
+</html>
