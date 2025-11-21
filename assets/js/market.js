@@ -9,7 +9,7 @@ let solConnection = null;
 
 // IranCoin SPL Mint (توکن خودت روی سولانا)
 // ⬇️ حتماً این رشته را با آدرس واقعی mint توکن خودت عوض کن
-const IRANCOIN_MINT_STRING = "YOUR_IRANCOIN_MINT_ADDRESS_HERE";
+const IRANCOIN_MINT_STRING = "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
 let IRANCOIN_MINT = null;
 
 // Shorten address like So11..abcd
