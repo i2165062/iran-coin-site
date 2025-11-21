@@ -9,7 +9,8 @@
     "priceSol": 3.2,
     "creator": "IRAN NFT Studio",
     "openseaUrl": "https://opensea.io/",
-    "description": "A cinematic Solana-minted tribute to the turquoise domes of Isfahan, blending sacred geometry with modern light."
+    "description": "A cinematic Solana-minted tribute to the turquoise domes of Isfahan, blending sacred geometry with modern light.",
+    "demoOwner": "So11111111111111111111111111111111111111112"
   },
   {
     "id": 2,
@@ -33,7 +34,8 @@
     "priceSol": 2.1,
     "creator": "IRAN NFT Studio",
     "openseaUrl": "https://opensea.io/",
-    "description": "A digital carpet woven from photons and patterns, merging traditional Persian motifs with Solana-era glow."
+    "description": "A digital carpet woven from photons and patterns, merging traditional Persian motifs with Solana-era glow.",
+    "demoOwner": "So11111111111111111111111111111111111111112"
   },
   {
     "id": 4,
