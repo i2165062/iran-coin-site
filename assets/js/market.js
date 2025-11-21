@@ -4,34 +4,40 @@ let nftData = [];
 let ownedNfts = [];
 let listingsByWallet = {}; // { walletAddress: { [nftId]: { priceSol } } }
 
+// Solana connection (global)
+let solConnection = null;
+
+// IranCoin SPL Mint (توکن خودت روی سولانا)
+// ⬇️ حتماً این رشته را با آدرس واقعی mint توکن خودت عوض کن
+const IRANCOIN_MINT_STRING = "YOUR_IRANCOIN_MINT_ADDRESS_HERE";
+let IRANCOIN_MINT = null;
+
 // Shorten address like So11..abcd
 function shortenAddress(addr) {
   if (!addr) return "";
   return addr.slice(0, 4) + "..." + addr.slice(-4);
 }
 
-// Storage helpers for demo listings
-function getListingsKey(wallet) {
-  return `iranNftListings_${wallet}`;
-}
-
-function loadListingsForWallet(wallet) {
-  if (!wallet) return {};
-  try {
-    const raw = localStorage.getItem(getListingsKey(wallet));
-    return raw ? JSON.parse(raw) : {};
-  } catch (e) {
-    console.warn("Failed to parse listings from storage", e);
-    return {};
+// Init Solana connection
+function initSolanaConnection() {
+  if (!window.solanaWeb3) {
+    console.warn("solanaWeb3 not loaded yet");
+    return;
   }
-}
+  if (!solConnection) {
+    const { Connection, clusterApiUrl } = window.solanaWeb3;
+    // برای پروژه جدی بهتره RPC اختصاصی بزاری، این فقط مثال mainnet-beta است
+    solConnection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
+  }
 
-function saveListingsForWallet(wallet, data) {
-  if (!wallet) return;
-  try {
-    localStorage.setItem(getListingsKey(wallet), JSON.stringify(data));
-  } catch (e) {
-    console.warn("Failed to save listings to storage", e);
+  // سعی می‌کنیم mint توکن را از رشته بسازیم
+  if (!IRANCOIN_MINT && IRANCOIN_MINT_STRING && IRANCOIN_MINT_STRING !== "YOUR_IRANCOIN_MINT_ADDRESS_HERE") {
+    try {
+      IRANCOIN_MINT = new window.solanaWeb3.PublicKey(IRANCOIN_MINT_STRING);
+    } catch (e) {
+      console.warn("Invalid IRANCOIN_MINT_STRING, please set a valid mint address.");
+      IRANCOIN_MINT = null;
+    }
   }
 }
 
@@ -52,6 +58,7 @@ async function connectWallet() {
     listingsByWallet = loadListingsForWallet(currentWallet);
     updateWalletUI();
     refreshMyPanel();
+    await loadBalances(); // ⬅️ بعد از اتصال، بالانس‌ها را می‌گیریم
   } catch (err) {
     console.error("Wallet connection rejected:", err);
     if (connectBtn) connectBtn.disabled = false;
@@ -63,6 +70,7 @@ function disconnectWallet() {
   listingsByWallet = {};
   updateWalletUI();
   refreshMyPanel();
+  resetBalanceUI();
 }
 
 function updateWalletUI() {
@@ -87,6 +95,31 @@ function updateWalletUI() {
 
     panelNotConnected?.classList.remove("hidden");
     panelConnected?.classList.add("hidden");
+  }
+}
+
+// --- Storage helpers for demo listings ---
+function getListingsKey(wallet) {
+  return `iranNftListings_${wallet}`;
+}
+
+function loadListingsForWallet(wallet) {
+  if (!wallet) return {};
+  try {
+    const raw = localStorage.getItem(getListingsKey(wallet));
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    console.warn("Failed to parse listings from storage", e);
+    return {};
+  }
+}
+
+function saveListingsForWallet(wallet, data) {
+  if (!wallet) return;
+  try {
+    localStorage.setItem(getListingsKey(wallet), JSON.stringify(data));
+  } catch (e) {
+    console.warn("Failed to save listings to storage", e);
   }
 }
 
@@ -377,6 +410,7 @@ function refreshMyPanel() {
   if (statListingsCount) statListingsCount.textContent = String(listingIds.length);
 }
 
+// --- Listing handlers (demo) ---
 function handleListForSale(item) {
   if (!currentWallet) {
     alert("Please connect your wallet first.");
@@ -413,6 +447,77 @@ function handleUnlist(item) {
   refreshMyPanel();
 
   // نسخه واقعی: call unlist/cancel on marketplace contract
+}
+
+// --- Balances (SOL + IranCoin) ---
+function resetBalanceUI() {
+  const solEl = document.getElementById("statSolBalance");
+  const tokEl = document.getElementById("statTokenBalance");
+  if (solEl) solEl.textContent = "–";
+  if (tokEl) tokEl.textContent = "–";
+}
+
+async function loadBalances() {
+  if (!currentWallet) {
+    resetBalanceUI();
+    return;
+  }
+  if (!window.solanaWeb3) {
+    console.warn("solanaWeb3 not available");
+    return;
+  }
+
+  initSolanaConnection();
+  if (!solConnection) {
+    console.warn("No Solana connection");
+    return;
+  }
+
+  const solEl = document.getElementById("statSolBalance");
+  const tokEl = document.getElementById("statTokenBalance");
+
+  try {
+    const { PublicKey, LAMPORTS_PER_SOL } = window.solanaWeb3;
+    const pubkey = new PublicKey(currentWallet);
+
+    // SOL balance
+    const lamports = await solConnection.getBalance(pubkey);
+    const sol = lamports / LAMPORTS_PER_SOL;
+    if (solEl) solEl.textContent = sol.toFixed(4);
+  } catch (e) {
+    console.error("Failed to fetch SOL balance:", e);
+    if (solEl) solEl.textContent = "error";
+  }
+
+  // IranCoin SPL Token balance
+  if (!IRANCOIN_MINT) {
+    if (tokEl) tokEl.textContent = "set mint";
+    return;
+  }
+
+  try {
+    const { PublicKey } = window.solanaWeb3;
+    const pubkey = new PublicKey(currentWallet);
+
+    const resp = await solConnection.getParsedTokenAccountsByOwner(pubkey, {
+      mint: IRANCOIN_MINT
+    });
+
+    let amount = 0;
+    if (resp.value && resp.value.length > 0) {
+      // اگر چند اکانت باشد، همه را جمع می‌کنیم
+      for (const acc of resp.value) {
+        const info = acc.account.data.parsed.info;
+        const tokenAmount = info.tokenAmount;
+        amount += Number(tokenAmount.uiAmount || 0);
+      }
+    }
+
+    if (tokEl) tokEl.textContent = amount.toLocaleString("en-US");
+  } catch (e) {
+    console.error("Failed to fetch token balance:", e);
+    if (tokEl) tokEl.textContent = "error";
+  }
 }
 
 // --- Tabs (main and inner) ---
@@ -465,6 +570,11 @@ function setupPanelTabs() {
 
 // --- Init ---
 document.addEventListener("DOMContentLoaded", () => {
+  // Init Solana connection (در صورت وجود web3)
+  if (window.solanaWeb3) {
+    initSolanaConnection();
+  }
+
   // Load NFTs
   loadNFTs();
 
@@ -499,12 +609,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.solana && window.solana.isPhantom) {
     window.solana
       .connect({ onlyIfTrusted: true })
-      .then((res) => {
+      .then(async (res) => {
         if (res.publicKey) {
           currentWallet = res.publicKey.toString();
           listingsByWallet = loadListingsForWallet(currentWallet);
           updateWalletUI();
           refreshMyPanel();
+          await loadBalances();
         }
       })
       .catch(() => {});
