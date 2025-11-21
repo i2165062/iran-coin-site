@@ -15,7 +15,7 @@
   --radius-sm: 999px;
 }
 
-/* Basic reset */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -154,7 +154,7 @@ body.theme-dark {
   padding: 0.45rem 0.95rem;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s, border-color 0.2s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -194,7 +194,7 @@ body.theme-dark {
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* Main layout */
+/* Layout */
 .market-main {
   max-width: 1200px;
   margin: 1.5rem auto 2.5rem;
@@ -238,7 +238,7 @@ body.theme-dark {
   outline: none;
 }
 
-/* NFT Grid */
+/* NFT Grid & Cards */
 .nft-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -381,28 +381,115 @@ body.theme-dark {
   margin-top: 0;
 }
 
-.panel-grid {
-  margin-top: 0.8rem;
+.panel-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.panel-tabs {
+  display: inline-flex;
+  gap: 0.4rem;
+  padding: 0.18rem;
+  border-radius: 999px;
+  background: rgba(5, 9, 16, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 0.9rem;
+}
+
+.panel-tab-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.panel-tab-btn.active {
+  background: rgba(196, 161, 94, 0.18);
+  color: var(--accent);
+}
+
+.panel-tab {
+  display: none;
+}
+
+.panel-tab.active {
+  display: block;
+}
+
+.panel-overview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 0.8rem;
 }
 
-.panel-box {
-  padding: 0.7rem 0.8rem;
+.stat-card {
+  padding: 0.9rem 1rem;
   border-radius: var(--radius-md);
-  background: rgba(6, 10, 17, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(5, 9, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.panel-box h4 {
-  margin-top: 0;
-  margin-bottom: 0.3rem;
-}
-
-.muted {
+.stat-label {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--muted);
-  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.stat-caption {
+  font-size: 0.8rem;
+}
+
+/* Panel grids */
+.panel-grid-tight {
+  margin-top: 0.8rem;
+}
+
+/* Small variants inside panel */
+.nft-card.panel-compact {
+  padding: 0.6rem;
+}
+
+.nft-card.panel-compact .nft-thumb-wrapper {
+  aspect-ratio: 4 / 3;
+}
+
+.nft-card.panel-compact .nft-body {
+  padding-top: 0.5rem;
+}
+
+.nft-card.panel-compact .nft-footer {
+  align-items: flex-end;
+}
+
+.nft-card .nft-actions {
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.nft-status-tag {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 161, 94, 0.4);
+  color: var(--accent);
 }
 
 /* Modal */
@@ -538,6 +625,17 @@ body.theme-dark {
   width: 26px;
   height: 26px;
   cursor: pointer;
+}
+
+/* Util */
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
 }
 
 /* Responsive */
