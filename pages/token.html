@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IranCoin (i21) — Token Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+        background:#0d1117;
+        color:white;
+        font-family:system-ui;
+        padding:30px;
+    }
+    .container {
+        max-width:900px;
+        margin:auto;
+    }
+    .card {
+        background:#161b22;
+        padding:20px;
+        border-radius:12px;
+        margin-bottom:20px;
+        border:1px solid #30363d;
+    }
+    .title {
+        font-size:28px;
+        font-weight:600;
+        margin-bottom:10px;
+    }
+    .value {
+        font-size:22px;
+        margin-top:5px;
+    }
+    .chart {
+        height:250px;
+        background:#111;
+        border-radius:10px;
+        margin-top:10px;
+        padding:10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 IranCoin (i21) — Live Token Dashboard</h1>
+    <p>Real-time data directly from your private API.</p>
+
+    <div class="card">
+        <div class="title">💰 Price</div>
+        <div class="value" id="priceUsd">Loading...</div>
+        <div class="value" id="priceSol"></div>
+    </div>
+
+    <div class="card">
+        <div class="title">📌 Market Info</div>
+        <div class="value" id="volume24h"></div>
+        <div class="value" id="txns"></div>
+        <div class="value" id="liquidity"></div>
+    </div>
+
+    <div class="card">
+        <div class="title">👥 Holders</div>
+        <div class="value" id="holders"></div>
+    </div>
+
+    <div class="card">
+        <div class="title">🏦 Top Holders</div>
+        <pre id="topHolders" style="white-space:pre-wrap;"></pre>
+    </div>
+
+    <div class="card">
+        <div class="title">📈 Chart (24h Price)</div>
+        <canvas id="chartCanvas" class="chart"></canvas>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+async function loadData(){
+    const summaryUrl = "http://188.209.138.136:4000/api/i21/summary";
+
+    try {
+        const res = await fetch(summaryUrl);
+        const data = await res.json();
+
+        document.getElementById("priceUsd").innerHTML =
+            "USD: $" + Number(data.priceUsd).toFixed(8);
+
+        document.getElementById("priceSol").innerHTML =
+            "SOL: " + Number(data.priceSol).toFixed(10);
+
+        document.getElementById("volume24h").innerHTML =
+            "24h Volume: " + data.volume24hUsd;
+
+        document.getElementById("txns").innerHTML =
+            `Transactions 24h: ${data.txns24h.total} (buys ${data.txns24h.buys} / sells ${data.txns24h.sells})`;
+
+        document.getElementById("liquidity").innerHTML =
+            "FDV (USD): " + data.fdvUsd;
+
+        document.getElementById("holders").innerHTML =
+            data.topHolders.length + " top holders fetched";
+
+        document.getElementById("topHolders").textContent =
+            JSON.stringify(data.topHolders, null, 2);
+
+        // Fake chart for now (when you want real Birdeye chart API, می‌سازم)
+        drawChart();
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+function drawChart(){
+    const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["-24h","-20h","-16h","-12h","-8h","-4h","Now"],
+            datasets: [{
+                label: "Price (Fake) — Live chart soon",
+                data: [1,2,1.5,3,2.5,2.8,3.2],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins:{legend:{display:false}},
+            scales:{x:{ticks:{color:'white'}},y:{ticks:{color:'white'}}}
+        }
+    });
+}
+
+loadData();
+setInterval(loadData, 15000);
+</script>
+
+</body>
+</html>
