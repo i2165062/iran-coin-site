@@ -1,0 +1,196 @@
+/* token.css – styles for IranCoin token dashboard */
+
+body.theme-dark {
+  background: #05070b;
+  color: #e5edf5;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.token-dashboard {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+}
+
+.token-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.token-header h1 {
+  font-size: 28px;
+  margin: 0 0 6px;
+}
+
+.token-header p {
+  margin: 0;
+  font-size: 14px;
+  color: #8b949e;
+}
+
+.token-tag {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 0 0, #1f6feb, #141820);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid #30363d;
+}
+
+/* Layout */
+
+.token-grid {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.token-grid--two {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.token-grid--one {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+  .token-grid--two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .token-dashboard {
+    margin-top: 24px;
+  }
+}
+
+/* Cards */
+
+.token-card {
+  background: radial-gradient(circle at 0 0, #151b28, #0c1117);
+  border-radius: 16px;
+  border: 1px solid rgba(94, 104, 121, 0.5);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.6);
+  padding: 18px 20px 16px;
+}
+
+.token-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.token-card h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Metrics */
+
+.token-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px 18px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #8b949e;
+}
+
+.metric-value {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.metric-value--mono {
+  font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+/* Badges */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  border: 1px solid transparent;
+}
+
+.badge--neutral {
+  background: #21262d;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+.badge--outline {
+  border-color: #30363d;
+  color: #8b949e;
+  background: transparent;
+}
+
+/* Note */
+
+.token-note {
+  font-size: 13px;
+  color: #8b949e;
+  margin-bottom: 10px;
+}
+
+/* Table */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.locks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.locks-table th,
+.locks-table td {
+  padding: 7px 4px;
+  border-bottom: 1px solid #30363d;
+}
+
+.locks-table th {
+  text-align: left;
+  font-weight: 500;
+  color: #8b949e;
+  font-size: 12px;
+}
+
+.locks-table td {
+  vertical-align: middle;
+}
+
+.locks-table td a {
+  color: #58a6ff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.locks-table td a:hover {
+  text-decoration: underline;
+}
+
+.align-right {
+  text-align: right;
+}
