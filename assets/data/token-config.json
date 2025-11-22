@@ -1,0 +1,23 @@
+{
+  "token": "i21",
+  "name": "IranCoin",
+  "symbol": "i21",
+  "totalSupply": 9999996453.565484,
+  "lockedSupply": 4000000000,
+  "lockedContracts": [
+    {
+      "label": "Team & Founders Lock",
+      "address": "TEAM_WALLET_ADDRESS_HERE",
+      "amount": 2000000000,
+      "reason": "Team allocation locked for 24 months",
+      "unlockDate": "2027-01-01"
+    },
+    {
+      "label": "Liquidity Lock",
+      "address": "LIQ_POOL_LOCK_ADDRESS_HERE",
+      "amount": 2000000000,
+      "reason": "DEX liquidity locked",
+      "unlockDate": "2026-06-01"
+    }
+  ]
+}
