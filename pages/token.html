@@ -1,145 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>IranCoin (i21) — Token Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    body {
-        background:#0d1117;
-        color:white;
-        font-family:system-ui;
-        padding:30px;
-    }
-    .container {
-        max-width:900px;
-        margin:auto;
-    }
-    .card {
-        background:#161b22;
-        padding:20px;
-        border-radius:12px;
-        margin-bottom:20px;
-        border:1px solid #30363d;
-    }
-    .title {
-        font-size:28px;
-        font-weight:600;
-        margin-bottom:10px;
-    }
-    .value {
-        font-size:22px;
-        margin-top:5px;
-    }
-    .chart {
-        height:250px;
-        background:#111;
-        border-radius:10px;
-        margin-top:10px;
-        padding:10px;
-    }
-</style>
+  <meta charset="utf-8" />
+  <title>IranCoin (i21) – Token Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- main site css if you have -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <!-- token page css -->
+  <link rel="stylesheet" href="../assets/css/token.css" />
 </head>
+<body class="theme-dark">
 
-<body>
+  <main class="token-dashboard">
+    <header class="token-header">
+      <div>
+        <h1>IranCoin (i21) – Token Dashboard</h1>
+        <p>Live token metrics from i21 API + manual lock information.</p>
+      </div>
+      <div class="token-tag">SOLANA • i21</div>
+    </header>
 
-<div class="container">
+    <!-- ROW 1: price + supply/lock -->
+    <section class="token-grid token-grid--two">
+      <!-- Price card -->
+      <article class="token-card">
+        <div class="token-card__header">
+          <h2>💰 Price</h2>
+          <span id="token-status" class="badge badge--neutral">Loading…</span>
+        </div>
+        <div class="token-metrics">
+          <div class="metric">
+            <span class="metric-label">Price (USD)</span>
+            <span class="metric-value" id="priceUsd">–</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Price (SOL)</span>
+            <span class="metric-value" id="priceSol">–</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">24h Volume</span>
+            <span class="metric-value" id="volume24h">–</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">24h Trades</span>
+            <span class="metric-value" id="txns24h">–</span>
+          </div>
+        </div>
+      </article>
 
-    <h1>📊 IranCoin (i21) — Live Token Dashboard</h1>
-    <p>Real-time data directly from your private API.</p>
+      <!-- Supply + lock card -->
+      <article class="token-card">
+        <div class="token-card__header">
+          <h2>📌 Supply & Locks</h2>
+        </div>
+        <div class="token-metrics">
+          <div class="metric">
+            <span class="metric-label">Token name</span>
+            <span class="metric-value" id="tokenName">–</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Symbol</span>
+            <span class="metric-value" id="tokenSymbol">i21</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Mint address</span>
+            <span class="metric-value metric-value--mono" id="tokenMint">
+              4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump
+            </span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Total / circulating supply</span>
+            <span class="metric-value" id="totalSupply">–</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Locked (manual)</span>
+            <span class="metric-value" id="lockedTotal">–</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Locked vs supply</span>
+            <span class="metric-value" id="lockedPercent">–</span>
+          </div>
+        </div>
+      </article>
+    </section>
 
-    <div class="card">
-        <div class="title">💰 Price</div>
-        <div class="value" id="priceUsd">Loading...</div>
-        <div class="value" id="priceSol"></div>
-    </div>
+    <!-- ROW 2: lock contracts table -->
+    <section class="token-grid token-grid--one">
+      <article class="token-card">
+        <div class="token-card__header">
+          <h2>🔒 Lock Contracts</h2>
+          <span class="badge badge--outline">Manual configuration</span>
+        </div>
 
-    <div class="card">
-        <div class="title">📌 Market Info</div>
-        <div class="value" id="volume24h"></div>
-        <div class="value" id="txns"></div>
-        <div class="value" id="liquidity"></div>
-    </div>
+        <div class="token-note">
+          These wallets / contracts are manually configured by the i21 team
+          and represent locked allocations (team, liquidity, etc.).
+        </div>
 
-    <div class="card">
-        <div class="title">👥 Holders</div>
-        <div class="value" id="holders"></div>
-    </div>
+        <div class="table-wrapper">
+          <table class="locks-table">
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Address / Contract</th>
+                <th class="align-right">Amount (i21)</th>
+              </tr>
+            </thead>
+            <tbody id="locksTableBody">
+              <!-- filled by JS -->
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
 
-    <div class="card">
-        <div class="title">🏦 Top Holders</div>
-        <pre id="topHolders" style="white-space:pre-wrap;"></pre>
-    </div>
-
-    <div class="card">
-        <div class="title">📈 Chart (24h Price)</div>
-        <canvas id="chartCanvas" class="chart"></canvas>
-    </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-async function loadData(){
-    const summaryUrl = "http://188.209.138.136:4000/api/i21/summary";
-
-    try {
-        const res = await fetch(summaryUrl);
-        const data = await res.json();
-
-        document.getElementById("priceUsd").innerHTML =
-            "USD: $" + Number(data.priceUsd).toFixed(8);
-
-        document.getElementById("priceSol").innerHTML =
-            "SOL: " + Number(data.priceSol).toFixed(10);
-
-        document.getElementById("volume24h").innerHTML =
-            "24h Volume: " + data.volume24hUsd;
-
-        document.getElementById("txns").innerHTML =
-            `Transactions 24h: ${data.txns24h.total} (buys ${data.txns24h.buys} / sells ${data.txns24h.sells})`;
-
-        document.getElementById("liquidity").innerHTML =
-            "FDV (USD): " + data.fdvUsd;
-
-        document.getElementById("holders").innerHTML =
-            data.topHolders.length + " top holders fetched";
-
-        document.getElementById("topHolders").textContent =
-            JSON.stringify(data.topHolders, null, 2);
-
-        // Fake chart for now (when you want real Birdeye chart API, می‌سازم)
-        drawChart();
-
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-function drawChart(){
-    const ctx = document.getElementById('chartCanvas').getContext('2d');
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["-24h","-20h","-16h","-12h","-8h","-4h","Now"],
-            datasets: [{
-                label: "Price (Fake) — Live chart soon",
-                data: [1,2,1.5,3,2.5,2.8,3.2],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins:{legend:{display:false}},
-            scales:{x:{ticks:{color:'white'}},y:{ticks:{color:'white'}}}
-        }
-    });
-}
-
-loadData();
-setInterval(loadData, 15000);
-</script>
-
+  <!-- token dashboard logic -->
+  <script src="../assets/js/token-dashboard.js" defer></script>
 </body>
 </html>
