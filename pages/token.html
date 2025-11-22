@@ -2,135 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>IranCoin (i21) – Token Dashboard</title>
+  <title>IranCoin (i21) — Token Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- main site css if you have -->
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <!-- token page css -->
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/token.css" />
-  <link rel="icon" type="../image/x-icon" href="../images/PC22.ico" />
-	<!-- iOS / iPadOS Home Screen -->
-<link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
-
-<!-- Android / Chrome PWA -->
-<link rel="manifest" href="/site.webmanifest" />
-<meta name="theme-color" content="#0b0e11" />
-
-<!-- Safari pinned tab (macOS) - تک‌رنگ -->
-<link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
-
-<!-- Windows tiles (اختیاری) -->
-<meta name="msapplication-TileColor" content="#0b0e11" />
-<meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
 </head>
 <body class="theme-dark">
 
-  <main class="token-dashboard">
-    <header class="token-header">
-      <div>
-        <h1>IranCoin (i21) – Token Dashboard</h1>
-        <p>Live token metrics from i21 API + manual lock information.</p>
+  <header class="top-bar">
+    <div class="brand">
+      <span class="brand-logo">📊</span>
+      <div class="brand-text">
+        <h1>IranCoin (i21)</h1>
+        <p>Live token dashboard powered by the i21 API</p>
       </div>
-      <div class="token-tag">SOLANA • i21</div>
-    </header>
+    </div>
+    <div class="network-pill">Solana</div>
+  </header>
 
-    <!-- ROW 1: price + supply/lock -->
-    <section class="token-grid token-grid--two">
-      <!-- Price card -->
-      <article class="token-card">
-        <div class="token-card__header">
-          <h2>💰 Price</h2>
-          <span id="token-status" class="badge badge--neutral">Loading…</span>
+  <main class="page">
+    <!-- PRICE CARD -->
+    <section class="card big-card" id="price-card">
+      <div class="card-header">
+        <h2>Price</h2>
+        <span class="pill pill-live" id="status-pill">Live</span>
+      </div>
+      <div class="card-body card-grid-2">
+        <div class="price-main">
+          <div class="price-label">Current price</div>
+          <div class="price-value" id="price-usd">Loading...</div>
+          <div class="price-sub">
+            <span id="price-sol">–</span>
+            <span class="sep">•</span>
+            <span id="token-name">i21</span>
+          </div>
         </div>
-        <div class="token-metrics">
+        <div class="price-extra">
           <div class="metric">
-            <span class="metric-label">Price (USD)</span>
-            <span class="metric-value" id="priceUsd">–</span>
+            <div class="metric-label">24h Volume (USD)</div>
+            <div class="metric-value" id="volume-24h">–</div>
           </div>
           <div class="metric">
-            <span class="metric-label">Price (SOL)</span>
-            <span class="metric-value" id="priceSol">–</span>
+            <div class="metric-label">24h Trades</div>
+            <div class="metric-value" id="txns-24h">–</div>
+            <div class="metric-sub" id="txns-breakdown">–</div>
           </div>
-          <div class="metric">
-            <span class="metric-label">24h Volume</span>
-            <span class="metric-value" id="volume24h">–</span>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <span>Mint:</span>
+        <code id="mint-address"></code>
+      </footer>
+    </section>
+
+    <!-- MARKET + SUPPLY -->
+    <section class="cards-row">
+      <article class="card" id="market-card">
+        <div class="card-header">
+          <h2>Market Info</h2>
+        </div>
+        <div class="card-body">
+          <div class="metric-row">
+            <span>FDV (USD)</span>
+            <strong id="fdv-usd">–</strong>
           </div>
-          <div class="metric">
-            <span class="metric-label">24h Trades</span>
-            <span class="metric-value" id="txns24h">–</span>
+          <div class="metric-row">
+            <span>Liquidity (USD)</span>
+            <strong id="liquidity-usd">–</strong>
+          </div>
+          <div class="metric-row">
+            <span>Decimals</span>
+            <strong id="decimals">–</strong>
           </div>
         </div>
       </article>
 
-      <!-- Supply + lock card -->
-      <article class="token-card">
-        <div class="token-card__header">
-          <h2>📌 Supply & Locks</h2>
+      <article class="card" id="supply-card">
+        <div class="card-header">
+          <h2>Supply</h2>
         </div>
-        <div class="token-metrics">
-          <div class="metric">
-            <span class="metric-label">Token name</span>
-            <span class="metric-value" id="tokenName">–</span>
+        <div class="card-body">
+          <div class="metric-row">
+            <span>Total Supply</span>
+            <strong id="total-supply">–</strong>
           </div>
-          <div class="metric">
-            <span class="metric-label">Symbol</span>
-            <span class="metric-value" id="tokenSymbol">i21</span>
+          <div class="metric-row">
+            <span>Circulating</span>
+            <strong id="circulating-supply">–</strong>
           </div>
-          <div class="metric">
-            <span class="metric-label">Mint address</span>
-            <span class="metric-value metric-value--mono" id="tokenMint">
-              4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump
-            </span>
+          <div class="metric-row">
+            <span>Locked</span>
+            <strong id="locked-supply">–</strong>
           </div>
-          <div class="metric">
-            <span class="metric-label">Total / circulating supply</span>
-            <span class="metric-value" id="totalSupply">–</span>
-          </div>
-          <div class="metric">
-            <span class="metric-label">Locked (manual)</span>
-            <span class="metric-value" id="lockedTotal">–</span>
-          </div>
-          <div class="metric">
-            <span class="metric-label">Locked vs supply</span>
-            <span class="metric-value" id="lockedPercent">–</span>
+          <div class="metric-row">
+            <span>Unlocked</span>
+            <strong id="unlocked-supply">–</strong>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- ROW 2: lock contracts table -->
-    <section class="token-grid token-grid--one">
-      <article class="token-card">
-        <div class="token-card__header">
-          <h2>🔒 Lock Contracts</h2>
-          <span class="badge badge--outline">Manual configuration</span>
+    <!-- LOCKED CONTRACTS -->
+    <section class="card" id="locks-card">
+      <div class="card-header">
+        <h2>Locked Contracts</h2>
+        <span class="card-subtitle">Manual data from project team</span>
+      </div>
+      <div class="card-body">
+        <div class="locks-list" id="locks-list">
+          <!-- Filled by JS -->
         </div>
-
-        <div class="token-note">
-          These wallets / contracts are manually configured by the i21 team
-          and represent locked allocations (team, liquidity, etc.).
-        </div>
-
-        <div class="table-wrapper">
-          <table class="locks-table">
-            <thead>
-              <tr>
-                <th>Label</th>
-                <th>Address / Contract</th>
-                <th class="align-right">Amount (i21)</th>
-              </tr>
-            </thead>
-            <tbody id="locksTableBody">
-              <!-- filled by JS -->
-            </tbody>
-          </table>
-        </div>
-      </article>
+      </div>
     </section>
   </main>
 
-  <!-- token dashboard logic -->
-  <script src="../assets/js/token-dashboard.js" defer></script>
+  <footer class="page-footer">
+    <p>
+      Data source: <code>api.irannft.art</code> (i21-token-api v3) +
+      manual lock data from <strong>i2165062</strong> team.
+    </p>
+  </footer>
+
+  <!-- JS -->
+  <script src="../assets/js/token.js"></script>
 </body>
 </html>
