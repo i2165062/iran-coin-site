@@ -1,155 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>IranCoin (i21) — Token Dashboard</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <link rel="stylesheet" href="../assets/css/token.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="token-header">
-        <div class="token-title-block">
-          <div class="token-title-row">
-            <div class="token-icon">📊</div>
-            <div class="token-title">IranCoin (i21)</div>
-          </div>
-          <div class="token-subtitle">
-            Live token dashboard powered by the i21 private API.
-          </div>
-        </div>
-
+<head>
+  <meta charset="UTF-8" />
+  <title>IranCoin (i21) — Token Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/css/token.css" />
+</head>
+<body>
+  <main class="token-page">
+    <!-- Header -->
+    <header class="token-header">
+      <div class="token-title-wrap">
+        <div class="token-logo">📊</div>
         <div>
-          <div class="chain-pill">Solana</div>
-          <div class="status-pill" id="status-pill">
-            <span class="status-dot" id="status-dot"></span>
-            Live
+          <h1 class="token-title">IranCoin (i21)</h1>
+          <p class="token-subtitle">
+            Live token dashboard powered by the i21 private API.
+          </p>
+        </div>
+      </div>
+      <div class="token-chain-pill">SOLANA</div>
+    </header>
+
+    <!-- Global status bar -->
+    <section id="globalStatus" class="status-bar status-ok" hidden>
+      <span id="statusText"></span>
+    </section>
+
+    <!-- GRID -->
+    <section class="token-grid">
+      <!-- Price Card -->
+      <article class="card card-price">
+        <header class="card-header">
+          <div class="card-title-wrap">
+            <span class="card-icon">💰</span>
+            <h2>Price</h2>
+            <span class="muted">Real-time from i21 API</span>
+          </div>
+          <span id="priceStatus" class="pill pill-soft">Loading…</span>
+        </header>
+
+        <div class="card-body card-price-body">
+          <div class="price-main">
+            <div class="price-label">Current price</div>
+            <div class="price-value" id="priceUsd">$ —</div>
+            <div class="price-subvalue" id="priceSol">— SOL</div>
+            <div class="price-token-line">
+              <span id="tokenSymbol">–</span>
+              <span class="token-separator">•</span>
+              <span id="tokenName">Token</span>
+            </div>
+            <div class="price-mint">
+              <span class="muted">Mint:</span>
+              <span id="tokenMint" class="mono"></span>
+            </div>
+          </div>
+
+          <div class="price-side">
+            <div class="metric-row">
+              <span class="metric-label">24h Volume (USD)</span>
+              <span class="metric-value" id="volume24hUsd">–</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">24h Trades</span>
+              <span class="metric-value" id="txns24hTotal">–</span>
+            </div>
           </div>
         </div>
-      </header>
+      </article>
 
-      <main class="token-grid">
-        <!-- Price card -->
-        <section class="card">
-          <div class="card-header">
-            <div class="card-title">
-              <span class="card-title-icon">💰</span>
-              <span>Price</span>
-            </div>
-            <span class="card-caption">Real-time from i21 API</span>
+      <!-- Market Info -->
+      <article class="card">
+        <header class="card-header">
+          <div class="card-title-wrap">
+            <span class="card-icon">📈</span>
+            <h2>Market Info</h2>
           </div>
+        </header>
+        <div class="card-body">
+          <ul class="metric-list">
+            <li>
+              <span>FDV (USD)</span>
+              <span id="fdvUsd">–</span>
+            </li>
+            <li>
+              <span>Liquidity (USD)</span>
+              <span id="liquidityUsd">–</span>
+            </li>
+            <li>
+              <span>Decimals</span>
+              <span id="decimals">–</span>
+            </li>
+          </ul>
+        </div>
+      </article>
 
-          <div class="price-main">
-            <div id="price-value" class="price-value">Loading...</div>
-            <div id="price-symbol" class="price-symbol"></div>
+      <!-- Supply -->
+      <article class="card">
+        <header class="card-header">
+          <div class="card-title-wrap">
+            <span class="card-icon">📦</span>
+            <h2>Supply</h2>
           </div>
+        </header>
+        <div class="card-body">
+          <ul class="metric-list">
+            <li>
+              <span>Total Supply</span>
+              <span id="totalSupply">–</span>
+            </li>
+            <li>
+              <span>Circulating</span>
+              <span id="circulatingSupply">–</span>
+            </li>
+            <li>
+              <span>Locked</span>
+              <span id="lockedSupply">–</span>
+            </li>
+            <li>
+              <span>Unlocked</span>
+              <span id="unlockedSupply">–</span>
+            </li>
+          </ul>
+        </div>
+      </article>
 
-          <div class="price-meta-row">
-            <div class="price-meta-block">
-              <div class="price-label">24h Volume (USD)</div>
-              <div id="volume-24h" class="price-number">–</div>
-            </div>
-            <div class="price-meta-block">
-              <div class="price-label">24h Trades</div>
-              <div id="trades-24h" class="price-number">–</div>
-            </div>
+      <!-- Locked Contracts -->
+      <article class="card card-locked">
+        <header class="card-header">
+          <div class="card-title-wrap">
+            <span class="card-icon">🔒</span>
+            <h2>Locked Contracts</h2>
           </div>
-
-          <div class="price-meta-row" style="margin-top: 14px;">
-            <div class="price-meta-block" style="align-items: flex-start;">
-              <div class="price-label">Token</div>
-              <div id="token-name" class="price-number">–</div>
-            </div>
-            <div class="price-meta-block">
-              <div class="price-label">Mint</div>
-              <div id="mint-address" class="price-number">–</div>
-            </div>
+          <span class="muted small">
+            Manual lock data configured by the i2165062 team.
+          </span>
+        </header>
+        <div class="card-body">
+          <div id="lockedContractsList" class="locked-list">
+            <!-- Filled from token-config.json -->
           </div>
-        </section>
+        </div>
+      </article>
+    </section>
 
-        <!-- Right column (Market + Supply) -->
-        <section>
-          <div class="two-column">
-            <!-- Market Info -->
-            <section class="card">
-              <div class="card-header">
-                <div class="card-title">
-                  <span class="card-title-icon">📌</span>
-                  <span>Market Info</span>
-                </div>
-              </div>
+    <!-- Footer -->
+    <footer class="token-footer">
+      <p>
+        Data source:
+        <a href="https://api.irannft.art/api/health" target="_blank" rel="noreferrer">
+          api.irannft.art
+        </a>
+        (i21-token-api v3) + manual lock data from i2165062 team.
+      </p>
+    </footer>
+  </main>
 
-              <ul class="info-list">
-                <li class="info-row">
-                  <span class="info-label">FDV (USD)</span>
-                  <span id="fdv-usd" class="info-value">–</span>
-                </li>
-                <li class="info-row">
-                  <span class="info-label">Liquidity (USD)</span>
-                  <span id="liquidity-usd" class="info-value">–</span>
-                </li>
-                <li class="info-row">
-                  <span class="info-label">Decimals</span>
-                  <span id="decimals" class="info-value">–</span>
-                </li>
-              </ul>
-            </section>
-
-            <!-- Supply -->
-            <section class="card">
-              <div class="card-header">
-                <div class="card-title">
-                  <span class="card-title-icon">📦</span>
-                  <span>Supply</span>
-                </div>
-              </div>
-
-              <ul class="info-list">
-                <li class="info-row">
-                  <span class="info-label">Total Supply</span>
-                  <span id="total-supply" class="info-value">–</span>
-                </li>
-                <li class="info-row">
-                  <span class="info-label">Circulating</span>
-                  <span id="circulating-supply" class="info-value">–</span>
-                </li>
-                <li class="info-row">
-                  <span class="info-label">Locked</span>
-                  <span id="locked-supply" class="info-value">–</span>
-                </li>
-                <li class="info-row">
-                  <span class="info-label">Unlocked</span>
-                  <span id="unlocked-supply" class="info-value">–</span>
-                </li>
-              </ul>
-            </section>
-          </div>
-
-          <!-- Locked contracts -->
-          <section class="card" style="margin-top: 18px;">
-            <div class="card-header">
-              <div class="card-title">
-                <span class="card-title-icon">🔒</span>
-                <span>Locked Contracts</span>
-              </div>
-            </div>
-            <div class="locked-note">
-              Manual lock data configured by the i2165062 team.
-            </div>
-            <div id="locked-contracts" class="locked-contracts"></div>
-          </section>
-        </section>
-      </main>
-
-      <footer style="margin-top: 28px; font-size: 11px; color: #9ca3af;">
-        Data source: <strong>api.irannft.art</strong> (i21-token-api v3) + manual
-        lock data from the i2165062 team.
-      </footer>
-    </div>
-
-    <script src="../assets/js/token.js" defer></script>
-  </body>
+  <script src="../assets/js/token.js"></script>
+</body>
 </html>
