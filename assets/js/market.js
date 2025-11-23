@@ -7,10 +7,19 @@ let listingsByWallet = {}; // { walletAddress: { [nftId]: { priceSol } } }
 // Solana connection (global)
 let solConnection = null;
 
-// IranCoin SPL Mint (توکن خودت روی سولانا)
+// i21 / IranCoin SPL Mint (توکن فعلی روی سولانا)
 // ⬇️ حتماً این رشته را با آدرس واقعی mint توکن خودت عوض کن
 const IRANCOIN_MINT_STRING = "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
 let IRANCOIN_MINT = null;
+
+// Market token (Phase 2) SPL Mint (توکن مخصوص خرید NFT)
+// ⬇️ بعداً وقتی مینت جدید را ساختی، این مقدار را با آدرس واقعی عوض کن
+const MARKET_TOKEN_MINT_STRING = "SET_MARKET_TOKEN_MINT_ADDRESS_HERE";
+let MARKET_TOKEN_MINT = null;
+
+// Conversion design params (UI only – می‌تونی اعداد را هر زمان عوض کنی)
+const CONVERSION_RATE = 100; // 100 i21 → 1 Market token
+const BURN_PERCENT = 50;     // 50٪ از i21 ورودی سوزانده می‌شود (طرح فعلی)
 
 // Shorten address like So11..abcd
 function shortenAddress(addr) {
@@ -25,18 +34,39 @@ function initSolanaConnection() {
     return;
   }
   if (!solConnection) {
-    const { Connection, clusterApiUrl } = window.solanaWeb3;
+    const { Connection } = window.solanaWeb3;
     // برای پروژه جدی بهتره RPC اختصاصی بزاری، این فقط مثال mainnet-beta است
-solConnection = new Connection("https://mainnet.helius-rpc.com/?api-key=bb4aebe0-38f0-4d82-a5b7-989b168ee914", "confirmed");
+    solConnection = new Connection(
+      "https://mainnet.helius-rpc.com/?api-key=bb4aebe0-38f0-4d82-a5b7-989b168ee914",
+      "confirmed"
+    );
   }
 
-  // سعی می‌کنیم mint توکن را از رشته بسازیم
-  if (!IRANCOIN_MINT && IRANCOIN_MINT_STRING && IRANCOIN_MINT_STRING !== "YOUR_IRANCOIN_MINT_ADDRESS_HERE") {
+  // ساختن PublicKey برای i21
+  if (
+    !IRANCOIN_MINT &&
+    IRANCOIN_MINT_STRING &&
+    IRANCOIN_MINT_STRING !== "YOUR_IRANCOIN_MINT_ADDRESS_HERE"
+  ) {
     try {
       IRANCOIN_MINT = new window.solanaWeb3.PublicKey(IRANCOIN_MINT_STRING);
     } catch (e) {
       console.warn("Invalid IRANCOIN_MINT_STRING, please set a valid mint address.");
       IRANCOIN_MINT = null;
+    }
+  }
+
+  // ساختن PublicKey برای Market token (Phase 2)
+  if (
+    !MARKET_TOKEN_MINT &&
+    MARKET_TOKEN_MINT_STRING &&
+    MARKET_TOKEN_MINT_STRING !== "SET_MARKET_TOKEN_MINT_ADDRESS_HERE"
+  ) {
+    try {
+      MARKET_TOKEN_MINT = new window.solanaWeb3.PublicKey(MARKET_TOKEN_MINT_STRING);
+    } catch (e) {
+      console.warn("Invalid MARKET_TOKEN_MINT_STRING, please set a valid mint address.");
+      MARKET_TOKEN_MINT = null;
     }
   }
 }
@@ -449,12 +479,14 @@ function handleUnlist(item) {
   // نسخه واقعی: call unlist/cancel on marketplace contract
 }
 
-// --- Balances (SOL + IranCoin) ---
+// --- Balances (SOL + i21 + Market token) ---
 function resetBalanceUI() {
   const solEl = document.getElementById("statSolBalance");
-  const tokEl = document.getElementById("statTokenBalance");
+  const tokI21El = document.getElementById("statTokenBalanceI21");
+  const tokMarketEl = document.getElementById("statTokenBalanceMarket");
   if (solEl) solEl.textContent = "–";
-  if (tokEl) tokEl.textContent = "–";
+  if (tokI21El) tokI21El.textContent = "–";
+  if (tokMarketEl) tokMarketEl.textContent = "–";
 }
 
 async function loadBalances() {
@@ -474,7 +506,8 @@ async function loadBalances() {
   }
 
   const solEl = document.getElementById("statSolBalance");
-  const tokEl = document.getElementById("statTokenBalance");
+  const tokI21El = document.getElementById("statTokenBalanceI21");
+  const tokMarketEl = document.getElementById("statTokenBalanceMarket");
 
   try {
     const { PublicKey, LAMPORTS_PER_SOL } = window.solanaWeb3;
@@ -489,34 +522,61 @@ async function loadBalances() {
     if (solEl) solEl.textContent = "error";
   }
 
-  // IranCoin SPL Token balance
+  // i21 / IranCoin SPL Token balance
   if (!IRANCOIN_MINT) {
-    if (tokEl) tokEl.textContent = "set mint";
-    return;
+    if (tokI21El) tokI21El.textContent = "set mint";
+  } else {
+    try {
+      const { PublicKey } = window.solanaWeb3;
+      const pubkey = new PublicKey(currentWallet);
+
+      const resp = await solConnection.getParsedTokenAccountsByOwner(pubkey, {
+        mint: IRANCOIN_MINT
+      });
+
+      let amount = 0;
+      if (resp.value && resp.value.length > 0) {
+        // اگر چند اکانت باشد، همه را جمع می‌کنیم
+        for (const acc of resp.value) {
+          const info = acc.account.data.parsed.info;
+          const tokenAmount = info.tokenAmount;
+          amount += Number(tokenAmount.uiAmount || 0);
+        }
+      }
+
+      if (tokI21El) tokI21El.textContent = amount.toLocaleString("en-US");
+    } catch (e) {
+      console.error("Failed to fetch i21 balance:", e);
+      if (tokI21El) tokI21El.textContent = "error";
+    }
   }
 
-  try {
-    const { PublicKey } = window.solanaWeb3;
-    const pubkey = new PublicKey(currentWallet);
+  // Market token SPL balance (Phase 2)
+  if (!MARKET_TOKEN_MINT) {
+    if (tokMarketEl) tokMarketEl.textContent = "coming soon";
+  } else {
+    try {
+      const { PublicKey } = window.solanaWeb3;
+      const pubkey = new PublicKey(currentWallet);
 
-    const resp = await solConnection.getParsedTokenAccountsByOwner(pubkey, {
-      mint: IRANCOIN_MINT
-    });
+      const resp = await solConnection.getParsedTokenAccountsByOwner(pubkey, {
+        mint: MARKET_TOKEN_MINT
+      });
 
-    let amount = 0;
-    if (resp.value && resp.value.length > 0) {
-      // اگر چند اکانت باشد، همه را جمع می‌کنیم
-      for (const acc of resp.value) {
-        const info = acc.account.data.parsed.info;
-        const tokenAmount = info.tokenAmount;
-        amount += Number(tokenAmount.uiAmount || 0);
+      let amount = 0;
+      if (resp.value && resp.value.length > 0) {
+        for (const acc of resp.value) {
+          const info = acc.account.data.parsed.info;
+          const tokenAmount = info.tokenAmount;
+          amount += Number(tokenAmount.uiAmount || 0);
+        }
       }
-    }
 
-    if (tokEl) tokEl.textContent = amount.toLocaleString("en-US");
-  } catch (e) {
-    console.error("Failed to fetch token balance:", e);
-    if (tokEl) tokEl.textContent = "error";
+      if (tokMarketEl) tokMarketEl.textContent = amount.toLocaleString("en-US");
+    } catch (e) {
+      console.error("Failed to fetch market token balance:", e);
+      if (tokMarketEl) tokMarketEl.textContent = "error";
+    }
   }
 }
 
@@ -568,6 +628,33 @@ function setupPanelTabs() {
   });
 }
 
+// --- Converter simulator (UI only, no on-chain tx yet) ---
+function setupConverterSimulator() {
+  const input = document.getElementById("convertInputI21");
+  const outMarket = document.getElementById("convertOutputMarket");
+  const outBurn = document.getElementById("convertOutputBurn");
+
+  if (!input || !outMarket || !outBurn) return;
+
+  const update = () => {
+    const value = Number(input.value || 0);
+    if (isNaN(value) || value <= 0) {
+      outMarket.textContent = "0";
+      outBurn.textContent = "0";
+      return;
+    }
+
+    const marketAmount = value / CONVERSION_RATE;
+    const burnAmount = (value * BURN_PERCENT) / 100;
+
+    // حذف صفرهای اضافی انتهای اعشار
+    outMarket.textContent = marketAmount.toFixed(4).replace(/\.?0+$/, "");
+    outBurn.textContent = burnAmount.toFixed(2).replace(/\.?0+$/, "");
+  };
+
+  input.addEventListener("input", update);
+}
+
 // --- Init ---
 document.addEventListener("DOMContentLoaded", () => {
   // Init Solana connection (در صورت وجود web3)
@@ -604,6 +691,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("overviewGoExplore")?.addEventListener("click", () => {
     document.getElementById("exploreTabBtn")?.click();
   });
+
+  // Converter simulator (Phase 2 UI)
+  setupConverterSimulator();
 
   // If Phantom already trusted
   if (window.solana && window.solana.isPhantom) {
