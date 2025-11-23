@@ -1,30 +1,21 @@
 {
-  "symbol": "i21",
-  "name": "IranCoin",
-  "mint": "4FmkPqgNVbzyBttWtPsh9mz3DCoqIPzfZvzeAh2pump",
-  "chain": "solana",
-
-  "totalSupply": 999999453.565484,
-  "decimals": 6,
-
-  "lockedSupply": 350000000,
-  "unlockedSupply": 649999453.565484,
-
+  "token": {
+    "symbol": "i21",
+    "name": "IranCoin (i21)",
+    "mint": "4FmkPqgNWbzyB7tWhPsh9m3zDCoq9FzIvzaeAhzpump",
+    "chain": "Solana"
+  },
+  "supply": {
+    "total": 999996453.565484,
+    "decimals": 6
+  },
   "lockedContracts": [
     {
-      "label": "Team Wallet Lock (2 Years)",
-      "address": "F5t5dQpQfYc3TXWJdK7...TEAMLOCK",
-      "amount": 200000000
-    },
-    {
-      "label": "Marketing & Ecosystem Lock",
-      "address": "3hWw9VuZfx1sHn...MKTLOCK",
-      "amount": 100000000
-    },
-    {
-      "label": "Treasury & Future Development",
-      "address": "7YpLLP3qDs2k...TREASURY",
-      "amount": 50000000
+      "label": "Team & Marketing Wallet",
+      "address": "YOUR_TEAM_WALLET_ADDRESS_HERE",
+      "amount": 10000000,
+      "unlockDate": "2026-11-01",
+      "notes": "Locked for 2 years"
     }
   ]
 }
