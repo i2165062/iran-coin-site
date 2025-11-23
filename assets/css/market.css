@@ -506,8 +506,9 @@ body.theme-dark {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 0%, rgba(20, 241, 149, 0.14), transparent 50%),
-              rgba(0, 0, 0, 0.76);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(20, 241, 149, 0.14), transparent 50%),
+    rgba(0, 0, 0, 0.76);
   backdrop-filter: blur(18px);
 }
 
@@ -638,6 +639,115 @@ body.theme-dark {
   font-size: 0.8rem;
 }
 
+.label-inline {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-right: 0.3rem;
+}
+
+.small {
+  font-size: 0.78rem;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Phase 2 converter */
+.converter-card {
+  margin-top: 1.4rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: var(--radius-lg);
+  background: rgba(5, 9, 16, 0.92);
+  border: 1px dashed rgba(196, 161, 94, 0.35);
+}
+
+.converter-header h4 {
+  margin: 0 0 0.3rem;
+}
+
+.converter-header p {
+  margin: 0 0 0.6rem;
+}
+
+.converter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.converter-field {
+  flex: 1 1 230px;
+}
+
+.converter-field label {
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+}
+
+.converter-field input[type="number"] {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 11, 18, 0.95);
+  color: var(--ink);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.converter-field input[type="number"]::placeholder {
+  color: rgba(154, 165, 181, 0.7);
+}
+
+.converter-field input[type="number"]:focus {
+  border-color: rgba(196, 161, 94, 0.7);
+  box-shadow: 0 0 0 1px rgba(196, 161, 94, 0.35);
+}
+
+.converter-result {
+  flex: 1 1 260px;
+}
+
+.stat-card.converter-stat {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stat-card.converter-stat .btn {
+  margin-top: 0.4rem;
+  align-self: flex-start;
+}
+
+.project-notes {
+  margin-top: 1.2rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-notes h4 {
+  margin: 0 0 0.4rem;
+}
+
+.project-notes ul {
+  padding-left: 1.2rem;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.project-notes li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .modal-body {
@@ -665,6 +775,10 @@ body.theme-dark {
 
   .market-main {
     padding: 0 1rem;
+  }
+
+  .converter-grid {
+    flex-direction: column;
   }
 }
 
