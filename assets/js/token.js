@@ -1,10 +1,23 @@
-// مسیر API بک‌اند (فعلاً http،یادت نره فقط 888888****8 بعد از SSL می‌کنیم https)
+// ================================
+// IranCoin (i21) — Token Dashboard
+// Frontend logic
+// ================================
+
+// آدرس API بک‌اند (حتماً https برای جلوگیری از خطای mixed content)
 const API_BASE = 'https://api.irannft.art/api';
+
+// مسیر فایل تنظیمات دستی توکن
 const CONFIG_URL = '../assets/data/token-config.json';
 
+// -------------------------
+// Helper functions
+// -------------------------
+
 async function fetchJson(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+  const res = await fetch(url, { method: 'GET' });
+  if (!res.ok) {
+    throw new Error(`Request failed ${res.status} for ${url}`);
+  }
   return res.json();
 }
 
@@ -12,116 +25,169 @@ function formatNumber(num, decimals = 2) {
   if (num === null || num === undefined) return '–';
   const n = Number(num);
   if (!Number.isFinite(n)) return '–';
+
   if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(decimals) + 'B';
   if (n >= 1_000_000) return (n / 1_000_000).toFixed(decimals) + 'M';
   if (n >= 1_000) return (n / 1_000).toFixed(decimals) + 'K';
+
   return n.toFixed(decimals);
 }
 
-function formatDate(dateStr) {
-  if (!dateStr) return '–';
-  const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString('en-GB', {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit'
-  });
+function formatUsd(num) {
+  if (num === null || num === undefined) return '–';
+  const n = Number(num);
+  if (!Number.isFinite(n)) return '–';
+  if (n < 0.0001) return '$' + n.toExponential(2);
+  return '$' + formatNumber(n, 2);
 }
 
+// ساده برای کوتاه کردن آدرس‌ها
+function shortenAddress(addr) {
+  if (!addr) return '–';
+  if (addr.length <= 10) return addr;
+  return addr.slice(0, 4) + '...' + addr.slice(-4);
+}
+
+// -------------------------
+// Main loader
+// -------------------------
+
 async function loadDashboard() {
+  const statusPill = document.getElementById('status-pill');
+  const statusDot = document.getElementById('status-dot');
+  const priceEl = document.getElementById('price-value');
+  const symbolEl = document.getElementById('price-symbol');
+  const volumeEl = document.getElementById('volume-24h');
+  const tradesEl = document.getElementById('trades-24h');
+  const mintEl = document.getElementById('mint-address');
+  const tokenNameEl = document.getElementById('token-name');
+  const fdvEl = document.getElementById('fdv-usd');
+  const liqEl = document.getElementById('liquidity-usd');
+  const decimalsEl = document.getElementById('decimals');
+  const totalSupplyEl = document.getElementById('total-supply');
+  const circulatingEl = document.getElementById('circulating-supply');
+  const lockedEl = document.getElementById('locked-supply');
+  const unlockedEl = document.getElementById('unlocked-supply');
+  const locksContainer = document.getElementById('locked-contracts');
+
   try {
-    // درخواست همزمان به API و کانفیگ قفل‌ها
-    const [summaryResp, config] = await Promise.all([
+    // ۱) همزمان اطلاعات API و تنظیمات دستی را بگیر
+    const [summary, config] = await Promise.all([
       fetchJson(`${API_BASE}/i21/summary`),
       fetchJson(CONFIG_URL)
     ]);
 
-    if (!summaryResp.ok) {
-      throw new Error(summaryResp.error || 'API returned error');
+    if (!summary || summary.ok === false) {
+      throw new Error('Backend /summary returned error flag');
     }
 
-    const data = summaryResp;
-    const tokenData = data; // برای خوانایی
+    // ---------------- Price card ----------------
+    const priceUsd = summary.priceUsd;
+    const volume24hUsd = summary.volume24hUsd;
+    const totalTrades24h = summary.txns24h?.total ?? null;
 
-    // ---- PRICE CARD ----
-    document.getElementById('price-usd').textContent =
-      '$' + formatNumber(tokenData.priceUsd, 6);
-    document.getElementById('price-sol').textContent =
-      formatNumber(tokenData.priceSol, 6) + ' SOL';
-    document.getElementById('token-name').textContent =
-      `${config.name} (${config.symbol})`;
-    document.getElementById('mint-address').textContent =
-      tokenData.mint || '–';
+    priceEl.textContent = formatUsd(priceUsd);
+    symbolEl.textContent = summary.token || config.symbol || 'i21';
+    volumeEl.textContent = formatUsd(volume24hUsd);
+    tradesEl.textContent = totalTrades24h ?? '–';
 
-    document.getElementById('volume-24h').textContent =
-      '$' + formatNumber(tokenData.volume24hUsd, 2);
+    mintEl.textContent = shortenAddress(summary.mint || config.mint);
+    mintEl.setAttribute('title', summary.mint || config.mint || '');
 
-    if (tokenData.txns24h) {
-      const { buys, sells, total } = tokenData.txns24h;
-      document.getElementById('txns-24h').textContent =
-        (total ?? (buys || 0) + (sells || 0)) + ' txs';
-      document.getElementById('txns-breakdown').textContent =
-        `Buys: ${buys || 0} • Sells: ${sells || 0}`;
-    }
+    tokenNameEl.textContent = summary.name || config.name || 'IranCoin';
 
-    // ---- MARKET CARD ----
-    document.getElementById('fdv-usd').textContent =
-      '$' + formatNumber(tokenData.fdvUsd, 2);
-    document.getElementById('liquidity-usd').textContent =
-      tokenData.liquidityUsd != null
-        ? '$' + formatNumber(tokenData.liquidityUsd, 2)
-        : '–';
-    document.getElementById('decimals').textContent =
-      tokenData.decimals ?? '–';
+    // ---------------- Market card ----------------
+    fdvEl.textContent = formatUsd(summary.fdvUsd);
+    liqEl.textContent = formatUsd(summary.liquidityUsd);
+    decimalsEl.textContent = summary.decimals ?? config.decimals ?? '–';
 
-    // ---- SUPPLY CARD ----
+    // ---------------- Supply card ----------------
     const totalSupply =
-      config.totalSupply || tokenData.circulatingSupply || 0;
-    const circulating = tokenData.circulatingSupply || 0;
-    const locked = config.lockedSupply || 0;
-    const unlocked = totalSupply - locked;
+      config.totalSupply ??
+      summary.circulatingSupply ??
+      0;
 
-    document.getElementById('total-supply').textContent =
-      formatNumber(totalSupply, 0) + ` ${config.symbol}`;
-    document.getElementById('circulating-supply').textContent =
-      formatNumber(circulating, 0) + ` ${config.symbol}`;
-    document.getElementById('locked-supply').textContent =
-      formatNumber(locked, 0) + ` ${config.symbol}`;
-    document.getElementById('unlocked-supply').textContent =
-      formatNumber(unlocked, 0) + ` ${config.symbol}`;
+    const circulatingSupply = summary.circulatingSupply ?? '–';
 
-    // ---- LOCKED CONTRACTS ----
-    const locksContainer = document.getElementById('locks-list');
+    totalSupplyEl.textContent = formatNumber(totalSupply, 0);
+    circulatingEl.textContent = formatNumber(circulatingSupply, 0);
+
+    // از config برای عدد قفل‌شده/آزاد شده
+    if (config.lockedSupply !== undefined) {
+      lockedEl.textContent = formatNumber(config.lockedSupply, 0);
+    } else {
+      lockedEl.textContent = '–';
+    }
+
+    if (config.unlockedSupply !== undefined) {
+      unlockedEl.textContent = formatNumber(config.unlockedSupply, 0);
+    } else if (totalSupply && config.lockedSupply) {
+      unlockedEl.textContent = formatNumber(
+        totalSupply - config.lockedSupply,
+        0
+      );
+    } else {
+      unlockedEl.textContent = '–';
+    }
+
+    // ---------------- Locked contracts list ----------------
     locksContainer.innerHTML = '';
 
-    if (config.lockedContracts && config.lockedContracts.length) {
+    if (Array.isArray(config.lockedContracts) && config.lockedContracts.length) {
       config.lockedContracts.forEach(lock => {
         const div = document.createElement('div');
-        div.className = 'lock-item';
-        div.innerHTML = `
-          <div class="lock-item-header">
-            <div class="lock-label">${lock.label}</div>
-            <div class="lock-amount">
-              ${formatNumber(lock.amount, 0)} ${config.symbol}
-            </div>
-          </div>
-          <div class="lock-meta">
-            <span class="lock-address">${lock.address}</span>
-            <span>${lock.reason || ''}</span>
-            <span>Unlock: ${formatDate(lock.unlockDate)}</span>
-          </div>
-        `;
+        div.className = 'locked-item';
+
+        const head = document.createElement('div');
+        head.className = 'locked-item-title';
+
+        const label = document.createElement('div');
+        label.className = 'locked-item-label';
+        label.textContent = lock.label || 'Locked allocation';
+
+        const amount = document.createElement('div');
+        amount.className = 'locked-item-amount';
+        amount.textContent = formatNumber(lock.amount, 0) + ' ' +
+          (config.symbol || 'i21');
+
+        head.appendChild(label);
+        head.appendChild(amount);
+
+        const addr = document.createElement('div');
+        addr.className = 'locked-item-address';
+        addr.textContent = lock.address || '–';
+
+        div.appendChild(head);
+        div.appendChild(addr);
         locksContainer.appendChild(div);
       });
     } else {
       locksContainer.textContent =
-        'No manual lock data has been provided yet.';
+        'No manual locked-contract data has been set yet.';
     }
+
+    // ---------------- Status pill → OK ----------------
+    statusPill.textContent = 'Live';
+    statusPill.classList.remove('status-error');
+    statusPill.style.background = 'var(--accent-soft)';
+    statusDot.style.background = '#22c55e';
+
   } catch (err) {
     console.error('Failed to load token dashboard:', err);
-    document.getElementById('status-pill').textContent = 'Error';
-    document.getElementById('status-pill').style.background = 'rgba(255,74,74,0.18)';
+
+    // وضعیت Error
+    if (statusPill) {
+      statusPill.textContent = 'Error';
+      statusPill.style.background = 'var(--danger-soft)';
+    }
+    if (statusDot) {
+      statusDot.style.background = '#ef4444';
+    }
+
+    // قیمت و بقیه فیلدها را خالی کن
+    if (priceEl) priceEl.textContent = '–';
+    if (volumeEl) volumeEl.textContent = '–';
+    if (tradesEl) tradesEl.textContent = '–';
   }
 }
 
