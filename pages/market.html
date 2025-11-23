@@ -6,19 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="../assets/css/market.css" />
   <link rel="icon" type="image/x-icon" href="../images/PC22.ico" />
-	<!-- iOS / iPadOS Home Screen -->
-<link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
 
-<!-- Android / Chrome PWA -->
-<link rel="manifest" href="/site.webmanifest" />
-<meta name="theme-color" content="#0b0e11" />
+  <!-- iOS / iPadOS Home Screen -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
 
-<!-- Safari pinned tab (macOS) - تک‌رنگ -->
-<link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
+  <!-- Android / Chrome PWA -->
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0b0e11" />
 
-<!-- Windows tiles (اختیاری) -->
-<meta name="msapplication-TileColor" content="#0b0e11" />
-<meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
+  <!-- Safari pinned tab (macOS) - تک‌رنگ -->
+  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
+
+  <!-- Windows tiles (اختیاری) -->
+  <meta name="msapplication-TileColor" content="#0b0e11" />
+  <meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
 </head>
 
 <body class="theme-dark">
@@ -104,7 +105,10 @@
         <div class="panel-header-row">
           <div>
             <h3>Wallet dashboard</h3>
-            <p class="muted">Solana address: <span id="panelWalletFull" class="mono"></span></p>
+            <p class="muted">
+              Solana address:
+              <span id="panelWalletFull" class="mono"></span>
+            </p>
           </div>
           <span class="badge badge-sol">Solana</span>
         </div>
@@ -137,23 +141,107 @@
 
             <!-- Wallet balances -->
             <div class="stat-card">
-              <span class="stat-label">Wallet balances (live)</span>
+              <span class="stat-label">Wallet balances</span>
               <div class="stat-value">
                 <span id="statSolBalance">–</span> SOL
               </div>
               <p class="muted stat-caption">
-                IranCoin balance:
-                <strong><span id="statTokenBalance">–</span></strong>
+                <span class="label-inline">i21 main token:</span>
+                <strong><span id="statTokenBalanceI21">–</span></strong><br>
+                <span class="label-inline">Market token (phase 2):</span>
+                <strong><span id="statTokenBalanceMarket">coming soon</span></strong>
               </p>
             </div>
 
             <div class="stat-card">
-              <span class="stat-label">Explore & buy more</span>
+              <span class="stat-label">Explore &amp; buy more</span>
               <div class="stat-value">IRAN NFT Market</div>
               <p class="muted stat-caption">
                 Browse all drops and artworks in the main market page and complete trades on official platforms.
               </p>
               <button id="overviewGoExplore" class="btn btn-secondary">Go to Explore</button>
+            </div>
+          </div>
+
+          <!-- Phase 2 – converter UI (only simulation for now) -->
+          <!-- توضیحات این بخش را هر زمان خواستی می‌تونی مستقیم از همین HTML ویرایش کنی -->
+          <div class="converter-card">
+            <div class="converter-header">
+              <h4>Phase 2 – i21 → Market token converter (UI only)</h4>
+              <p class="muted">
+                In the next phase, you will be able to convert your
+                <strong>i21 main token</strong> into a dedicated
+                <strong>Market token</strong> that is used only for buying IRAN NFT collections.
+                A part of the converted i21 will be burned to support long-term scarcity.
+              </p>
+            </div>
+
+            <div class="converter-grid">
+              <div class="converter-field">
+                <label for="convertInputI21">Amount of i21 to convert</label>
+                <input
+                  type="number"
+                  id="convertInputI21"
+                  min="0"
+                  step="1"
+                  placeholder="e.g. 1000"
+                />
+                <p class="muted small">
+                  Current design:
+                  <strong>100 i21 = 1 Market token</strong>.
+                  This ratio can be updated later inside the on-chain contract if needed.
+                </p>
+                <p class="muted small">
+                  Planned total supply for the Market token:
+                  <strong>200,000,000</strong> units (hard cap).
+                </p>
+              </div>
+
+              <div class="converter-result">
+                <div class="stat-card converter-stat">
+                  <span class="stat-label">Preview (no real transaction yet)</span>
+                  <div class="stat-value">
+                    <span id="convertOutputMarket">0</span> Market tokens
+                  </div>
+                  <p class="muted stat-caption">
+                    Estimated burned i21 (planned):
+                    <strong><span id="convertOutputBurn">0</span></strong>
+                    from your input.
+                  </p>
+                  <button
+                    class="btn btn-secondary"
+                    disabled
+                    title="Smart contract is not deployed yet – UI only"
+                  >
+                    Convert – Coming Soon
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-notes">
+              <h4>How this system will work (concept)</h4>
+              <ul>
+                <li>
+                  You send i21 to the converter contract. For each
+                  <strong>100 i21</strong> you receive <strong>1 Market token</strong>.
+                </li>
+                <li>
+                  A configurable percentage of the incoming i21 (for example
+                  <strong>50%</strong>) is burned to reduce circulating supply.
+                </li>
+                <li>
+                  The Market token can only be used for buying NFTs inside the IRAN NFT ecosystem.
+                </li>
+                <li>
+                  In the final contract, a price oracle can be added so the rate can auto-adjust
+                  based on i21 price, without changing this UI.
+                </li>
+                <li>
+                  All numbers here are transparent and can be updated on-chain via governance or
+                  a controlled admin, depending on how we design it later.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -236,7 +324,13 @@
           </div>
 
           <div class="modal-actions">
-            <a id="modalOpenSeaBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+            <a
+              id="modalOpenSeaBtn"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary"
+            >
               View / Trade on OpenSea
             </a>
             <button id="modalCloseBtn2" class="btn btn-ghost">Close</button>
