@@ -1,194 +1,242 @@
-// ================================
-// IranCoin (i21) — Token Dashboard
-// Frontend logic
-// ================================
+// IranCoin (i21) — Token Dashboard Frontend
 
-// آدرس API بک‌اند (حتماً https برای جلوگیری از خطای mixed content)
-const API_BASE = 'https://api.irannft.art/api';
+// اگر صفحه https باشد، ما هم API را روی https صدا می‌زنیم
+// (برای لوکال یا تست روی http هم کار می‌کند)
+const API_BASE =
+  window.location.protocol === "https:"
+    ? "https://api.irannft.art/api"
+    : "http://api.irannft.art/api";
 
-// مسیر فایل تنظیمات دستی توکن
-const CONFIG_URL = '../assets/data/token-config.json';
+const SUMMARY_URL = `${API_BASE}/i21/summary`;
+const CONFIG_URL = "../assets/data/token-config.json";
 
-// -------------------------
-// Helper functions
-// -------------------------
+// DOM helpers
+const $ = (id) => document.getElementById(id);
 
-async function fetchJson(url) {
-  const res = await fetch(url, { method: 'GET' });
-  if (!res.ok) {
-    throw new Error(`Request failed ${res.status} for ${url}`);
-  }
-  return res.json();
+const els = {
+  globalStatus: $("globalStatus"),
+  statusText: $("statusText"),
+  priceStatus: $("priceStatus"),
+
+  // price
+  priceUsd: $("priceUsd"),
+  priceSol: $("priceSol"),
+  tokenSymbol: $("tokenSymbol"),
+  tokenName: $("tokenName"),
+  tokenMint: $("tokenMint"),
+  volume24hUsd: $("volume24hUsd"),
+  txns24hTotal: $("txns24hTotal"),
+
+  // market
+  fdvUsd: $("fdvUsd"),
+  liquidityUsd: $("liquidityUsd"),
+  decimals: $("decimals"),
+
+  // supply
+  totalSupply: $("totalSupply"),
+  circulatingSupply: $("circulatingSupply"),
+  lockedSupply: $("lockedSupply"),
+  unlockedSupply: $("unlockedSupply"),
+
+  // locked contracts
+  lockedContractsList: $("lockedContractsList")
+};
+
+function formatNumber(n, options = {}) {
+  if (n === null || n === undefined || isNaN(n)) return "–";
+  const { decimals = 2, compact = false } = options;
+  const fmt = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+    notation: compact ? "compact" : "standard"
+  });
+  return fmt.format(n);
 }
 
-function formatNumber(num, decimals = 2) {
-  if (num === null || num === undefined) return '–';
-  const n = Number(num);
-  if (!Number.isFinite(n)) return '–';
-
-  if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(decimals) + 'B';
-  if (n >= 1_000_000) return (n / 1_000_000).toFixed(decimals) + 'M';
-  if (n >= 1_000) return (n / 1_000).toFixed(decimals) + 'K';
-
-  return n.toFixed(decimals);
+function setGlobalStatus(type, text) {
+  if (!els.globalStatus) return;
+  els.globalStatus.hidden = false;
+  els.globalStatus.classList.toggle("status-ok", type === "ok");
+  els.globalStatus.classList.toggle("status-error", type === "error");
+  els.statusText.textContent = text;
 }
 
-function formatUsd(num) {
-  if (num === null || num === undefined) return '–';
-  const n = Number(num);
-  if (!Number.isFinite(n)) return '–';
-  if (n < 0.0001) return '$' + n.toExponential(2);
-  return '$' + formatNumber(n, 2);
+function setPriceStatus(type, text) {
+  if (!els.priceStatus) return;
+  els.priceStatus.textContent = text;
+  els.priceStatus.classList.toggle("pill-error", type === "error");
 }
 
-// ساده برای کوتاه کردن آدرس‌ها
-function shortenAddress(addr) {
-  if (!addr) return '–';
-  if (addr.length <= 10) return addr;
-  return addr.slice(0, 4) + '...' + addr.slice(-4);
-}
+// --- Fetch summary from backend ---
 
-// -------------------------
-// Main loader
-// -------------------------
-
-async function loadDashboard() {
-  const statusPill = document.getElementById('status-pill');
-  const statusDot = document.getElementById('status-dot');
-  const priceEl = document.getElementById('price-value');
-  const symbolEl = document.getElementById('price-symbol');
-  const volumeEl = document.getElementById('volume-24h');
-  const tradesEl = document.getElementById('trades-24h');
-  const mintEl = document.getElementById('mint-address');
-  const tokenNameEl = document.getElementById('token-name');
-  const fdvEl = document.getElementById('fdv-usd');
-  const liqEl = document.getElementById('liquidity-usd');
-  const decimalsEl = document.getElementById('decimals');
-  const totalSupplyEl = document.getElementById('total-supply');
-  const circulatingEl = document.getElementById('circulating-supply');
-  const lockedEl = document.getElementById('locked-supply');
-  const unlockedEl = document.getElementById('unlocked-supply');
-  const locksContainer = document.getElementById('locked-contracts');
-
+async function fetchSummary() {
   try {
-    // ۱) همزمان اطلاعات API و تنظیمات دستی را بگیر
-    const [summary, config] = await Promise.all([
-      fetchJson(`${API_BASE}/i21/summary`),
-      fetchJson(CONFIG_URL)
-    ]);
+    const res = await fetch(SUMMARY_URL, { cache: "no-store" });
 
-    if (!summary || summary.ok === false) {
-      throw new Error('Backend /summary returned error flag');
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
     }
 
-    // ---------------- Price card ----------------
-    const priceUsd = summary.priceUsd;
-    const volume24hUsd = summary.volume24hUsd;
-    const totalTrades24h = summary.txns24h?.total ?? null;
+    const data = await res.json();
 
-    priceEl.textContent = formatUsd(priceUsd);
-    symbolEl.textContent = summary.token || config.symbol || 'i21';
-    volumeEl.textContent = formatUsd(volume24hUsd);
-    tradesEl.textContent = totalTrades24h ?? '–';
-
-    mintEl.textContent = shortenAddress(summary.mint || config.mint);
-    mintEl.setAttribute('title', summary.mint || config.mint || '');
-
-    tokenNameEl.textContent = summary.name || config.name || 'IranCoin';
-
-    // ---------------- Market card ----------------
-    fdvEl.textContent = formatUsd(summary.fdvUsd);
-    liqEl.textContent = formatUsd(summary.liquidityUsd);
-    decimalsEl.textContent = summary.decimals ?? config.decimals ?? '–';
-
-    // ---------------- Supply card ----------------
-    const totalSupply =
-      config.totalSupply ??
-      summary.circulatingSupply ??
-      0;
-
-    const circulatingSupply = summary.circulatingSupply ?? '–';
-
-    totalSupplyEl.textContent = formatNumber(totalSupply, 0);
-    circulatingEl.textContent = formatNumber(circulatingSupply, 0);
-
-    // از config برای عدد قفل‌شده/آزاد شده
-    if (config.lockedSupply !== undefined) {
-      lockedEl.textContent = formatNumber(config.lockedSupply, 0);
-    } else {
-      lockedEl.textContent = '–';
+    if (!data.ok) {
+      throw new Error(data.error || "Unknown API error");
     }
 
-    if (config.unlockedSupply !== undefined) {
-      unlockedEl.textContent = formatNumber(config.unlockedSupply, 0);
-    } else if (totalSupply && config.lockedSupply) {
-      unlockedEl.textContent = formatNumber(
-        totalSupply - config.lockedSupply,
-        0
-      );
-    } else {
-      unlockedEl.textContent = '–';
-    }
-
-    // ---------------- Locked contracts list ----------------
-    locksContainer.innerHTML = '';
-
-    if (Array.isArray(config.lockedContracts) && config.lockedContracts.length) {
-      config.lockedContracts.forEach(lock => {
-        const div = document.createElement('div');
-        div.className = 'locked-item';
-
-        const head = document.createElement('div');
-        head.className = 'locked-item-title';
-
-        const label = document.createElement('div');
-        label.className = 'locked-item-label';
-        label.textContent = lock.label || 'Locked allocation';
-
-        const amount = document.createElement('div');
-        amount.className = 'locked-item-amount';
-        amount.textContent = formatNumber(lock.amount, 0) + ' ' +
-          (config.symbol || 'i21');
-
-        head.appendChild(label);
-        head.appendChild(amount);
-
-        const addr = document.createElement('div');
-        addr.className = 'locked-item-address';
-        addr.textContent = lock.address || '–';
-
-        div.appendChild(head);
-        div.appendChild(addr);
-        locksContainer.appendChild(div);
-      });
-    } else {
-      locksContainer.textContent =
-        'No manual locked-contract data has been set yet.';
-    }
-
-    // ---------------- Status pill → OK ----------------
-    statusPill.textContent = 'Live';
-    statusPill.classList.remove('status-error');
-    statusPill.style.background = 'var(--accent-soft)';
-    statusDot.style.background = '#22c55e';
-
+    renderSummary(data);
+    setPriceStatus("ok", "Live");
+    setGlobalStatus("ok", "Connected to i21 API successfully.");
   } catch (err) {
-    console.error('Failed to load token dashboard:', err);
-
-    // وضعیت Error
-    if (statusPill) {
-      statusPill.textContent = 'Error';
-      statusPill.style.background = 'var(--danger-soft)';
-    }
-    if (statusDot) {
-      statusDot.style.background = '#ef4444';
-    }
-
-    // قیمت و بقیه فیلدها را خالی کن
-    if (priceEl) priceEl.textContent = '–';
-    if (volumeEl) volumeEl.textContent = '–';
-    if (tradesEl) tradesEl.textContent = '–';
+    console.error("Error loading summary:", err);
+    setPriceStatus("error", "Error");
+    setGlobalStatus("error", `Failed to load data from API: ${err.message}`);
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadDashboard);
+// --- Render summary ---
+
+function renderSummary(summary) {
+  const s = summary;
+
+  // price
+  els.priceUsd.textContent = s.priceUsd
+    ? `$${formatNumber(s.priceUsd, { decimals: 6 })}`
+    : "–";
+  els.priceSol.textContent = s.priceSol
+    ? `${formatNumber(s.priceSol, { decimals: 6 })} SOL`
+    : "–";
+
+  // token basics (fallback به config اگر null باشد)
+  if (window.i21Config && window.i21Config.token) {
+    els.tokenSymbol.textContent = window.i21Config.token.symbol || s.token || "i21";
+    els.tokenName.textContent = window.i21Config.token.name || s.name || "IranCoin (i21)";
+    els.tokenMint.textContent =
+      window.i21Config.token.mint || s.mint || "–";
+  } else {
+    els.tokenSymbol.textContent = s.token || "i21";
+    els.tokenName.textContent = s.name || "IranCoin (i21)";
+    els.tokenMint.textContent = s.mint || "–";
+  }
+
+  // volume & trades
+  els.volume24hUsd.textContent = s.volume24hUsd
+    ? `$${formatNumber(s.volume24hUsd, { compact: true })}`
+    : "–";
+
+  const buys = s.txns24h?.buys ?? null;
+  const sells = s.txns24h?.sells ?? null;
+  const total = s.txns24h?.total ?? null;
+  els.txns24hTotal.textContent =
+    total !== null ? `${total} trades (${buys} buys / ${sells} sells)` : "–";
+
+  // market
+  els.fdvUsd.textContent = s.fdvUsd
+    ? `$${formatNumber(s.fdvUsd, { compact: true })}`
+    : "–";
+  els.liquidityUsd.textContent = s.liquidityUsd
+    ? `$${formatNumber(s.liquidityUsd, { compact: true })}`
+    : "–";
+  els.decimals.textContent =
+    s.decimals !== null && s.decimals !== undefined ? s.decimals : "–";
+
+  // supply
+  const totalSupply = window.i21Config?.supply?.total ?? s.circulatingSupply ?? null;
+  const circulating = s.circulatingSupply ?? null;
+  const locked = window.i21Config?.lockedContracts?.reduce(
+    (acc, c) => acc + (Number(c.amount) || 0),
+    0
+  ) ?? null;
+
+  const unlocked =
+    totalSupply !== null && locked !== null ? totalSupply - locked : null;
+
+  els.totalSupply.textContent =
+    totalSupply !== null
+      ? `${formatNumber(totalSupply)} ${window.i21Config?.token?.symbol || "i21"}`
+      : "–";
+
+  els.circulatingSupply.textContent =
+    circulating !== null ? formatNumber(circulating) : "–";
+
+  els.lockedSupply.textContent =
+    locked !== null ? formatNumber(locked) : "–";
+
+  els.unlockedSupply.textContent =
+    unlocked !== null ? formatNumber(unlocked) : "–";
+}
+
+// --- Load local config (locked wallets etc.) ---
+
+async function loadConfig() {
+  try {
+    const res = await fetch(CONFIG_URL, { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    const cfg = await res.json();
+    window.i21Config = cfg;
+    renderConfig(cfg);
+  } catch (err) {
+    console.warn("Failed to load token-config.json:", err);
+  }
+}
+
+function renderConfig(cfg) {
+  // Locked contracts
+  const list = els.lockedContractsList;
+  list.innerHTML = "";
+
+  if (!cfg.lockedContracts || !cfg.lockedContracts.length) {
+    const empty = document.createElement("p");
+    empty.className = "muted small";
+    empty.textContent = "No locked contracts configured yet.";
+    list.appendChild(empty);
+    return;
+  }
+
+  cfg.lockedContracts.forEach((c) => {
+    const item = document.createElement("div");
+    item.className = "locked-item";
+
+    const title = document.createElement("h3");
+    title.className = "locked-title";
+    title.textContent = c.label || "Locked Wallet";
+
+    const meta = document.createElement("div");
+    meta.className = "locked-meta";
+
+    const addr = document.createElement("span");
+    addr.textContent = `Address: ${c.address}`;
+
+    const amt = document.createElement("span");
+    amt.textContent = `Amount: ${formatNumber(c.amount || 0)} ${
+      cfg.token?.symbol || "i21"
+    }`;
+
+    if (c.unlockDate) {
+      const unlock = document.createElement("span");
+      unlock.textContent = `Unlock: ${c.unlockDate}`;
+      meta.appendChild(unlock);
+    }
+
+    if (c.notes) {
+      const notes = document.createElement("span");
+      notes.textContent = `Notes: ${c.notes}`;
+      meta.appendChild(notes);
+    }
+
+    meta.appendChild(addr);
+    meta.appendChild(amt);
+
+    item.appendChild(title);
+    item.appendChild(meta);
+    list.appendChild(item);
+  });
+}
+
+// --- Init ---
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadConfig();
+  fetchSummary();
+});
