@@ -1,3 +1,13 @@
+/* =========================================================
+   IRAN NFT Market – Stylesheet
+   - Dark cinematic layout
+   - NFT explore grid
+   - My Panel (overview / collection / listings)
+   - Converter (Phase 2 UI)
+   - Phantom mobile banner + desktop QR card
+   ========================================================= */
+
+/* ---------- CSS variables / theme ---------- */
 :root {
   --bg: #05070a;
   --bg-soft: #0c1117;
@@ -12,10 +22,9 @@
   --shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.9);
   --radius-lg: 22px;
   --radius-md: 16px;
-  --radius-sm: 999px;
 }
 
-/* Reset */
+/* ---------- Basic reset ---------- */
 *,
 *::before,
 *::after {
@@ -30,28 +39,62 @@ body {
 
 body.theme-dark {
   min-height: 100vh;
-  font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   color: var(--ink);
   background:
     radial-gradient(1200px 600px at -10% -10%, #101623 0, transparent 60%),
     radial-gradient(900px 500px at 120% 0%, #111a28 0, transparent 60%),
-    linear-gradient(#05070a, #05070a 30%, #05070a);
+    linear-gradient(#05070a, #05070a 40%, #05070a);
 }
 
-/* Header */
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+}
+
+.label-inline {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-right: 0.3rem;
+}
+
+.small {
+  font-size: 0.78rem;
+}
+
+/* ---------- Header ---------- */
 .market-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
   gap: 1.5rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(to bottom, rgba(4, 7, 11, 0.96), rgba(4, 7, 11, 0.85));
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 7, 11, 0.96),
+    rgba(4, 7, 11, 0.88)
+  );
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+/* Brand */
 .brand {
   display: flex;
   align-items: center;
@@ -78,6 +121,7 @@ body.theme-dark {
   color: var(--muted);
 }
 
+/* Top navigation */
 .market-nav {
   display: flex;
   align-items: center;
@@ -108,6 +152,7 @@ body.theme-dark {
   color: var(--accent);
 }
 
+/* Wallet area */
 .wallet-area {
   display: flex;
   align-items: center;
@@ -125,10 +170,7 @@ body.theme-dark {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.wallet-info.hidden {
-  display: none;
-}
-
+/* Badges */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -147,14 +189,15 @@ body.theme-dark {
   color: var(--sol);
 }
 
-/* Buttons */
+/* ---------- Buttons ---------- */
 .btn {
   border-radius: 999px;
   border: none;
   padding: 0.45rem 0.95rem;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s,
+    border-color 0.2s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -163,7 +206,11 @@ body.theme-dark {
 }
 
 .btn-primary {
-  background: radial-gradient(circle at 0% 0%, rgba(20, 241, 149, 0.4), rgba(20, 241, 149, 0.1));
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(20, 241, 149, 0.4),
+    rgba(20, 241, 149, 0.1)
+  );
   color: #02130a;
   box-shadow: 0 14px 38px -18px rgba(20, 241, 149, 0.8);
 }
@@ -194,7 +241,12 @@ body.theme-dark {
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* Layout */
+.btn-small {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+}
+
+/* ---------- Layout ---------- */
 .market-main {
   max-width: 1200px;
   margin: 1.5rem auto 2.5rem;
@@ -220,7 +272,7 @@ body.theme-dark {
   color: var(--muted);
 }
 
-/* Filters */
+/* ---------- Filters ---------- */
 .filters {
   margin: 1.1rem 0 1.2rem;
   display: flex;
@@ -238,7 +290,7 @@ body.theme-dark {
   outline: none;
 }
 
-/* NFT Grid & Cards */
+/* ---------- NFT grid & cards ---------- */
 .nft-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -269,7 +321,11 @@ body.theme-dark {
   border-radius: 18px;
   overflow: hidden;
   aspect-ratio: 4 / 3;
-  background: radial-gradient(circle at 0 0, rgba(196, 161, 94, 0.15), rgba(4, 8, 15, 0.9));
+  background: radial-gradient(
+    circle at 0 0,
+    rgba(196, 161, 94, 0.15),
+    rgba(4, 8, 15, 0.9)
+  );
 }
 
 .nft-thumb {
@@ -358,11 +414,7 @@ body.theme-dark {
   color: var(--muted);
 }
 
-.hidden {
-  display: none !important;
-}
-
-/* My Panel */
+/* ---------- My Panel ---------- */
 .panel-card {
   margin-top: 1.2rem;
   padding: 1.1rem 1.3rem;
@@ -377,10 +429,6 @@ body.theme-dark {
   margin-bottom: 0.4rem;
 }
 
-.panel-card p {
-  margin-top: 0;
-}
-
 .panel-header-row {
   display: flex;
   align-items: flex-start;
@@ -389,6 +437,7 @@ body.theme-dark {
   margin-bottom: 0.8rem;
 }
 
+/* Inner tabs */
 .panel-tabs {
   display: inline-flex;
   gap: 0.4rem;
@@ -423,6 +472,7 @@ body.theme-dark {
   display: block;
 }
 
+/* Overview grid */
 .panel-overview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -455,12 +505,11 @@ body.theme-dark {
   font-size: 0.8rem;
 }
 
-/* Panel grids */
+/* Panel grid for collection / listings */
 .panel-grid-tight {
   margin-top: 0.8rem;
 }
 
-/* Small variants inside panel */
 .nft-card.panel-compact {
   padding: 0.6rem;
 }
@@ -492,7 +541,7 @@ body.theme-dark {
   color: var(--accent);
 }
 
-/* Modal */
+/* ---------- Modal ---------- */
 .modal {
   position: fixed;
   inset: 0;
@@ -517,7 +566,11 @@ body.theme-dark {
   max-width: 900px;
   width: calc(100% - 2rem);
   margin: 4vh auto;
-  background: linear-gradient(135deg, rgba(8, 13, 20, 0.98), rgba(5, 10, 18, 0.98));
+  background: linear-gradient(
+    135deg,
+    rgba(8, 13, 20, 0.98),
+    rgba(5, 10, 18, 0.98)
+  );
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 40px 100px -38px rgba(0, 0, 0, 1);
@@ -533,7 +586,11 @@ body.theme-dark {
 .modal-image-wrapper {
   border-radius: 22px;
   overflow: hidden;
-  background: radial-gradient(circle at 0% 0%, rgba(196, 161, 94, 0.25), #05070a);
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(196, 161, 94, 0.25),
+    #05070a
+  );
 }
 
 .modal-image-wrapper img {
@@ -552,10 +609,6 @@ body.theme-dark {
 .modal-content h3 {
   margin: 0;
   font-size: 1.2rem;
-}
-
-.modal-content .muted {
-  font-size: 0.82rem;
 }
 
 .modal-tags {
@@ -628,35 +681,7 @@ body.theme-dark {
   cursor: pointer;
 }
 
-/* Util */
-.muted {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.mono {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.8rem;
-}
-
-.label-inline {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
-  color: var(--muted);
-  margin-right: 0.3rem;
-}
-
-.small {
-  font-size: 0.78rem;
-}
-
-.hint {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-/* Phase 2 converter */
+/* ---------- Phase 2 converter ---------- */
 .converter-card {
   margin-top: 1.4rem;
   padding: 1.1rem 1.3rem;
@@ -748,7 +773,73 @@ body.theme-dark {
   margin-bottom: 0.25rem;
 }
 
-/* Responsive */
+/* ---------- Phantom mobile banner & desktop QR ---------- */
+
+/* Fixed banner at the bottom (only for mobile, controlled via media queries + JS) */
+.mobile-phantom-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  padding: 0.5rem 1rem 0.75rem;
+  background: linear-gradient(
+    to top,
+    rgba(5, 9, 16, 0.98),
+    rgba(5, 9, 16, 0.8)
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.mobile-phantom-banner .banner-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-phantom-banner .banner-text {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Desktop QR card (bottom-right) */
+.phantom-qr-card {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 25;
+  padding: 0.6rem 0.7rem;
+  border-radius: var(--radius-lg);
+  background: rgba(5, 9, 16, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.phantom-qr-text {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.phantom-qr-text span {
+  font-size: 0.72rem;
+  opacity: 0.9;
+}
+
+.phantom-qr-card img {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: #fff;
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .modal-body {
     grid-template-columns: minmax(0, 1fr);
@@ -779,6 +870,18 @@ body.theme-dark {
 
   .converter-grid {
     flex-direction: column;
+  }
+
+  /* On mobile we hide QR card (only show banner) */
+  .phantom-qr-card {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  /* On desktop we hide the mobile banner (even if JS removes .hidden) */
+  .mobile-phantom-banner {
+    display: none !important;
   }
 }
 
