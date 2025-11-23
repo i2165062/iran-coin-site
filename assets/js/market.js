@@ -1,48 +1,77 @@
-// --- Global state ---
+/* =========================================================
+   IRAN NFT Market – JavaScript
+   - Phantom wallet connection (Solana)
+   - NFT explore grid (from assets/data/nfts.json)
+   - My Panel demo (collection + listings stored in localStorage)
+   - Converter simulator (i21 → Market token, Phase 2 UI)
+   - Mobile Phantom banner + desktop QR
+   ========================================================= */
+
+/* ---------- Global state ---------- */
 let currentWallet = null;
 let nftData = [];
 let ownedNfts = [];
-let listingsByWallet = {}; // { walletAddress: { [nftId]: { priceSol } } }
+let listingsByWallet = {}; // { [nftId]: { priceSol } }
 
-// Solana connection (global)
 let solConnection = null;
 
-// i21 / IranCoin SPL Mint (توکن فعلی روی سولانا)
-// ⬇️ حتماً این رشته را با آدرس واقعی mint توکن خودت عوض کن
+/* ---------- Token config (CHANGE THESE!) ---------- */
+
+// i21 / IranCoin SPL mint address (current token on Solana)
+// TODO: set to your real mint
 const IRANCOIN_MINT_STRING = "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
 let IRANCOIN_MINT = null;
 
-// Market token (Phase 2) SPL Mint (توکن مخصوص خرید NFT)
-// ⬇️ بعداً وقتی مینت جدید را ساختی، این مقدار را با آدرس واقعی عوض کن
+// Market token (Phase 2) SPL mint for NFT purchases
+// TODO: when you create this mint, put its address here
 const MARKET_TOKEN_MINT_STRING = "SET_MARKET_TOKEN_MINT_ADDRESS_HERE";
 let MARKET_TOKEN_MINT = null;
 
-// Conversion design params (UI only – می‌تونی اعداد را هر زمان عوض کنی)
+// Converter design parameters (UI only right now)
 const CONVERSION_RATE = 100; // 100 i21 → 1 Market token
-const BURN_PERCENT = 50;     // 50٪ از i21 ورودی سوزانده می‌شود (طرح فعلی)
+const BURN_PERCENT = 50; // % of input i21 planned to burn
 
-// Shorten address like So11..abcd
+/* ---------- Helpers ---------- */
+
 function shortenAddress(addr) {
   if (!addr) return "";
   return addr.slice(0, 4) + "..." + addr.slice(-4);
 }
 
-// Init Solana connection
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
+
+/**
+ * Build Phantom deeplink that opens this exact page inside Phantom mobile app.
+ */
+function buildPhantomDeepLink() {
+  const dappUrl = encodeURIComponent(window.location.href);
+  const ref = encodeURIComponent(window.location.origin);
+  return `https://phantom.app/ul/browse/${dappUrl}?ref=${ref}`;
+}
+
+/* ---------- Solana connection ---------- */
+
 function initSolanaConnection() {
   if (!window.solanaWeb3) {
     console.warn("solanaWeb3 not loaded yet");
     return;
   }
+
   if (!solConnection) {
     const { Connection } = window.solanaWeb3;
-    // برای پروژه جدی بهتره RPC اختصاصی بزاری، این فقط مثال mainnet-beta است
+
+    // ⚠️ For production use your own RPC endpoint (Helius / QuickNode / etc)
     solConnection = new Connection(
       "https://mainnet.helius-rpc.com/?api-key=bb4aebe0-38f0-4d82-a5b7-989b168ee914",
       "confirmed"
     );
   }
 
-  // ساختن PublicKey برای i21
+  // Build PublicKey objects for token mints
   if (
     !IRANCOIN_MINT &&
     IRANCOIN_MINT_STRING &&
@@ -51,12 +80,11 @@ function initSolanaConnection() {
     try {
       IRANCOIN_MINT = new window.solanaWeb3.PublicKey(IRANCOIN_MINT_STRING);
     } catch (e) {
-      console.warn("Invalid IRANCOIN_MINT_STRING, please set a valid mint address.");
+      console.warn("Invalid IRANCOIN_MINT_STRING – please set a valid mint address.");
       IRANCOIN_MINT = null;
     }
   }
 
-  // ساختن PublicKey برای Market token (Phase 2)
   if (
     !MARKET_TOKEN_MINT &&
     MARKET_TOKEN_MINT_STRING &&
@@ -65,33 +93,48 @@ function initSolanaConnection() {
     try {
       MARKET_TOKEN_MINT = new window.solanaWeb3.PublicKey(MARKET_TOKEN_MINT_STRING);
     } catch (e) {
-      console.warn("Invalid MARKET_TOKEN_MINT_STRING, please set a valid mint address.");
+      console.warn("Invalid MARKET_TOKEN_MINT_STRING – please set a valid mint address.");
       MARKET_TOKEN_MINT = null;
     }
   }
 }
 
-// --- Wallet (Phantom) ---
+/* ---------- Wallet (Phantom) ---------- */
+
 async function connectWallet() {
   const provider = window.solana;
-  const connectBtn = document.getElementById("connectWalletBtn");
 
+  // 1) Phantom not injected in this browser context
   if (!provider || !provider.isPhantom) {
-    alert("Phantom wallet not found. You will be redirected to install it.");
-    window.open("https://phantom.app/", "_blank");
+    const deepLink = buildPhantomDeepLink();
+
+    if (isMobile()) {
+      // On mobile: suggest opening inside Phantom app
+      const go = confirm(
+        "On mobile, please open this page inside the Phantom wallet.\n\n" +
+          "Tap OK to try opening in Phantom, or Cancel to stay here."
+      );
+      if (go) {
+        window.location.href = deepLink;
+      }
+    } else {
+      // Desktop: redirect to install Phantom extension
+      alert("Phantom wallet not found. You will be redirected to install it.");
+      window.open("https://phantom.app/", "_blank");
+    }
     return;
   }
 
+  // 2) Phantom is available (desktop extension or Phantom in-app browser)
   try {
     const resp = await provider.connect();
     currentWallet = resp.publicKey.toString();
     listingsByWallet = loadListingsForWallet(currentWallet);
     updateWalletUI();
     refreshMyPanel();
-    await loadBalances(); // ⬅️ بعد از اتصال، بالانس‌ها را می‌گیریم
+    await loadBalances();
   } catch (err) {
     console.error("Wallet connection rejected:", err);
-    if (connectBtn) connectBtn.disabled = false;
   }
 }
 
@@ -128,7 +171,8 @@ function updateWalletUI() {
   }
 }
 
-// --- Storage helpers for demo listings ---
+/* ---------- Local storage for listings (demo) ---------- */
+
 function getListingsKey(wallet) {
   return `iranNftListings_${wallet}`;
 }
@@ -153,10 +197,27 @@ function saveListingsForWallet(wallet, data) {
   }
 }
 
-// --- Load NFTs (demo dataset) ---
+/* ---------- Load NFTs from JSON ---------- */
+/**
+ * Expects a file: ../assets/data/nfts.json
+ * Each item should be something like:
+ * {
+ *   "id": "1",
+ *   "title": "...",
+ *   "collection": "...",
+ *   "category": "Architecture",
+ *   "image": "../images/...jpg",
+ *   "priceSol": 1.2,
+ *   "sortIndex": 100,
+ *   "description": "...",
+ *   "creator": "...",
+ *   "openseaUrl": "https://...",
+ *   "demoOwner": "SOLANA_WALLET_ADDRESS_FOR_DEMO"
+ * }
+ */
 async function loadNFTs() {
   try {
-    const res = await fetch("assets/data/nfts.json");
+    const res = await fetch("../assets/data/nfts.json");
     if (!res.ok) throw new Error("Failed to load nfts.json");
     nftData = await res.json();
     renderExploreGrid();
@@ -168,7 +229,8 @@ async function loadNFTs() {
   }
 }
 
-// --- Explore grid ---
+/* ---------- Explore grid ---------- */
+
 function renderExploreGrid() {
   const grid = document.getElementById("nftGrid");
   const emptyState = document.getElementById("emptyStateExplore");
@@ -179,13 +241,13 @@ function renderExploreGrid() {
 
   let filtered = [...nftData];
 
-  // Category filter
+  // Filter by category
   const category = categoryFilter?.value || "all";
   if (category !== "all") {
     filtered = filtered.filter((item) => item.category === category);
   }
 
-  // Sort
+  // Sort by price or latest
   const sort = sortFilter?.value || "latest";
   if (sort === "priceLowHigh") {
     filtered.sort((a, b) => (a.priceSol || 0) - (b.priceSol || 0));
@@ -204,6 +266,7 @@ function renderExploreGrid() {
     emptyState?.classList.add("hidden");
   }
 
+  // Create cards
   filtered.forEach((item) => {
     const card = document.createElement("article");
     card.className = "nft-card";
@@ -235,7 +298,8 @@ function renderExploreGrid() {
   });
 }
 
-// --- Modal ---
+/* ---------- Modal ---------- */
+
 function openModal(item) {
   const modal = document.getElementById("nftModal");
   const img = document.getElementById("modalImage");
@@ -274,9 +338,8 @@ function closeModal() {
   if (modal) modal.classList.add("hidden");
 }
 
-// --- My Panel logic (demo) ---
+/* ---------- My Panel (demo) ---------- */
 
-// در نسخه واقعی، این تابع باید از API سولانا/مارکت داده واقعی بگیرد
 function computeOwnedNftsForCurrentWallet() {
   if (!currentWallet) {
     ownedNfts = [];
@@ -284,15 +347,15 @@ function computeOwnedNftsForCurrentWallet() {
   }
 
   // DEMO:
-  // در nfts.json می‌توانی برای بعضی NFTها فیلد "demoOwner" را برابر یک آدرس سولانا قرار دهی
-  // اگر demoOwner == currentWallet، آن NFT را "owned" حساب می‌کنیم.
+  // If nfts.json has "demoOwner" equal to the wallet address, we treat it as owned.
   ownedNfts = nftData.filter(
-    (item) => item.demoOwner && item.demoOwner.toLowerCase() === currentWallet.toLowerCase()
+    (item) =>
+      item.demoOwner &&
+      item.demoOwner.toLowerCase() === currentWallet.toLowerCase()
   );
 
-  // در آینده:
-  // اینجا باید یک fetch به API موردنظر بزنی (Helius / OpenSea / …)
-  // و بر اساس آن، ownedNfts را بسازی.
+  // FUTURE:
+  // Replace this logic with a real Solana NFT ownership API or on-chain lookup.
 }
 
 function refreshMyPanel() {
@@ -304,7 +367,6 @@ function refreshMyPanel() {
   const emptyListings = document.getElementById("emptyMyListings");
 
   if (!currentWallet) {
-    // اگر والت وصل نیست، فقط استیت قبلی را پاک می‌کنیم
     ownedNfts = [];
     if (statOwnedCount) statOwnedCount.textContent = "0";
     if (statListingsCount) statListingsCount.textContent = "0";
@@ -315,10 +377,9 @@ function refreshMyPanel() {
     return;
   }
 
-  // محاسبه NFTهای متعلق به این والت در دمو
   computeOwnedNftsForCurrentWallet();
 
-  // رندر Collection (NFTهایی که owner هستند)
+  /* ----- Collection tab ----- */
   if (collectionGrid) collectionGrid.innerHTML = "";
   if (!ownedNfts.length) {
     emptyCollection?.classList.remove("hidden");
@@ -345,11 +406,15 @@ function refreshMyPanel() {
                 <span>${item.priceSol}</span>
                 <span>SOL</span>
               </div>
-              <div class="price-label">${isListed ? "Listed (demo)" : "Not listed"}</div>
+              <div class="price-label">${
+                isListed ? "Listed (demo)" : "Not listed"
+              }</div>
             </div>
           </div>
           <div class="nft-actions">
-            <button class="btn btn-secondary btn-list">${isListed ? "Update price" : "List for sale"}</button>
+            <button class="btn btn-secondary btn-list">${
+              isListed ? "Update price" : "List for sale"
+            }</button>
             ${
               isListed
                 ? '<button class="btn btn-ghost btn-unlist">Remove listing</button>'
@@ -359,17 +424,19 @@ function refreshMyPanel() {
         </div>
       `;
 
-      // باز کردن مودال کلیک روی عکس
-      card.querySelector(".nft-thumb-wrapper").addEventListener("click", () => openModal(item));
+      // Clicking image opens modal
+      card
+        .querySelector(".nft-thumb-wrapper")
+        .addEventListener("click", () => openModal(item));
 
-      // دکمه لیست
+      // List / update price
       const listBtn = card.querySelector(".btn-list");
       listBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         handleListForSale(item);
       });
 
-      // دکمه آن‌لیست
+      // Unlist
       const unlistBtn = card.querySelector(".btn-unlist");
       if (unlistBtn) {
         unlistBtn.addEventListener("click", (e) => {
@@ -382,7 +449,7 @@ function refreshMyPanel() {
     });
   }
 
-  // رندر Listings (از state لوکال)
+  /* ----- Listings tab ----- */
   if (listingsGrid) listingsGrid.innerHTML = "";
   const listingIds = Object.keys(listingsByWallet || {});
   if (!listingIds.length) {
@@ -422,11 +489,17 @@ function refreshMyPanel() {
         </div>
       `;
 
-      card.querySelector(".nft-thumb-wrapper").addEventListener("click", () => openModal(item));
-      card.querySelector(".btn-list-update").addEventListener("click", (e) => {
-        e.stopPropagation();
-        handleListForSale(item);
-      });
+      card
+        .querySelector(".nft-thumb-wrapper")
+        .addEventListener("click", () => openModal(item));
+
+      card
+        .querySelector(".btn-list-update")
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+          handleListForSale(item);
+        });
+
       card.querySelector(".btn-unlist").addEventListener("click", (e) => {
         e.stopPropagation();
         handleUnlist(item);
@@ -440,7 +513,8 @@ function refreshMyPanel() {
   if (statListingsCount) statListingsCount.textContent = String(listingIds.length);
 }
 
-// --- Listing handlers (demo) ---
+/* ---------- Listing handlers (demo only) ---------- */
+
 function handleListForSale(item) {
   if (!currentWallet) {
     alert("Please connect your wallet first.");
@@ -451,7 +525,7 @@ function handleListForSale(item) {
   const defaultPrice = currentListing?.priceSol || item.priceSol || 1;
   const value = prompt("Set listing price in SOL (demo only):", defaultPrice);
 
-  if (!value) return; // cancel
+  if (!value) return;
   const priceNum = Number(value);
   if (isNaN(priceNum) || priceNum <= 0) {
     alert("Invalid price.");
@@ -462,7 +536,7 @@ function handleListForSale(item) {
   saveListingsForWallet(currentWallet, listingsByWallet);
   refreshMyPanel();
 
-  // در نسخه واقعی اینجا باید تراکنش لیستینگ روی مارکت‌پلیس/کانترکت اجرا شود.
+  // FUTURE: here you would call your marketplace smart contract to list the NFT.
 }
 
 function handleUnlist(item) {
@@ -476,10 +550,11 @@ function handleUnlist(item) {
   saveListingsForWallet(currentWallet, listingsByWallet);
   refreshMyPanel();
 
-  // نسخه واقعی: call unlist/cancel on marketplace contract
+  // FUTURE: call marketplace contract to cancel listing.
 }
 
-// --- Balances (SOL + i21 + Market token) ---
+/* ---------- Balances (SOL + tokens) ---------- */
+
 function resetBalanceUI() {
   const solEl = document.getElementById("statSolBalance");
   const tokI21El = document.getElementById("statTokenBalanceI21");
@@ -513,7 +588,6 @@ async function loadBalances() {
     const { PublicKey, LAMPORTS_PER_SOL } = window.solanaWeb3;
     const pubkey = new PublicKey(currentWallet);
 
-    // SOL balance
     const lamports = await solConnection.getBalance(pubkey);
     const sol = lamports / LAMPORTS_PER_SOL;
     if (solEl) solEl.textContent = sol.toFixed(4);
@@ -522,7 +596,7 @@ async function loadBalances() {
     if (solEl) solEl.textContent = "error";
   }
 
-  // i21 / IranCoin SPL Token balance
+  // i21 balance
   if (!IRANCOIN_MINT) {
     if (tokI21El) tokI21El.textContent = "set mint";
   } else {
@@ -536,7 +610,6 @@ async function loadBalances() {
 
       let amount = 0;
       if (resp.value && resp.value.length > 0) {
-        // اگر چند اکانت باشد، همه را جمع می‌کنیم
         for (const acc of resp.value) {
           const info = acc.account.data.parsed.info;
           const tokenAmount = info.tokenAmount;
@@ -551,7 +624,7 @@ async function loadBalances() {
     }
   }
 
-  // Market token SPL balance (Phase 2)
+  // Market token balance (Phase 2)
   if (!MARKET_TOKEN_MINT) {
     if (tokMarketEl) tokMarketEl.textContent = "coming soon";
   } else {
@@ -580,7 +653,8 @@ async function loadBalances() {
   }
 }
 
-// --- Tabs (main and inner) ---
+/* ---------- Tabs (main + inner) ---------- */
+
 function setupMainTabs() {
   const exploreBtn = document.getElementById("exploreTabBtn");
   const myPanelBtn = document.getElementById("myPanelTabBtn");
@@ -618,17 +692,15 @@ function setupPanelTabs() {
 
       Object.entries(tabs).forEach(([key, section]) => {
         if (!section) return;
-        if (key === target) {
-          section.classList.add("active");
-        } else {
-          section.classList.remove("active");
-        }
+        if (key === target) section.classList.add("active");
+        else section.classList.remove("active");
       });
     });
   });
 }
 
-// --- Converter simulator (UI only, no on-chain tx yet) ---
+/* ---------- Converter simulator (Phase 2 UI) ---------- */
+
 function setupConverterSimulator() {
   const input = document.getElementById("convertInputI21");
   const outMarket = document.getElementById("convertOutputMarket");
@@ -647,7 +719,6 @@ function setupConverterSimulator() {
     const marketAmount = value / CONVERSION_RATE;
     const burnAmount = (value * BURN_PERCENT) / 100;
 
-    // حذف صفرهای اضافی انتهای اعشار
     outMarket.textContent = marketAmount.toFixed(4).replace(/\.?0+$/, "");
     outBurn.textContent = burnAmount.toFixed(2).replace(/\.?0+$/, "");
   };
@@ -655,47 +726,96 @@ function setupConverterSimulator() {
   input.addEventListener("input", update);
 }
 
-// --- Init ---
+/* ---------- Phantom helpers (mobile banner + desktop QR) ---------- */
+
+function setupPhantomHelpers() {
+  const mobileBanner = document.getElementById("phantomMobileBanner");
+  const mobileBtn = document.getElementById("phantomMobileBannerBtn");
+  const qrCard = document.getElementById("phantomQrCard");
+  const qrImg = document.getElementById("phantomQrImage");
+
+  const deepLink = buildPhantomDeepLink();
+
+  // On mobile, if Phantom is NOT injected (Safari / Chrome), show banner.
+  if (isMobile() && (!window.solana || !window.solana.isPhantom)) {
+    mobileBanner?.classList.remove("hidden");
+    if (mobileBtn) {
+      mobileBtn.onclick = () => {
+        window.location.href = deepLink;
+      };
+    }
+  }
+
+  // On desktop, show QR card so user can open this page in Phantom on their phone.
+  if (!isMobile() && qrCard && qrImg) {
+    const qrApiBase = "https://api.qrserver.com/v1/create-qr-code/";
+    const qrUrl = `${qrApiBase}?size=220x220&data=${encodeURIComponent(
+      deepLink
+    )}`;
+    qrImg.src = qrUrl;
+    qrCard.classList.remove("hidden");
+  }
+}
+
+/* ---------- Init ---------- */
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Init Solana connection (در صورت وجود web3)
+  // Solana connection
   if (window.solanaWeb3) {
     initSolanaConnection();
   }
 
-  // Load NFTs
+  // Load NFT dataset
   loadNFTs();
 
   // Wallet buttons
-  const connectBtn = document.getElementById("connectWalletBtn");
-  const panelConnectBtn = document.getElementById("panelConnectBtn");
-  const disconnectBtn = document.getElementById("disconnectBtn");
-
-  connectBtn?.addEventListener("click", connectWallet);
-  panelConnectBtn?.addEventListener("click", connectWallet);
-  disconnectBtn?.addEventListener("click", disconnectWallet);
+  document
+    .getElementById("connectWalletBtn")
+    ?.addEventListener("click", connectWallet);
+  document
+    .getElementById("panelConnectBtn")
+    ?.addEventListener("click", connectWallet);
+  document
+    .getElementById("disconnectBtn")
+    ?.addEventListener("click", disconnectWallet);
 
   // Filters
-  document.getElementById("categoryFilter")?.addEventListener("change", renderExploreGrid);
-  document.getElementById("sortFilter")?.addEventListener("change", renderExploreGrid);
+  document
+    .getElementById("categoryFilter")
+    ?.addEventListener("change", renderExploreGrid);
+  document
+    .getElementById("sortFilter")
+    ?.addEventListener("change", renderExploreGrid);
 
   // Tabs
   setupMainTabs();
   setupPanelTabs();
 
   // Modal
-  document.getElementById("modalCloseBtn")?.addEventListener("click", closeModal);
-  document.getElementById("modalCloseBtn2")?.addEventListener("click", closeModal);
-  document.querySelector("#nftModal .modal-backdrop")?.addEventListener("click", closeModal);
+  document
+    .getElementById("modalCloseBtn")
+    ?.addEventListener("click", closeModal);
+  document
+    .getElementById("modalCloseBtn2")
+    ?.addEventListener("click", closeModal);
+  document
+    .querySelector("#nftModal .modal-backdrop")
+    ?.addEventListener("click", closeModal);
 
-  // Overview button
-  document.getElementById("overviewGoExplore")?.addEventListener("click", () => {
-    document.getElementById("exploreTabBtn")?.click();
-  });
+  // Overview → Explore button
+  document
+    .getElementById("overviewGoExplore")
+    ?.addEventListener("click", () => {
+      document.getElementById("exploreTabBtn")?.click();
+    });
 
-  // Converter simulator (Phase 2 UI)
+  // Phase 2 converter UI
   setupConverterSimulator();
 
-  // If Phantom already trusted
+  // Phantom banner + QR
+  setupPhantomHelpers();
+
+  // If Phantom already trusted (e.g. desktop extension)
   if (window.solana && window.solana.isPhantom) {
     window.solana
       .connect({ onlyIfTrusted: true })
