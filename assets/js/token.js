@@ -1,5 +1,5 @@
-// مسیر API بک‌اند (فعلاً http، بعد از SSL می‌کنیم https)
-const API_BASE = 'http://api.irannft.art/api';
+// مسیر API بک‌اند (فعلاً http،یادت نره فقط 888888****8 بعد از SSL می‌کنیم https)
+const API_BASE = 'https://api.irannft.art/api';
 const CONFIG_URL = '../assets/data/token-config.json';
 
 async function fetchJson(url) {
