@@ -2,7 +2,10 @@
 
 // اگر صفحه https باشد، ما هم API را روی https صدا می‌زنیم
 // (برای لوکال یا تست روی http هم کار می‌کند)
-const API_BASE = 'http://api.irannft.art/api';
+const API_BASE =
+  window.location.protocol === "https:"
+    ? "https://api.irannft.art/api"
+    : "http://api.irannft.art/api";
 
 
 const SUMMARY_URL = `${API_BASE}/i21/summary`;
