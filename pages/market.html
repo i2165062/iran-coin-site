@@ -3,61 +3,77 @@
 <head>
   <meta charset="utf-8" />
   <title>IRAN NFT – Solana Market</title>
+
+  <!-- Responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <!-- Main stylesheet for this page -->
   <link rel="stylesheet" href="../assets/css/market.css" />
+
+  <!-- Favicon / icons (change paths to your real icons) -->
   <link rel="icon" type="image/x-icon" href="../images/PC22.ico" />
-
-  <!-- iOS / iPadOS Home Screen -->
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
-
-  <!-- Android / Chrome PWA -->
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0b0e11" />
+  <meta name="theme-color" content="#05070a" />
 
-  <!-- Safari pinned tab (macOS) - تک‌رنگ -->
+  <!-- Safari pinned tab (macOS) -->
   <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
-
-  <!-- Windows tiles (اختیاری) -->
-  <meta name="msapplication-TileColor" content="#0b0e11" />
-  <meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
 </head>
 
 <body class="theme-dark">
-  <!-- Header -->
+  <!-- ================= HEADER ================= -->
   <header class="market-header">
+    <!-- Brand / logo -->
     <div class="brand">
-      <img src="../images/pc2.png" alt="IRAN NFT Logo" class="brand-logo">
+      <!-- Change logo src -->
+      <img src="../images/pc2.png" alt="IRAN NFT Logo" class="brand-logo" />
       <div class="brand-text">
         <h1>IRAN NFT Market</h1>
         <p>Solana-based cultural NFT marketplace</p>
       </div>
     </div>
 
+    <!-- Top navigation -->
     <nav class="market-nav">
+      <!-- Change href to your real home page -->
       <a href="index.html" class="nav-link">Home</a>
-      <button id="exploreTabBtn" class="nav-link nav-link--tab active">Explore</button>
-      <button id="myPanelTabBtn" class="nav-link nav-link--tab">My Panel</button>
+      <button id="exploreTabBtn" class="nav-link nav-link--tab active" type="button">
+        Explore
+      </button>
+      <button id="myPanelTabBtn" class="nav-link nav-link--tab" type="button">
+        My Panel
+      </button>
     </nav>
 
+    <!-- Wallet area -->
     <div class="wallet-area">
       <span id="networkBadge" class="badge badge-sol">Solana</span>
-      <button id="connectWalletBtn" class="btn btn-primary">Connect Wallet</button>
+
+      <!-- Connect button (shown when no wallet) -->
+      <button id="connectWalletBtn" class="btn btn-primary" type="button">
+        Connect Wallet
+      </button>
+
+      <!-- Connected wallet info (hidden by default) -->
       <div id="walletInfo" class="wallet-info hidden">
         <span id="walletAddressShort"></span>
-        <button id="disconnectBtn" class="btn btn-ghost">Disconnect</button>
+        <button id="disconnectBtn" class="btn btn-ghost" type="button">
+          Disconnect
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Main -->
+  <!-- ================= MAIN CONTENT ================= -->
   <main class="market-main">
-    <!-- EXPLORE -->
+    <!-- ===== Explore section ===== -->
     <section id="exploreSection" class="section active">
       <div class="section-header">
         <h2>Explore Collections</h2>
         <p>Unique cultural NFTs from the heart of Iran, minted on Solana.</p>
       </div>
 
+      <!-- Filters (category + sort) -->
       <div class="filters">
         <select id="categoryFilter" class="filter-select">
           <option value="all">All Categories</option>
@@ -74,33 +90,36 @@
         </select>
       </div>
 
-      <div id="nftGrid" class="nft-grid">
-        <!-- Cards injected by JS -->
-      </div>
+      <!-- NFT cards grid (filled by JS based on assets/data/nfts.json) -->
+      <div id="nftGrid" class="nft-grid"></div>
 
+      <!-- Empty state when no results -->
       <div id="emptyStateExplore" class="empty-state hidden">
         <h3>No NFTs found</h3>
         <p>Try changing filters or check back soon for new drops.</p>
       </div>
     </section>
 
-    <!-- MY PANEL -->
+    <!-- ===== My Panel section ===== -->
     <section id="myPanelSection" class="section">
       <div class="section-header">
         <h2>My Panel</h2>
         <p>See your IRAN NFT holdings, listings and future tools.</p>
       </div>
 
-      <!-- Not connected -->
+      <!-- When wallet is NOT connected -->
       <div id="panelNotConnected" class="panel-card">
         <h3>Connect your wallet</h3>
         <p>
-          To see your IRAN NFT holdings on Solana and manage listings, please connect your Phantom wallet.
+          To see your IRAN NFT holdings on Solana and manage listings, please connect your Phantom
+          wallet.
         </p>
-        <button class="btn btn-primary" id="panelConnectBtn">Connect Wallet</button>
+        <button id="panelConnectBtn" class="btn btn-primary" type="button">
+          Connect Wallet
+        </button>
       </div>
 
-      <!-- Connected -->
+      <!-- When wallet IS connected -->
       <div id="panelConnected" class="panel-card hidden">
         <div class="panel-header-row">
           <div>
@@ -113,75 +132,101 @@
           <span class="badge badge-sol">Solana</span>
         </div>
 
-        <!-- Panel inner tabs -->
+        <!-- Inner tabs (Overview / Collection / Listings) -->
         <div class="panel-tabs">
-          <button class="panel-tab-btn active" data-panel-tab="overview">Overview</button>
-          <button class="panel-tab-btn" data-panel-tab="collection">My Collection</button>
-          <button class="panel-tab-btn" data-panel-tab="listings">My Listings</button>
+          <button
+            class="panel-tab-btn active"
+            data-panel-tab="overview"
+            type="button"
+          >
+            Overview
+          </button>
+          <button
+            class="panel-tab-btn"
+            data-panel-tab="collection"
+            type="button"
+          >
+            My Collection
+          </button>
+          <button
+            class="panel-tab-btn"
+            data-panel-tab="listings"
+            type="button"
+          >
+            My Listings
+          </button>
         </div>
 
-        <!-- OVERVIEW TAB -->
+        <!-- ===== OVERVIEW TAB ===== -->
         <div id="panelOverview" class="panel-tab active">
           <div class="panel-overview-grid">
+            <!-- Owned NFTs stat (demo) -->
             <div class="stat-card">
               <span class="stat-label">Owned in IRAN NFT collections (demo)</span>
               <div class="stat-value"><span id="statOwnedCount">0</span> NFTs</div>
-              <p class="muted stat-caption">
-                In a future phase, this will sync live with your IRAN NFT Solana collections using a real API.
+              <p class="stat-caption muted">
+                In a future phase, this will sync live with your IRAN NFT Solana collections using a
+                real API.
               </p>
             </div>
 
+            <!-- Listings stat (demo) -->
             <div class="stat-card">
               <span class="stat-label">Active listings (local demo)</span>
               <div class="stat-value"><span id="statListingsCount">0</span> NFTs</div>
-              <p class="muted stat-caption">
-                Listings here are stored locally in your browser and meant as UI prototype for the real marketplace.
+              <p class="stat-caption muted">
+                Listings here are stored locally in your browser and are just a UI prototype for the
+                real marketplace.
               </p>
             </div>
 
-            <!-- Wallet balances -->
+            <!-- Wallet balances (SOL + tokens) -->
             <div class="stat-card">
               <span class="stat-label">Wallet balances</span>
               <div class="stat-value">
                 <span id="statSolBalance">–</span> SOL
               </div>
-              <p class="muted stat-caption">
+              <p class="stat-caption muted">
                 <span class="label-inline">i21 main token:</span>
-                <strong><span id="statTokenBalanceI21">–</span></strong><br>
+                <strong><span id="statTokenBalanceI21">–</span></strong><br />
                 <span class="label-inline">Market token (phase 2):</span>
                 <strong><span id="statTokenBalanceMarket">coming soon</span></strong>
               </p>
             </div>
 
+            <!-- Explore button -->
             <div class="stat-card">
               <span class="stat-label">Explore &amp; buy more</span>
               <div class="stat-value">IRAN NFT Market</div>
-              <p class="muted stat-caption">
-                Browse all drops and artworks in the main market page and complete trades on official platforms.
+              <p class="stat-caption muted">
+                Browse all drops and artworks in the main market page and complete trades on
+                official platforms.
               </p>
-              <button id="overviewGoExplore" class="btn btn-secondary">Go to Explore</button>
+              <button id="overviewGoExplore" class="btn btn-secondary" type="button">
+                Go to Explore
+              </button>
             </div>
           </div>
 
-          <!-- Phase 2 – converter UI (only simulation for now) -->
-          <!-- توضیحات این بخش را هر زمان خواستی می‌تونی مستقیم از همین HTML ویرایش کنی -->
+          <!-- ===== Phase 2 converter (UI only) ===== -->
           <div class="converter-card">
             <div class="converter-header">
-              <h4>Phase 2 – i21 → Market token converter (UI only)</h4>
+              <h4>Phase 2 – i21 → Market token converter (UI only, no on-chain tx yet)</h4>
               <p class="muted">
                 In the next phase, you will be able to convert your
                 <strong>i21 main token</strong> into a dedicated
-                <strong>Market token</strong> that is used only for buying IRAN NFT collections.
+                <strong>Market token</strong> used only for buying IRAN NFT collections.
                 A part of the converted i21 will be burned to support long-term scarcity.
               </p>
             </div>
 
             <div class="converter-grid">
+              <!-- Input side -->
               <div class="converter-field">
                 <label for="convertInputI21">Amount of i21 to convert</label>
                 <input
-                  type="number"
                   id="convertInputI21"
+                  type="number"
                   min="0"
                   step="1"
                   placeholder="e.g. 1000"
@@ -189,7 +234,7 @@
                 <p class="muted small">
                   Current design:
                   <strong>100 i21 = 1 Market token</strong>.
-                  This ratio can be updated later inside the on-chain contract if needed.
+                  This ratio is set in JavaScript and later will be enforced on-chain.
                 </p>
                 <p class="muted small">
                   Planned total supply for the Market token:
@@ -197,19 +242,21 @@
                 </p>
               </div>
 
+              <!-- Preview / result side -->
               <div class="converter-result">
                 <div class="stat-card converter-stat">
                   <span class="stat-label">Preview (no real transaction yet)</span>
                   <div class="stat-value">
                     <span id="convertOutputMarket">0</span> Market tokens
                   </div>
-                  <p class="muted stat-caption">
+                  <p class="stat-caption muted">
                     Estimated burned i21 (planned):
                     <strong><span id="convertOutputBurn">0</span></strong>
                     from your input.
                   </p>
                   <button
                     class="btn btn-secondary"
+                    type="button"
                     disabled
                     title="Smart contract is not deployed yet – UI only"
                   >
@@ -219,44 +266,45 @@
               </div>
             </div>
 
+            <!-- Text explanation for investors / users -->
             <div class="project-notes">
-              <h4>How this system will work (concept)</h4>
+              <h4>How this system is designed to work</h4>
               <ul>
                 <li>
-                  You send i21 to the converter contract. For each
-                  <strong>100 i21</strong> you receive <strong>1 Market token</strong>.
+                  You send i21 to the converter contract.
+                  For each <strong>100 i21</strong> you receive
+                  <strong>1 Market token</strong>.
                 </li>
                 <li>
-                  A configurable percentage of the incoming i21 (for example
+                  A configurable percentage of incoming i21 (for example
                   <strong>50%</strong>) is burned to reduce circulating supply.
                 </li>
                 <li>
-                  The Market token can only be used for buying NFTs inside the IRAN NFT ecosystem.
+                  The Market token is used only for buying NFTs inside the IRAN NFT ecosystem.
                 </li>
                 <li>
-                  In the final contract, a price oracle can be added so the rate can auto-adjust
-                  based on i21 price, without changing this UI.
+                  In the final contract we can add a price oracle so the rate auto-adjusts based on
+                  i21 price.
                 </li>
                 <li>
-                  All numbers here are transparent and can be updated on-chain via governance or
-                  a controlled admin, depending on how we design it later.
+                  Parameters like rate and burn percent can be updated on-chain via governance or an
+                  admin account.
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- COLLECTION TAB -->
+        <!-- ===== COLLECTION TAB ===== -->
         <div id="panelCollection" class="panel-tab">
           <h4>My Collection (demo)</h4>
           <p class="muted">
-            This section shows NFTs that are marked as owned by your wallet in the current demo dataset.
-            Later, this will be replaced with a live Solana / OpenSea integration.
+            This section shows NFTs that are marked as owned by your wallet in the current demo
+            dataset (<code>assets/data/nfts.json</code>). Later this will be replaced by a live
+            Solana / OpenSea integration.
           </p>
 
-          <div id="myCollectionGrid" class="nft-grid panel-grid-tight">
-            <!-- Owned cards injected by JS -->
-          </div>
+          <div id="myCollectionGrid" class="nft-grid panel-grid-tight"></div>
 
           <div id="emptyMyCollection" class="empty-state hidden">
             <h3>No NFTs detected in demo</h3>
@@ -266,22 +314,22 @@
           </div>
         </div>
 
-        <!-- LISTINGS TAB -->
+        <!-- ===== LISTINGS TAB ===== -->
         <div id="panelListings" class="panel-tab">
           <h4>My Listings (local demo)</h4>
           <p class="muted">
             Here you can mark NFTs from your collection as “listed for sale”.
-            This simulates a marketplace UI and persists per-wallet in your browser using <code>localStorage</code>.
+            Listings are stored per-wallet in your browser using
+            <code>localStorage</code> to prototype the marketplace UI.
           </p>
 
-          <div id="myListingsGrid" class="nft-grid panel-grid-tight">
-            <!-- Listing cards injected by JS -->
-          </div>
+          <div id="myListingsGrid" class="nft-grid panel-grid-tight"></div>
 
           <div id="emptyMyListings" class="empty-state hidden">
             <h3>No active listings</h3>
             <p>
-              Go to <strong>My Collection</strong>, choose an NFT and click <em>List for sale</em> to add it here.
+              Go to <strong>My Collection</strong>, choose an NFT and click
+              <em>List for sale</em> to add it here.
             </p>
           </div>
         </div>
@@ -289,15 +337,18 @@
     </section>
   </main>
 
-  <!-- NFT MODAL -->
+  <!-- ================= MODAL FOR NFT DETAILS ================= -->
   <div id="nftModal" class="modal hidden">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
-      <button id="modalCloseBtn" class="modal-close">&times;</button>
+      <button id="modalCloseBtn" class="modal-close" type="button">&times;</button>
       <div class="modal-body">
+        <!-- Left: image -->
         <div class="modal-image-wrapper">
-          <img id="modalImage" src="" alt="">
+          <img id="modalImage" src="" alt="" />
         </div>
+
+        <!-- Right: content -->
         <div class="modal-content">
           <h3 id="modalTitle"></h3>
           <p id="modalCollection" class="muted"></p>
@@ -333,7 +384,9 @@
             >
               View / Trade on OpenSea
             </a>
-            <button id="modalCloseBtn2" class="btn btn-ghost">Close</button>
+            <button id="modalCloseBtn2" class="btn btn-ghost" type="button">
+              Close
+            </button>
           </div>
 
           <p class="modal-note">
@@ -345,8 +398,37 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- ================= MOBILE BANNER & DESKTOP QR ================= -->
+
+  <!-- Mobile banner: only shown on phones when Phantom isn’t injected -->
+  <div id="phantomMobileBanner" class="mobile-phantom-banner hidden">
+    <div class="banner-inner">
+      <div class="banner-text">
+        For the best experience on mobile, open this site inside the
+        <strong>Phantom</strong> wallet.
+      </div>
+      <button id="phantomMobileBannerBtn" class="btn btn-primary btn-small" type="button">
+        Open in Phantom
+      </button>
+    </div>
+  </div>
+
+  <!-- Desktop QR card: scan with phone to open this page in Phantom -->
+  <div id="phantomQrCard" class="phantom-qr-card hidden">
+    <div class="phantom-qr-text">
+      <div>Scan with your phone</div>
+      <span>to open this page in Phantom wallet</span>
+    </div>
+    <!-- src is set dynamically in JS using a QR API -->
+    <img id="phantomQrImage" alt="Open in Phantom via QR code" />
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+
+  <!-- Solana Web3 (IIFE build) -->
   <script src="https://unpkg.com/@solana/web3.js@1.95.2/lib/index.iife.js"></script>
+
+  <!-- Main JS for this page -->
   <script src="../assets/js/market.js"></script>
 </body>
 </html>
