@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title> (i21) — Token Dashboard</title>
+  <title>i21 — Token Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="../assets/css/token.css" />
 
-  <!-- Favicon -->
+  <!-- Favicon (optional – اگر نداری می‌تونی حذف کنی) -->
   <link rel="icon" type="../image/x-icon" href="../images/PC22.ico" />
 
   <!-- iOS / iPadOS Home Screen -->
@@ -27,16 +29,20 @@
 <body>
   <main class="token-page">
     <!-- Header -->
-   <div class="brand">
-      <!-- Change logo src -->
-      <img src="../images/pc2.png" alt="IRAN NFT Logo" class="brand-logo" />
-      <div class="brand-text">
-        <h1>IRAN NFT Market</h1>
-        <p>Solana-based cultural NFT marketplace</p>
+    <header class="token-header">
+      <div class="token-title-wrap">
+        <!-- LOGO -->
+        <div class="token-logo-img">
+          <img src="../images/PC2.png" alt="i21 logo" />
+        </div>
+        <div>
+          <h1 class="token-title">i21 Token Dashboard</h1>
+          <p class="token-subtitle">
+            Live on-chain metrics powered by the private i21 API.
+          </p>
+        </div>
       </div>
-    </div>
       <div class="token-chain-pill">SOLANA</div>
-      
     </header>
 
     <!-- Global status bar -->
@@ -62,11 +68,13 @@
             <div class="price-label">Current price</div>
             <div class="price-value" id="priceUsd">$ —</div>
             <div class="price-subvalue" id="priceSol">— SOL</div>
+
             <div class="price-token-line">
-              <span id="tokenSymbol">–</span>
+              <span id="tokenSymbol">i21</span>
               <span class="token-separator">•</span>
               <span id="tokenName">Token</span>
             </div>
+
             <div class="price-mint">
               <span class="muted">Mint:</span>
               <span id="tokenMint" class="mono"></span>
