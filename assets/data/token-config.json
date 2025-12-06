@@ -2,20 +2,47 @@
   "token": {
     "symbol": "i21",
     "name": "IranCoin (i21)",
-    "mint": "4FmkPqgNWbzyB7tWhPsh9m3zDCoq9FzIvzaeAhzpump",
-    "chain": "Solana"
+    "mint": "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump"
   },
   "supply": {
-    "total": 999996453.565484,
-    "decimals": 6
+    "total": 999996453.57,
+    "teamAllocation": 90000000
+  },
+  "lockedSummary": {
+    "totalLocked": 53000000
   },
   "lockedContracts": [
     {
-      "label": "Team & Marketing Wallet",
-      "address": "YOUR_TEAM_WALLET_ADDRESS_HERE",
+      "label": "Team & Marketing Wallet #1",
+      "address": "p6Bi8BJNfrCu4S4e8PTwfb4SwLTyA8SjLAgZh8uPnro",
+      "amount": 15000000,
+      "unlockDate": "2026-11-01",
+      "notes": "Part of 90M team allocation",
+      "explorerUrl": "https://solscan.io/account/p6Bi8BJNfrCu4S4e8PTwfb4SwLTyA8SjLAgZh8uPnro"
+    },
+    {
+      "label": "Team & Marketing Wallet #2",
+      "address": "5jo3hRUvFSXdsjyvEZdYQtMEGVprWxrgshARnPccgPev",
+      "amount": 15000000,
+      "unlockDate": "2026-11-01",
+      "notes": "Part of 90M team allocation",
+      "explorerUrl": "https://solscan.io/account/5jo3hRUvFSXdsjyvEZdYQtMEGVprWxrgshARnPccgPev"
+    },
+    {
+      "label": "Team & Marketing Wallet #3",
+      "address": "4daNKYm8vYzDgQWGr82dorY2Z2Mtb9tc8frVtFfKfYsY",
+      "amount": 13000000,
+      "unlockDate": "2026-11-01",
+      "notes": "Part of 90M team allocation",
+      "explorerUrl": "https://solscan.io/account/4daNKYm8vYzDgQWGr82dorY2Z2Mtb9tc8frVtFfKfYsY"
+    },
+    {
+      "label": "Team & Marketing Wallet #4",
+      "address": "CzdorLi63hZGeCprjneMLhZAufh7Nxawnc1unQAsNBr2",
       "amount": 10000000,
       "unlockDate": "2026-11-01",
-      "notes": "Locked for 2 years"
+      "notes": "Part of 90M team allocation",
+      "explorerUrl": "https://solscan.io/account/CzdorLi63hZGeCprjneMLhZAufh7Nxawnc1unQAsNBr2"
     }
   ]
 }
