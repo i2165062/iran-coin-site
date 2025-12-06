@@ -16,7 +16,8 @@
   --border-subtle: 1px solid rgba(255, 255, 255, 0.04);
   --mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
 
 *,
@@ -29,16 +30,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-}
-
-body {
-  font-family: var(--sans);
-  background:
-    radial-gradient(circle at top left, #111827 0, transparent 60%),
-    radial-gradient(circle at bottom right, #0b1020 0, transparent 55%),
-    var(--bg);
+  background: radial-gradient(circle at top, #05070a 0, #020308 50%, #000 100%);
   color: var(--ink);
+  font-family: var(--sans);
 }
 
 /* Layout */
@@ -47,16 +41,17 @@ body {
   min-height: 100vh;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 32px 16px 40px;
+  padding: 32px 16px 32px;
 }
 
 /* Header */
 
 .token-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .token-title-wrap {
@@ -66,44 +61,57 @@ body {
 }
 
 .token-logo {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 16px;
+  background: radial-gradient(circle at 0 0, #1f2937 0, #020617 55%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #1f2937, #111827);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
 }
 
 .token-title {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
+  letter-spacing: 0.03em;
 }
 
 .token-subtitle {
-  margin: 4px 0 0;
-  font-size: 0.9rem;
+  margin: 2px 0 0;
+  font-size: 0.86rem;
   color: var(--ink-muted);
 }
 
 .token-chain-pill {
+  align-self: flex-start;
   padding: 6px 14px;
-  border-radius: var(--radius-pill);
+  border-radius: 999px;
   font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  border: 1px solid rgba(156, 163, 175, 0.4);
-  background: rgba(15, 23, 42, 0.8);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: linear-gradient(
+      120deg,
+      rgba(56, 189, 248, 0.12),
+      transparent 40%,
+      rgba(129, 230, 217, 0.14)
+    ),
+    rgba(15, 23, 42, 0.92);
 }
 
-/* Global status bar */
+/* Status bar */
 
 .status-bar {
-  padding: 8px 14px;
-  border-radius: 12px;
   margin-bottom: 16px;
-  font-size: 0.86rem;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
 }
 
 .status-ok {
@@ -122,43 +130,61 @@ body {
 
 .token-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-  grid-template-rows: auto auto;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
   gap: 16px;
+  align-items: flex-start;
 }
 
+/* Cards */
+
 .card {
-  background: linear-gradient(145deg, var(--card), var(--card-soft));
+  background: radial-gradient(circle at top left, #161e2b 0, #040812 55%);
   border-radius: var(--radius-xl);
   border: var(--border-subtle);
   box-shadow: var(--shadow-soft);
-  padding: 16px 18px 18px;
+  padding: 14px 16px 14px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Card header */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -120px;
+  background: radial-gradient(circle at 0 0, rgba(248, 181, 0, 0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
 
 .card-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .card-title-wrap {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .card-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 12px;
-  background: rgba(31, 41, 55, 0.8);
-  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .card-header h2 {
@@ -175,6 +201,19 @@ body {
   font-size: 0.75rem;
 }
 
+/* Pill */
+
+.pill {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.pill-soft {
+  background: rgba(15, 23, 42, 0.9);
+}
+
 /* Price card */
 
 .card-price {
@@ -189,60 +228,62 @@ body {
 }
 
 .price-main {
-  padding-right: 12px;
-  border-right: 1px solid rgba(148, 163, 184, 0.2);
+  padding-right: 10px;
 }
 
 .price-label {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--ink-muted);
   margin-bottom: 4px;
 }
 
 .price-value {
-  font-size: 1.9rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 
 .price-subvalue {
-  font-size: 0.95rem;
-  color: var(--ink-muted);
-  margin-top: 2px;
-}
-
-.price-token-line {
-  margin-top: 12px;
+  margin-top: 4px;
   font-size: 0.9rem;
   color: var(--ink-muted);
 }
 
+.price-token-line {
+  margin-top: 6px;
+  font-size: 0.86rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .token-separator {
-  margin: 0 6px;
+  color: rgba(148, 163, 184, 0.7);
 }
 
 .price-mint {
-  margin-top: 6px;
-  font-size: 0.8rem;
-  color: var(--ink-muted);
+  margin-top: 4px;
+  font-size: 0.78rem;
 }
 
 .mono {
   font-family: var(--mono);
-  font-size: 0.75rem;
+  letter-spacing: 0.03em;
 }
 
-/* side metrics */
+/* Price side metrics */
 
 .price-side {
+  padding-left: 8px;
+  border-left: 1px solid rgba(15, 23, 42, 0.9);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .metric-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .metric-label {
@@ -253,26 +294,24 @@ body {
   font-family: var(--mono);
 }
 
-/* lists */
+/* Metric list */
 
 .metric-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.86rem;
 }
 
 .metric-list li {
   display: flex;
   justify-content: space-between;
-  padding: 4px 0;
 }
 
-.metric-list li + li {
-  border-top: 1px dashed rgba(148, 163, 184, 0.35);
-}
-
-/* Locked contracts */
+/* Supply & locked */
 
 .card-locked .card-body {
   max-height: 210px;
@@ -305,29 +344,6 @@ body {
   color: var(--ink-muted);
 }
 
-.locked-meta span {
-  font-family: var(--mono);
-}
-
-/* Pills */
-
-.pill {
-  border-radius: var(--radius-pill);
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.pill-soft {
-  background: rgba(148, 163, 184, 0.15);
-  color: var(--ink);
-}
-
-.pill-error {
-  background: var(--danger-soft);
-  color: #fecaca;
-}
-
 /* Footer */
 
 .token-footer {
@@ -345,9 +361,94 @@ body {
   text-decoration: underline;
 }
 
+/* Trade buttons under price */
+
+.trade-links {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trade-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.trade-btn-primary {
+  background: linear-gradient(135deg, #f97316, #facc15);
+  color: #111827;
+  box-shadow: 0 10px 30px rgba(248, 181, 0, 0.4);
+}
+
+.trade-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(248, 181, 0, 0.55);
+}
+
+.trade-btn-ghost {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(156, 163, 175, 0.5);
+  color: var(--ink);
+}
+
+.trade-btn-ghost:hover {
+  background: rgba(30, 64, 175, 0.4);
+  border-color: rgba(191, 219, 254, 0.8);
+}
+
+/* Locked summary */
+
+.locked-summary {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), transparent 70%);
+  border: 1px solid rgba(55, 65, 81, 0.8);
+}
+
+.locked-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.locked-summary-row + .locked-summary-row {
+  margin-top: 4px;
+}
+
+.locked-summary-label {
+  color: var(--ink-muted);
+}
+
+.locked-summary-value {
+  font-family: var(--mono);
+}
+
+/* Explorer link in locked contracts */
+
+.locked-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.locked-link:hover {
+  text-decoration: underline;
+}
+
 /* Responsive */
 
-@media (max-width: 900px) {
+@media (max-width: 880px) {
   .token-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -356,12 +457,12 @@ body {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .price-main {
-    border-right: none;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-    padding-right: 0;
-    padding-bottom: 10px;
-    margin-bottom: 8px;
+  .price-side {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid rgba(15, 23, 42, 0.9);
+    margin-top: 10px;
+    padding-top: 10px;
   }
 }
 
