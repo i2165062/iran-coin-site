@@ -7,7 +7,6 @@ const API_BASE =
     ? "https://api.irannft.art/api"
     : "http://api.irannft.art/api";
 
-
 const SUMMARY_URL = `${API_BASE}/i21/summary`;
 const CONFIG_URL = "../assets/data/token-config.json";
 
@@ -40,7 +39,9 @@ const els = {
   unlockedSupply: $("unlockedSupply"),
 
   // locked contracts
-  lockedContractsList: $("lockedContractsList")
+  lockedContractsList: $("lockedContractsList"),
+  lockedTotalText: $("lockedTotalText"),
+  lockedTeamText: $("lockedTeamText")
 };
 
 function formatNumber(n, options = {}) {
@@ -68,18 +69,15 @@ function setPriceStatus(type, text) {
   els.priceStatus.classList.toggle("pill-error", type === "error");
 }
 
-// --- Fetch summary from backend ---
+// --- Fetch summary from API ---
 
 async function fetchSummary() {
   try {
     const res = await fetch(SUMMARY_URL, { cache: "no-store" });
-
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}`);
     }
-
     const data = await res.json();
-
     if (!data.ok) {
       throw new Error(data.error || "Unknown API error");
     }
@@ -112,14 +110,15 @@ function renderSummary(summary) {
     els.tokenSymbol.textContent = window.i21Config.token.symbol || s.token || "i21";
     els.tokenName.textContent = window.i21Config.token.name || s.name || "IranCoin (i21)";
     els.tokenMint.textContent =
-      window.i21Config.token.mint || s.mint || "–";
+      window.i21Config.token.mint || s.mint || "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
   } else {
     els.tokenSymbol.textContent = s.token || "i21";
     els.tokenName.textContent = s.name || "IranCoin (i21)";
-    els.tokenMint.textContent = s.mint || "–";
+    els.tokenMint.textContent =
+      s.mint || "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
   }
 
-  // volume & trades
+  // 24h volume & trades
   els.volume24hUsd.textContent = s.volume24hUsd
     ? `$${formatNumber(s.volume24hUsd, { compact: true })}`
     : "–";
@@ -141,12 +140,14 @@ function renderSummary(summary) {
     s.decimals !== null && s.decimals !== undefined ? s.decimals : "–";
 
   // supply
-  const totalSupply = window.i21Config?.supply?.total ?? s.circulatingSupply ?? null;
+  const totalSupply =
+    window.i21Config?.supply?.total ?? s.circulatingSupply ?? null;
   const circulating = s.circulatingSupply ?? null;
-  const locked = window.i21Config?.lockedContracts?.reduce(
-    (acc, c) => acc + (Number(c.amount) || 0),
-    0
-  ) ?? null;
+  const locked =
+    window.i21Config?.lockedContracts?.reduce(
+      (acc, c) => acc + (Number(c.amount) || 0),
+      0
+    ) ?? null;
 
   const unlocked =
     totalSupply !== null && locked !== null ? totalSupply - locked : null;
@@ -183,6 +184,22 @@ async function loadConfig() {
 }
 
 function renderConfig(cfg) {
+  // Locked summary
+  if (cfg.lockedSummary) {
+    if (els.lockedTotalText) {
+      const total = cfg.lockedSummary.totalLocked || 0;
+      els.lockedTotalText.textContent = `${formatNumber(total)} ${
+        cfg.token?.symbol || "i21"
+      }`;
+    }
+    if (els.lockedTeamText) {
+      const team = cfg.supply?.teamAllocation || 0;
+      els.lockedTeamText.textContent = `${formatNumber(team)} ${
+        cfg.token?.symbol || "i21"
+      }`;
+    }
+  }
+
   // Locked contracts
   const list = els.lockedContractsList;
   list.innerHTML = "";
@@ -206,14 +223,6 @@ function renderConfig(cfg) {
     const meta = document.createElement("div");
     meta.className = "locked-meta";
 
-    const addr = document.createElement("span");
-    addr.textContent = `Address: ${c.address}`;
-
-    const amt = document.createElement("span");
-    amt.textContent = `Amount: ${formatNumber(c.amount || 0)} ${
-      cfg.token?.symbol || "i21"
-    }`;
-
     if (c.unlockDate) {
       const unlock = document.createElement("span");
       unlock.textContent = `Unlock: ${c.unlockDate}`;
@@ -226,8 +235,26 @@ function renderConfig(cfg) {
       meta.appendChild(notes);
     }
 
+    const addr = document.createElement("span");
+    addr.textContent = `Address: ${c.address}`;
     meta.appendChild(addr);
+
+    const amt = document.createElement("span");
+    amt.textContent = `Amount: ${formatNumber(c.amount || 0)} ${
+      cfg.token?.symbol || "i21"
+    }`;
     meta.appendChild(amt);
+
+    // Optional explorer link (Solscan)
+    if (c.explorerUrl) {
+      const link = document.createElement("a");
+      link.href = c.explorerUrl;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.className = "locked-link";
+      link.textContent = "View on Solscan";
+      meta.appendChild(link);
+    }
 
     item.appendChild(title);
     item.appendChild(meta);
