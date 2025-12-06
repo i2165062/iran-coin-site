@@ -113,7 +113,7 @@ function renderSummary(summary) {
       window.i21Config.token.mint || s.mint || "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
   } else {
     els.tokenSymbol.textContent = s.token || "i21";
-    els.tokenName.textContent = s.name || "IranCoin (i21)";
+    els.tokenName.textContent = s.name || "I2165062 (i21)";
     els.tokenMint.textContent =
       s.mint || "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
   }
