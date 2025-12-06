@@ -5,22 +5,25 @@
   <title>IranCoin (i21) — Token Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../assets/css/token.css" />
-  	<link rel="icon" type="../image/x-icon" href="../images/PC22.ico" />
-	<!-- iOS / iPadOS Home Screen -->
-<link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
 
-<!-- Android / Chrome PWA -->
-<link rel="manifest" href="/site.webmanifest" />
-<meta name="theme-color" content="#0b0e11" />
+  <!-- Favicon -->
+  <link rel="icon" type="../image/x-icon" href="../images/PC22.ico" />
 
-<!-- Safari pinned tab (macOS) - تک‌رنگ -->
-<link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
+  <!-- iOS / iPadOS Home Screen -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
 
-<!-- Windows tiles (اختیاری) -->
-<meta name="msapplication-TileColor" content="#0b0e11" />
-<meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
+  <!-- Android / Chrome PWA -->
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0b0e11" />
 
+  <!-- Safari pinned tab (macOS) -->
+  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
+
+  <!-- Windows tiles (optional) -->
+  <meta name="msapplication-TileColor" content="#0b0e11" />
+  <meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
 </head>
+
 <body>
   <main class="token-page">
     <!-- Header -->
@@ -68,6 +71,26 @@
             <div class="price-mint">
               <span class="muted">Mint:</span>
               <span id="tokenMint" class="mono"></span>
+            </div>
+
+            <!-- Trade links -->
+            <div class="trade-links">
+              <a
+                href="https://pump.fun/coin/4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump"
+                class="trade-btn trade-btn-primary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Buy on Pump.fun
+              </a>
+              <a
+                href="https://www.dextools.io/app/token/i21"
+                class="trade-btn trade-btn-ghost"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View on DEXTools
+              </a>
             </div>
           </div>
 
@@ -151,7 +174,18 @@
             Manual lock data configured by the i2165062 team.
           </span>
         </header>
-        
+        <div class="card-body">
+          <div class="locked-summary">
+            <div class="locked-summary-row">
+              <span class="locked-summary-label">Total locked so far:</span>
+              <span id="lockedTotalText" class="locked-summary-value">–</span>
+            </div>
+            <div class="locked-summary-row">
+              <span class="locked-summary-label">Team allocation (purchased):</span>
+              <span id="lockedTeamText" class="locked-summary-value">–</span>
+            </div>
+          </div>
+
           <div id="lockedContractsList" class="locked-list">
             <!-- Filled from token-config.json -->
           </div>
