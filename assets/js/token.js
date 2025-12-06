@@ -108,7 +108,7 @@ function renderSummary(summary) {
   // token basics (fallback به config اگر null باشد)
   if (window.i21Config && window.i21Config.token) {
     els.tokenSymbol.textContent = window.i21Config.token.symbol || s.token || "i21";
-    els.tokenName.textContent = window.i21Config.token.name || s.name || " (i21)";
+    els.tokenName.textContent = window.i21Config.token.name || s.name || "I2165062 (i21)";
     els.tokenMint.textContent =
       window.i21Config.token.mint || s.mint || "4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump";
   } else {
