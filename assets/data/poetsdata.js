@@ -280,7 +280,7 @@ const poetsData = {
           death: 1977,
           influence: { Philosophy: 96, Reform: 95, Influence: 98 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/shariati.jpg",
+          image: "../images/people/shariati.png",
           summary:
             "Dr. Shariati redefined religion as a force for social justice. His lectures inspired Iran’s intellectual awakening and modern reformist thought."
         }
