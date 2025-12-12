@@ -256,7 +256,7 @@ const poetsData = {
           death: 1967,
           influence: { Feminism: 100, Modernism: 92, Cinema: 88 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/forugh.jpg",
+          image: "../images/people/forugh.png",
           summary:
             "A revolutionary female poet and filmmaker, Forugh gave voice to emotion, sensuality, and rebellion in post-war Iran."
         },
