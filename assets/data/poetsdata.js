@@ -220,7 +220,7 @@ const poetsData = {
           death: 1951,
           influence: { Poetry: 92, Reform: 90, Scholarship: 88 },
           regions: ["Iran"],
-          image: "../images/people/bahar.jpg",
+          image: "../images/poets/bahar.png",
           summary:
             "Known as 'Malek o-Shoara', Bahar revived classical prosody for modern themes. A poet and statesman, he balanced tradition and reform."
         },
@@ -232,7 +232,7 @@ const poetsData = {
           death: 1960,
           influence: { Innovation: 98, Poetry: 96, Modernism: 95 },
           regions: ["Iran"],
-          image: "../images/people/nima.jpg",
+          image: "../images/poets/nima.png",
           summary:
             "Nima introduced free verse to Persian poetry, breaking classical meters and redefining poetic vision — the father of Iran’s modern verse movement."
         },
@@ -244,7 +244,7 @@ const poetsData = {
           death: 2000,
           influence: { Poetry: 98, Humanism: 94, Freedom: 96 },
           regions: ["Iran", "Europe"],
-          image: "../images/poets/shamlou.jpg",
+          image: "../images/poets/shamlou.png",
           summary:
             "Ahmad Shamlou’s free verse poetry fused myth, politics, and humanism. His works embody the voice of modern Iranian conscience."
         },
