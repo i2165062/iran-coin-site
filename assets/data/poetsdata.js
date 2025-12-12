@@ -86,7 +86,7 @@ const poetsData = {
           death: 1291,
           influence: { Ethics: 96, Storytelling: 94, Language: 90 },
           regions: ["Iran", "Middle East"],
-          image: "../images/poets/saadi.png",
+          image: "../images/poets/Saadi.png",
           summary:
             "Author of 'Gulistan' and 'Bustan', Saadi united wisdom with wit. His prose and verse, emphasizing morality and tolerance, remain proverbial in Persian and world culture."
         },
