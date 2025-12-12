@@ -74,7 +74,7 @@ const poetsData = {
           death: 1273,
           influence: { Mysticism: 100, Philosophy: 95, Poetry: 98 },
           regions: ["Iran", "Turkey", "Europe"],
-          image: "../images/people/rumi.jpg",
+          image: "../images/people/rumi.png",
           summary:
             "Jalal al-Din Rumi, known as the poet of love, expressed the divine unity of existence through ecstatic verse. His Masnavi is revered worldwide for its spiritual insight."
         },
