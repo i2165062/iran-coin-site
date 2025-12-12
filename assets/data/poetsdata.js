@@ -268,7 +268,7 @@ const poetsData = {
           death: 1980,
           influence: { Mysticism: 92, Nature: 94, Simplicity: 90 },
           regions: ["Iran", "Asia"],
-          image: "../images/people/sepehri.png",
+          image: "../images/poets/sepehri.png",
           summary:
             "A poet-painter whose serene verses merge Eastern mysticism with modern minimalism — turning simplicity into transcendence."
         },
