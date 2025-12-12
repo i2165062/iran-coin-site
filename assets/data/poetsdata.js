@@ -50,7 +50,7 @@ const poetsData = {
           death: 1209,
           influence: { Romance: 96, Narrative: 92, Legacy: 94 },
           regions: ["Iran", "Caucasus"],
-          image: "../images/people/nezami.png",
+          image: "../images/poets/nezami.png",
           summary:
             "Nezami, master of romantic epics like 'Khosrow and Shirin', blended myth, history, and moral philosophy with exquisite poetic form, inspiring Persian and world literature."
         },
@@ -62,7 +62,7 @@ const poetsData = {
           death: 1221,
           influence: { Mysticism: 98, Poetry: 94, Philosophy: 90 },
           regions: ["Iran"],
-          image: "../images/people/attar.png",
+          image: "../images/poets/attar.png",
           summary:
             "Farid al-Din Attar’s 'Conference of the Birds' is a parable of the soul’s journey toward divine truth — a cornerstone of Persian mystical thought and poetry."
         },
@@ -74,7 +74,7 @@ const poetsData = {
           death: 1273,
           influence: { Mysticism: 100, Philosophy: 95, Poetry: 98 },
           regions: ["Iran", "Turkey", "Europe"],
-          image: "../images/people/rumi.png",
+          image: "../images/poets/rumi.png",
           summary:
             "Jalal al-Din Rumi, known as the poet of love, expressed the divine unity of existence through ecstatic verse. His Masnavi is revered worldwide for its spiritual insight."
         },
@@ -86,7 +86,7 @@ const poetsData = {
           death: 1291,
           influence: { Ethics: 96, Storytelling: 94, Language: 90 },
           regions: ["Iran", "Middle East"],
-          image: "../images/people/saadi.jpg",
+          image: "../images/poets/saadi.png",
           summary:
             "Author of 'Gulistan' and 'Bustan', Saadi united wisdom with wit. His prose and verse, emphasizing morality and tolerance, remain proverbial in Persian and world culture."
         },
@@ -98,7 +98,7 @@ const poetsData = {
           death: 1390,
           influence: { Poetry: 100, Mysticism: 96, Language: 95 },
           regions: ["Iran", "Europe", "India"],
-          image: "../images/people/hafez.jpg",
+          image: "../images/poets/hafez.png",
           summary:
             "Hafez is the unrivaled master of Persian ghazal. His verse embodies divine love, irony, and existential joy — interpreted across centuries by mystics and philosophers alike."
         },
@@ -110,7 +110,7 @@ const poetsData = {
           death: 1492,
           influence: { Mysticism: 94, Scholarship: 90, Language: 88 },
           regions: ["Iran", "Central Asia"],
-          image: "../images/people/jami.jpg",
+          image: "../images/poets/jami.png",
           summary:
             "Jami was the last great classical poet of Persia and a scholar of Sufism. His works bridge mystical devotion with intellectual grace, admired from Herat to Istanbul."
         },
@@ -122,7 +122,7 @@ const poetsData = {
           death: 1988,
           influence: { Poetry: 95, Culture: 90, Identity: 88 },
           regions: ["Iran", "Azerbaijan"],
-          image: "../images/people/shahriar.jpg",
+          image: "../images/poets/shahriar.png",
           summary:
             "Shahriar, bilingual poet of Persian and Azeri verse, wrote 'Heydar Baba Salam' and revived lyrical poetry in modern Iran — bridging regional and national identity."
         }
@@ -141,7 +141,7 @@ const poetsData = {
           death: 1037,
           influence: { Philosophy: 100, Science: 98, Medicine: 96 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/avicenna.jpg",
+          image: "../images/poets/avicenna.png",
           summary:
             "Avicenna was a polymath who systematized Greek and Islamic philosophy. His 'Canon of Medicine' and 'Book of Healing' influenced both Eastern and Western thought for centuries."
         },
@@ -153,7 +153,7 @@ const poetsData = {
           death: 950,
           influence: { Philosophy: 95, Logic: 90, ArtTheory: 88 },
           regions: ["Iran", "Central Asia"],
-          image: "../images/people/farabi.jpg",
+          image: "../images/poets/farabi.png",
           summary:
             "Known as the 'Second Teacher' after Aristotle, Farabi developed theories on logic, ethics, and the ideal society, blending Greek reason with Persian metaphysics."
         },
@@ -165,7 +165,7 @@ const poetsData = {
           death: 1191,
           influence: { Philosophy: 95, Mysticism: 94, Influence: 90 },
           regions: ["Iran", "Middle East"],
-          image: "../images/people/suhrawardi.jpg",
+          image: "../images/poets/suhrawardi.png",
           summary:
             "Founder of the 'Illuminationist' school (Hikmat al-Ishraq), Suhrawardi united Persian symbolism with Greek metaphysics, inspiring Islamic and Western mysticism alike."
         },
@@ -177,7 +177,7 @@ const poetsData = {
           death: 1640,
           influence: { Philosophy: 100, Metaphysics: 96, Theology: 90 },
           regions: ["Iran"],
-          image: "../images/people/mullasadra.jpg",
+          image: "../images/poets/mullasadra.png",
           summary:
             "Mulla Sadra’s 'Transcendent Theosophy' (Hikmat al-Muta’aliya) revolutionized Islamic philosophy, blending reason, revelation, and mysticism in a unified metaphysical system."
         },
@@ -189,7 +189,7 @@ const poetsData = {
           death: 1274,
           influence: { Science: 95, Philosophy: 92, Ethics: 90 },
           regions: ["Iran"],
-          image: "../images/people/tusi.jpg",
+          image: "../images/poets/tusi.png",
           summary:
             "A polymath who wrote on ethics, logic, and astronomy; Tusi founded the Maragha observatory and advanced planetary models later used by Copernicus."
         },
@@ -201,7 +201,7 @@ const poetsData = {
           death: 1048,
           influence: { Science: 98, Geography: 95, Rationalism: 92 },
           regions: ["Iran", "India"],
-          image: "../images/people/biruni.jpg",
+          image: "../images/poets/biruni.png",
           summary:
             "Abu Rayhan al-Biruni combined science and philosophy, calculating Earth's circumference, studying cultures, and advocating for objective inquiry."
         }
