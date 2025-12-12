@@ -14,7 +14,7 @@ const poetsData = {
           death: 941,
           influence: { Poetry: 95, Innovation: 88, Language: 90 },
           regions: ["Iran", "Central Asia"],
-          image: "../images/people/rudaki.jpg",
+          image: "../images/poets/rudaki.png",
           summary:
             "Rudaki, the father of Persian poetry, was among the first to write in New Persian. His melodies and verses shaped the foundation of Persian lyrical tradition and court poetry."
         },
@@ -26,7 +26,7 @@ const poetsData = {
           death: 1020,
           influence: { Epic: 100, Language: 98, Identity: 96 },
           regions: ["Iran"],
-          image: "../images/people/ferdowsi.jpg",
+          image: "../images/poets/ferdowsi.png",
           summary:
             "Author of the Shahnameh, Ferdowsi revived the Persian language and identity after centuries of Arab domination. His poetic epic defined the national consciousness of Iran."
         },
