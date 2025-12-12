@@ -38,7 +38,7 @@ const poetsData = {
           death: 1131,
           influence: { Philosophy: 92, Mathematics: 95, Poetry: 94 },
           regions: ["Iran", "Europe"],
-          image: "../images/poets/Khayyam.png",
+          image: "../images/poets/khayyam.png",
           summary:
             "Khayyam was a polymath whose quatrains questioned fate, faith, and mortality. His Rubaiyat became world-famous for its skeptical yet deeply human voice."
         },
