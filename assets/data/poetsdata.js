@@ -98,7 +98,7 @@ const poetsData = {
           death: 1390,
           influence: { Poetry: 100, Mysticism: 96, Language: 95 },
           regions: ["Iran", "Europe", "India"],
-          image: "../images/poets/hafez.png",
+          image: "../images/poets/Hafez.png",
           summary:
             "Hafez is the unrivaled master of Persian ghazal. His verse embodies divine love, irony, and existential joy — interpreted across centuries by mystics and philosophers alike."
         },
@@ -122,7 +122,7 @@ const poetsData = {
           death: 1988,
           influence: { Poetry: 95, Culture: 90, Identity: 88 },
           regions: ["Iran", "Azerbaijan"],
-          image: "../images/poets/shahriar.png",
+          image: "../images/poets/Shahriar.png",
           summary:
             "Shahriar, bilingual poet of Persian and Azeri verse, wrote 'Heydar Baba Salam' and revived lyrical poetry in modern Iran — bridging regional and national identity."
         }
