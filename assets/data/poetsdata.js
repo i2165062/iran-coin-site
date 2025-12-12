@@ -244,7 +244,7 @@ const poetsData = {
           death: 2000,
           influence: { Poetry: 98, Humanism: 94, Freedom: 96 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/shamlou.jpg",
+          image: "../images/poets/shamlou.jpg",
           summary:
             "Ahmad Shamlou’s free verse poetry fused myth, politics, and humanism. His works embody the voice of modern Iranian conscience."
         },
@@ -256,7 +256,7 @@ const poetsData = {
           death: 1967,
           influence: { Feminism: 100, Modernism: 92, Cinema: 88 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/forugh.png",
+          image: "../images/poets/forugh.png",
           summary:
             "A revolutionary female poet and filmmaker, Forugh gave voice to emotion, sensuality, and rebellion in post-war Iran."
         },
