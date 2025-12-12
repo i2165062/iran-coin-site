@@ -62,7 +62,7 @@ const poetsData = {
           death: 1221,
           influence: { Mysticism: 98, Poetry: 94, Philosophy: 90 },
           regions: ["Iran"],
-          image: "../images/people/attar.jpg",
+          image: "../images/people/attar.png",
           summary:
             "Farid al-Din Attar’s 'Conference of the Birds' is a parable of the soul’s journey toward divine truth — a cornerstone of Persian mystical thought and poetry."
         },
