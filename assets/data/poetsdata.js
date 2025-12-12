@@ -50,7 +50,7 @@ const poetsData = {
           death: 1209,
           influence: { Romance: 96, Narrative: 92, Legacy: 94 },
           regions: ["Iran", "Caucasus"],
-          image: "../images/people/nezami.jpg",
+          image: "../images/people/nezami.png",
           summary:
             "Nezami, master of romantic epics like 'Khosrow and Shirin', blended myth, history, and moral philosophy with exquisite poetic form, inspiring Persian and world literature."
         },
