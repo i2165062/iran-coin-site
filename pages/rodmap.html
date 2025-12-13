@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>i2165062 | Rodmap</title>
+  <meta name="description" content="i2165062 Rodmap — Middle East blockchain ecosystem by Ali Asadi." />
+
+  <style>
+    :root{
+      --bg0:#070a08;
+      --bg1:#0b100c;
+      --card:#0e1510cc;
+      --stroke:#203125;
+      --stroke2:#2c4633;
+      --text:#e8f0ea;
+      --muted:#a9b7ad;
+      --olive:#7a8f2a;
+      --olive2:#a6be3a;
+      --glow: rgba(166, 190, 58, .18);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 20px;
+      --radius2: 28px;
+      --max: 1180px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(166,190,58,.12), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(122,143,42,.10), transparent 55%),
+        radial-gradient(1100px 800px at 50% 95%, rgba(166,190,58,.08), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ opacity:.92; }
+    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+
+    /* Top */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7,10,8,.85), rgba(7,10,8,.35));
+      border-bottom: 1px solid rgba(44,70,51,.35);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:220px;
+    }
+    .mark{
+      width:38px; height:38px;
+      border-radius:14px;
+      border:1px solid rgba(166,190,58,.35);
+      background:
+        radial-gradient(18px 18px at 28% 30%, rgba(166,190,58,.35), transparent 60%),
+        radial-gradient(22px 22px at 70% 75%, rgba(122,143,42,.25), transparent 60%),
+        linear-gradient(180deg, rgba(20,28,22,.75), rgba(10,14,11,.6));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .mark::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(120px 60px at 10% 10%, rgba(255,255,255,.08), transparent 55%);
+      pointer-events:none;
+    }
+    .brand h1{
+      font-size:14px;
+      margin:0;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      color: var(--text);
+    }
+    .brand p{
+      margin:2px 0 0;
+      font-size:12px;
+      color: var(--muted);
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(14,21,16,.45);
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      font-size:12px;
+      color: var(--text);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(166,190,58,.55);
+      background: rgba(14,21,16,.62);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:99px;
+      background: var(--olive2);
+      box-shadow: 0 0 18px rgba(166,190,58,.55);
+    }
+
+    /* Hero */
+    .hero{ padding:34px 0 18px; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(44,70,51,.55);
+      background: linear-gradient(180deg, rgba(14,21,16,.70), rgba(14,21,16,.35));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(900px 260px at 15% 0%, rgba(166,190,58,.14), transparent 60%),
+        radial-gradient(700px 240px at 85% 35%, rgba(122,143,42,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .heroMain{ padding:22px 22px 18px; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(166,190,58,.35);
+      background: rgba(122,143,42,.10);
+      color: var(--olive2);
+      font-weight:600;
+      letter-spacing:.4px;
+      font-size:12px;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+    .title{
+      font-size:34px;
+      line-height:1.08;
+      margin:0 0 10px;
+      letter-spacing:-.4px;
+      position:relative;
+      z-index:1;
+    }
+    .title span{
+      color: var(--olive2);
+      text-shadow: 0 0 30px rgba(166,190,58,.25);
+    }
+    .subtitle{
+      margin:0 0 16px;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      position:relative;
+      z-index:1;
+      max-width: 72ch;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:10px;
+      position:relative;
+      z-index:1;
+    }
+    .metric{
+      padding:12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(8,12,9,.35);
+    }
+    .metric b{
+      display:block;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:600;
+      margin-bottom:6px;
+    }
+    .metric div{
+      font-family: var(--mono);
+      font-size:12px;
+      color: var(--text);
+      opacity:.95;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .heroSide{ padding:18px; display:flex; flex-direction:column; gap:12px; }
+    .sideBox{
+      border-radius: 18px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(8,12,9,.30);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .sideBox h3{
+      margin:0 0 6px;
+      font-size:13px;
+      letter-spacing:.2px;
+      position:relative;
+      z-index:1;
+    }
+    .sideBox p{
+      margin:0;
+      font-size:13px;
+      color: var(--muted);
+      line-height:1.55;
+      position:relative;
+      z-index:1;
+    }
+    .tagrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+      position:relative;
+      z-index:1;
+    }
+    .tag{
+      font-size:11px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(14,21,16,.35);
+      color: var(--text);
+    }
+    .tag strong{ color: var(--olive2); font-weight:700; }
+
+    /* Section */
+    section{ padding:22px 0; }
+    .sectionTitle{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:12px;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .sectionTitle p{
+      margin:0;
+      color: var(--muted);
+      font-size:13px;
+    }
+
+    /* Timeline */
+    .timeline{
+      padding:18px;
+    }
+    .tlRow{
+      display:grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .tlLegend{
+      position:sticky;
+      top:84px;
+      border-radius: 18px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(8,12,9,.30);
+      padding:14px;
+      height:fit-content;
+    }
+    .progressWrap{
+      margin-top:12px;
+    }
+    .progressLabel{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+      color: var(--muted);
+      font-size:12px;
+    }
+    .bar{
+      height:10px;
+      border-radius:999px;
+      background: rgba(44,70,51,.45);
+      overflow:hidden;
+      border:1px solid rgba(44,70,51,.6);
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(166,190,58,.85), rgba(122,143,42,.85));
+      box-shadow: 0 0 30px var(--glow);
+      transition: width 900ms ease;
+    }
+
+    .tlList{
+      position:relative;
+      padding:6px 8px 6px 18px;
+    }
+    .tlList::before{
+      content:"";
+      position:absolute;
+      left:10px; top:6px; bottom:6px;
+      width:2px;
+      background: linear-gradient(180deg, rgba(166,190,58,.22), rgba(44,70,51,.55), rgba(166,190,58,.12));
+      border-radius:99px;
+      opacity:.95;
+    }
+    .event{
+      position:relative;
+      padding:14px 14px 14px 16px;
+      margin:10px 0;
+      border-radius: 18px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(14,21,16,.35);
+      overflow:hidden;
+    }
+    .event::before{
+      content:"";
+      position:absolute;
+      left:-1px; top:-1px; bottom:-1px;
+      width:4px;
+      background: linear-gradient(180deg, rgba(166,190,58,.75), rgba(122,143,42,.2));
+      opacity:.9;
+    }
+    .pin{
+      position:absolute;
+      left:-3px;
+      top:18px;
+      width:18px; height:18px;
+      border-radius: 99px;
+      border:1px solid rgba(166,190,58,.55);
+      background: radial-gradient(circle at 30% 30%, rgba(166,190,58,.7), rgba(14,21,16,.85));
+      box-shadow: 0 0 22px rgba(166,190,58,.28);
+    }
+    .eventHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .event h3{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .badge{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(44,70,51,.55);
+      color: var(--muted);
+      background: rgba(8,12,9,.25);
+      white-space:nowrap;
+    }
+    .event p{
+      margin:0;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .event ul{
+      margin:10px 0 0;
+      padding:0 0 0 16px;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .event li{ margin:6px 0; }
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top:10px;
+      font-size:12px;
+      color: var(--text);
+    }
+    .status i{
+      width:9px;height:9px;border-radius:99px;
+      background: rgba(166,190,58,.9);
+      box-shadow: 0 0 18px rgba(166,190,58,.35);
+      display:inline-block;
+    }
+    .status .pending i{
+      background: rgba(169,183,173,.75);
+      box-shadow:none;
+    }
+
+    /* Modules grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .module{
+      padding:16px;
+      border-radius: 18px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(14,21,16,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .module::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(700px 220px at 15% 0%, rgba(166,190,58,.10), transparent 60%);
+      pointer-events:none;
+      opacity:.7;
+    }
+    .module h3{
+      margin:0 0 8px;
+      font-size:14px;
+      position:relative;
+      z-index:1;
+    }
+    .module p{
+      margin:0 0 12px;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      position:relative;
+      z-index:1;
+    }
+    .module .mini{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index:1;
+    }
+    .mini a{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(44,70,51,.55);
+      background: rgba(8,12,9,.25);
+    }
+
+    /* Footer */
+    footer{
+      padding:18px 0 40px;
+      border-top: 1px solid rgba(44,70,51,.35);
+      margin-top: 10px;
+    }
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      color: var(--muted);
+      font-size:12px;
+    }
+    .foot b{ color: var(--text); font-weight:700; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .metrics{ grid-template-columns: 1fr; }
+      .tlRow{ grid-template-columns: 1fr; }
+      .tlLegend{ position:relative; top:auto; }
+      .grid{ grid-template-columns: 1fr; }
+      .title{ font-size:28px; }
+      .nav{ justify-content:flex-start; }
+      .brand{ min-width:auto; }
+    }
+
+    /* Small nice fade in */
+    .reveal{ opacity:0; transform: translateY(8px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.on{ opacity:1; transform: translateY(0); }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>i2165062 — Rodmap</h1>
+          <p>Middle East Blockchain Network • Built by <b>Ali Asadi</b></p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Quick links">
+        <a class="pill" href="#timeline"><span class="dot"></span>Timeline</a>
+        <a class="pill" href="#built"><span class="dot"></span>What’s Built</a>
+        <a class="pill" href="#next"><span class="dot"></span>Next Steps</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="heroGrid">
+      <div class="card heroMain reveal">
+        <div class="kicker"><span class="dot"></span>Network-first. Culture + Tech. Long-term.</div>
+        <h2 class="title">A blockchain ecosystem for the <span>Middle East</span>, engineered end-to-end.</h2>
+        <p class="subtitle">
+          i2165062 is a full-stack network of products: a native token economy, an NFT market, a private API-powered dashboard,
+          and <b>MrSol</b> — a contract creation environment hosted on a dedicated server infrastructure.
+          Founder & lead developer: <b>Ali Asadi</b>.
+        </p>
+
+        <div class="metrics" role="list">
+          <div class="metric" role="listitem">
+            <b>Focus</b>
+            <div>Infrastructure • Utility • Cultural Network</div>
+          </div>
+          <div class="metric" role="listitem">
+            <b>Backbone</b>
+            <div>i21 Token • On-chain economy</div>
+          </div>
+          <div class="metric" role="listitem">
+            <b>Build Style</b>
+            <div>Founder-led • Dedicated Server</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card heroSide reveal">
+        <div class="sideBox">
+          <h3>Quick Access</h3>
+          <p>Direct links for investors, holders and builders.</p>
+          <div class="tagrow" aria-label="External links">
+            <a class="tag" target="_blank" rel="noopener" href="https://www.dextools.io/app/token/i21">DexTools</a>
+            <a class="tag" target="_blank" rel="noopener" href="https://pump.fun/coin/4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump">Pump.fun</a>
+            <a class="tag" target="_blank" rel="noopener" href="#" id="xLink">X (Twitter)</a>
+            <a class="tag" target="_blank" rel="noopener" href="#" id="tgLink">Telegram</a>
+          </div>
+        </div>
+
+        <div class="sideBox">
+          <h3>Core Message</h3>
+          <p>
+            <strong style="color:var(--olive2);">We are a network</strong> — not a single product.
+            Every module increases demand, retention and long-term value.
+          </p>
+          <div class="tagrow">
+            <span class="tag"><strong>MrSol</strong> Contract Builder</span>
+            <span class="tag"><strong>NFT</strong> Marketplace</span>
+            <span class="tag"><strong>Dashboard</strong> Private API</span>
+            <span class="tag"><strong>Metaverse</strong> Layer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="sectionTitle">
+      <div>
+        <h2>Timeline — from start to scale</h2>
+        <p>Where we started, where we are, and where we are going.</p>
+      </div>
+      <p style="font-family:var(--mono); font-size:12px;">
+        STATUS: <span style="color:var(--olive2); font-weight:700;">V1 Delivered</span>
+      </p>
+    </div>
+
+    <div class="card timeline reveal">
+      <div class="tlRow">
+        <aside class="tlLegend">
+          <h3 style="margin:0 0 6px; font-size:14px;">Progress</h3>
+          <p style="margin:0; color:var(--muted); font-size:12.5px; line-height:1.55;">
+            This is V1. We build like infrastructure: strong base, then scale.
+          </p>
+
+          <div class="progressWrap">
+            <div class="progressLabel">
+              <span>Roadmap completion</span>
+              <span id="pctText">0%</span>
+            </div>
+            <div class="bar" aria-label="Roadmap completion bar"><span id="barFill"></span></div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <div class="status"><i></i> Completed / Live</div>
+            <div class="status pending"><i></i> In progress / Next</div>
+          </div>
+        </aside>
+
+        <div class="tlList" aria-label="Timeline events">
+          <!-- Completed -->
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 0 — Foundation & Vision</h3>
+              <span class="badge">Completed</span>
+            </div>
+            <p>
+              The project started as a long-term vision: build a Middle East blockchain ecosystem with real identity,
+              not short hype. Brand, architecture, and product map were defined.
+            </p>
+            <div class="status"><i></i> Live</div>
+          </article>
+
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 1 — i21 Token & Market Presence</h3>
+              <span class="badge">Completed</span>
+            </div>
+            <p>
+              Token created and positioned as the economic engine for the ecosystem. Market visibility established
+              via Pump.fun and DexTools.
+            </p>
+            <ul>
+              <li>Token foundation for utilities and ecosystem expansion</li>
+              <li>Market links + chart access for public transparency</li>
+            </ul>
+            <div class="status"><i></i> Live</div>
+          </article>
+
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 2 — NFT Market (V1)</h3>
+              <span class="badge">Completed</span>
+            </div>
+            <p>
+              A dedicated NFT market was built as a core pillar of i2165062. This is the cultural content engine
+              that turns narrative into on-chain demand.
+            </p>
+            <div class="status"><i></i> Live</div>
+          </article>
+
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 3 — Dashboard + Private API (V1)</h3>
+              <span class="badge">Completed</span>
+            </div>
+            <p>
+              A token dashboard connected to a private API built in-house — providing live stats, pricing panels,
+              and ecosystem monitoring without relying on third-party uptime.
+            </p>
+            <ul>
+              <li>Founder-built API integration (reliable control)</li>
+              <li>Real-time user-facing panels (dashboard-first)</li>
+            </ul>
+            <div class="status"><i></i> Live</div>
+          </article>
+
+          <!-- BIG SHOW: MRSOL -->
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 4 — MrSol: Contract Creation Environment (V1)</h3>
+              <span class="badge">Completed</span>
+            </div>
+            <p>
+              <b>MrSol</b> is a core infrastructure module: a dedicated environment to generate and manage blockchain contracts.
+              Deployed and maintained on a <b>private server</b> for independence, stability, and scalability.
+            </p>
+            <ul>
+              <li>Dedicated server deployment (not a shared template)</li>
+              <li>Built as an ecosystem-grade tool, not a demo page</li>
+            </ul>
+            <div class="status"><i></i> Live</div>
+          </article>
+
+          <!-- Next -->
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 5 — Growth Layer: Creators, Listings, Liquidity</h3>
+              <span class="badge">Next</span>
+            </div>
+            <p>
+              Expand creator onboarding, strengthen liquidity narrative, and unify links/UX for global users.
+              The goal: make discovery, trust, and conversion effortless.
+            </p>
+            <div class="status pending"><i></i> In progress</div>
+          </article>
+
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 6 — Metaverse Layer (Cultural Experiences)</h3>
+              <span class="badge">Next</span>
+            </div>
+            <p>
+              A metaverse-ready layer focused on meaningful experiences: exhibitions, cultural spaces, creator hubs,
+              and NFT-based identity — connected directly to ownership and the i21 economy.
+            </p>
+            <div class="status pending"><i></i> Planned</div>
+          </article>
+
+          <article class="event">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="eventHead">
+              <h3>Phase 7 — Network Expansion & Long-Term Governance</h3>
+              <span class="badge">Next</span>
+            </div>
+            <p>
+              Expand across Middle Eastern regions, introduce governance mechanics, and scale i2165062
+              as a durable cultural-tech network beyond one cycle.
+            </p>
+            <div class="status pending"><i></i> Planned</div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S BUILT -->
+  <section id="built">
+    <div class="sectionTitle">
+      <div>
+        <h2>What we built (V1)</h2>
+        <p>Clean, minimal, and infrastructure-first. No confusion.</p>
+      </div>
+      <p style="font-family:var(--mono); font-size:12px;">Founder-led execution</p>
+    </div>
+
+    <div class="grid reveal">
+      <div class="module">
+        <h3>MrSol — Contract Builder</h3>
+        <p>
+          A dedicated space to create blockchain contracts. Hosted on a private server to keep control,
+          stability, and scale in our hands.
+        </p>
+        <div class="mini">
+          <a href="#" id="mrsolLink">Open MrSol</a>
+          <a href="#next">See next upgrades</a>
+        </div>
+      </div>
+
+      <div class="module">
+        <h3>NFT Marketplace</h3>
+        <p>
+          Built as the cultural engine of the ecosystem: creators, collections, and on-chain ownership tied
+          to narrative and identity.
+        </p>
+        <div class="mini">
+          <a href="#" id="marketLink">Open Market</a>
+          <a href="#timeline">Back to timeline</a>
+        </div>
+      </div>
+
+      <div class="module">
+        <h3>Dashboard + Private API</h3>
+        <p>
+          Live pricing panels and ecosystem stats connected to a private API built in-house — reliable,
+          controllable, and scalable.
+        </p>
+        <div class="mini">
+          <a href="#" id="dashLink">Open Dashboard</a>
+          <a target="_blank" rel="noopener" href="https://www.dextools.io/app/token/i21">DexTools</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section id="next">
+    <div class="sectionTitle">
+      <div>
+        <h2>Next steps</h2>
+        <p>Designed to attract long-term investors: clarity, trust, expansion.</p>
+      </div>
+      <p style="font-family:var(--mono); font-size:12px;">Roadmap → execution</p>
+    </div>
+
+    <div class="grid reveal">
+      <div class="module">
+        <h3>UX clarity for global users</h3>
+        <p>Unify Buy/Chart/Docs links, simplify onboarding, and reduce friction to 5 seconds.</p>
+        <div class="mini">
+          <a href="#timeline">Timeline</a>
+          <a href="#" id="docsLink">Docs</a>
+        </div>
+      </div>
+
+      <div class="module">
+        <h3>Creator onboarding pipeline</h3>
+        <p>Artist onboarding, featured drops, and structured collections to build organic demand.</p>
+        <div class="mini">
+          <a href="#" id="applyLink">Apply</a>
+          <a href="#" id="partnerLink">Partners</a>
+        </div>
+      </div>
+
+      <div class="module">
+        <h3>Metaverse: cultural spaces</h3>
+        <p>Exhibitions, creator hubs, identity, and NFT-powered experiences connected to i21 utility.</p>
+        <div class="mini">
+          <a href="#" id="metaverseLink">Metaverse</a>
+          <a href="#" id="pressLink">Press Kit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>© <span id="year"></span> <b>i2165062</b> • Built by Ali Asadi</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+        <a class="pill" target="_blank" rel="noopener" href="https://pump.fun/coin/4FCmKPqgpNVbzyBRtWPsh9mz3DCoqJFzTvazeAhzpump"><span class="dot"></span>Pump.fun</a>
+        <a class="pill" target="_blank" rel="noopener" href="https://www.dextools.io/app/token/i21"><span class="dot"></span>DexTools</a>
+        <a class="pill" href="#built"><span class="dot"></span>Market / Dashboard</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ====== CONFIG: replace these with your real internal URLs ======
+  const LINKS = {
+    x: "https://x.com/",              // put your X profile here
+    telegram: "https://t.me/",        // put your Telegram here
+    mrsol: "/mrsol",                  // your MrSol route
+    market: "/market",                // your NFT market route
+    dashboard: "/dashboard",          // your dashboard route
+    docs: "/docs",                    // docs route
+    apply: "/apply",                  // creator apply route
+    partners: "/partners",            // partners route
+    metaverse: "/metaverse",          // metaverse route
+    press: "/press"                   // press kit route
+  };
+
+  // Apply links safely
+  const setHref = (id, url) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.setAttribute("href", url);
+    // external
+    if (/^https?:\/\//i.test(url)) {
+      el.setAttribute("target","_blank");
+      el.setAttribute("rel","noopener");
+    }
+  };
+
+  setHref("xLink", LINKS.x);
+  setHref("tgLink", LINKS.telegram);
+  setHref("mrsolLink", LINKS.mrsol);
+  setHref("marketLink", LINKS.market);
+  setHref("dashLink", LINKS.dashboard);
+  setHref("docsLink", LINKS.docs);
+  setHref("applyLink", LINKS.apply);
+  setHref("partnerLink", LINKS.partners);
+  setHref("metaverseLink", LINKS.metaverse);
+  setHref("pressLink", LINKS.press);
+
+  // Year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const reveals = Array.from(document.querySelectorAll(".reveal"));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add("on");
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r=> io.observe(r));
+
+  // Roadmap progress (edit as you wish)
+  // Completed phases: 0,1,2,3,4 = 5 done out of 8 total => 62.5%
+  const done = 5, total = 8;
+  const pct = Math.round((done/total)*100);
+  document.getElementById("pctText").textContent = pct + "%";
+  const fill = document.getElementById("barFill");
+  requestAnimationFrame(()=>{ fill.style.width = pct + "%"; });
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click", (ev)=>{
+      const href = a.getAttribute("href");
+      if(!href || href === "#") return;
+      const el = document.querySelector(href);
+      if(!el) return;
+      ev.preventDefault();
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+</script>
+</body>
+</html>
