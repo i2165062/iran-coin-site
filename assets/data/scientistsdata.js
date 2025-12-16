@@ -74,7 +74,7 @@ const scientistsData = {
           death: 1048,
           influence: { Geography: 96, Physics: 90, Rationalism: 94 },
           regions: ["Iran", "India"],
-          image: "../images/people/biruni.jpg",
+          image: "../images/people/biruni.png",
           summary:
             "Biruni measured the Earth's circumference with remarkable accuracy and wrote comparative studies of cultures, anticipating anthropology and scientific method."
         },
@@ -86,7 +86,7 @@ const scientistsData = {
           death: 1311,
           influence: { Optics: 92, Astronomy: 94, Philosophy: 90 },
           regions: ["Iran"],
-          image: "../images/people/shirazi.jpg",
+          image: "../images/people/shirazi.png",
           summary:
             "A polymath who explained the rainbow’s formation and improved astronomical models. His synthesis of science and mysticism enriched Islamic intellectual tradition."
         }
