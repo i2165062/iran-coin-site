@@ -14,7 +14,7 @@ const reformersData = {
           death: 1852,
           influence: { Reform: 100, Education: 98, Modernization: 94 },
           regions: ["Iran"],
-          image: "../images/people/amirkabir.jpg",
+          image: "../images/people/amirkabir.png",
           summary:
             "Amir Kabir founded the Dar al-Fonun, Iran’s first modern school, introduced state reforms, and fought corruption — becoming a martyr of Iranian modernity."
         },
@@ -26,7 +26,7 @@ const reformersData = {
           death: 1908,
           influence: { Politics: 92, Reform: 90, Journalism: 88 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/malkom.jpg",
+          image: "../images/people/malkom.png",
           summary:
             "Malkom Khan promoted constitutional ideas and founded 'Qanun', the first Persian reformist newspaper in exile — influencing Iran’s 1906 revolution."
         },
@@ -38,7 +38,7 @@ const reformersData = {
           death: 1908,
           influence: { Freedom: 94, Journalism: 92, Sacrifice: 90 },
           regions: ["Iran"],
-          image: "../images/people/jahangir.jpg",
+          image: "../images/people/jahangir.png",
           summary:
             "Founder of 'Sur-e Esrafil', Jahangir Khan’s fearless journalism and defense of liberty made him a martyr of Iran’s Constitutional Revolution."
         },
@@ -50,7 +50,7 @@ const reformersData = {
           death: 1933,
           influence: { Diplomacy: 94, Reform: 90, Modernization: 92 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/teymourtash.jpg",
+          image: "../images/people/teymourtash.png",
           summary:
             "Minister and strategist under Reza Shah, Teymourtash was pivotal in shaping Iran’s foreign policy and early industrial modernization before his tragic downfall."
         }
@@ -69,7 +69,7 @@ const reformersData = {
           death: 1977,
           influence: { Philosophy: 98, SocialJustice: 96, Reform: 100 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/shariati.jpg",
+          image: "../images/people/shariati.png",
           summary:
             "A revolutionary intellectual who redefined Islam as a liberating ideology, Shariati inspired generations toward justice, identity, and spiritual freedom."
         },
@@ -81,7 +81,7 @@ const reformersData = {
           death: 1979,
           influence: { Justice: 96, Reform: 92, Religion: 90 },
           regions: ["Iran"],
-          image: "../images/people/taleghani.jpg",
+          image: "../images/people/taleghani.png",
           summary:
             "A progressive cleric and advocate of freedom, Taleghani bridged Islam and democracy — his sermons emphasized human rights and unity."
         },
@@ -93,7 +93,7 @@ const reformersData = {
           death: 1995,
           influence: { Reform: 94, Modernization: 90, Morality: 92 },
           regions: ["Iran", "France"],
-          image: "../images/people/bazargan.jpg",
+          image: "../images/people/bazargan.png",
           summary:
             "Founder of the Freedom Movement and Iran’s first post-revolution prime minister, Bazargan symbolized integrity, science, and moral politics."
         },
@@ -105,7 +105,7 @@ const reformersData = {
           death: 1956,
           influence: { Language: 96, Reform: 90, Education: 92 },
           regions: ["Iran"],
-          image: "../images/people/dehkhoda.jpg",
+          image: "../images/people/dehkhoda.png",
           summary:
             "Creator of the monumental Persian dictionary, Dehkhoda preserved Iran’s linguistic heritage and used satire to critique social injustice."
         },
@@ -117,7 +117,7 @@ const reformersData = {
           death: 1981,
           influence: { Science: 90, Leadership: 92, Spirituality: 88 },
           regions: ["Iran", "Lebanon", "USA"],
-          image: "../images/people/chamran.jpg",
+          image: "../images/people/chamran.png",
           summary:
             "Physicist and defense minister, Chamran merged spirituality, science, and patriotism — a modern symbol of sacrifice and intellect."
         }
@@ -136,7 +136,7 @@ const reformersData = {
           death: null,
           influence: { Thought: 100, Freedom: 95, Reform: 94 },
           regions: ["Iran", "USA", "Europe"],
-          image: "../images/people/soroush.jpg",
+          image: "../images/people/soroush.png",
           summary:
             "The leading intellectual of Iran’s reformist era, Soroush’s dynamic theology inspired the discourse of democracy, pluralism, and human dignity."
         },
@@ -148,7 +148,7 @@ const reformersData = {
           death: null,
           influence: { Dialogue: 98, Democracy: 94, Culture: 96 },
           regions: ["Iran", "Global"],
-          image: "../images/people/khatami.jpg",
+          image: "../images/people/khatami.png",
           summary:
             "Iran’s reformist president (1997–2005), Khatami’s 'Dialogue Among Civilizations' reshaped global perception of Iranian culture and peace."
         },
@@ -160,7 +160,7 @@ const reformersData = {
           death: null,
           influence: { Justice: 100, HumanRights: 98, GlobalImpact: 96 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/ebadi.jpg",
+          image: "../images/people/ebadi.png",
           summary:
             "First Iranian Nobel Peace Prize laureate, Ebadi’s advocacy for human rights, women, and children turned her into a global icon of justice."
         },
@@ -172,7 +172,7 @@ const reformersData = {
           death: null,
           influence: { Justice: 96, Courage: 98, Rights: 92 },
           regions: ["Iran"],
-          image: "../images/people/sotoudeh.jpg",
+          image: "../images/people/sotoudeh.png",
           summary:
             "A fearless lawyer defending freedom of expression and women’s rights, Sotoudeh embodies moral courage and civil resistance."
         },
@@ -184,7 +184,7 @@ const reformersData = {
           death: null,
           influence: { Activism: 96, Media: 94, GlobalImpact: 92 },
           regions: ["Iran", "USA"],
-          image: "../images/people/alinejad.jpg",
+          image: "../images/people/alinejad.png",
           summary:
             "Journalist and women’s rights advocate, Alinejad’s online campaigns and activism brought Iranian voices of freedom to international attention."
         }
