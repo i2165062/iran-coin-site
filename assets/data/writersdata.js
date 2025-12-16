@@ -117,7 +117,7 @@ const writersData = {
           death: 2023,
           influence: { Literature: 92, Cinema: 94, Modernism: 90 },
           regions: ["Iran", "UK"],
-          image: "../images/people/golestan.jpg",
+          image: "../images/people/golestan.png",
           summary:
             "A leading literary modernist and filmmaker, Golestan’s experimental prose and films explored alienation, moral decay, and artistic integrity."
         }
@@ -136,7 +136,7 @@ const writersData = {
           death: 1977,
           influence: { Philosophy: 96, Reform: 94, SocialJustice: 98 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/shariati.jpg",
+          image: "../images/people/shariati.png",
           summary:
             "A thinker and writer who bridged religion and revolution, Shariati’s prose redefined Islam as a vehicle for social awakening and liberation."
         },
@@ -148,7 +148,7 @@ const writersData = {
           death: null,
           influence: { Philosophy: 95, Theology: 94, Freedom: 92 },
           regions: ["Iran", "USA"],
-          image: "../images/people/soroush.jpg",
+          image: "../images/people/soroush.png",
           summary:
             "Soroush’s 'The Expansion of Prophetic Experience' reinterpreted religious knowledge dynamically — influencing modern Islamic thought worldwide."
         },
@@ -160,7 +160,7 @@ const writersData = {
           death: null,
           influence: { Realism: 94, Literature: 92, Identity: 90 },
           regions: ["Iran"],
-          image: "../images/people/dowlatabadi.jpg",
+          image: "../images/people/dowlatabadi.png",
           summary:
             "Author of 'Kelidar', Dowlatabadi chronicled rural life and human dignity with epic realism, capturing Iran’s social complexities in postmodern form."
         },
@@ -172,7 +172,7 @@ const writersData = {
           death: 2022,
           influence: { Poetry: 92, Criticism: 94, ExileLiterature: 90 },
           regions: ["Iran", "Canada"],
-          image: "../images/people/baraheni.jpg",
+          image: "../images/people/baraheni.png",
           summary:
             "Baraheni’s experimental prose and activism for freedom of expression made him a symbol of resistance and intellectual exile."
         },
@@ -184,7 +184,7 @@ const writersData = {
           death: null,
           influence: { Feminism: 96, Literature: 92, Symbolism: 90 },
           regions: ["Iran", "USA"],
-          image: "../images/people/parsipur.jpg",
+          image: "../images/people/parsipur.png",
           summary:
             "Author of 'Women Without Men', Parsipur used magical realism to depict female freedom and the tension between tradition and modernity."
         },
@@ -196,7 +196,7 @@ const writersData = {
           death: null,
           influence: { VisualArt: 94, Storytelling: 92, GlobalImpact: 96 },
           regions: ["Iran", "France"],
-          image: "../images/people/satrapi.jpg",
+          image: "../images/people/satrapi.png",
           summary:
             "Creator of 'Persepolis', Satrapi transformed Iranian storytelling through graphic memoir, merging humor, trauma, and universal humanity."
         }
