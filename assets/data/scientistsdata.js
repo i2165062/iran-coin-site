@@ -14,7 +14,7 @@ const scientistsData = {
           death: 850,
           influence: { Mathematics: 100, Astronomy: 92, Geography: 88 },
           regions: ["Iran", "Central Asia", "Europe"],
-          image: "../images/people/khwarizmi.png",
+          image: "../images/People/khwarizmi.png",
           summary:
             "Known as the father of algebra, Al-Khwarizmi introduced systematic solutions of linear and quadratic equations. His works introduced the decimal positional system to the West, giving rise to the word 'algorithm'."
         },
@@ -26,7 +26,7 @@ const scientistsData = {
           death: 1037,
           influence: { Medicine: 100, Philosophy: 95, Science: 94 },
           regions: ["Iran", "Europe", "Middle East"],
-          image: "../images/people/avicenna.png",
+          image: "../images/People/avicenna.png",
           summary:
             "Avicenna's 'Canon of Medicine' was the medical authority in Europe for centuries. He united scientific rationalism with metaphysical inquiry, bridging philosophy and empirical science."
         },
@@ -38,7 +38,7 @@ const scientistsData = {
           death: 925,
           influence: { Medicine: 98, Chemistry: 96, Ethics: 88 },
           regions: ["Iran", "Middle East"],
-          image: "../images/people/razi.png",
+          image: "../images/People/razi.png",
           summary:
             "A pioneering physician and chemist, Al-Razi distinguished smallpox from measles and advanced experimental methods in chemistry. His ethics in medicine inspired the concept of patient care."
         },
@@ -50,7 +50,7 @@ const scientistsData = {
           death: 1131,
           influence: { Mathematics: 96, Astronomy: 92, Philosophy: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/khayyam.png",
+          image: "../images/People/khayyam.png",
           summary:
             "Khayyam reformed the Persian calendar with remarkable precision and contributed to cubic equations. His poetic reflections paralleled his scientific genius."
         },
@@ -62,7 +62,7 @@ const scientistsData = {
           death: 1274,
           influence: { Astronomy: 98, Geometry: 94, Ethics: 90 },
           regions: ["Iran"],
-          image: "../images/people/tusi.png",
+          image: "../images/People/tusi.png",
           summary:
             "Tusi established the Maragha observatory and formulated the 'Tusi couple', a model later used by Copernicus. His writings bridged astronomy and moral philosophy."
         },
@@ -74,7 +74,7 @@ const scientistsData = {
           death: 1048,
           influence: { Geography: 96, Physics: 90, Rationalism: 94 },
           regions: ["Iran", "India"],
-          image: "../images/people/biruni.png",
+          image: "../images/People/biruni.png",
           summary:
             "Biruni measured the Earth's circumference with remarkable accuracy and wrote comparative studies of cultures, anticipating anthropology and scientific method."
         },
@@ -86,7 +86,7 @@ const scientistsData = {
           death: 1311,
           influence: { Optics: 92, Astronomy: 94, Philosophy: 90 },
           regions: ["Iran"],
-          image: "../images/people/shirazi.png",
+          image: "../images/People/shirazi.png",
           summary:
             "A polymath who explained the rainbow’s formation and improved astronomical models. His synthesis of science and mysticism enriched Islamic intellectual tradition."
         }
@@ -105,7 +105,7 @@ const scientistsData = {
           death: 1640,
           influence: { Metaphysics: 98, Philosophy: 95, Science: 80 },
           regions: ["Iran"],
-          image: "../images/people/mullasadra.png",
+          image: "../images/People/mullasadra.png",
           summary:
             "A visionary philosopher bridging faith and reason. His transcendental theosophy influenced both spiritual and scientific thinking in Safavid Iran."
         },
@@ -117,7 +117,7 @@ const scientistsData = {
           death: 1873,
           influence: { Logic: 90, Metaphysics: 92, Education: 86 },
           regions: ["Iran"],
-          image: "../images/people/sabzavari.png",
+          image: "../images/People/sabzavari.png",
           summary:
             "A major figure of the Qajar era, Sabzavari revived Sadrian philosophy and logic, training generations of scholars who carried classical science into modernity."
         },
@@ -129,7 +129,7 @@ const scientistsData = {
           death: 1852,
           influence: { Reform: 98, Education: 94, Technology: 88 },
           regions: ["Iran"],
-          image: "../images/people/amirkabir.png",
+          image: "../images/People/amirkabir.png",
           summary:
             "Founder of Dar al-Fonun, Iran’s first modern polytechnic, Amir Kabir laid the foundation for scientific education and modernization in 19th-century Persia."
         }
@@ -148,7 +148,7 @@ const scientistsData = {
           death: 1996,
           influence: { Physics: 100, Education: 94, Legacy: 92 },
           regions: ["Iran", "Pakistan", "Europe"],
-          image: "../images/people/abdus-salam.png",
+          image: "../images/People/abdus-salam.png",
           summary:
             "Theoretical physicist and Nobel Laureate in Electroweak Theory, Abdus Salam championed scientific collaboration among developing nations. Of Persian heritage, his work united science and ethics."
         },
@@ -160,7 +160,7 @@ const scientistsData = {
           death: 2017,
           influence: { Mathematics: 100, Geometry: 98, Inspiration: 100 },
           regions: ["Iran", "USA"],
-          image: "../images/people/mirzakhani.png",
+          image: "../images/People/mirzakhani.png",
           summary:
             "The first woman to win the Fields Medal, Mirzakhani’s pioneering work in Riemann surfaces and geometry inspired generations of women in science worldwide."
         },
@@ -172,7 +172,7 @@ const scientistsData = {
           death: 2016,
           influence: { Physics: 96, Innovation: 94, GlobalImpact: 92 },
           regions: ["Iran", "USA"],
-          image: "../images/people/javan.png",
+          image: "../images/People/javan.png",
           summary:
             "Inventor of the gas laser, Ali Javan revolutionized optical physics and telecommunications, marking one of the most important inventions of the 20th century."
         },
@@ -184,7 +184,7 @@ const scientistsData = {
           death: 2017,
           influence: { AI: 96, Logic: 100, Systems: 94 },
           regions: ["Iran", "USA"],
-          image: "../images/people/zadeh.png",
+          image: "../images/People/zadeh.png",
           summary:
             "Founder of fuzzy logic and fuzzy set theory, Lotfi Zadeh revolutionized computer science and artificial intelligence, shaping modern control systems worldwide."
         },
@@ -196,7 +196,7 @@ const scientistsData = {
           death: null,
           influence: { Technology: 92, Entrepreneurship: 90, Inspiration: 88 },
           regions: ["Iran", "USA"],
-          image: "../images/people/habib.png",
+          image: "../images/People/habib.png",
           summary:
             "A representative of Iran’s modern innovators in the digital age, focusing on sustainability, green tech, and AI-driven social applications."
         }
