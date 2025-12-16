@@ -14,7 +14,7 @@ const scientistsData = {
           death: 850,
           influence: { Mathematics: 100, Astronomy: 92, Geography: 88 },
           regions: ["Iran", "Central Asia", "Europe"],
-          image: "../images/people/khwarizmi.jpg",
+          image: "../images/people/khwarizmi.png",
           summary:
             "Known as the father of algebra, Al-Khwarizmi introduced systematic solutions of linear and quadratic equations. His works introduced the decimal positional system to the West, giving rise to the word 'algorithm'."
         },
@@ -26,7 +26,7 @@ const scientistsData = {
           death: 1037,
           influence: { Medicine: 100, Philosophy: 95, Science: 94 },
           regions: ["Iran", "Europe", "Middle East"],
-          image: "../images/people/avicenna.jpg",
+          image: "../images/people/avicenna.png",
           summary:
             "Avicenna's 'Canon of Medicine' was the medical authority in Europe for centuries. He united scientific rationalism with metaphysical inquiry, bridging philosophy and empirical science."
         },
@@ -38,7 +38,7 @@ const scientistsData = {
           death: 925,
           influence: { Medicine: 98, Chemistry: 96, Ethics: 88 },
           regions: ["Iran", "Middle East"],
-          image: "../images/people/razi.jpg",
+          image: "../images/people/razi.png",
           summary:
             "A pioneering physician and chemist, Al-Razi distinguished smallpox from measles and advanced experimental methods in chemistry. His ethics in medicine inspired the concept of patient care."
         },
@@ -50,7 +50,7 @@ const scientistsData = {
           death: 1131,
           influence: { Mathematics: 96, Astronomy: 92, Philosophy: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/khayyam.jpg",
+          image: "../images/people/khayyam.png",
           summary:
             "Khayyam reformed the Persian calendar with remarkable precision and contributed to cubic equations. His poetic reflections paralleled his scientific genius."
         },
@@ -62,7 +62,7 @@ const scientistsData = {
           death: 1274,
           influence: { Astronomy: 98, Geometry: 94, Ethics: 90 },
           regions: ["Iran"],
-          image: "../images/people/tusi.jpg",
+          image: "../images/people/tusi.png",
           summary:
             "Tusi established the Maragha observatory and formulated the 'Tusi couple', a model later used by Copernicus. His writings bridged astronomy and moral philosophy."
         },
