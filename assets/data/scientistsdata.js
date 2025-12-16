@@ -105,7 +105,7 @@ const scientistsData = {
           death: 1640,
           influence: { Metaphysics: 98, Philosophy: 95, Science: 80 },
           regions: ["Iran"],
-          image: "../images/people/mullasadra.jpg",
+          image: "../images/people/mullasadra.png",
           summary:
             "A visionary philosopher bridging faith and reason. His transcendental theosophy influenced both spiritual and scientific thinking in Safavid Iran."
         },
@@ -117,7 +117,7 @@ const scientistsData = {
           death: 1873,
           influence: { Logic: 90, Metaphysics: 92, Education: 86 },
           regions: ["Iran"],
-          image: "../images/people/sabzavari.jpg",
+          image: "../images/people/sabzavari.png",
           summary:
             "A major figure of the Qajar era, Sabzavari revived Sadrian philosophy and logic, training generations of scholars who carried classical science into modernity."
         },
@@ -129,7 +129,7 @@ const scientistsData = {
           death: 1852,
           influence: { Reform: 98, Education: 94, Technology: 88 },
           regions: ["Iran"],
-          image: "../images/people/amirkabir.jpg",
+          image: "../images/people/amirkabir.png",
           summary:
             "Founder of Dar al-Fonun, Iran’s first modern polytechnic, Amir Kabir laid the foundation for scientific education and modernization in 19th-century Persia."
         }
@@ -148,7 +148,7 @@ const scientistsData = {
           death: 1996,
           influence: { Physics: 100, Education: 94, Legacy: 92 },
           regions: ["Iran", "Pakistan", "Europe"],
-          image: "../images/people/abdus-salam.jpg",
+          image: "../images/people/abdus-salam.png",
           summary:
             "Theoretical physicist and Nobel Laureate in Electroweak Theory, Abdus Salam championed scientific collaboration among developing nations. Of Persian heritage, his work united science and ethics."
         },
@@ -160,7 +160,7 @@ const scientistsData = {
           death: 2017,
           influence: { Mathematics: 100, Geometry: 98, Inspiration: 100 },
           regions: ["Iran", "USA"],
-          image: "../images/people/mirzakhani.jpg",
+          image: "../images/people/mirzakhani.png",
           summary:
             "The first woman to win the Fields Medal, Mirzakhani’s pioneering work in Riemann surfaces and geometry inspired generations of women in science worldwide."
         },
@@ -172,7 +172,7 @@ const scientistsData = {
           death: 2016,
           influence: { Physics: 96, Innovation: 94, GlobalImpact: 92 },
           regions: ["Iran", "USA"],
-          image: "../images/people/javan.jpg",
+          image: "../images/people/javan.png",
           summary:
             "Inventor of the gas laser, Ali Javan revolutionized optical physics and telecommunications, marking one of the most important inventions of the 20th century."
         },
@@ -184,7 +184,7 @@ const scientistsData = {
           death: 2017,
           influence: { AI: 96, Logic: 100, Systems: 94 },
           regions: ["Iran", "USA"],
-          image: "../images/people/zadeh.jpg",
+          image: "../images/people/zadeh.png",
           summary:
             "Founder of fuzzy logic and fuzzy set theory, Lotfi Zadeh revolutionized computer science and artificial intelligence, shaping modern control systems worldwide."
         },
