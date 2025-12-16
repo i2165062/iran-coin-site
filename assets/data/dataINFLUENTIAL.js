@@ -9,5 +9,6 @@ const categoryData = [
   { title: "Architects & Builders", icon: "🏛️", desc: "Architects whose creations defined Iranian civilization.", link: "architects.html" },
   { title: "Industrial & Technological Figures", icon: "💡", desc: "Innovators and entrepreneurs who shaped global industry.", link: "industry.html" },
   { title: "Cinema & Filmmakers", icon: "🎬", desc: "Directors, actors, and storytellers of Iranian cinema.", link: "cinema.html" },
-  { title: "Sports & Athletes", icon: "⚽", desc: "Champions who brought pride to the nation.", link: "athletes.html.html" }
+  { title: "Sports & Athletes", icon: "⚽", desc: "Champions who brought pride to the nation.", link: "athletes.html" }
 ];
+
