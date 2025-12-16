@@ -14,7 +14,7 @@ const writersData = {
           death: 1878,
           influence: { Literature: 95, Reform: 90, Satire: 94 },
           regions: ["Iran", "Caucasus"],
-          image: "../images/people/akhundzadeh.jpg",
+          image: "../images/people/akhundzadeh.png",
           summary:
             "Akhundzadeh is considered the father of modern Persian drama. His satirical plays and essays called for cultural reform and rationalism in Qajar Iran."
         },
@@ -26,7 +26,7 @@ const writersData = {
           death: 1896,
           influence: { Reform: 96, Philosophy: 90, Modernism: 88 },
           regions: ["Iran"],
-          image: "../images/people/kermani.jpg",
+          image: "../images/people/kermani.png",
           summary:
             "A revolutionary thinker and early secularist, Kermani criticized despotism and religious dogma, inspiring the Iranian Constitutional Revolution."
         },
@@ -38,7 +38,7 @@ const writersData = {
           death: 1911,
           influence: { Reform: 92, Education: 94, Prose: 88 },
           regions: ["Iran"],
-          image: "../images/people/talebof.jpg",
+          image: "../images/people/talebof.png",
           summary:
             "A pioneer in Persian educational prose, Talebof’s works emphasized enlightenment, civic responsibility, and scientific thinking."
         },
@@ -50,7 +50,7 @@ const writersData = {
           death: 1910,
           influence: { Reform: 92, Satire: 90, Journalism: 88 },
           regions: ["Iran"],
-          image: "../images/people/maraghei.jpg",
+          image: "../images/people/maraghei.png",
           summary:
             "Author of 'Travel Diary of Ebrahim Beg', Maraghei criticized corruption and ignorance through fictional travelogue — a cornerstone of Iran’s reformist literature."
         }
@@ -69,7 +69,7 @@ const writersData = {
           death: 1951,
           influence: { Literature: 100, Modernism: 96, Existentialism: 94 },
           regions: ["Iran", "France"],
-          image: "../images/people/hedayat.jpg",
+          image: "../images/people/hedayat.png",
           summary:
             "Author of 'The Blind Owl', Hedayat pioneered psychological fiction in Persian. His existentialist prose mirrored Iran’s struggle between modernity and despair."
         },
@@ -81,7 +81,7 @@ const writersData = {
           death: 1997,
           influence: { Realism: 95, Politics: 90, Literature: 92 },
           regions: ["Iran", "Germany"],
-          image: "../images/people/alavi.jpg",
+          image: "../images/people/alavi.png",
           summary:
             "A founder of Iran’s modern realist fiction, Alavi’s 'Her Eyes' explored love, repression, and resistance under political dictatorship."
         },
@@ -93,7 +93,7 @@ const writersData = {
           death: 1969,
           influence: { SocialCritique: 100, Modernism: 94, Philosophy: 92 },
           regions: ["Iran"],
-          image: "../images/people/aleahmad.jpg",
+          image: "../images/people/aleahmad.png",
           summary:
             "Al-e Ahmad’s 'Gharbzadegi' ('Westoxication') became a manifesto of cultural independence, dissecting Iran’s encounter with Western modernity."
         },
