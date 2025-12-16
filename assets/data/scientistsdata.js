@@ -196,7 +196,7 @@ const scientistsData = {
           death: null,
           influence: { Technology: 92, Entrepreneurship: 90, Inspiration: 88 },
           regions: ["Iran", "USA"],
-          image: "../images/people/habib.jpg",
+          image: "../images/people/habib.png",
           summary:
             "A representative of Iran’s modern innovators in the digital age, focusing on sustainability, green tech, and AI-driven social applications."
         }
