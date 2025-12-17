@@ -14,7 +14,7 @@ const sportsData = {
           death: 1968,
           influence: { Sportsmanship: 100, Legacy: 100, Humanity: 98 },
           regions: ["Iran"],
-          image: "../images/people/takhti.jpg",
+          image: "../images/people/takhti.png",
           summary:
             "Known as the 'Jahan Pahlevan', Takhti symbolized fairness, humility, and moral strength — a wrestling champion who became a legend of the people."
         },
@@ -26,7 +26,7 @@ const sportsData = {
           death: null,
           influence: { Sports: 94, Leadership: 90, Activism: 92 },
           regions: ["Iran", "France"],
-          image: "../images/people/ghelichkhani.jpg",
+          image: "../images/people/ghelichkhani.png",
           summary:
             "Captain of Iran’s national team in the 1960s–70s, Ghelichkhani combined sporting excellence with intellectual activism for freedom and justice."
         },
@@ -57,7 +57,7 @@ const sportsData = {
           death: null,
           influence: { Football: 100, Legacy: 98, Leadership: 94 },
           regions: ["Iran", "Germany"],
-          image: "../images/people/daei.jpg",
+          image: "../images/people/daei.png",
           summary:
             "The first player to score over 100 international goals, Ali Daei is a global icon of Iranian sports and a symbol of leadership and humility."
         },
@@ -69,7 +69,7 @@ const sportsData = {
           death: null,
           influence: { Taekwondo: 100, Discipline: 94, Legacy: 92 },
           regions: ["Iran"],
-          image: "../images/people/saei.jpg",
+          image: "../images/people/saei.png",
           summary:
             "Double Olympic gold medalist, Hadi Saei became Iran’s most decorated Olympian — embodying precision, honor, and perseverance."
         },
@@ -81,7 +81,7 @@ const sportsData = {
           death: null,
           influence: { Strength: 100, Record: 98, Legacy: 96 },
           regions: ["Iran"],
-          image: "../images/people/rezazadeh.jpg",
+          image: "../images/people/rezazadeh.png",
           summary:
             "Known as 'The Iranian Hercules', Rezazadeh broke multiple world records in weightlifting, symbolizing power and national pride."
         },
@@ -93,7 +93,7 @@ const sportsData = {
           death: null,
           influence: { Skill: 98, Creativity: 94, Legacy: 90 },
           regions: ["Iran", "Germany", "Qatar"],
-          image: "../images/people/karimi.jpg",
+          image: "../images/people/karimi.png",
           summary:
             "Famous for his artistry on the ball, 'The Wizard of Tehran' inspired millions with his creativity and courage in Iranian football."
         },
@@ -105,7 +105,7 @@ const sportsData = {
           death: null,
           influence: { Tennis: 94, Charisma: 96, GlobalImpact: 90 },
           regions: ["Iran", "France"],
-          image: "../images/people/bahrami.jpg",
+          image: "../images/people/bahrami.png",
           summary:
             "Iran’s legendary tennis showman, Bahrami turned exile into opportunity, captivating the world with his humor and skill on the court."
         }
@@ -124,7 +124,7 @@ const sportsData = {
           death: null,
           influence: { Courage: 100, Equality: 96, GlobalImpact: 94 },
           regions: ["Iran", "Germany"],
-          image: "../images/people/alizadeh.jpg",
+          image: "../images/people/alizadeh.png",
           summary:
             "Iran’s first female Olympic medalist, Kimiya Alizadeh represents courage, independence, and the fight for equality in sports."
         },
@@ -136,7 +136,7 @@ const sportsData = {
           death: null,
           influence: { Precision: 94, Legacy: 88, GlobalImpact: 86 },
           regions: ["Iran"],
-          image: "../images/people/foroughi.jpg",
+          image: "../images/people/foroughi.png",
           summary:
             "Olympic gold medalist in shooting, Foroughi symbolizes patience and focus — bringing modern sports excellence to Iran’s new era."
         },
@@ -148,7 +148,7 @@ const sportsData = {
           death: null,
           influence: { Skill: 96, Legacy: 92, GlobalImpact: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/azmoun.jpg",
+          image: "../images/people/azmoun.png",
           summary:
             "A star striker known as 'The Iranian Messi', Azmoun represents a new generation of Iranian football talent on global stages."
         },
@@ -160,7 +160,7 @@ const sportsData = {
           death: null,
           influence: { Strength: 94, Courage: 92, Equality: 90 },
           regions: ["Iran", "Asia"],
-          image: "../images/people/mansourian.jpg",
+          image: "../images/people/mansourian.png",
           summary:
             "World Wushu Champion, Mansourian sisters broke gender barriers and brought Iranian martial arts glory to the world."
         },
@@ -172,7 +172,7 @@ const sportsData = {
           death: null,
           influence: { Intelligence: 100, Strategy: 98, GlobalImpact: 96 },
           regions: ["Iran", "France"],
-          image: "../images/people/firouzja.jpg",
+          image: "../images/people/firouzja.png",
           summary:
             "One of the youngest chess grandmasters in the world, Firouzja’s brilliance put Iran on the global map of intellectual sports."
         }
