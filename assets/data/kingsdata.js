@@ -14,7 +14,7 @@ const kingsData = {
           death: -530,
           influence: { Governance: 100, Tolerance: 98, Legacy: 100 },
           regions: ["Iran", "Mesopotamia", "Anatolia"],
-          image: "../images/people/cyrus.jpg",
+          image: "../images/people/cyrus.png",
           summary:
             "Founder of the Achaemenid Empire, Cyrus the Great created the world’s first declaration of human rights and a model of just governance that influenced history for millennia."
         },
@@ -26,7 +26,7 @@ const kingsData = {
           death: -486,
           influence: { Architecture: 98, Governance: 96, Economy: 95 },
           regions: ["Iran", "Egypt", "India"],
-          image: "../images/people/darius.jpg",
+          image: "../images/people/darius.png",
           summary:
             "Darius I expanded the empire to its peak, introduced efficient administration, the Royal Road, and monumental architecture such as Persepolis."
         },
@@ -38,7 +38,7 @@ const kingsData = {
           death: -465,
           influence: { Military: 94, Architecture: 92, Legacy: 88 },
           regions: ["Iran", "Greece", "Egypt"],
-          image: "../images/people/xerxes.jpg",
+          image: "../images/people/xerxes.png",
           summary:
             "Xerxes I, known for his wars against Greece, embodied imperial grandeur and architectural magnificence, extending Achaemenid cultural influence."
         },
@@ -50,7 +50,7 @@ const kingsData = {
           death: 242,
           influence: { Statecraft: 94, Religion: 90, Legacy: 92 },
           regions: ["Iran", "Mesopotamia"],
-          image: "../images/people/ardashir.jpg",
+          image: "../images/people/ardashir.png",
           summary:
             "Founder of the Sassanid Empire, Ardashir revived Persian identity, centralized power, and made Zoroastrianism the state religion."
         },
@@ -62,7 +62,7 @@ const kingsData = {
           death: 579,
           influence: { Justice: 98, Reform: 96, Philosophy: 92 },
           regions: ["Iran", "Byzantium", "India"],
-          image: "../images/people/khosrow.jpg",
+          image: "../images/people/khosrow.png",
           summary:
             "Khosrow I, 'The Just', modernized the Sassanid Empire with fair governance, education reforms, and patronage of science and philosophy."
         }
@@ -81,7 +81,7 @@ const kingsData = {
           death: 900,
           influence: { Culture: 90, Patronage: 88, Symbolism: 85 },
           regions: ["Iran", "Central Asia"],
-          image: "../images/people/rudabeh.jpg",
+          image: "../images/people/rudabeh.png",
           summary:
             "A noblewoman of the Samanid court, Rudabeh was a symbol of Persian revival in art and literature after the Arab conquest."
         },
@@ -93,7 +93,7 @@ const kingsData = {
           death: 1030,
           influence: { Expansion: 96, Patronage: 94, Military: 92 },
           regions: ["Iran", "India", "Central Asia"],
-          image: "../images/people/mahmud.jpg",
+          image: "../images/people/mahmud.png",
           summary:
             "Founder of the Ghaznavid Empire, Mahmud expanded Persian culture across the Islamic world and supported poets like Ferdowsi and Unsuri."
         },
@@ -105,7 +105,7 @@ const kingsData = {
           death: 1092,
           influence: { Politics: 96, Education: 92, Philosophy: 88 },
           regions: ["Iran", "Iraq"],
-          image: "../images/people/nizam.jpg",
+          image: "../images/people/nizam.png",
           summary:
             "The great vizier of the Seljuks, Nizam al-Mulk established the Nizamiyyah schools and authored 'Siyasat-nama', shaping governance across centuries."
         },
@@ -117,7 +117,7 @@ const kingsData = {
           death: 1747,
           influence: { Military: 100, Strategy: 96, Legacy: 90 },
           regions: ["Iran", "India", "Caucasus"],
-          image: "../images/people/nader.jpg",
+          image: "../images/people/nader.png",
           summary:
             "A tactical genius known as the 'Napoleon of the East', Nader Shah restored Iran’s borders and brought the Mughal treasures of Delhi home."
         },
@@ -129,7 +129,7 @@ const kingsData = {
           death: 1629,
           influence: { Architecture: 100, Reform: 94, Diplomacy: 92 },
           regions: ["Iran", "Caucasus", "Europe"],
-          image: "../images/people/abbas.jpg",
+          image: "../images/people/abbas.png",
           summary:
             "The greatest Safavid monarch, Shah Abbas transformed Isfahan into a cultural capital, reformed the army, and opened trade with Europe."
         }
@@ -148,7 +148,7 @@ const kingsData = {
           death: 1797,
           influence: { Unification: 96, Politics: 90, Legacy: 88 },
           regions: ["Iran", "Caucasus"],
-          image: "../images/people/aghamohammad.jpg",
+          image: "../images/people/aghamohammad.png",
           summary:
             "Founder of the Qajar dynasty, Agha Mohammad Khan reunited Iran after chaos, establishing a new centralized monarchy in Tehran."
         },
@@ -160,7 +160,7 @@ const kingsData = {
           death: 1896,
           influence: { Modernization: 88, Diplomacy: 90, Culture: 86 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/naser.jpg",
+          image: "../images/people/naser.png",
           summary:
             "A modernizer who opened Iran to photography, printing, and diplomacy with Europe, though his long reign faced internal resistance and reformist calls."
         },
@@ -172,7 +172,7 @@ const kingsData = {
           death: 1944,
           influence: { Modernization: 100, Infrastructure: 98, Education: 92 },
           regions: ["Iran"],
-          image: "../images/people/rezashah.jpg",
+          image: "../images/people/rezashah.png",
           summary:
             "Founder of the Pahlavi dynasty, Reza Shah industrialized Iran, built modern infrastructure, and established secular education and legal systems."
         },
@@ -184,7 +184,7 @@ const kingsData = {
           death: 1980,
           influence: { Reform: 92, Diplomacy: 94, Modernization: 90 },
           regions: ["Iran", "Europe", "USA"],
-          image: "../images/people/mohammadreza.jpg",
+          image: "../images/people/mohammadreza.png",
           summary:
             "The last monarch of Iran, Mohammad Reza Shah’s White Revolution brought rapid modernization and education reforms before his overthrow in 1979."
         },
@@ -196,7 +196,7 @@ const kingsData = {
           death: 1967,
           influence: { Democracy: 100, Nationalism: 96, Legacy: 94 },
           regions: ["Iran", "Global"],
-          image: "../images/people/mossadegh.jpg",
+          image: "../images/people/mossadegh.png",
           summary:
             "The champion of Iran’s national sovereignty and oil nationalization, Mossadegh became a global symbol of democracy and anti-colonial resistance."
         }
