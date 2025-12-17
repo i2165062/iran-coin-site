@@ -14,7 +14,7 @@ const artistsData = {
           death: 1535,
           influence: { Miniature: 100, Design: 96, Legacy: 94 },
           regions: ["Iran", "Central Asia"],
-          image: "../images/people/behzad.jpg",
+          image: "../images/people/behzad.png",
           summary:
             "Kamal al-Din Behzad, master of Persian miniature painting, elevated manuscript art into emotional storytelling. His works defined the aesthetic of the Herat and Safavid schools."
         },
@@ -26,7 +26,7 @@ const artistsData = {
           death: 1635,
           influence: { Painting: 96, Portraiture: 92, Calligraphy: 90 },
           regions: ["Iran"],
-          image: "../images/people/reza-abbasi.jpg",
+          image: "../images/people/reza-abbasi.png",
           summary:
             "The leading painter of the Safavid era, Reza Abbasi revolutionized Persian art with delicate linework and human intimacy, moving beyond court formality into personal expression."
         },
@@ -38,7 +38,7 @@ const artistsData = {
           death: 1720,
           influence: { Painting: 92, Perspective: 90, CrossCultural: 88 },
           regions: ["Iran", "India"],
-          image: "../images/people/aliqoli.jpg",
+          image: "../images/people/aliqoli.png",
           summary:
             "A Safavid painter who combined European and Persian elements, Jabbadar was among the first Iranian artists to explore perspective and secular subjects."
         },
@@ -50,7 +50,7 @@ const artistsData = {
           death: 1893,
           influence: { Calligraphy: 95, Ornamentation: 90, Teaching: 88 },
           regions: ["Iran"],
-          image: "../images/people/emami.jpg",
+          image: "../images/people/emami.png",
           summary:
             "A master of Nastaliq calligraphy and decorative art, Emami preserved Persian aesthetics during the turbulent Qajar era, influencing generations of artisans."
         }
@@ -69,7 +69,7 @@ const artistsData = {
           death: 1980,
           influence: { Painting: 94, Poetry: 92, Spirituality: 90 },
           regions: ["Iran", "Asia"],
-          image: "../images/people/sepehri.jpg",
+          image: "../images/people/sepehri.png",
           summary:
             "Known both as a poet and painter, Sepehri infused his minimalist landscapes with Zen-like serenity, blending Eastern mysticism and modern abstraction."
         },
@@ -81,7 +81,7 @@ const artistsData = {
           death: null,
           influence: { Calligraphy: 98, Modernism: 90, Typography: 92 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/ehsai.jpg",
+          image: "../images/people/ehsai.png",
           summary:
             "A pioneer of calligraphic modernism, Mohammad Ehsai transformed Persian script into visual abstraction — uniting word, color, and motion in contemporary art."
         },
@@ -93,7 +93,7 @@ const artistsData = {
           death: null,
           influence: { Sculpture: 100, Innovation: 94, Identity: 92 },
           regions: ["Iran", "USA"],
-          image: "../images/people/tanavoli.jpg",
+          image: "../images/people/tanavoli.png",
           summary:
             "Founder of the Saqqakhaneh movement, Tanavoli’s sculptures and 'Heech' series merge Iranian spiritual symbols with modernist minimalism."
         },
@@ -105,7 +105,7 @@ const artistsData = {
           death: 2021,
           influence: { Surrealism: 95, Symbolism: 90, Modernism: 92 },
           regions: ["Iran", "France"],
-          image: "../images/people/darroudi.jpg",
+          image: "../images/people/darroudi.png",
           summary:
             "A surrealist painter of ethereal light, Darroudi’s cosmic imagery reflected nostalgia, exile, and timeless beauty — a dialogue between memory and dream."
         },
@@ -117,7 +117,7 @@ const artistsData = {
           death: 1965,
           influence: { Modernism: 92, Expression: 90, Symbolism: 88 },
           regions: ["Iran"],
-          image: "../images/people/ghandriz.jpg",
+          image: "../images/people/ghandriz.png",
           summary:
             "A co-founder of the Ghandriz Gallery, Mansour blended Persian motifs with Western abstraction, shaping Tehran’s modern art scene before his untimely death."
         },
@@ -129,7 +129,7 @@ const artistsData = {
           death: 1972,
           influence: { Portraiture: 92, Modernism: 90, SocialRealism: 88 },
           regions: ["Iran"],
-          image: "../images/people/pezeshknia.jpg",
+          image: "../images/people/pezeshknia.png",
           summary:
             "One of Iran’s early modernists, Pezeshknia captured realism and psychological depth in his portraits, bridging European training with Persian emotion."
         }
@@ -148,7 +148,7 @@ const artistsData = {
           death: null,
           influence: { Photography: 100, Feminism: 96, GlobalImpact: 94 },
           regions: ["Iran", "USA", "Europe"],
-          image: "../images/people/neshat.jpg",
+          image: "../images/people/neshat.png",
           summary:
             "Shirin Neshat explores gender, exile, and identity through photography and film. Her powerful black-and-white portraits give voice to silenced women."
         },
@@ -160,7 +160,7 @@ const artistsData = {
           death: 2019,
           influence: { Geometry: 96, Design: 92, Innovation: 90 },
           regions: ["Iran", "USA"],
-          image: "../images/people/monir.jpg",
+          image: "../images/people/monir.png",
           summary:
             "Monir Farmanfarmaian’s mirrored mosaics and geometric abstractions revived the essence of Iranian sacred geometry within contemporary sculpture and design."
         },
@@ -172,7 +172,7 @@ const artistsData = {
           death: null,
           influence: { Painting: 96, Restoration: 92, Legacy: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/aghdashloo.jpg",
+          image: "../images/people/aghdashloo.png",
           summary:
             "Aghdashloo’s detailed paintings blend nostalgia and decay. As both creator and critic, he bridges Persian classicism with postmodern reflection."
         },
@@ -184,7 +184,7 @@ const artistsData = {
           death: null,
           influence: { Painting: 94, Spirituality: 92, GlobalReach: 90 },
           regions: ["Iran", "USA"],
-          image: "../images/people/yzkami.jpg",
+          image: "../images/people/yzkami.png",
           summary:
             "Y.Z. Kami’s large-scale portraits radiate introspection and stillness, evoking universal spirituality rooted in Persian culture."
         }
