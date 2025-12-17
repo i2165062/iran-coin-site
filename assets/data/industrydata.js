@@ -14,7 +14,7 @@ const industrialData = {
           death: 1852,
           influence: { Education: 100, Industry: 94, Reform: 96 },
           regions: ["Iran"],
-          image: "../images/people/amirkabir.jpg",
+          image: "../images/people/amirkabir.png",
           summary:
             "Founder of Dar al-Fonun, Amir Kabir established the foundations of modern science, industry, and technical education in Iran."
         },
@@ -26,7 +26,7 @@ const industrialData = {
           death: 1910,
           influence: { Engineering: 90, Infrastructure: 88, Innovation: 85 },
           regions: ["Iran"],
-          image: "../images/people/qazvini.jpg",
+          image: "../images/people/qazvini.png",
           summary:
             "An early engineer in Qajar Iran, Nakhjavani developed irrigation and mechanical systems for agriculture and early manufacturing reforms."
         }
@@ -45,7 +45,7 @@ const industrialData = {
           death: 1937,
           influence: { Reform: 94, Industry: 90, Infrastructure: 88 },
           regions: ["Iran"],
-          image: "../images/people/davar.jpg",
+          image: "../images/people/davar.png",
           summary:
             "Minister of Justice and key architect of administrative reform under Reza Shah, Davar established modern economic and legal foundations for industrial growth."
         },
@@ -57,7 +57,7 @@ const industrialData = {
           death: 1933,
           influence: { Diplomacy: 92, Industry: 90, Reform: 94 },
           regions: ["Iran"],
-          image: "../images/people/teymourtash.jpg",
+          image: "../images/people/teymourtash.png",
           summary:
             "Instrumental in early industrialization, Teymourtash expanded infrastructure and foreign relations to develop Iran’s modern industries."
         },
@@ -69,7 +69,7 @@ const industrialData = {
           death: 2006,
           influence: { Education: 96, Industry: 92, Legacy: 88 },
           regions: ["Iran"],
-          image: "../images/people/sanati.jpg",
+          image: "../images/people/sanati.png",
           summary:
             "Founder of technical schools and training centers, Sanati nurtured the first generation of Iranian industrial workers and engineers."
         },
@@ -81,7 +81,7 @@ const industrialData = {
           death: 1970,
           influence: { Modernization: 94, Technology: 88, Policy: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/taghizadeh.jpg",
+          image: "../images/people/taghizadeh.png",
           summary:
             "A politician and intellectual who supported scientific advancement and industrial education in Iran and Europe."
         }
@@ -100,7 +100,7 @@ const industrialData = {
           death: null,
           influence: { Innovation: 98, Space: 100, Leadership: 94 },
           regions: ["Iran", "USA"],
-          image: "../images/people/ansari.jpg",
+          image: "../images/people/ansari.png",
           summary:
             "The first Iranian and Muslim woman in space, Ansari is a tech entrepreneur and CEO of XPrize Foundation, inspiring women and innovators globally."
         },
@@ -112,7 +112,7 @@ const industrialData = {
           death: null,
           influence: { Technology: 100, Innovation: 98, GlobalImpact: 96 },
           regions: ["Iran", "USA"],
-          image: "../images/people/omidyar.jpg",
+          image: "../images/people/omidyar.png",
           summary:
             "Founder of eBay, Omidyar transformed global e-commerce and continues to support social innovation through Omidyar Network."
         },
@@ -124,7 +124,7 @@ const industrialData = {
           death: 2017,
           influence: { AI: 100, Logic: 98, Innovation: 96 },
           regions: ["Iran", "USA"],
-          image: "../images/people/zadeh.jpg",
+          image: "../images/people/zadeh.png",
           summary:
             "Inventor of Fuzzy Logic, Lotfi Zadeh revolutionized artificial intelligence and modern control systems, influencing robotics and data science."
         },
@@ -136,7 +136,7 @@ const industrialData = {
           death: 2017,
           influence: { Mathematics: 100, Education: 96, Inspiration: 100 },
           regions: ["Iran", "USA"],
-          image: "../images/people/mirzakhani.jpg",
+          image: "../images/people/mirzakhani.png",
           summary:
             "Fields Medal-winning mathematician, Mirzakhani’s theoretical discoveries in geometry inspired a generation of young scientists."
         },
@@ -148,7 +148,7 @@ const industrialData = {
           death: null,
           influence: { Technology: 96, Innovation: 94, GlobalImpact: 90 },
           regions: ["Iran", "USA"],
-          image: "../images/people/kamangar.jpg",
+          image: "../images/people/kamangar.png",
           summary:
             "Former CEO of YouTube and Google executive, Kamangar led major innovations in media and internet platforms, representing Iran’s global tech presence."
         },
@@ -160,7 +160,7 @@ const industrialData = {
           death: null,
           influence: { AI: 94, Research: 92, Innovation: 88 },
           regions: ["Iran", "Sweden"],
-          image: "../images/people/karim.jpg",
+          image: "../images/people/karim.png",
           summary:
             "An AI researcher specializing in industrial systems and predictive maintenance, Karim’s work connects academia and industry across Europe."
         }
