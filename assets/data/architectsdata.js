@@ -14,7 +14,7 @@ const architectsData = {
           death: -330,
           influence: { Architecture: 100, Engineering: 95, Legacy: 100 },
           regions: ["Iran", "Mesopotamia"],
-          image: "../images/people/achaemenid-builders.jpg",
+          image: "../images/people/achaemenid-builders.png",
           summary:
             "The architects of Persepolis combined stone engineering, relief art, and symmetry to create one of humanity’s most enduring architectural wonders."
         },
@@ -26,7 +26,7 @@ const architectsData = {
           death: -450,
           influence: { Design: 90, Symbolism: 88, Engineering: 92 },
           regions: ["Iran"],
-          image: "../images/people/inscription-team.jpg",
+          image: "../images/people/inscription-team.png",
           summary:
             "Creators of the royal inscriptions and symbolic bas-reliefs that documented Persian governance and cosmology in monumental art."
         },
@@ -38,7 +38,7 @@ const architectsData = {
           death: 600,
           influence: { Engineering: 94, Innovation: 90, Infrastructure: 92 },
           regions: ["Iran", "Mesopotamia"],
-          image: "../images/people/bridge.jpg",
+          image: "../images/people/bridge.png",
           summary:
             "Engineers of the Sassanid Empire developed bridges, domes, and vaults that influenced later Islamic architecture from Baghdad to Isfahan."
         }
@@ -57,7 +57,7 @@ const architectsData = {
           death: 1621,
           influence: { Architecture: 100, Science: 94, Geometry: 92 },
           regions: ["Iran"],
-          image: "../images/people/sheikhbahaei.jpg",
+          image: "../images/people/sheikhbahaei.png",
           summary:
             "The visionary architect of Isfahan’s urban plan under Shah Abbas. His works include Naqsh-e Jahan’s geometry and the innovative heating system of the Shah Mosque."
         },
@@ -69,7 +69,7 @@ const architectsData = {
           death: 1620,
           influence: { DomeDesign: 98, Engineering: 94, Artistry: 90 },
           regions: ["Iran"],
-          image: "../images/people/isa-shirazi.jpg",
+          image: "../images/people/isa-shirazi.png",
           summary:
             "A legendary Persian architect credited with major mosque domes and tilework innovations, his influence extended into Ottoman design aesthetics."
         },
@@ -81,7 +81,7 @@ const architectsData = {
           death: 1650,
           influence: { Architecture: 98, Engineering: 94, Artistry: 92 },
           regions: ["Iran"],
-          image: "../images/people/aliakbar.jpg",
+          image: "../images/people/aliakbar.png",
           summary:
             "Chief architect of the Imam Mosque in Isfahan, combining visual harmony, tile geometry, and acoustic perfection in a timeless masterpiece."
         },
@@ -93,7 +93,7 @@ const architectsData = {
           death: 1429,
           influence: { Geometry: 98, Engineering: 90, Science: 94 },
           regions: ["Iran"],
-          image: "../images/people/kashi.jpg",
+          image: "../images/people/kashi.png",
           summary:
             "A mathematician and engineer whose geometric works guided architects of the Timurid and early Safavid eras in dome and tile proportion."
         }
@@ -112,7 +112,7 @@ const architectsData = {
           death: 1965,
           influence: { Restoration: 96, Design: 94, Preservation: 98 },
           regions: ["Iran", "France"],
-          image: "../images/people/godard.jpg",
+          image: "../images/people/godard.png",
           summary:
             "A French-Iranian architect who restored ancient sites and designed the National Museum of Iran, reviving Persian motifs through modern structure."
         },
@@ -124,7 +124,7 @@ const architectsData = {
           death: 2014,
           influence: { Modernism: 98, Symbolism: 96, Legacy: 92 },
           regions: ["Iran", "Canada"],
-          image: "../images/people/seyhoun.jpg",
+          image: "../images/people/seyhoun.png",
           summary:
             "Creator of Iran’s most iconic modern monuments — including the tombs of Hafez and Avicenna — Seyhoun fused modern minimalism with ancient symbolism."
         },
@@ -136,7 +136,7 @@ const architectsData = {
           death: null,
           influence: { UrbanDesign: 98, Modernism: 92, SocialArchitecture: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/diba.jpg",
+          image: "../images/people/diba.png",
           summary:
             "Architect of the Tehran Museum of Contemporary Art, Kamran Diba integrated Persian courtyards and skylight geometry into modern public spaces."
         },
@@ -148,7 +148,7 @@ const architectsData = {
           death: null,
           influence: { Theory: 96, Tradition: 92, Sustainability: 90 },
           regions: ["Iran", "USA"],
-          image: "../images/people/ardalan.jpg",
+          image: "../images/people/ardalan.png",
           summary:
             "Author of 'The Sense of Unity', Ardalan redefined Iranian architectural identity through the lens of sacred geometry and sustainable modernity."
         },
@@ -160,7 +160,7 @@ const architectsData = {
           death: null,
           influence: { Modernism: 94, Design: 90, GlobalImpact: 88 },
           regions: ["Iran", "Global"],
-          image: "../images/people/miladteam.jpg",
+          image: "../images/people/miladteam.png",
           summary:
             "Contemporary Iranian architects collaborating on futuristic structures like Milad Tower, connecting digital design with cultural geometry."
         },
@@ -172,7 +172,7 @@ const architectsData = {
           death: null,
           influence: { Design: 100, Innovation: 96, Sustainability: 94 },
           regions: ["Iran"],
-          image: "../images/people/araghian.jpg",
+          image: "../images/people/araghian.png",
           summary:
             "Designer of Tehran’s Tabiat Bridge, Araghian symbolizes a new generation of Iranian architects merging nature, technology, and human connection."
         }
