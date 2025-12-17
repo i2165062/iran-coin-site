@@ -14,7 +14,7 @@ const cinemaData = {
           death: 2023,
           influence: { Cinema: 94, Literature: 90, Legacy: 88 },
           regions: ["Iran", "UK"],
-          image: "../images/people/golestan.jpg",
+          image: "../images/people/golestan.png",
           summary:
             "A pioneer of poetic realism, Golestan bridged literature and cinema with works like 'Brick and Mirror', blending existential themes with social critique."
         },
@@ -26,7 +26,7 @@ const cinemaData = {
           death: 1967,
           influence: { Poetry: 96, Cinema: 94, Feminism: 98 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/forugh.jpg",
+          image: "../images/people/forugh.png",
           summary:
             "The visionary poet-filmmaker whose short film 'The House is Black' redefined Iranian documentary cinema and became a symbol of artistic rebellion."
         },
@@ -38,7 +38,7 @@ const cinemaData = {
           death: null,
           influence: { Cinema: 92, Culture: 90, Style: 88 },
           regions: ["Iran"],
-          image: "../images/people/kimiai.jpg",
+          image: "../images/people/kimiai.png",
           summary:
             "A founder of Iran’s new wave cinema, Kimiai’s 'Qeysar' reshaped masculinity, revenge, and social realism on screen."
         },
@@ -50,7 +50,7 @@ const cinemaData = {
           death: null,
           influence: { Cinema: 96, Mythology: 92, Theater: 94 },
           regions: ["Iran", "USA"],
-          image: "../images/people/beyzai.jpg",
+          image: "../images/people/beyzai.png",
           summary:
             "Beyzai’s poetic and mythological cinema, including 'Bashu, the Little Stranger', explores identity, exile, and the power of storytelling."
         }
@@ -69,7 +69,7 @@ const cinemaData = {
           death: 2016,
           influence: { Cinema: 100, Poetry: 96, GlobalImpact: 98 },
           regions: ["Iran", "France", "Global"],
-          image: "../images/people/kiarostami.jpg",
+          image: "../images/people/kiarostami.png",
           summary:
             "Kiarostami revolutionized world cinema with minimalist realism and profound humanism in films like 'Taste of Cherry' and 'Close-Up'."
         },
@@ -93,7 +93,7 @@ const cinemaData = {
           death: null,
           influence: { SocialCinema: 98, Feminism: 94, Realism: 92 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/banietemad.jpg",
+          image: "../images/people/banietemad.png",
           summary:
             "The 'First Lady of Iranian Cinema', Banietemad portrays women, urban struggles, and social justice with deep empathy and realism."
         },
@@ -105,7 +105,7 @@ const cinemaData = {
           death: null,
           influence: { Spirituality: 98, Humanity: 94, GlobalImpact: 92 },
           regions: ["Iran", "Asia"],
-          image: "../images/people/majidi.jpg",
+          image: "../images/people/majidi.png",
           summary:
             "Majidi’s deeply spiritual films like 'Children of Heaven' and 'The Color of Paradise' express universal compassion through simplicity."
         },
@@ -117,7 +117,7 @@ const cinemaData = {
           death: null,
           influence: { Resistance: 98, Realism: 94, Courage: 96 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/panahi.jpg",
+          image: "../images/people/panahi.png",
           summary:
             "Known for his defiance and creativity under restriction, Panahi’s works like 'Taxi Tehran' blend cinema and resistance into pure human truth."
         }
@@ -136,7 +136,7 @@ const cinemaData = {
           death: null,
           influence: { Drama: 100, GlobalImpact: 98, Realism: 96 },
           regions: ["Iran", "Global"],
-          image: "../images/people/farhadi.jpg",
+          image: "../images/people/farhadi.png",
           summary:
             "Two-time Oscar-winning director of 'A Separation' and 'The Salesman', Farhadi brought Iranian cinema to the heart of global storytelling with moral and social depth."
         },
@@ -148,7 +148,7 @@ const cinemaData = {
           death: null,
           influence: { Innovation: 92, Satire: 90, Modernism: 88 },
           regions: ["Iran"],
-          image: "../images/people/haghighi.jpg",
+          image: "../images/people/haghighi.png",
           summary:
             "A bold storyteller mixing absurdism and satire, Haghighi’s films challenge authority and explore the absurdity of modern life in Iran."
         },
@@ -160,7 +160,7 @@ const cinemaData = {
           death: null,
           influence: { Storytelling: 94, Realism: 92, Emotion: 90 },
           regions: ["Iran"],
-          image: "../images/people/abyar.jpg",
+          image: "../images/people/abyar.png",
           summary:
             "Known for emotionally powerful films like 'Track 143', Abyar gives voice to women and the resilience of ordinary Iranians."
         },
@@ -172,7 +172,7 @@ const cinemaData = {
           death: null,
           influence: { GlobalImpact: 96, Innovation: 94, Genre: 90 },
           regions: ["Iran", "Europe"],
-          image: "../images/people/aliabbasi.jpg",
+          image: "../images/people/aliabbasi.png",
           summary:
             "An Iranian-Danish filmmaker whose works like 'Border' and 'Holy Spider' explore dark realism and identity in global cinema."
         },
@@ -184,7 +184,7 @@ const cinemaData = {
           death: null,
           influence: { Realism: 94, SocialCritique: 92, Innovation: 90 },
           regions: ["Iran", "France"],
-          image: "../images/people/roustaee.jpg",
+          image: "../images/people/roustaee.png",
           summary:
             "Director of 'Just 6.5' and 'Leila’s Brothers', Roustaee represents a new generation of Iranian filmmakers blending realism and urgency."
         }
