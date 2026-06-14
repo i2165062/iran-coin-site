@@ -5,25 +5,40 @@
   <title>Critical Events of Iran</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../assets/css/criticalEvents.css" />
-  	<link rel="icon" type="../image/x-icon" href="../images/PC22.ico" />
-	<!-- iOS / iPadOS Home Screen -->
-<link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
+  <link rel="icon" type="../image/x-icon" href="../images/PC22.ico" />
+  
+  <!-- iOS / iPadOS Home Screen -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
 
-<!-- Android / Chrome PWA -->
-<link rel="manifest" href="/site.webmanifest" />
-<meta name="theme-color" content="#0b0e11" />
+  <!-- Android / Chrome PWA -->
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0b0e11" />
 
-<!-- Safari pinned tab (macOS) - تک‌رنگ -->
-<link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
+  <!-- Safari pinned tab -->
+  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
 
-<!-- Windows tiles (اختیاری) -->
-<meta name="msapplication-TileColor" content="#0b0e11" />
-<meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
+  <!-- Windows tiles -->
+  <meta name="msapplication-TileColor" content="#0b0e11" />
+  <meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
 </head>
 <body>
   <main class="container">
-    <h1>critical Events OF IRAN</h1>
-    <p class="subtitle">Explore the critical Events of Iran from the Achaemenids to the present day.</p>
+    <h1>CRITICAL EVENTS OF IRAN</h1>
+    <p class="subtitle">Explore 50 critical events of Iran from the Achaemenids to the present day.</p>
+    
+    <!-- بخش جدید: فیلترها و نوار جستجو -->
+    <div class="filter-wrapper">
+      <input type="text" id="searchEvent" placeholder="Search events or years..." aria-label="Search events" />
+      <div class="filter-buttons" role="group" aria-label="Filter events by era">
+        <button class="filter-btn active" data-cat="all">All Events</button>
+        <button class="filter-btn" data-cat="ancient">Ancient Iran</button>
+        <button class="filter-btn" data-cat="islamic-era">Islamic Golden Age</button>
+        <button class="filter-btn" data-cat="early-modern">Early Modern</button>
+        <button class="filter-btn" data-cat="modern">Modern Era</button>
+      </div>
+    </div>
+
+    <!-- گرید نمایش کارت‌ها -->
     <section id="rulersGrid" class="rulers-grid" aria-live="polite"></section>
   </main>
 
@@ -47,10 +62,14 @@
           <img id="modalMap" alt="Dynasty map" loading="lazy" />
         </div>
 
-        <div id="slides" class="slides"></div>
+        <!-- کانتینر اسلایدر -->
+        <div class="slider-wrapper">
+          <div id="slides" class="slides"></div>
+        </div>
+        
         <div class="slider-nav">
-          <button class="prev" aria-label="Previous ruler">‹</button>
-          <button class="next" aria-label="Next ruler">›</button>
+          <button class="prev" aria-label="Previous slide">‹</button>
+          <button class="next" aria-label="Next slide">›</button>
         </div>
 
         <h3>Key Facts</h3>
