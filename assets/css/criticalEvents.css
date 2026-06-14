@@ -88,3 +88,72 @@ h1 { letter-spacing: .24rem; font-weight: 800; margin: 0 0 10px }
 @media (max-width: 560px) {
   .modal__dialog { width: 95%; border-radius: 14px }
 }
+/* کدهای زیر را به انتهای فایل criticalEvents.css خود اضافه کنید */
+
+/* Filter & Search UI */
+.filter-wrapper {
+  max-width: 1200px;
+  margin: 0 auto 32px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+#searchEvent {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid #2c353f;
+  background: #1b2127;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .3s ease;
+}
+#searchEvent:focus {
+  border-color: #d7b86a;
+}
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.filter-btn {
+  background: #1b2127;
+  color: #aeb6bf;
+  border: 1px solid #2c353f;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all .3s ease;
+}
+.filter-btn:hover {
+  background: #252d36;
+  color: #fff;
+}
+.filter-btn.active {
+  background: #d7b86a;
+  color: #121416;
+  border-color: #d7b86a;
+}
+
+/* Slider Bug Fix */
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden; /* جلوگری از خراب شدن ساختار مدال در اثر جلو رفتن اسلایدها */
+  border-radius: 14px;
+  margin-top: 14px;
+}
+.slides {
+  display: flex;
+  transition: transform .55s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+.slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
