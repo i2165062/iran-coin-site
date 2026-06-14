@@ -15,7 +15,7 @@
     "capital": "",
     "summary": "",
     "page": "../pages/Parthian-Dynasty.html",
-    "dataPath": "../assets/data/rulers/parthian.json"
+    "dataPath": "../assets/data/criticalEvents/66i.json"
   },
   {
     "key": "22",
@@ -24,7 +24,7 @@
     "capital": "",
     "summary": "",
     "page": "../pages/Sasanian-Dynasty.html",
-    "dataPath": "../assets/data/rulers/sasanian.json"
+    "dataPath": "../assets/data/criticalEvents/1235.json"
   },
   {
     "key": "",
@@ -33,7 +33,7 @@
     "capital": "",
     "summary": "",
     "page": "../pages/Safavid-Dynasty.html",
-    "dataPath": "../assets/data/rulers/safavid.json"
+    "dataPath": "../assets/data/criticalEvents/1234.json"
   },
   {
     "key": "",
@@ -42,7 +42,7 @@
     "capital": "",
     "summary": "",
     "page": "../pages/Afsharid-Dynasty.html",
-    "dataPath": "../assets/data/rulers/afsharid.json"
+    "dataPath": "../assets/data/criticalEvents/123.json"
   },
   {
     "key": "",
@@ -51,7 +51,7 @@
     "capital": "",
     "summary": ".",
     "page": "../pages/Zand-Dynasty.html",
-    "dataPath": "../assets/data/rulers/zand.json"
+    "dataPath": "../assets/data/criticalEvents/111.json"
   },
   {
     "key": "",
@@ -60,7 +60,7 @@
     "capital": "",
     "summary": "",
     "page": "../pages/Qajar-Dynasty.html",
-    "dataPath": "../assets/data/rulers/qajar.json"
+    "dataPath": "../assets/data/criticalEvents/12.json"
   },
   {
     "key": "",
@@ -69,7 +69,7 @@
     "capital": "T",
     "summary": "",
     "page": "../pages/Pahlavi-Dynasty.html",
-    "dataPath": "../assets/data/rulers/pahlavi.json"
+    "dataPath": "../assets/data/criticalEvents/1.json"
   },
   {
     "key": "00",
