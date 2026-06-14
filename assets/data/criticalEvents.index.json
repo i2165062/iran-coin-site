@@ -1,83 +1,247 @@
 [
+  /* ================= ANCIENT IRAN (1-14) ================= */
   {
-    "key": "00",
-    "title": "00",
-    "era": "00",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Achaemenid-Dynasty.html",
-    "dataPath": ""
+    "title": "Establishment of the Median Empire",
+    "era": "c. 678 BC",
+    "category": "ancient",
+    "capital": "Ecbatana (Hamedan)",
+    "summary": "Deioces unites the Medes, establishing the first Iranian empire and ending Assyrian dominance.",
+    "dataPath": "../assets/data/events/median-empire.json"
   },
   {
-    "key": "11",
-    "title": "11",
-    "era": "11",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Parthian-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/66i.json"
+    "title": "Rise of Cyrus the Great & Achaemenid Empire",
+    "era": "550 BC",
+    "category": "ancient",
+    "capital": "Pasargadae",
+    "summary": "Cyrus the Great overthrows the Medes and founds the world's largest empire of its time.",
+    "dataPath": "../assets/data/events/cyrus-rise.json"
   },
   {
-    "key": "22",
-    "title": "22",
-    "era": "22",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Sasanian-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/1235.json"
+    "title": "Conquest of Babylon & Cyrus Cylinder",
+    "era": "539 BC",
+    "category": "ancient",
+    "capital": "Babylon / Pasargadae",
+    "summary": "Cyrus peacefully enters Babylon, frees captives, and issues the first declaration of human rights.",
+    "dataPath": "../assets/data/events/cyrus-cylinder.json"
   },
   {
-    "key": "",
-    "title": "",
-    "era": "",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Safavid-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/1234.json"
+    "title": "Reign of Darius the Great & Persepolis",
+    "era": "522 BC",
+    "category": "ancient",
+    "capital": "Persepolis / Susa",
+    "summary": "Darius stabilizes the empire, builds the Royal Road, creates a postal system, and founds Persepolis.",
+    "dataPath": "../assets/data/events/darius-great.json"
   },
   {
-    "key": "",
-    "title": "",
-    "era": "",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Afsharid-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/123.json"
+    "title": "Greco-Persian Wars",
+    "era": "499–449 BC",
+    "category": "ancient",
+    "capital": "Persepolis",
+    "summary": "A series of conflicts between the Achaemenid Empire and Greek city-states, including Marathon and Thermopylae.",
+    "dataPath": "../assets/data/events/greco-persian-wars.json"
   },
   {
-    "key": "",
-    "title": "",
-    "era": "",
-    "capital": "",
-    "summary": ".",
-    "page": "../pages/Zand-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/111.json"
+    "title": "Invasion of Alexander & Fall of Persepolis",
+    "era": "330 BC",
+    "category": "ancient",
+    "capital": "Persepolis",
+    "summary": "Alexander of Macedonia defeats Darius III, burning Persepolis and ending the Achaemenid dynasty.",
+    "dataPath": "../assets/data/events/fall-of-persepolis.json"
   },
   {
-    "key": "",
-    "title": "",
-    "era": "",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Qajar-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/12.json"
+    "title": "Rise of the Seleucid Empire",
+    "era": "312 BC",
+    "category": "ancient",
+    "capital": "Seleucia / Antioch",
+    "summary": "Hellenistic rule is established over Iran by Alexander's general, Seleucus I Nicator.",
+    "dataPath": "../assets/data/events/seleucid-empire.json"
   },
   {
-    "key": "",
-    "title": "",
-    "era": "00",
-    "capital": "T",
-    "summary": "",
-    "page": "../pages/Pahlavi-Dynasty.html",
-    "dataPath": "../assets/data/criticalEvents/1.json"
+    "title": "Founding of the Parthian Empire",
+    "era": "247 BC",
+    "category": "ancient",
+    "capital": "Hecatompylos / Ctesiphon",
+    "summary": "Arsaces I founds the Parthian Empire, reviving Iranian culture and driving out Hellenistic rulers.",
+    "dataPath": "../assets/data/events/parthian-empire.json"
   },
   {
-    "key": "00",
-    "title": "00",
-    "era": "00",
-    "capital": "",
-    "summary": "",
-    "page": "../pages/Islamic-Republic-of-Iran.htm",
-    "dataPath": "../assets/data/rulers/islamic-republic.json"
+    "title": "Battle of Carrhae",
+    "era": "53 BC",
+    "category": "ancient",
+    "capital": "Ctesiphon",
+    "summary": "Parthian General Surena decisively defeats the Roman army led by Crassus using horse archer tactics.",
+    "dataPath": "../assets/data/events/battle-of-carrhae.json"
+  },
+  {
+    "title": "Establishment of the Sasanian Empire",
+    "era": "224 AD",
+    "category": "ancient",
+    "capital": "Ctesiphon",
+    "summary": "Ardashir I overthrows the Parthians, centralizes the state, and restores Zoroastrianism as the state religion.",
+    "dataPath": "../assets/data/events/sasanian-establishment.json"
+  },
+  {
+    "title": "Capture of Roman Emperor Valerian",
+    "era": "260 AD",
+    "category": "ancient",
+    "capital": "Ctesiphon",
+    "summary": "Shapur I defeats Rome at the Battle of Edessa and captures Emperor Valerian, carved in Naqsh-e Rostam.",
+    "dataPath": "../assets/data/events/shapur-valerian.json"
+  },
+  {
+    "title": "The Mazdakite Movement",
+    "era": "c. 490s AD",
+    "category": "ancient",
+    "capital": "Ctesiphon",
+    "summary": "Mazdak preaches social and religious reforms, advocating communal property, heavily impacting the Sasanian social structure.",
+    "dataPath": "../assets/data/events/mazdak-movement.json"
+  },
+  {
+    "title": "Golden Age of Khosrow Anushirvan",
+    "era": "531–579 AD",
+    "category": "ancient",
+    "capital": "Ctesiphon",
+    "summary": "Khosrow I implements legal, tax, and military reforms, and establishes the Academy of Gondishapur.",
+    "dataPath": "../assets/data/events/khosrow-anushirvan.json"
+  },
+  {
+    "title": "Battle of Qadisiyyah & Fall of Sasanians",
+    "era": "636 AD",
+    "category": "ancient",
+    "capital": "Ctesiphon",
+    "summary": "The Muslim Arab armies defeat the Sasanians, leading to the collapse of the empire and the Islamic conquest.",
+    "dataPath": "../assets/data/events/battle-of-qadisiyyah.json"
+  },
+
+  /* ================= ISLAMIC GOLDEN AGE (15-26) ================= */
+  {
+    "title": "The Shu'ubiyya Movement",
+    "era": "8th–9th Century",
+    "category": "islamic-era",
+    "capital": "Various",
+    "summary": "A cultural resistance movement by Persian Muslims defending their language, literature, and identity against Arab supremacy.",
+    "dataPath": "../assets/data/events/shuubiyya-movement.json"
+  },
+  {
+    "title": "Rise of the Taherid Dynasty",
+    "era": "821 AD",
+    "category": "islamic-era",
+    "capital": "Nishapur",
+    "summary": "The establishment of the first semi-independent Iranian dynasty in the Islamic era by Taher-e Zu-l-Yaminayn.",
+    "dataPath": "../assets/data/events/taherid-dynasty.json"
+  },
+  {
+    "title": "Saffarid Dynasty & Persian Language Revival",
+    "era": "861 AD",
+    "category": "islamic-era",
+    "capital": "Zaranj",
+    "summary": "Yaqoub Leith Saffari declares Persian the official administrative court language, reviving Persian identity.",
+    "dataPath": "../assets/data/events/saffarid-dynasty.json"
+  },
+  {
+    "title": "Samanid Renaissance",
+    "era": "819–999 AD",
+    "category": "islamic-era",
+    "capital": "Bukhara",
+    "summary": "The Golden Age of Persian science and literature, sponsoring giants like Rudaki, Avicenna, and early Ferdowsi.",
+    "dataPath": "../assets/data/events/samanid-renaissance.json"
+  },
+  {
+    "title": "Ferdowsi Completes the Shahnameh",
+    "era": "1010 AD",
+    "category": "islamic-era",
+    "capital": "Tus",
+    "summary": "Ferdowsi finishes the Epic of Kings, saving the Persian language and preserving pre-Islamic history.",
+    "dataPath": "../assets/data/events/shahnameh-completion.json"
+  },
+  {
+    "title": "Rise of the Buyid Dynasty",
+    "era": "934–1062 AD",
+    "category": "islamic-era",
+    "capital": "Shiraz / Ray",
+    "summary": "A Shia Persian dynasty captures Baghdad, controlling the Abbasid Caliphate and reviving ancient Persian titles.",
+    "dataPath": "../assets/data/events/buyid-dynasty.json"
+  },
+  {
+    "title": "Seljuk Empire & Nizamiyyah Schools",
+    "era": "1037 AD",
+    "category": "islamic-era",
+    "capital": "Isfahan",
+    "summary": "The Oghuz Turks build a vast empire; Vizier Khwaja Nizam al-Mulk establishes the famous university network.",
+    "dataPath": "../assets/data/events/seljuk-nizamiyyah.json"
+  },
+  {
+    "title": "The Nizari Ismaili (Assassins) State",
+    "era": "1090 AD",
+    "category": "islamic-era",
+    "capital": "Alamut Castle",
+    "summary": "Hassan-i Sabbah captures Alamut, establishing an asymmetric politico-religious stronghold.",
+    "dataPath": "../assets/data/events/alamut-assassins.json"
+  },
+  {
+    "title": "The Brutal Mongol Invasion",
+    "era": "1219 AD",
+    "category": "islamic-era",
+    "capital": "Various",
+    "summary": "Genghis Khan invades the Khwarazmian Empire, destroying historical cities like Nishapur, Tus, and Merv.",
+    "dataPath": "../assets/data/events/mongol-invasion.json"
+  },
+  {
+    "title": "Establishment of the Ilkhanate",
+    "era": "1256 AD",
+    "category": "islamic-era",
+    "capital": "Maragheh / Tabriz",
+    "summary": "Hulagu Khan captures Baghdad, ends the Abbasid Caliphate, and establishes a Mongol state that eventually adopts Persian culture.",
+    "dataPath": "../assets/data/events/ilkhanate-iran.json"
+  },
+  {
+    "title": "Campaigns of Timur (Tamerlane)",
+    "era": "1381 AD",
+    "category": "islamic-era",
+    "capital": "Samarkand",
+    "summary": "Timur conquers Iran brutally, but his successors launch the Timurid Renaissance in art and architecture.",
+    "dataPath": "../assets/data/events/timur-campaigns.json"
+  },
+  {
+    "title": "Age of Hafez & Shiraz Literary Peak",
+    "era": "14th Century",
+    "category": "islamic-era",
+    "capital": "Shiraz",
+    "summary": "The lifespan of Hafez, creating the finest Persian mystical ghazals during regional fraction eras.",
+    "dataPath": "../assets/data/events/hafez-shiraz.json"
+  },
+
+  /* ================= EARLY MODERN (27-38) ================= */
+  {
+    "title": "Rise of Safavids & Unification of Iran",
+    "era": "1501 AD",
+    "category": "early-modern",
+    "capital": "Tabriz",
+    "summary": "Shah Ismail I crowns himself, unifies geopolitical Iran after 850 years, and declares Twelver Shia the state religion.",
+    "dataPath": "../assets/data/events/safavid-unification.json"
+  },
+  {
+    "title": "Battle of Chaldiran",
+    "era": "1514 AD",
+    "category": "early-modern",
+    "capital": "Tabriz",
+    "summary": "Safavid cavalry clashes with Ottoman gunpowder armies, establishing the western borders of Iran.",
+    "dataPath": "../assets/data/events/battle-of-chaldiran.json"
+  },
+  {
+    "title": "Golden Age of Shah Abbas the Great",
+    "era": "1587–1629 AD",
+    "category": "early-modern",
+    "capital": "Isfahan",
+    "summary": "Shah Abbas shifts the capital to Isfahan, modernizes the military, and builds Naqsh-e Jahan Square.",
+    "dataPath": "../assets/data/events/shah-abbas.json"
+  },
+  {
+    "title": "Hotaki Siege of Isfahan",
+    "era": "1722 AD",
+    "category": "early-modern",
+    "capital": "Isfahan",
+    "summary": "Mahmud Hotaki invades from Kandahar, sieges and sacks Isfahan, ending effective Safavid rule.",
+    "dataPath": "../assets/data/events/siege-of-isfahan.json"
   }
 ]
