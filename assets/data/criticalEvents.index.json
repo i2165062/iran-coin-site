@@ -45,11 +45,11 @@
     "dataPath": "../assets/data/rulers/afsharid.json"
   },
   {
-    "key": "zand",
+    "key": "",
     "title": "",
-    "era": "1751–1794",
-    "capital": "Shiraz",
-    "summary": "Just rule of Karim Khan; arts and trade.",
+    "era": "",
+    "capital": "",
+    "summary": ".",
     "page": "../pages/Zand-Dynasty.html",
     "dataPath": "../assets/data/rulers/zand.json"
   },
@@ -57,8 +57,8 @@
     "key": "",
     "title": "",
     "era": "",
-    "capital": "Tehran",
-    "summary": "Modernization attempts and foreign pressures.",
+    "capital": "",
+    "summary": "",
     "page": "../pages/Qajar-Dynasty.html",
     "dataPath": "../assets/data/rulers/qajar.json"
   },
@@ -67,7 +67,7 @@
     "title": "",
     "era": "00",
     "capital": "T",
-    "summary": "State-building and rapid modernization.",
+    "summary": "",
     "page": "../pages/Pahlavi-Dynasty.html",
     "dataPath": "../assets/data/rulers/pahlavi.json"
   },
