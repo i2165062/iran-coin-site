@@ -112,7 +112,6 @@
     "dataPath": "../assets/data/events/battle-of-qadisiyyah.json"
   },
 
-  /* ================= ISLAMIC GOLDEN AGE (15-26) ================= */
   {
     "title": "The Shu'ubiyya Movement",
     "era": "8th–9th Century",
@@ -210,7 +209,6 @@
     "dataPath": "../assets/data/events/hafez-shiraz.json"
   },
 
-  /* ================= EARLY MODERN (27-38) ================= */
   {
     "title": "Rise of Safavids & Unification of Iran",
     "era": "1501 AD",
