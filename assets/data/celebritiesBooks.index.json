@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Ferdowsi & Shahnameh",
+    "era": "Golden Age (10th Cent.)",
+    "category": "books",
+    "image": "ferdowsi_book.png",
+    "summary": "The epic 'Book of Kings', the world's longest epic poem created by a single poet, which single-handedly revived the Persian language.",
+    "dataPath": "../assets/data/celebritiesBooks/ferdowsi.json",
+    "page": "celebritiesBooks/ferdowsi.html"
+  },
+  {
+    "id": 2,
+    "title": "Avicenna (Ibn Sina)",
+    "era": "Islamic Golden Age",
+    "category": "celebrities",
+    "image": "avicenna.png",
+    "summary": "One of the most significant physicians, astronomers, thinkers, and writers of the Islamic Golden Age, famous for 'The Canon of Medicine'.",
+    "dataPath": "../assets/data/celebritiesBooks/avicenna.json",
+    "page": "celebritiesBooks/avicenna.html"
+  }
+]
