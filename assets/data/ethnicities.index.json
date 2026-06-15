@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "The Kurds",
+    "era": "Western Iran",
+    "category": "zagros",
+    "image": "kurds.png",
+    "summary": "An ancient Iranian people inhabiting the mountainous Zagros region, known for their rich musical heritage, epic poetry, and vibrant traditional clothing.",
+    "dataPath": "../assets/data/ethnicities/kurds.json",
+    "page": "ethnicities/kurds.html"
+  },
+  {
+    "id": 2,
+    "title": "The Turkmen",
+    "era": "Northeast Iran",
+    "category": "plains",
+    "image": "turkmen.png",
+    "summary": "Inhabiting the vast plains of Golestan and Sahra, the Turkmen are famous for their world-renowned carpet weaving skills and horse-breeding traditions.",
+    "dataPath": "../assets/data/ethnicities/turkmen.json",
+    "page": "ethnicities/turkmen.html"
+  }
+]
