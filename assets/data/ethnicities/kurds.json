@@ -1,0 +1,20 @@
+{
+  "map": "../images/ethnicities/maps/kurdistan_region.jpg",
+  "facts": [
+    "Famous for the energetic 'Halperke' traditional group dance.",
+    "Mainly wear highly recognizable, distinct loose-fitting dynamic outfits.",
+    "Major celebrations center around Nowruz with massive open fires in the mountains."
+  ],
+  "slides": [
+    {
+      "image": "kurdish_dress.jpg",
+      "name": "Kurdish Traditional Dress",
+      "description": "Brightly colored garments with detailed hand-woven embroidery."
+    },
+    {
+      "image": "daff_music.jpg",
+      "name": "The Daf Instrument",
+      "description": "A prominent frame drum used widely in local cultural and spiritual music."
+    }
+  ]
+}
