@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Ta'arof (Cultural Etiquette)",
+    "era": "Ancient Roots",
+    "category": "etiquette",
+    "image": "taarof.png",
+    "summary": "The complex system of politeness, hospitality, and respect that governs social interactions in Iranian daily life.",
+    "dataPath": "../assets/data/customs/taarof.json",
+    "page": "customs/taarof.html"
+  },
+  {
+    "id": 2,
+    "title": "Nowruz (Persian New Year)",
+    "era": "Zoroastrian Era",
+    "category": "festivals",
+    "image": "nowruz.png",
+    "summary": "The traditional celebration of the vernal equinox, marking the beginning of spring.",
+    "dataPath": "../assets/data/customs/nowruz.json",
+    "page": "customs/nowruz.html"
+  }
+]
