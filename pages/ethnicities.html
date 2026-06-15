@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ethnicities of Iran</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/css/ethnicities.css" />
+  <link rel="icon" type="image/x-icon" href="../images/PC22.ico" />
+  
+  <!-- iOS / iPadOS Home Screen -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180.png" />
+
+  <!-- Android / Chrome PWA -->
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0b0e11" />
+
+  <!-- Safari pinned tab -->
+  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#c5a15b" />
+
+  <!-- Windows tiles -->
+  <meta name="msapplication-TileColor" content="#0b0e11" />
+  <meta name="msapplication-square150x150logo" content="../images/mstile-150.png" />
+</head>
+<body>
+  <main class="container">
+    <h1>ETHNICITIES OF IRAN</h1>
+    <p class="subtitle">Explore the beautiful mosaic of diverse cultures, dialects, clothing, and peoples across the Iranian plateau.</p>
+    
+    <!-- Filter and Search Wrapper -->
+    <div class="filter-wrapper">
+      <input type="text" id="searchEthnicity" placeholder="Search ethnic groups, languages, or regions..." aria-label="Search ethnicities" />
+      <div class="filter-buttons" role="group" aria-label="Filter ethnicities by region">
+        <button class="filter-btn active" data-cat="all">All Groups</button>
+        <button class="filter-btn" data-cat="zagros">Zagros & West</button>
+        <button class="filter-btn" data-cat="caspian">Caspian & North</button>
+        <button class="filter-btn" data-cat="plains">Eastern Plains</button>
+        <button class="filter-btn" data-cat="southern">Persian Gulf & South</button>
+      </div>
+    </div>
+
+    <!-- Grid Display -->
+    <section id="ethnicitiesGrid" class="rulers-grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Modal Component -->
+  <div class="modal" id="ethnicityModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog">
+      <button class="modal__close" data-close-modal aria-label="Close">×</button>
+
+      <div class="modal__content">
+        <img id="modalImage" class="modal__image" alt="" loading="lazy" />
+        <h2 id="modalTitle"></h2>
+        <p id="modalSummary" class="modal__summary"></p>
+
+        <div class="meta">
+          <span><strong>Regional Zone:</strong> <span id="metaCategory"></span></span>
+          <span><strong>Primary Geographic Location:</strong> <span id="metaEra"></span></span>
+        </div>
+
+        <div class="modal__map" id="modalMapContainer">
+          <img id="modalMap" alt="Ethnic demographic map" loading="lazy" />
+        </div>
+
+        <!-- Carousel Slider -->
+        <div class="slider-wrapper">
+          <div id="slides" class="slides"></div>
+        </div>
+        
+        <div class="slider-nav">
+          <button class="prev" aria-label="Previous slide">‹</button>
+          <button class="next" aria-label="Next slide">›</button>
+        </div>
+
+        <h3>Cultural Heritage & Identity</h3>
+        <ul id="modalFacts"></ul>
+
+        <a id="openFullPage" class="open-page-btn" target="_blank" rel="noopener">Open full page</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/ethnicities.js" defer></script>
+</body>
+</html>
