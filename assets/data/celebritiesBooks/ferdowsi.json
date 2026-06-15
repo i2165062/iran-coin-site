@@ -1,0 +1,20 @@
+{
+  "map": "../images/celebritiesBooks/maps/tus_khurasan.jpg",
+  "facts": [
+    "It contains 50,000 rhyming couplets (Dovre).",
+    "Took nearly 30 years of dedicated labor to complete.",
+    "Chronicles the mythical and historical past of the Persian Empire."
+  ],
+  "slides": [
+    {
+      "image": "shahnameh_illumination.jpg",
+      "name": "Bayasanghori Shahnameh",
+      "description": "An exquisite historical manuscript illustration."
+    },
+    {
+      "image": "ferdowsi_tomb.jpg",
+      "name": "Tomb of Ferdowsi",
+      "description": "The monument located in Tus, Iran."
+    }
+  ]
+}
