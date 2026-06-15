@@ -1,187 +1,162 @@
-// 1. Database of Iranian Manners and Customs
-const customsData = [
-  {
-    id: 1,
-    title: "Ta'arof (Cultural Etiquette)",
-    era: "Ancient Roots",
-    category: "etiquette",
-    image: "../images/taarof.jpg",
-    summary: "The complex system of politeness, hospitality, and respect that governs social interactions in Iranian daily life.",
-    origin: "Deep cultural evolution",
-    map: "../images/maps/iran_general.jpg",
-    slides: [
-      { img: "../images/taarof_shop.jpg", title: "Commercial Ta'arof", desc: "Refusing payment initially as a sign of respect." },
-      { img: "../images/taarof_home.jpg", title: "Hosting Ta'arof", desc: "Offering the best food and seat to guests repeatedly." }
-    ],
-    facts: ["It balances social hierarchies.", "Never accept an offer on the very first try.", "Always express humble appreciation."]
-  },
-  {
-    id: 2,
-    title: "Nowruz (Persian New Year)",
-    era: "Zoroastrian Era",
-    category: "festivals",
-    image: "../images/nowruz.jpg",
-    summary: "The traditional celebration of the vernal equinox, marking the beginning of spring and the new year on the Iranian calendar.",
-    origin: "Over 3,000 years old",
-    map: "../images/maps/nowruz_spread.jpg",
-    slides: [
-      { img: "../images/haftsin.jpg", title: "Haft-Sin Table", desc: "7 symbolic items starting with the Persian letter 'S'." },
-      { img: "../images/sizdah.jpg", title: "Sizdah Bedar", desc: "Spending the 13th day of the new year outdoors in nature." }
-    ],
-    facts: ["Recognized globally by UNESCO.", "Involves thorough spring cleaning (Khaneh-Tekani).", "Focuses heavily on visiting elders and family members."]
-  }
-];
+const INDEX_PATH = "../assets/data/mannersCustoms.index.json";
+const grid = document.getElementById("customsGrid");
 
-// 2. DOM Elements Selection
-const customsGrid = document.getElementById("customsGrid");
-const searchInput = document.getElementById("searchCustom");
-const filterButtons = document.querySelectorAll(".filter-btn");
-
-// Modal Selection
+/* Modal References */
 const modal = document.getElementById("customModal");
-const modalImage = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalSummary = document.getElementById("modalSummary");
-const metaCategory = document.getElementById("metaCategory");
-const metaOrigin = document.getElementById("metaOrigin");
-const modalMap = document.getElementById("modalMap");
-const slidesContainer = document.getElementById("slides");
-const openFullPageBtn = document.getElementById("openFullPage");
-const modalFacts = document.getElementById("modalFacts");
+const mImg   = document.getElementById("modalImage");
+const mTitle = document.getElementById("modalTitle");
+const mSum   = document.getElementById("modalSummary");
+const mCat   = document.getElementById("metaCategory");
+const mOrigin= document.getElementById("metaOrigin");
+const mFacts = document.getElementById("modalFacts");
+const mMap   = document.getElementById("modalMap");
+const slides = document.getElementById("slides");
+const openBtn= document.getElementById("openFullPage");
 
-// Filter & Slider State Management
+let currentSlide = 0;
+let allCustoms = []; 
 let currentCategory = "all";
-let searchQuery = "";
-let currentSlideIndex = 0;
 
-// 3. Dynamic Rendering Function
-function renderCustoms() {
-  customsGrid.innerHTML = "";
-  
-  const filteredData = customsData.filter(custom => {
-    const matchesCategory = currentCategory === "all" || custom.category === currentCategory;
-    const matchesSearch = custom.title.toLowerCase().includes(searchQuery) || 
-                          custom.era.toLowerCase().includes(searchQuery) ||
-                          custom.summary.toLowerCase().includes(searchQuery);
-    return matchesCategory && matchesSearch;
-  });
+/* Fetch and Initialize Initial Grid */
+fetch(INDEX_PATH)
+  .then(r => r.json())
+  .then(list => {
+    allCustoms = list;
+    renderGrid(allCustoms);
+    setupFilterEvents();
+  })
+  .catch(err => grid.innerHTML = `<p style="color:#f66">${err.message}</p>`);
 
-  if (filteredData.length === 0) {
-    customsGrid.innerHTML = `<p class="subtitle" style="grid-column: 1/-1;">No customs found matching your criteria.</p>`;
+/* Render Cards Grid */
+function renderGrid(data) {
+  grid.innerHTML = "";
+  if(data.length === 0) {
+    grid.innerHTML = `<p style="color:#aeb6bf; grid-column: 1/-1;">No customs found matching your criteria.</p>`;
     return;
   }
-
-  filteredData.forEach(custom => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.innerHTML = `
-      <img src="${custom.image}" alt="${custom.title}" loading="lazy" />
+  
+  data.forEach((d, i) => {
+    const el = document.createElement("article");
+    el.className = "card";
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    
+    // آدرس‌دهی پویا به پوشه تصاویر آداب و رسوم
+    const imageSrc = d.image ? `../images/mannersCustoms/${d.image}` : `../images/mannersCustoms/CST_${i+1}.png`;
+    
+    el.innerHTML = `
+      <img src="${imageSrc}" alt="${d.title}" loading="lazy">
       <div class="overlay">
-        <h2>${custom.title}</h2>
-        <p>${custom.era}</p>
-      </div>
-    `;
-    
-    // Binding Open Actions
-    card.addEventListener("click", () => openModal(custom));
-    card.addEventListener("keydown", (e) => { if(e.key === "Enter") openModal(custom); });
-    
-    customsGrid.appendChild(card);
+        <h2>${d.title}</h2>
+        <p>${d.era}</p>
+      </div>`;
+      
+    el.addEventListener("click", () => openModal(d, i+1));
+    el.addEventListener("keydown", (e) => { if(e.key === "Enter") openModal(d, i+1); });
+    grid.appendChild(el);
   });
 }
 
-// 4. Input & Filter Controls
-searchInput.addEventListener("input", (e) => {
-  searchQuery = e.target.value.toLowerCase().trim();
-  renderCustoms();
-});
+/* Connect Search and Category Buttons */
+function setupFilterEvents() {
+  const searchInput = document.getElementById("searchCustom");
+  const filterButtons = document.querySelectorAll(".filter-btn");
 
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    filterButtons.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-    currentCategory = button.getAttribute("data-cat");
-    renderCustoms();
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      e.target.classList.add("active");
+      currentCategory = e.target.getAttribute("data-cat");
+      applyFilterAndSearch(searchInput.value);
+    });
   });
-});
 
-// 5. Modal and Slides Control Logic
-function openModal(custom) {
-  modalTitle.textContent = custom.title;
-  modalImage.src = custom.image;
-  modalImage.alt = custom.title;
-  modalSummary.textContent = custom.summary;
-  metaCategory.textContent = custom.category.toUpperCase();
-  metaOrigin.textContent = custom.origin;
-  modalMap.src = custom.map;
-  openFullPageBtn.href = `customs/${custom.id}.html`; 
+  searchInput.addEventListener("input", (e) => {
+    applyFilterAndSearch(e.target.value);
+  });
+}
 
-  // Load List Items
-  modalFacts.innerHTML = custom.facts.map(fact => `<li>${fact}</li>`).join("");
+/* Dual Filter & Search Engine */
+function applyFilterAndSearch(textQuery) {
+  const query = textQuery.toLowerCase().trim();
+  
+  const filtered = allCustoms.filter(d => {
+    const matchesCategory = (currentCategory === "all" || d.category === currentCategory);
+    const matchesSearch = d.title.toLowerCase().includes(query) || (d.era && d.era.toLowerCase().includes(query));
+    return matchesCategory && matchesSearch;
+  });
+  
+  renderGrid(filtered);
+}
 
-  // Load Visual Carousel Slides
-  if (custom.slides && custom.slides.length > 0) {
-    slidesContainer.innerHTML = custom.slides.map(slide => `
-      <div class="slide">
-        <img src="${slide.img}" alt="${slide.title}" loading="lazy" />
-        <h4>${slide.title}</h4>
-        <p>${slide.desc}</p>
-      </div>
-    `).join("");
-    document.querySelector(".slider-nav").style.display = "flex";
-  } else {
-    slidesContainer.innerHTML = "";
-    document.querySelector(".slider-nav").style.display = "none";
-  }
-
-  // Reset Index
-  currentSlideIndex = 0;
-  updateSliderPosition();
-
-  // Show Modal Overlay Safely
+/* Lazy Load Modal Details */
+function openModal(custom, indexNo) {
   modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden"; 
-}
+  document.body.style.overflow = "hidden";
 
-function closeModal() {
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = ""; 
-}
+  const imageSrc = custom.image ? `../images/mannersCustoms/${custom.image}` : `../images/mannersCustoms/CST_${indexNo}.png`;
+  mImg.src   = imageSrc;
+  mTitle.textContent = custom.title;
+  mCat.textContent   = custom.category ? custom.category.toUpperCase() : "—";
+  mOrigin.textContent = custom.era || "—";
+  mSum.textContent   = custom.summary || "";
 
-// Global Event Binding for Closures
-document.querySelectorAll("[data-close-modal]").forEach(el => {
-  el.addEventListener("click", closeModal);
-});
+  openBtn.href = custom.page || "#";
 
-// Carousel Transform Offset Updates
-function updateSliderPosition() {
-  slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-}
+  /* Reset layout fields */
+  mMap.src = ""; mMap.style.display = "none";
+  mFacts.innerHTML = ""; slides.innerHTML = ""; currentSlide = 0;
+  updateSlider();
 
-document.querySelector(".next").addEventListener("click", () => {
-  const totalSlides = slidesContainer.children.length;
-  if (totalSlides > 0) {
-    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-    updateSliderPosition();
+  /* Lazy loading detail data from JSON file */
+  if(custom.dataPath) {
+    fetch(custom.dataPath)
+      .then(r => r.json())
+      .then(full => {
+        /* Map or infographic illustration */
+        if (full.map) { mMap.src = full.map; mMap.style.display = "block"; }
+
+        /* Render custom facts */
+        (full.facts || custom.facts || []).forEach(f => {
+          const li = document.createElement("li"); li.textContent = f; mFacts.appendChild(li);
+        });
+
+        /* Render inner slide sub-elements */
+        (full.slides || []).forEach(sItem => {
+          const s = document.createElement("div");
+          s.className = "slide";
+          s.innerHTML = `
+            <img src="../images/mannersCustoms/${sItem.image}" alt="${sItem.name || ''}" loading="lazy">
+            <h4>${sItem.name || ''}</h4>
+            <p>${sItem.description || ""}</p>`;
+          slides.appendChild(s);
+        });
+        updateSlider();
+      })
+      .catch(err => {
+        const li = document.createElement("li");
+        li.textContent = `Could not load custom details: ${err.message}`;
+        mFacts.appendChild(li);
+      });
   }
-});
+}
 
+/* Window & UI Closures */
+function closeModal(){ modal.setAttribute("aria-hidden","true"); document.body.style.overflow = "" }
+modal.addEventListener("click", e => { if (e.target.hasAttribute("data-close-modal")) closeModal() });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.getAttribute("aria-hidden")==="false") closeModal() });
+
+/* Slider Engine */
+function updateSlider(){ 
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`; 
+}
 document.querySelector(".prev").addEventListener("click", () => {
-  const totalSlides = slidesContainer.children.length;
-  if (totalSlides > 0) {
-    currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-    updateSliderPosition();
-  }
+  const total = slides.children.length || 1;
+  currentSlide = (currentSlide - 1 + total) % total; 
+  updateSlider();
 });
-
-// Handle Hardware Escape Button
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
-    closeModal();
-  }
+document.querySelector(".next").addEventListener("click", () => {
+  const total = slides.children.length || 1;
+  currentSlide = (currentSlide + 1) % total; 
+  updateSlider();
 });
-
-// Primary Render Engine Hook
-document.addEventListener("DOMContentLoaded", renderCustoms);
