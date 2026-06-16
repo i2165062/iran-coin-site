@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>IRAN NFT</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/overrides.css" />
+	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+	<link rel="icon" type="image/x-icon" href="images/PC22.ico" />
+	
+	<!-- iOS / iPadOS Home Screen -->
+	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180.png" />
+
+	<!-- Android / Chrome PWA -->
+	<link rel="manifest" href="/site.webmanifest" />
+	<meta name="theme-color" content="#0b0e11" />
+
+	<!-- Safari pinned tab (macOS) - تک‌رنگ -->
+	<link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#c5a15b" />
+
+	<!-- Windows tiles (اختیاری) -->
+	<meta name="msapplication-TileColor" content="#0b0e11" />
+	<meta name="msapplication-square150x150logo" content="images/mstile-150.png" />
+
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+
+	<style>
+		/* Custom Cosmic Minimalist Styles for Intro Overlay */
+		.cosmic-intro-layer {
+			position: relative;
+			text-align: center;
+			overflow: hidden;
+		}
+		.cosmic-shamseh-wrapper {
+			display: flex;
+			justify-content: center;
+			margin: 24px 0 32px 0;
+		}
+		.cosmic-shamseh {
+			width: 130px;
+			height: 130px;
+			border: 1px dashed rgba(197, 161, 91, 0.3);
+			border-radius: 50%;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			animation: spinCounter 40s linear infinite;
+		}
+		.cosmic-shamseh::before, 
+		.cosmic-shamseh::after {
+			content: '';
+			position: absolute;
+			inset: 12px;
+			border: 1px solid rgba(197, 161, 91, 0.15);
+			transform: rotate(45deg);
+		}
+		.cosmic-shamseh::after {
+			transform: rotate(22.5deg);
+		}
+		.inner-core {
+			width: 20px;
+			height: 20px;
+			background: #c5a15b;
+			border-radius: 50%;
+			box-shadow: 0 0 25px #c5a15b, 0 0 50px rgba(197, 161, 91, 0.4);
+			animation: pulseGlow 4s ease-in-out infinite;
+		}
+		.cosmic-sub {
+			color: #8a95a5 !important;
+			max-width: 520px;
+			margin: 14px auto 0 auto;
+			font-size: 0.95rem;
+			line-height: 1.7;
+		}
+		.action-nexus-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 12px;
+			margin: 32px 0 16px 0;
+		}
+		.action-nexus {
+			position: relative;
+			cursor: pointer;
+		}
+		.ritual-ring {
+			width: 90px;
+			height: 90px;
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.ritual-center {
+			width: 72px;
+			height: 72px;
+			background: rgba(255, 255, 255, 0.02);
+			border: 1px solid rgba(197, 161, 91, 0.4);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.75rem;
+			letter-spacing: 0.15rem;
+			text-transform: uppercase;
+			color: #c5a15b;
+			user-select: none;
+			transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.svg-ring {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: rotate(-90deg);
+			pointer-events: none;
+		}
+		.svg-ring circle {
+			fill: transparent;
+			stroke: #c5a15b;
+			stroke-width: 2;
+			stroke-dasharray: 276.4;
+			stroke-dashoffset: 276.4;
+			transition: stroke-dashoffset 0.1s linear;
+		}
+		.action-nexus:hover .ritual-ring {
+			border-color: rgba(197, 161, 91, 0.2);
+			transform: scale(1.05);
+		}
+		.hint-text {
+			font-size: 0.72rem;
+			color: #525f73;
+			letter-spacing: 0.1rem;
+			text-transform: uppercase;
+		}
+		.warp-flash {
+			position: fixed;
+			inset: 0;
+			background: #ffffff;
+			z-index: 99999;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.4s ease-out;
+		}
+		@keyframes spinCounter {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(-360deg); }
+		}
+		@keyframes pulseGlow {
+			0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 20px #c5a15b; }
+			50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 35px #c5a15b, 0 0 15px rgba(197, 161, 91, 0.5); }
+		}
+	</style>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="logo">
+				<img src="images/pc2.png" alt="" class="site-logo">
+			</div>
+			<div class="content">
+				<div class="inner">
+					<h1>IRAN NFT</h1>
+					<p>Everyone will feel it</p>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#intro">Intro</a></li>
+					<li><a href="pages/market.html">NFT BAZAR</a></li>
+					<li><a href="explore-iranian-art.html">ART</a></li>
+					<li><a href="explore-Iranian-History.html">HISTORY</a></li>
+					<li><a href="#about-iran">About iran</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Intro Section Fully Replaced -->
+			<article id="intro" class="cosmic-intro-layer">
+				<h2 class="major">Intro</h2>
+
+				<!-- Geometric Celestial Core Symbol -->
+				<div class="cosmic-shamseh-wrapper">
+					<div class="cosmic-shamseh">
+						<div class="inner-core"></div>
+					</div>
+				</div>
+
+				<div class="intro-text">
+					<h3><strong>Iran: The Heart of Resistance and Civilization</strong></h3>
+					<p class="cosmic-sub">
+						An immersive digital archive bridging history, deep-rooted local ethnicities, custom rituals, and timeless literary masterpieces into the Web3 ecosystem.
+					</p>
+				</div>
+
+				<!-- Interactive Hold Activation Controller -->
+				<div class="action-nexus-container">
+					<div class="action-nexus" id="holdTrigger" role="button" aria-label="Hold button to enter site archive">
+						<svg class="svg-ring" width="90" height="90">
+							<circle cx="45" cy="45" r="44" id="progressRing"></circle>
+						</svg>
+						<div class="ritual-ring">
+							<div class="ritual-center" id="buttonText">Hold</div>
+						</div>
+					</div>
+					<span class="hint-text" id="statusHint">Press & Hold to Align Matrix</span>
+				</div>
+
+				<div class="intro-pillars" style="margin-top: 40px;">
+					<div class="pillar">
+						<h4>Global Solidarity</h4>
+						<p>Empowering the Iranian spirit through an open, borderless economy of art and blockchain.</p>
+					</div>
+					<div class="pillar">
+						<h4>Cultural Heritage</h4>
+						<p>Reviving Iran’s poetry, architecture, and civilization in a modern digital form.</p>
+					</div>
+					<div class="pillar">
+						<h4>Innovation & Sovereignty</h4>
+						<p>Redefining freedom with decentralized technology that belongs to the people — not institutions.</p>
+					</div>
+				</div>
+
+				<blockquote class="intro-quote">
+					“IRANNFT is a digital monument — a living museum of Iran’s true history and cultural soul.”
+				</blockquote>
+
+				<section class="intro-heritage">
+					<h3>The Vision Behind IRAN NFT</h3>
+					<p>
+						This website was created with the purpose of <strong>documenting Iran’s history</strong> and 
+						introducing the real Iran to the world — the Iran of art, philosophy, poetry, and civilization.
+					</p>
+					<p>
+						Across different sections of the site, we’ve showcased fragments of our nation’s thousand-year heritage —
+						from architecture and music to symbols of strength and unity — to ensure that
+						<strong>the story of Iran is preserved forever</strong>.
+					</p>
+					<p>
+						We are also preparing a collection of historical and artistic works from Iran, to be minted as NFTs,
+						ensuring they become <strong>eternal digital relics</strong> — 
+						pieces of history that will never fade, protected by the blockchain.
+					</p>
+				</section>
+
+				<section class="intro-nft">
+					<h3>Iranian NFT Marketplace – The Cultural Revolution of Web3</h3>
+					<p>
+						The <strong>IRAN NFT Marketplace</strong> is more than a trading platform — it’s a 
+						<strong>digital Persian bazaar</strong>, inspired by the vibrant markets of ancient Isfahan and Tabriz, reborn in the blockchain age.
+					</p>
+					<p>
+						Artists, musicians, historians, and collectors will collaborate to showcase timeless Iranian masterpieces,
+						each preserved as a unique NFT that lives forever — a bridge between 
+						<strong>Iran’s ancient culture</strong> and <strong>the digital future</strong>.
+					</p>
+
+					<div class="nft-features">
+						<div class="feature">
+							<h4>🎨 Empowering Artists</h4>
+							<p>30% of marketplace revenue will support Iranian creators, museums, and cultural preservation.</p>
+						</div>
+						<div class="feature">
+							<h4>🛍️ A Digital Heritage Bazaar</h4>
+							<p>Buy, trade, and collect Iranian artworks and historic NFTs on a Solana-powered global marketplace.</p>
+						</div>
+						<div class="feature">
+							<h4>🌐 Eternal Visibility</h4>
+							<p>For the first time, Iranian art becomes borderless — seen, valued, and immortalized worldwide.</p>
+						</div>
+					</div>
+
+					<p class="highlight">
+						Through IRAN Nft, we are turning history into legacy — and legacy into light.
+					</p>
+
+					<div class="buttons">
+						<a href="#NFT" class="button primary">Explore Iranian NFTs</a>
+						<a href="#buy" class="button">Join the Movement</a>
+					</div>
+				</section>
+			</article>
+
+			<!-- About iran -->
+			<article id="about-iran" class="about-fixed">
+				<h2 class="major">About Iran</h2>
+
+				<!-- Hero cards -->
+				<section id="about-iran">
+					<div class="about-iran-cards">
+						<div class="swiper swiper-cards-iran">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="explore-Iranian-History.html" class="about-iran-card"
+										style="background-image: url('images/PC6.png');">
+										<span></span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="explore-iranian-culture.html" class="about-iran-card"
+										style="background-image: url('images/PC5.png');">
+										<span></span>
+									</a>
+								</div>
+								<div class="swiper-slide">
