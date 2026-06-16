@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome | Cultural Mosaic of Iran</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./images/PC22.ico" />
+  <style>
+    /* 1. Core Structural Layer */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: #050709;
+      color: #e3e8ed;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    /* 2. Cosmic Minimal Background Grid */
+    .cosmic-void {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, #0d121a 0%, #030507 100%);
+      z-index: 1;
+    }
+
+    /* Dynamic Stardust Particles */
+    .stars {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(215, 184, 106, 0.4);
+      box-shadow: 14vw 23vh 1px, 45vw 80vh 2px, 75vw 15vh 1px, 85vw 65vh 3px, 20vw 90vh 1px, 60vw 35vh 2px;
+      inset: 0;
+      animation: drift 120s linear infinite;
+    }
+
+    /* 3. Central Interactive Hub */
+    .intro-container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 600px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* Traditional Shamseh Symbol Reimagined inside Space Grid */
+    .cosmic-shamseh {
+      width: 140px;
+      height: 140px;
+      border: 1px dashed rgba(217, 184, 106, 0.3);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spinCounter 40s linear infinite;
+    }
+
+    .cosmic-shamseh::before, 
+    .cosmic-shamseh::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(217, 184, 106, 0.15);
+      transform: rotate(45deg);
+    }
+    
+    .cosmic-shamseh::after {
+      transform: rotate(22.5deg);
+    }
+
+    .inner-core {
+      width: 24px;
+      height: 24px;
+      background: #d7b86a;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #d7b86a, 0 0 60px rgba(217,184,106,0.4);
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    /* Typography Hierarchy */
+    h1 {
+      font-size: 1.15rem;
+      font-weight: 300;
+      letter-spacing: 0.65rem;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-left: 0.65rem; /* Offsets tracking layout */
+      animation: subtleFadeIn 2.5s ease-out forwards;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #8a95a5;
+      line-height: 1.8;
+      font-weight: 300;
+      letter-spacing: 0.05rem;
+      max-width: 460px;
+    }
+
+    /* 4. Ritual Action Control Component */
+    .action-nexus {
+      position: relative;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+
+    /* Outer circular progress track */
+    .ritual-ring {
+      width: 90px;
+      height: 90px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ritual-center {
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(217, 184, 106, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.15rem;
+      text-transform: uppercase;
+      color: #d7b86a;
+      user-select: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Progress Overlay ring */
+    .svg-ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(-90deg);
+      pointer-events: none;
+    }
+    
+    .svg-ring circle {
+      fill: transparent;
+      stroke: #d7b86a;
+      stroke-width: 2;
+      stroke-dasharray: 276.4; /* Circumference of a 44px radius circle */
+      stroke-dashoffset: 276.4;
+      transition: stroke-dashoffset 0.1s linear;
+    }
+
+    /* Interactions & States */
+    .action-nexus:hover .ritual-ring {
+      border-color: rgba(217, 184, 106, 0.2);
+      transform: scale(1.05);
+    }
+
+    .action-nexus:active .ritual-center {
+      background: rgba(217, 184, 106, 0.1);
+      color: #ffffff;
+      box-shadow: inset 0 0 15px rgba(217, 184, 106, 0.2);
+    }
+
+    .hint-text {
+      font-size: 0.72rem;
+      color: #525f73;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      margin-top: -12px;
+    }
+
+    /* 5. Keyframe Animation Engines */
+    @keyframes spinCounter {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 25px #d7b86a; }
+      50% { transform: scale(1.12); opacity: 1; box-shadow: 0 0 45px #d7b86a, 0 0 20px rgba(217,184,106,0.6); }
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); }
+    }
+
+    @keyframes subtleFadeIn {
+      from { opacity: 0; transform: translateY(6px); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    /* Structural view change flash overlay */
+    .warp-flash {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Ambience Layer -->
+  <div class="cosmic-void">
+    <div class="stars"></div>
+  </div>
+
+  <!-- Central Interface Grid -->
+  <main class="intro-container">
+    
+    <!-- Geometric Celestial Core Symbol -->
+    <div class="cosmic-shamseh">
+      <div class="inner-core"></div>
+    </div>
+
+    <!-- Editorial Typography Block -->
+    <div>
+      <h1>The Iranian Plateau</h1>
+      <p style="margin-top: 14px;">
+        An immersive digital archive bridging history, deep-rooted local ethnicities, custom rituals, and timeless literary masterpieces.
+      </p>
+    </div>
+
+    <!-- Interactive Hold Activation Controller -->
+    <div class="action-nexus" id="holdTrigger" role="button" aria-label="Hold button to enter site archive">
+      <svg class="svg-ring" width="90" height="90">
+        <circle cx="45" cy="45" r="44" id="progressRing"></circle>
+      </svg>
+      <div class="ritual-ring">
+        <div class="ritual-center" id="buttonText">Hold</div>
+      </div>
+    </div>
+
+    <span class="hint-text" id="statusHint">Press & Hold to Align</span>
+
+  </main>
+
+  <!-- Warp Flash Effect Element -->
+  <div class="warp-flash" id="flashOverlay"></div>
+
+  <!-- 6. Reactive Micro-Interaction Script Engine -->
+  <script>
+    const trigger = document.getElementById('holdTrigger');
+    const ring = document.getElementById('progressRing');
+    const text = document.getElementById('buttonText');
+    const hint = document.getElementById('statusHint');
+    const flash = document.getElementById('flashOverlay');
+
+    let holdTimer = null;
+    let progress = 0;
+    const holdDuration = 1500; // Time in milliseconds required to enter (1.5 seconds)
+    const intervalTime = 20;   // Update speed step loop
+    const maxOffset = 276.4;   // SVG Ring Stroke Path Circumference
+
+    // Handles activation hold countdown sequence
+    function startHold(e) {
+      e.preventDefault();
+      text.textContent = "Aligning";
+      hint.style.color = "#d7b86a";
+      
+      holdTimer = setInterval(() => {
+        progress += intervalTime;
+        let percent = Math.min(progress / holdDuration, 1);
+        
+        // Reverse calculation for dash offset tracking stroke filling
+        ring.style.strokeDashoffset = maxOffset - (percent * maxOffset);
+
+        if (progress >= holdDuration) {
+          triggerSuccessState();
+        }
+      }, intervalTime);
+    }
+
+    // Aborts and smoothly rolls back activation states
+    function cancelHold() {
+      clearInterval(holdTimer);
+      progress = 0;
+      text.textContent = "Hold";
+      hint.textContent = "Press & Hold to Align";
+      hint.style.color = "";
+      ring.style.strokeDashoffset = maxOffset;
+    }
+
+    // Handles execution transition trigger routine
+    function triggerSuccessState() {
+      clearInterval(holdTimer);
+      text.textContent = "Ready";
+      hint.textContent = "Entering Archive...";
+      
+      // Trigger cinematic cosmic flash transition effect
+      flash.style.opacity = "1";
+      
+      setTimeout(() => {
+        // Change destination path string directly to any target hub file
+        window.location.href = "criticalEvents.html"; 
+      }, 500);
+    }
+
+    // Bind Touch and Desktop Cursor Interaction Signals
+    trigger.addEventListener('mousedown', startHold);
+    trigger.addEventListener('touchstart', startHold);
+    
+    window.addEventListener('mouseup', cancelHold);
+    window.addEventListener('touchend', cancelHold);
+    trigger.addEventListener('mouseleave', cancelHold);
+  </script>
+
+</body>
+</html>
